@@ -10,16 +10,7 @@ const ENDPOINT =
  *
  * @example
  * ```
- * raw(gql`
- *  {
-     tokens {
-       id
-       saleData {
-         maxSupply
-       }
-     }
-    }
- * `)
+ * raw(gql`{ tokens { id } }`)
  * ```
  */
 async function raw<T = any, V = Variables>(
