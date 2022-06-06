@@ -40,11 +40,11 @@
   "size-limit": [
     {
       "path": "dist/open-format.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "100 KB"
     },
     {
       "path": "dist/open-format.esm.js",
-      "limit": "10 KB"
+      "limit": "100 KB"
     }
   ],
   "devDependencies": {
@@ -54,5 +54,9 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0"
   }
 }
