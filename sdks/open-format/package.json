@@ -1,5 +1,11 @@
 {
+  "name": "@simpleweb/open-format",
   "version": "0.1.0",
+  "repository": "git@github.com:simpleweb/open-format.git",
+  "author": "Benjamin Reid <ben@simpleweb.co.uk>",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -30,8 +36,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "open-format",
-  "author": "Benjamin Reid",
   "module": "dist/open-format.esm.js",
   "size-limit": [
     {
