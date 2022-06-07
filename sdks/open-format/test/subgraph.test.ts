@@ -13,7 +13,7 @@ describe('subgraph', () => {
       }
     `;
 
-    const result = await sdk.subgraph.raw(query);
+    const result = await sdk.rawRequest(query);
 
     expect(typeof result.tokens[0].id).toBe('string');
   });

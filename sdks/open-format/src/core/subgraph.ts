@@ -4,16 +4,17 @@ const ENDPOINT =
   'https://api.thegraph.com/subgraphs/name/simpleweb/open-format';
 
 /**
- * Makes a request to the Open Format subgraph
+ * Makes a raw request to the Open Format subgraph allowing you to pass your own
+ * Query or Mutation
  * @param document
  * @returns a result from the subgraph
  *
  * @example
  * ```
- * raw(gql`{ tokens { id } }`)
+ * rawRequest(gql`{ tokens { id } }`)
  * ```
  */
-async function raw<T = any, V = Variables>(
+async function rawRequest<T = any, V = Variables>(
   document: RequestDocument,
   variables?: V
 ) {
@@ -21,5 +22,5 @@ async function raw<T = any, V = Variables>(
 }
 
 export default {
-  raw,
+  rawRequest,
 };
