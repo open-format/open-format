@@ -1,7 +1,6 @@
 import ganache from 'ganache';
 import { OpenFormatSDK } from '../src/index';
 
-const sdk = new OpenFormatSDK();
 let server: ReturnType<typeof ganache.server>;
 
 beforeAll(() => {
@@ -35,12 +34,13 @@ afterEach(() => {
   server.close();
 });
 
+const sdk = new OpenFormatSDK({
+  network: 'http://localhost:8545',
+});
+
 describe('contract', () => {
   it('deploys a contract', async () => {
     const receipt = await sdk.deploy({
-      RPC_URL: 'http://localhost:8545',
-      WALLET_PRIVATE_KEY:
-        '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
       nft: {
         maxSupply: 100,
         mintingPrice: '0.01',
@@ -48,6 +48,8 @@ describe('contract', () => {
         symbol: 'TEST',
         url: 'ipfs://',
       },
+      privateKey:
+        '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
     });
 
     expect(receipt.status).toBe(1);

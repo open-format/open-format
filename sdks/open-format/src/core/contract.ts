@@ -1,6 +1,14 @@
 import base from '@simpleweb/open-format-contracts/abis/OpenFormat.json';
 import { ethers } from 'ethers';
 
+export interface NFTMetadata {
+  name: string;
+  symbol: string;
+  url: string;
+  maxSupply: number;
+  mintingPrice: string;
+}
+
 /**
  * Deploys a version of the Open Format contract
  * @param deployOptions
@@ -13,13 +21,7 @@ export async function deploy({
 }: {
   RPC_URL: string;
   WALLET_PRIVATE_KEY: string;
-  nft: {
-    name: string;
-    symbol: string;
-    url: string;
-    maxSupply: number;
-    mintingPrice: string;
-  };
+  nft: NFTMetadata;
 }) {
   const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
 
