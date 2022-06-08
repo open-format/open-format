@@ -20,6 +20,7 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
+    "ganache-server": "ganache --wallet.accounts=0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7,1000000000000000000000",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
@@ -51,8 +52,8 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
-    "dotenv": "^16.0.1",
     "ethers": "^5",
+    "ganache": "^7.2.0",
     "husky": "^8.0.1",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
