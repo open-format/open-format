@@ -20,7 +20,6 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "ganache-server": "ganache --wallet.accounts=0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7,1000000000000000000000",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
