@@ -2,9 +2,11 @@ import merge from 'lodash.merge';
 import type { NFTMetadata } from './contract';
 import * as contract from './contract';
 import * as subgraph from './subgraph';
+import { Signer } from "ethers"
 
 interface SDKOptions {
   network: string;
+  signer?: Signer
 }
 
 /**
@@ -23,10 +25,13 @@ export class OpenFormatSDK {
   }
 
 
-  deploy({ nft, privateKey }: {nft: NFTMetadata; privateKey: string }) {
+  deploy(nft: NFTMetadata) {
+    if (!this.options.signer) {
+      throw new Error("Not signer set")
+    }
+
     return contract.deploy({
-      RPC_URL: this.options.network,
-      WALLET_PRIVATE_KEY: privateKey,
+      signer: this.options.signer,
       nft,
     })
   };

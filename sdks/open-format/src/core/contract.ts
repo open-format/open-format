@@ -1,5 +1,5 @@
 import base from '@simpleweb/open-format-contracts/abis/OpenFormat.json';
-import { ethers } from 'ethers';
+import { ethers, Signer } from 'ethers';
 
 export interface NFTMetadata {
   name: string;
@@ -15,24 +15,16 @@ export interface NFTMetadata {
  * @returns
  */
 export async function deploy({
-  RPC_URL,
-  WALLET_PRIVATE_KEY,
+  signer,
   nft,
 }: {
-  RPC_URL: string;
-  WALLET_PRIVATE_KEY: string;
+  signer: Signer;
   nft: NFTMetadata;
 }) {
-  const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
-
-  const wallet = new ethers.Wallet(WALLET_PRIVATE_KEY, provider);
-
-  const account = wallet.connect(provider);
-
   const openFormatContract = new ethers.ContractFactory(
     base.abi,
     base.bytecode,
-    account
+    signer
   );
 
   const contract = await openFormatContract.deploy(
