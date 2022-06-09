@@ -11,8 +11,11 @@ export interface NFTMetadata {
 
 /**
  * Deploys a version of the Open Format contract
- * @param deployOptions
- * @returns
+ * @private
+ * @param {Object} params - the signer and nft for the deploy
+ * @param {Signer} params.signer - signer of the contract
+ * @param {NFTMetadata} params.nft - metadata about the NFT to deploy
+ * @returns receipt
  */
 export async function deploy({
   signer,
