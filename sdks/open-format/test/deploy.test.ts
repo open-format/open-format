@@ -1,8 +1,8 @@
 import { ethers } from 'ethers';
 import { OpenFormatSDK } from '../src/index';
 
-describe('contract', () => {
-  it('deploys a contract with a signer', async () => {
+describe('sdk.deploy()', () => {
+  it('can deploy with a Signer', async () => {
     const sdk = new OpenFormatSDK({
       network: 'http://localhost:8545',
       signer: new ethers.Wallet(
@@ -22,7 +22,7 @@ describe('contract', () => {
     expect(receipt.status).toBe(1);
   });
 
-  it('deploys with a private key', async () => {
+  it('can deploy with a private key', async () => {
     const sdk = new OpenFormatSDK({
       network: 'http://localhost:8545',
       signer:
