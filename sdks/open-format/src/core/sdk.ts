@@ -40,6 +40,17 @@ export class OpenFormatSDK {
     }
   }
 
+  async checkNetworksMatch() {
+    if (this.signer) {
+      const signerNetwork = await this.signer.provider?.getNetwork();
+      const providerNetwork = await this.provider.getNetwork();
+
+      if (signerNetwork?.chainId !== providerNetwork.chainId) {
+        throw new Error(`Chains don't match`);
+      }
+    }
+  }
+
   /**
    * Deploys a version of the Open Format contract
    * @param {Object} nft - the nft to deploy
@@ -50,10 +61,12 @@ export class OpenFormatSDK {
    * @param {string} nft.url - storage URL
    * @returns transaction
    */
-  deploy(nft: contract.NFTMetadata) {
+  async deploy(nft: contract.NFTMetadata) {
     if (!this.signer) {
       throw new Error('No signer set, aborting deploy');
     }
+
+    await this.checkNetworksMatch();
 
     return contract.deploy({
       signer: this.signer,

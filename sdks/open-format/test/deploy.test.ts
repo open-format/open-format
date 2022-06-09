@@ -43,7 +43,7 @@ describe('sdk.deploy()', () => {
   it('will throw an error without a signer', () => {
     const sdk = new OpenFormatSDK({ network: 'mumbai' });
 
-    expect(() =>
+    expect(
       sdk.deploy({
         maxSupply: 100,
         mintingPrice: '0.01',
@@ -51,6 +51,26 @@ describe('sdk.deploy()', () => {
         symbol: 'TEST1',
         url: 'ipfs://',
       })
-    ).toThrow();
+    ).rejects.toThrow();
+  });
+
+  it('will throw an error if the networks do not match', () => {
+    const sdk = new OpenFormatSDK({
+      network: 'mumbai',
+      signer: new ethers.Wallet(
+        '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
+        new ethers.providers.JsonRpcProvider('http://localhost:8545')
+      ),
+    });
+
+    expect(
+      sdk.deploy({
+        maxSupply: 100,
+        mintingPrice: '0.01',
+        name: 'Test 1',
+        symbol: 'TEST1',
+        url: 'ipfs://',
+      })
+    ).rejects.toThrow();
   });
 });
