@@ -1,4 +1,4 @@
-import { providers } from 'ethers';
+import { ethers, providers, Signer } from 'ethers';
 
 export type Chain = 'mumbai' | (string & {});
 
@@ -28,4 +28,28 @@ export function getProviderUrl(chain: Chain) {
  */
 export function getProviderFromUrl(networkUrl: string) {
   return new providers.JsonRpcProvider(networkUrl);
+}
+
+/**
+ * Creates a signer from a private key or returns a signer if one is passed
+ * @param signer
+ * @param provider
+ * @returns
+ */
+export function getSigner(
+  signer: Signer | string,
+  provider?: providers.Provider
+) {
+  if (typeof signer === 'string') {
+    if (!provider) {
+      throw new Error(
+        'To create a signer from a private key a provider must be passed'
+      );
+    }
+
+    const privateKey = signer;
+    return new ethers.Wallet(privateKey, provider);
+  }
+
+  return signer;
 }

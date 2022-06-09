@@ -1,5 +1,9 @@
-import { ethers } from 'ethers';
-import { getProviderFromUrl, getProviderUrl } from '../src/helpers/providers';
+import { ethers, Signer } from 'ethers';
+import {
+  getProviderFromUrl,
+  getProviderUrl,
+  getSigner,
+} from '../src/helpers/providers';
 
 describe('providers', () => {
   describe('getProviderUrl()', () => {
@@ -30,6 +34,36 @@ describe('providers', () => {
       );
 
       expect(provider).toBeInstanceOf(ethers.providers.JsonRpcProvider);
+    });
+  });
+
+  describe('getSigner()', () => {
+    it('creates a signer if a private key is passed', () => {
+      const signer = getSigner(
+        '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
+        new ethers.providers.JsonRpcProvider('http://localhost:8545')
+      );
+
+      expect(signer).toBeInstanceOf(Signer);
+    });
+
+    it('returns the signer that is passed', () => {
+      const signer = getSigner(
+        new ethers.Wallet(
+          '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
+          new ethers.providers.JsonRpcProvider('http://localhost:8545')
+        )
+      );
+
+      expect(signer).toBeInstanceOf(Signer);
+    });
+
+    it('should throw an error if only a private key is passed', () => {
+      expect(() =>
+        getSigner(
+          '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7'
+        )
+      ).toThrow();
     });
   });
 });

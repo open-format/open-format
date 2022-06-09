@@ -4,13 +4,14 @@ import {
   Chain,
   getProviderFromUrl,
   getProviderUrl,
+  getSigner,
 } from '../helpers/providers';
 import * as contract from './contract';
 import * as subgraph from './subgraph';
 
 interface SDKOptions {
   network: Chain;
-  signer?: Signer;
+  signer?: Signer | string;
 }
 
 /**
@@ -23,6 +24,8 @@ export class OpenFormatSDK {
   providerUrl: string;
   provider: providers.Provider;
 
+  signer?: Signer;
+
   static defaultOptions: SDKOptions = {
     network: 'http://localhost:8545',
   };
@@ -31,15 +34,19 @@ export class OpenFormatSDK {
     this.options = merge(OpenFormatSDK.defaultOptions, options);
     this.providerUrl = getProviderUrl(this.options.network);
     this.provider = getProviderFromUrl(this.providerUrl);
+
+    if (this.options.signer) {
+      this.signer = getSigner(this.options.signer, this.provider);
+    }
   }
 
   deploy(nft: contract.NFTMetadata) {
-    if (!this.options.signer) {
+    if (!this.signer) {
       throw new Error('No signer set, aborting deploy');
     }
 
     return contract.deploy({
-      signer: this.options.signer,
+      signer: this.signer,
       nft,
     });
   }
