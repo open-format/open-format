@@ -30,7 +30,7 @@ export class OpenFormatSDK {
   };
 
   constructor(options?: SDKOptions) {
-    this.options = merge(OpenFormatSDK.defaultOptions, options);
+    this.options = merge({}, OpenFormatSDK.defaultOptions, options);
 
     const providerUrl = getProviderUrl(this.options.network);
     this.provider = getProviderFromUrl(providerUrl);
