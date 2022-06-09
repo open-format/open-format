@@ -21,7 +21,6 @@ interface SDKOptions {
 export class OpenFormatSDK {
   options: SDKOptions;
 
-  providerUrl: string;
   provider: providers.Provider;
 
   signer?: Signer;
@@ -32,8 +31,9 @@ export class OpenFormatSDK {
 
   constructor(options?: SDKOptions) {
     this.options = merge(OpenFormatSDK.defaultOptions, options);
-    this.providerUrl = getProviderUrl(this.options.network);
-    this.provider = getProviderFromUrl(this.providerUrl);
+
+    const providerUrl = getProviderUrl(this.options.network);
+    this.provider = getProviderFromUrl(providerUrl);
 
     if (this.options.signer) {
       this.signer = getSigner(this.options.signer, this.provider);
