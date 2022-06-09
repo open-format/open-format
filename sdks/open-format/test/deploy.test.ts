@@ -39,4 +39,18 @@ describe('sdk.deploy()', () => {
 
     expect(receipt.status).toBe(1);
   });
+
+  it('will throw an error without a signer', () => {
+    const sdk = new OpenFormatSDK({ network: 'mumbai' });
+
+    expect(() =>
+      sdk.deploy({
+        maxSupply: 100,
+        mintingPrice: '0.01',
+        name: 'Test 1',
+        symbol: 'TEST1',
+        url: 'ipfs://',
+      })
+    ).toThrow();
+  });
 });
