@@ -1,39 +1,5 @@
 import { Signer } from 'ethers';
-import ganache from 'ganache';
 import { OpenFormatSDK } from '../src';
-
-let server: ReturnType<typeof ganache.server>;
-
-beforeAll(() => {
-  return new Promise<void>((resolve, reject) => {
-    server = ganache.server({
-      logging: {
-        quiet: true,
-      },
-      wallet: {
-        accounts: [
-          {
-            balance: 1000000000000000000000,
-            secretKey:
-              '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
-          },
-        ],
-      },
-    });
-
-    server.listen(8545, async err => {
-      if (err) {
-        reject();
-      }
-
-      resolve();
-    });
-  });
-});
-
-afterAll(() => {
-  server.close();
-});
 
 describe('sdk', () => {
   it('sets a default provider of localhost', async () => {
