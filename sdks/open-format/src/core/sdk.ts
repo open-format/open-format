@@ -44,7 +44,7 @@ export class OpenFormatSDK {
    * Deploys a version of the Open Format contract
    * @param {Object} nft - the nft to deploy
    * @param {number} nft.maxSupply - the max supply of the nft
-   * @param {string} nft.mintingPrice - the amount to mint the nft
+   * @param {number} nft.mintingPrice - the amount to mint the nft
    * @param {string} nft.name - name of the nft
    * @param {string} nft.symbol - symbol for the nft
    * @param {string} nft.url - storage URL

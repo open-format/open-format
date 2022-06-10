@@ -5,5 +5,5 @@ export interface NFTMetadata {
   symbol: string;
   url: string;
   maxSupply: number;
-  mintingPrice: string;
+  mintingPrice: number;
 }

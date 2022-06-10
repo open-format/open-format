@@ -13,7 +13,7 @@ describe('sdk.deploy()', () => {
 
     const receipt = await sdk.deploy({
       maxSupply: 100,
-      mintingPrice: '0.01',
+      mintingPrice: 0.01,
       name: 'Test',
       symbol: 'TEST',
       url: 'ipfs://',
@@ -31,7 +31,7 @@ describe('sdk.deploy()', () => {
 
     const receipt = await sdk.deploy({
       maxSupply: 100,
-      mintingPrice: '0.01',
+      mintingPrice: 0.01,
       name: 'Test 1',
       symbol: 'TEST1',
       url: 'ipfs://',
@@ -46,7 +46,7 @@ describe('sdk.deploy()', () => {
     expect(
       sdk.deploy({
         maxSupply: 100,
-        mintingPrice: '0.01',
+        mintingPrice: 0.01,
         name: 'Test 1',
         symbol: 'TEST1',
         url: 'ipfs://',
@@ -66,7 +66,7 @@ describe('sdk.deploy()', () => {
     expect(
       sdk.deploy({
         maxSupply: 100,
-        mintingPrice: '0.01',
+        mintingPrice: 0.01,
         name: 'Test 1',
         symbol: 'TEST1',
         url: 'ipfs://',
