@@ -5,7 +5,7 @@ import { Chain } from '../types';
  * Returns a network URL base on a chain e.g. 'mumbai' and allows for
  * custom URLs
  * @param chain
- * @returns
+ * @returns a chain URL
  */
 export function getProviderUrl(chain: Chain) {
   switch (chain) {
@@ -23,7 +23,7 @@ export function getProviderUrl(chain: Chain) {
 /**
  * Creates a new JsonRpcProvider based on a network URL
  * @param networkUrl
- * @returns
+ * @returns a JsonRpcProvider with a given network
  */
 export function getProviderFromUrl(networkUrl: string) {
   return new providers.JsonRpcProvider(networkUrl);
@@ -33,7 +33,7 @@ export function getProviderFromUrl(networkUrl: string) {
  * Creates a signer from a private key or returns a signer if one is passed
  * @param signer
  * @param provider
- * @returns
+ * @returns Signer
  */
 export function getSigner(
   signer: Signer | string,
