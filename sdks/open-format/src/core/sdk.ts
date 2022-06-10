@@ -40,17 +40,6 @@ export class OpenFormatSDK {
     }
   }
 
-  async checkNetworksMatch() {
-    if (this.signer) {
-      const signerNetwork = await this.signer.provider?.getNetwork();
-      const providerNetwork = await this.provider.getNetwork();
-
-      if (signerNetwork?.chainId !== providerNetwork.chainId) {
-        throw new Error(`Chains don't match`);
-      }
-    }
-  }
-
   /**
    * Deploys a version of the Open Format contract
    * @param {Object} nft - the nft to deploy
@@ -76,4 +65,19 @@ export class OpenFormatSDK {
 
   rawRequest = subgraph.rawRequest;
   getSaleDataForToken = subgraph.getSaleDataForToken;
+
+  /**
+   * Throws an error if the current signer and provider's networks differ
+   * @private
+   */
+  private async checkNetworksMatch() {
+    if (this.signer) {
+      const signerNetwork = await this.signer.provider?.getNetwork();
+      const providerNetwork = await this.provider.getNetwork();
+
+      if (signerNetwork?.chainId !== providerNetwork.chainId) {
+        throw new Error(`Chains don't match`);
+      }
+    }
+  }
 }
