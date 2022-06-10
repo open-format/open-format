@@ -1,11 +1,11 @@
 import { providers, Signer } from 'ethers';
 import merge from 'lodash.merge';
 import {
-  Chain,
   getProviderFromUrl,
   getProviderUrl,
   getSigner,
 } from '../helpers/providers';
+import { Chain, NFTMetadata } from '../types';
 import * as contract from './contract';
 import * as subgraph from './subgraph';
 
@@ -61,7 +61,7 @@ export class OpenFormatSDK {
    * @param {string} nft.url - storage URL
    * @returns transaction
    */
-  async deploy(nft: contract.NFTMetadata) {
+  async deploy(nft: NFTMetadata) {
     if (!this.signer) {
       throw new Error('No signer set, aborting deploy');
     }

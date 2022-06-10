@@ -1,6 +1,5 @@
 import { ethers, providers, Signer } from 'ethers';
-
-export type Chain = 'mumbai' | (string & {});
+import { Chain } from '../types';
 
 /**
  * Returns a network URL base on a chain e.g. 'mumbai' and allows for

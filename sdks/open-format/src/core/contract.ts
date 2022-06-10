@@ -1,13 +1,6 @@
 import base from '@simpleweb/open-format-contracts/abis/OpenFormat.json';
 import { ethers, Signer } from 'ethers';
-
-export interface NFTMetadata {
-  name: string;
-  symbol: string;
-  url: string;
-  maxSupply: number;
-  mintingPrice: string;
-}
+import { NFTMetadata } from '../types';
 
 /**
  * Deploys a version of the Open Format contract
