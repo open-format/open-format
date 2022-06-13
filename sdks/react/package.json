@@ -1,5 +1,11 @@
 {
+  "name": "@simpleweb/open-format-react",
   "version": "0.1.0",
+  "repository": "https://github.com/simpleweb/open-format/tree/main/sdks/react",
+  "author": "Benjamin Reid <ben@simpleweb.co.uk>",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -32,8 +38,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "react",
-  "author": "Benjamin Reid",
   "module": "dist/react.esm.js",
   "size-limit": [
     {
