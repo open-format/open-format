@@ -1,7 +1,14 @@
-import type { AppProps } from 'next/app'
+import { OpenFormatProvider } from "@simpleweb/open-format-react";
+import { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <OpenFormatProvider>
+        <Component {...pageProps} />
+      </OpenFormatProvider>
+    </>
+  );
 }
 
-export default MyApp
+export default MyApp;
