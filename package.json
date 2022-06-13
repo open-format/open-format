@@ -4,7 +4,8 @@
   "private": true,
   "workspaces": [
     "packages/**",
-    "sdks/**"
+    "sdks/**",
+    "examples/**"
   ],
   "repository": "git@github.com:simpleweb/open-format.git",
   "author": "Benjamin Reid <ben@simpleweb.co.uk>",
