@@ -61,6 +61,7 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
+    "@simpleweb/open-format": "*",
     "react": "^18.1.0"
   }
 }

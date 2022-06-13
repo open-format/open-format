@@ -1,14 +1,19 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useRef } from 'react';
+import { OpenFormatSDK } from '@simpleweb/open-format';
 
-const OpenFormatContext = createContext<{} | undefined>(undefined);
+const OpenFormatContext = createContext<{ sdk: OpenFormatSDK } | undefined>(
+  undefined
+);
 
 export function OpenFormatProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const sdk = useRef(new OpenFormatSDK({ network: 'mumbai' }));
+
   return (
-    <OpenFormatContext.Provider value={{}}>
+    <OpenFormatContext.Provider value={{ sdk: sdk.current }}>
       {children}
     </OpenFormatContext.Provider>
   );
