@@ -7,3 +7,20 @@ export interface NFTMetadata {
   maxSupply: number;
   mintingPrice: number;
 }
+
+export interface SaleDataResponse {
+  token: {
+    saleData: {
+      id: string;
+      maxSupply: string;
+      totalEarnings: string;
+      totalSold: string;
+      totalReleased: string;
+      salePrice: string;
+      createdAt: string;
+      royaltiesPercentage: string;
+      primaryCommission: string;
+      secondaryCommission: string;
+    };
+  };
+}
