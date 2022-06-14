@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 const OpenFormatContext = createContext<{ sdk: OpenFormatSDK } | undefined>(
   undefined
 );
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -13,6 +14,9 @@ const queryClient = new QueryClient({
   },
 });
 
+/**
+ * The Provider for the Open Format SDK
+ */
 export function OpenFormatProvider({
   children,
 }: {
@@ -27,6 +31,11 @@ export function OpenFormatProvider({
   );
 }
 
+/**
+ * Gets the Open Format Context
+ * @returns the open format context
+ * @private
+ */
 export function useOpenFormat() {
   const context = useContext(OpenFormatContext);
 
