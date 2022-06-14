@@ -1,9 +1,17 @@
 import React, { createContext, useContext, useRef } from 'react';
 import { OpenFormatSDK } from '@simpleweb/open-format';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 const OpenFormatContext = createContext<{ sdk: OpenFormatSDK } | undefined>(
   undefined
 );
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
 
 export function OpenFormatProvider({
   children,
@@ -14,7 +22,7 @@ export function OpenFormatProvider({
 
   return (
     <OpenFormatContext.Provider value={{ sdk: sdk.current }}>
-      {children}
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </OpenFormatContext.Provider>
   );
 }

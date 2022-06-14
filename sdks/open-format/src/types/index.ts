@@ -22,5 +22,5 @@ export interface SaleDataResponse {
       primaryCommission: string;
       secondaryCommission: string;
     };
-  };
+  } | null;
 }
