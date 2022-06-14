@@ -13,5 +13,12 @@
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "yarn@1.22.17"
+  "packageManager": "yarn@1.22.17",
+  "scripts": {
+    "start": "turbo run start",
+    "build": "turbo run build"
+  },
+  "devDependencies": {
+    "turbo": "^1.2.16"
+  }
 }
