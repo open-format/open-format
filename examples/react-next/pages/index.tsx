@@ -1,5 +1,9 @@
 import { NextPage } from "next";
-import { useRawRequest, useSaleData } from "@simpleweb/open-format-react";
+import {
+  ConnectButton,
+  useRawRequest,
+  useSaleData
+} from "@simpleweb/open-format-react";
 import { gql } from "graphql-request";
 
 const Home: NextPage = () => {
@@ -20,6 +24,9 @@ const Home: NextPage = () => {
   return (
     <div>
       <h1>Open Format React</h1>
+
+      <ConnectButton />
+
       {saleData.isLoading ? (
         <p>Loading...</p>
       ) : (
