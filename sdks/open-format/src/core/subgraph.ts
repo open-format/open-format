@@ -1,4 +1,5 @@
 import { gql, request, RequestDocument, Variables } from 'graphql-request';
+import { SaleDataResponse } from '../types';
 
 const ENDPOINT =
   'https://api.thegraph.com/subgraphs/name/simpleweb/open-format';
@@ -51,23 +52,7 @@ export async function getSaleDataForToken(tokenId: string) {
     }
   `;
 
-  return await request<
-    {
-      token: {
-        saleData: {
-          id: string;
-          maxSupply: string;
-          totalEarnings: string;
-          totalSold: string;
-          totalReleased: string;
-          salePrice: string;
-          createdAt: string;
-          royaltiesPercentage: string;
-          primaryCommission: string;
-          secondaryCommission: string;
-        };
-      };
-    },
-    { id: string }
-  >(ENDPOINT, query, { id: tokenId });
+  return await request<SaleDataResponse, { id: string }>(ENDPOINT, query, {
+    id: tokenId,
+  });
 }
