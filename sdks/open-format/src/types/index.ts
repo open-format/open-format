@@ -1,4 +1,4 @@
-export type Chain = 'mumbai' | (string & {});
+export type Chain = 'mumbai' | 'localhost' | (string & {});
 
 export interface NFTMetadata {
   name: string;

@@ -1,4 +1,5 @@
 import { ethers, providers, Signer } from 'ethers';
+import { Chains } from '../constants';
 import { Chain } from '../types';
 
 /**
@@ -10,7 +11,9 @@ import { Chain } from '../types';
 export function getProviderUrl(chain: Chain) {
   switch (chain) {
     case 'mumbai':
-      return 'https://matic-mumbai.chainstacklabs.com/';
+      return Chains.mumbai.rpcUrl;
+    case 'localhost':
+      return Chains.localhost.rpcUrl;
     default:
       if (chain.startsWith('http')) {
         return chain as string;

@@ -4,7 +4,7 @@ import { AppProps } from "next/app";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <OpenFormatProvider>
+      <OpenFormatProvider config={{ network: "mumbai" }}>
         <Component {...pageProps} />
       </OpenFormatProvider>
     </>

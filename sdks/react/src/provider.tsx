@@ -1,4 +1,4 @@
-import { OpenFormatSDK } from '@simpleweb/open-format';
+import { Chain, OpenFormatSDK } from '@simpleweb/open-format';
 import { useConnectWallet } from '@web3-onboard/react';
 import { ethers } from 'ethers';
 import React, { createContext, useContext, useEffect, useRef } from 'react';
@@ -22,10 +22,16 @@ const queryClient = new QueryClient({
  */
 export function OpenFormatProvider({
   children,
+  config = {
+    network: 'localhost',
+  },
 }: {
   children: React.ReactNode;
+  config?: {
+    network: Chain;
+  };
 }) {
-  const sdk = useRef(new OpenFormatSDK({ network: 'mumbai' }));
+  const sdk = useRef(new OpenFormatSDK({ network: config.network }));
   const [{ wallet }] = useConnectWallet();
 
   useEffect(() => {
