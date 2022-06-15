@@ -34,7 +34,7 @@ export function OpenFormatProvider({
   const sdk = useRef(new OpenFormatSDK({ network: config.network }));
 
   const [{ wallet }] = useConnectWallet();
-  const [{ connectedChain }] = useSetChain();
+  const [{ connectedChain }, setChain] = useSetChain();
 
   useEffect(() => {
     if (wallet) {
@@ -46,9 +46,19 @@ export function OpenFormatProvider({
     }
   }, [wallet]);
 
+  // keep user on desired chain
   useEffect(() => {
     if (connectedChain) {
-      // @TODO switch chain if incorrect
+      const checkCorrectChain = async () => {
+        const network = await sdk.current.provider.getNetwork();
+        const desiredChainId = ethers.utils.hexValue(network.chainId);
+
+        if (desiredChainId !== connectedChain.id) {
+          setChain({ chainId: desiredChainId });
+        }
+      };
+
+      checkCorrectChain();
     }
   }, [connectedChain]);
 
