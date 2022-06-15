@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import {
   ConnectButton,
+  useDeploy,
   useRawRequest,
   useSaleData
 } from "@simpleweb/open-format-react";
@@ -21,11 +22,31 @@ const Home: NextPage = () => {
     `
   });
 
+  const { deploy } = useDeploy();
+
   return (
     <div>
       <h1>Open Format React</h1>
 
-      <ConnectButton />
+      <div>
+        <ConnectButton />
+      </div>
+
+      <div>
+        <button
+          onClick={() => {
+            deploy({
+              maxSupply: 100,
+              mintingPrice: 0.01,
+              name: "Test",
+              symbol: "TEST",
+              url: "ipfs://"
+            });
+          }}
+        >
+          Deploy NFT
+        </button>
+      </div>
 
       {saleData.isLoading ? (
         <p>Loading...</p>

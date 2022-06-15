@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useRef } from 'react';
 import { OpenFormatSDK } from '@simpleweb/open-format';
+import { useConnectWallet } from '@web3-onboard/react';
+import { ethers } from 'ethers';
+import React, { createContext, useContext, useEffect, useRef } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './onboard';
 
@@ -24,6 +26,17 @@ export function OpenFormatProvider({
   children: React.ReactNode;
 }) {
   const sdk = useRef(new OpenFormatSDK({ network: 'mumbai' }));
+  const [{ wallet }] = useConnectWallet();
+
+  useEffect(() => {
+    if (wallet) {
+      sdk.current.signer = new ethers.providers.Web3Provider(
+        wallet.provider
+      ).getSigner();
+    } else {
+      sdk.current.signer = undefined;
+    }
+  }, [wallet]);
 
   return (
     <OpenFormatContext.Provider value={{ sdk: sdk.current }}>
