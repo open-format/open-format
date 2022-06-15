@@ -71,6 +71,9 @@
   },
   "dependencies": {
     "@simpleweb/open-format": "*",
+    "@web3-onboard/injected-wallets": "^2.0.9",
+    "@web3-onboard/react": "2.1.6",
+    "@web3-onboard/walletconnect": "^2.0.2",
     "react": "^18.1.0",
     "react-query": "^3.39.1"
   }

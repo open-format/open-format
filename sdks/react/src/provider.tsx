@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useRef } from 'react';
 import { OpenFormatSDK } from '@simpleweb/open-format';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import './onboard';
 
 const OpenFormatContext = createContext<{ sdk: OpenFormatSDK } | undefined>(
   undefined
