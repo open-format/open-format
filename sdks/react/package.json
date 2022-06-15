@@ -7,6 +7,13 @@
     "access": "public"
   },
   "main": "dist/index.js",
+  "module": "dist/open-format-react.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/open-format-react.esm.js",
+      "require": "./dist/index.js"
+    }
+  },
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -38,7 +45,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "module": "dist/react.esm.js",
   "size-limit": [
     {
       "path": "dist/react.cjs.production.min.js",
