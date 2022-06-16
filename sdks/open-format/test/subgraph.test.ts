@@ -23,15 +23,15 @@ describe('subgraph', () => {
       '0x021d35cd4849596f1013cf92f718ec7bf5541bc2'
     );
 
-    expect(result.token.saleData.id).toBeTruthy();
-    expect(result.token.saleData.maxSupply).toBeTruthy();
-    expect(result.token.saleData.totalEarnings).toBeTruthy();
-    expect(result.token.saleData.totalSold).toBeTruthy();
-    expect(result.token.saleData.totalReleased).toBeTruthy();
-    expect(result.token.saleData.salePrice).toBeTruthy();
-    expect(result.token.saleData.createdAt).toBeTruthy();
-    expect(result.token.saleData.royaltiesPercentage).toBeTruthy();
-    expect(result.token.saleData.primaryCommission).toBeTruthy();
-    expect(result.token.saleData.secondaryCommission).toBeTruthy();
+    expect(result.token?.saleData.id).toBeTruthy();
+    expect(result.token?.saleData.maxSupply).toBeTruthy();
+    expect(result.token?.saleData.totalEarnings).toBeTruthy();
+    expect(result.token?.saleData.totalSold).toBeTruthy();
+    expect(result.token?.saleData.totalReleased).toBeTruthy();
+    expect(result.token?.saleData.salePrice).toBeTruthy();
+    expect(result.token?.saleData.createdAt).toBeTruthy();
+    expect(result.token?.saleData.royaltiesPercentage).toBeTruthy();
+    expect(result.token?.saleData.primaryCommission).toBeTruthy();
+    expect(result.token?.saleData.secondaryCommission).toBeTruthy();
   });
 });
