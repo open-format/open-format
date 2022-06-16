@@ -10,4 +10,5 @@ module.exports = {
   transformIgnorePatterns: [
     `[/\\\\]node_modules[/\\\\](?!${esModules}).+\\.(js|jsx)$`,
   ],
+  testEnvironment: '@happy-dom/jest-environment',
 };
