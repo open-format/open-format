@@ -15,8 +15,8 @@
   },
   "packageManager": "yarn@1.22.17",
   "scripts": {
-    "start": "turbo run start",
-    "build": "turbo run build"
+    "start": "turbo run start --parallel --filter=!react-next",
+    "build": "turbo run build --filter=!react-next"
   },
   "devDependencies": {
     "turbo": "^1.2.16"
