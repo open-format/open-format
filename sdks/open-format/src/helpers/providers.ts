@@ -10,6 +10,8 @@ import { Chain } from '../types';
  */
 export function getProviderUrl(chain: Chain) {
   switch (chain) {
+    case 'mainnet':
+      return Chains.mainnet.rpcUrl;
     case 'mumbai':
       return Chains.mumbai.rpcUrl;
     case 'localhost':

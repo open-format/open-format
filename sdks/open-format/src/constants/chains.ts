@@ -1,15 +1,16 @@
-import { Chain } from '../types';
+import { Chain, ChainConfig } from '../types';
 
 // list of chains Open Format supports
 export const Chains: {
-  [chain in Chain]: {
-    id: Chain;
-    chainId: number;
-    name: string;
-    token: string;
-    rpcUrl: string;
-  };
-} = {
+  [chain in Chain]: ChainConfig;
+} = Object.freeze({
+  mainnet: {
+    id: 'mainnet',
+    chainId: 1,
+    name: 'Polygon',
+    token: 'MATIC',
+    rpcUrl: 'https://matic-mainnet.chainstacklabs.com/',
+  },
   mumbai: {
     id: 'mumbai',
     chainId: 80001,
@@ -24,4 +25,4 @@ export const Chains: {
     token: 'ETH',
     rpcUrl: 'http://127.0.0.1:8545',
   },
-};
+});
