@@ -23,4 +23,14 @@ describe('sdk.mint()', () => {
 
     expect(receipt.status).toBe(1);
   });
+
+  it('will throw an error without a signer', () => {
+    const sdk = new OpenFormatSDK({ network: 'http://localhost:8545' });
+
+    expect(
+      sdk.mint({
+        contractAddress: '0x...',
+      })
+    ).rejects.toThrow();
+  });
 });
