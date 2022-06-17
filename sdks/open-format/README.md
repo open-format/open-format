@@ -63,6 +63,22 @@ await sdk.deploy({
 });
 ```
 
+### Minting an NFT
+
+Once you have the address of the deployed contract, you can then mint NFTs from it.
+
+```tsx
+const { contractAddress } = await sdk.deploy({
+  maxSupply: 100,
+  mintingPrice: 0.01,
+  name: 'Test',
+  symbol: 'TEST',
+  url: 'ipfs://',
+});
+
+await sdk.mint({ contractAddress });
+```
+
 ### Reading from the subgraph
 
 To read information from the sub graph you can create a read-only instance of the SDK.

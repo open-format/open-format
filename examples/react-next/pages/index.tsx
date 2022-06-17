@@ -1,13 +1,13 @@
-import { NextPage } from "next";
 import {
   ConnectButton,
   useDeploy,
+  useMint,
   useRawRequest,
   useSaleData,
   useWallet
 } from "@simpleweb/open-format-react";
 import { gql } from "graphql-request";
-import { useMint } from "@simpleweb/open-format-react";
+import { NextPage } from "next";
 
 const Home: NextPage = () => {
   const { isConnected } = useWallet();

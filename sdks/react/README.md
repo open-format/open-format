@@ -123,3 +123,23 @@ function MyComponent() {
   );
 }
 ```
+
+### Minting an NFT
+
+Once you have deployed a contract you can then mint NFTs from it. The `contractAddress` can be accessed when deploying a contract `const { contractAddress } = await deploy()`.
+
+```tsx
+import { useMint } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const { mint } = useMint();
+
+  return (
+    <>
+      <button onClick={() => mint({ contractAddress: '0x...' })}>
+        Mint NFT
+      </button>
+    </>
+  );
+}
+```
