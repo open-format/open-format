@@ -32,6 +32,7 @@
     "analyze": "size-limit --why"
   },
   "peerDependencies": {
+    "ethers": "^5",
     "react": ">=16"
   },
   "husky": {
@@ -56,11 +57,13 @@
     }
   ],
   "devDependencies": {
+    "@happy-dom/jest-environment": "^5.3.1",
     "@size-limit/preset-small-lib": "^7.0.8",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
+    "ethers": "^5",
     "graphql-request": "^4.3.0",
     "husky": "^8.0.1",
     "react-dom": "^18.1.0",
@@ -71,6 +74,9 @@
   },
   "dependencies": {
     "@simpleweb/open-format": "*",
+    "@web3-onboard/injected-wallets": "^2.0.9",
+    "@web3-onboard/react": "2.1.6",
+    "@web3-onboard/walletconnect": "^2.0.2",
     "react": "^18.1.0",
     "react-query": "^3.39.1"
   }

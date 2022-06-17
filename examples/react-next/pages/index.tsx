@@ -1,8 +1,16 @@
 import { NextPage } from "next";
-import { useRawRequest, useSaleData } from "@simpleweb/open-format-react";
+import {
+  ConnectButton,
+  useDeploy,
+  useRawRequest,
+  useSaleData,
+  useWallet
+} from "@simpleweb/open-format-react";
 import { gql } from "graphql-request";
 
 const Home: NextPage = () => {
+  const { isConnected } = useWallet();
+
   const saleData = useSaleData({
     tokenId: "0x021d35cd4849596f1013cf92f718ec7bf5541bc2"
   });
@@ -17,9 +25,34 @@ const Home: NextPage = () => {
     `
   });
 
+  const { deploy } = useDeploy();
+
   return (
     <div>
       <h1>Open Format React</h1>
+
+      <div>
+        <ConnectButton />
+      </div>
+
+      {isConnected && (
+        <div>
+          <button
+            onClick={() => {
+              deploy({
+                maxSupply: 100,
+                mintingPrice: 0.01,
+                name: "Test",
+                symbol: "TEST",
+                url: "ipfs://"
+              });
+            }}
+          >
+            Deploy NFT
+          </button>
+        </div>
+      )}
+
       {saleData.isLoading ? (
         <p>Loading...</p>
       ) : (

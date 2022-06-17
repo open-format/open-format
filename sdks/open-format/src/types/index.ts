@@ -1,4 +1,12 @@
-export type Chain = 'mumbai' | (string & {});
+export type Chain = 'mainnet' | 'mumbai' | 'localhost' | (string & {});
+
+export type ChainConfig = {
+  id: Chain;
+  chainId: number;
+  name: string;
+  token: string;
+  rpcUrl: string;
+};
 
 export interface NFTMetadata {
   name: string;

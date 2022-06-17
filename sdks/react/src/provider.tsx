@@ -1,6 +1,9 @@
-import React, { createContext, useContext, useRef } from 'react';
-import { OpenFormatSDK } from '@simpleweb/open-format';
+import { Chain, OpenFormatSDK } from '@simpleweb/open-format';
+import { useConnectWallet, useSetChain } from '@web3-onboard/react';
+import { ethers } from 'ethers';
+import React, { createContext, useContext, useEffect, useRef } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import './onboard';
 
 const OpenFormatContext = createContext<{ sdk: OpenFormatSDK } | undefined>(
   undefined
@@ -19,10 +22,45 @@ const queryClient = new QueryClient({
  */
 export function OpenFormatProvider({
   children,
+  config = {
+    network: 'localhost',
+  },
 }: {
   children: React.ReactNode;
+  config?: {
+    network: Chain;
+  };
 }) {
-  const sdk = useRef(new OpenFormatSDK({ network: 'mumbai' }));
+  const sdk = useRef(new OpenFormatSDK({ network: config.network }));
+
+  const [{ wallet }] = useConnectWallet();
+  const [{ connectedChain }, setChain] = useSetChain();
+
+  useEffect(() => {
+    if (wallet) {
+      sdk.current.signer = new ethers.providers.Web3Provider(
+        wallet.provider
+      ).getSigner();
+    } else {
+      sdk.current.signer = undefined;
+    }
+  }, [wallet]);
+
+  // keep user on desired chain
+  useEffect(() => {
+    if (connectedChain) {
+      const checkCorrectChain = async () => {
+        const network = await sdk.current.provider.getNetwork();
+        const desiredChainId = ethers.utils.hexValue(network.chainId);
+
+        if (desiredChainId !== connectedChain.id) {
+          setChain({ chainId: desiredChainId });
+        }
+      };
+
+      checkCorrectChain();
+    }
+  }, [connectedChain]);
 
   return (
     <OpenFormatContext.Provider value={{ sdk: sdk.current }}>

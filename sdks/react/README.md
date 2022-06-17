@@ -70,3 +70,56 @@ function MyComponent() {
   return <>{data && <pre>{JSON.stringify(data, null, 2)}</pre>}</>;
 }
 ```
+
+### Connecting to a wallet
+
+Before you can deploy or perform any interactions with the contract you'll want to connect a wallet.
+
+You can allow people to connect their wallets using the `<ConnectButton />` component (which uses [Onboard](https://www.blocknative.com/onboard)) and the `useWallet` hook to get the connection state and the wallet itself if required.
+
+```tsx
+import { ConnectButton, useWallet } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const { isConnected, wallet } = useWallet();
+
+  return (
+    <>
+      <ConnectButton />
+    </>
+  );
+}
+```
+
+### Deploying a contract
+
+Deploying a contract is simple, you just need to make sure a wallet is connected first.
+
+```tsx
+import { useDeploy, useWallet } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const { isConnected } = useWallet();
+  const { deploy } = useDeploy();
+
+  return (
+    <>
+      {isConnected && (
+        <button
+          onClick={() =>
+            deploy({
+              maxSupply: 100,
+              mintingPrice: 0.01,
+              name: 'Test',
+              symbol: 'TEST',
+              url: 'ipfs://',
+            })
+          }
+        >
+          Deploy NFT
+        </button>
+      )}
+    </>
+  );
+}
+```
