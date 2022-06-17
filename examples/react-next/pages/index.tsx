@@ -27,6 +27,20 @@ const Home: NextPage = () => {
 
   const { deploy } = useDeploy();
 
+  async function handleDeploy() {
+    try {
+      await deploy({
+        maxSupply: 100,
+        mintingPrice: 0.01,
+        name: "Test",
+        symbol: "TEST",
+        url: "ipfs://"
+      });
+    } catch (error) {
+      console.log("handleDeploy", error);
+    }
+  }
+
   return (
     <div>
       <h1>Open Format React</h1>
@@ -37,19 +51,7 @@ const Home: NextPage = () => {
 
       {isConnected && (
         <div>
-          <button
-            onClick={() => {
-              deploy({
-                maxSupply: 100,
-                mintingPrice: 0.01,
-                name: "Test",
-                symbol: "TEST",
-                url: "ipfs://"
-              });
-            }}
-          >
-            Deploy NFT
-          </button>
+          <button onClick={handleDeploy}>Deploy NFT</button>
         </div>
       )}
 

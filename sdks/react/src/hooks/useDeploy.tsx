@@ -1,3 +1,4 @@
+import { useMutation } from 'react-query';
 import { useOpenFormat } from '../provider';
 
 /**
@@ -7,7 +8,17 @@ import { useOpenFormat } from '../provider';
 export function useDeploy() {
   const { sdk } = useOpenFormat();
 
+  // @TODO fix types
+  const { mutateAsync, ...mutation } = useMutation<
+    unknown,
+    unknown,
+    Parameters<typeof sdk.deploy>[0]
+  >(data => {
+    return sdk.deploy(data);
+  });
+
   return {
-    deploy: sdk.deploy.bind(sdk),
+    ...mutation,
+    deploy: mutateAsync,
   };
 }
