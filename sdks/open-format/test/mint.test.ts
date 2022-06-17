@@ -33,4 +33,20 @@ describe('sdk.mint()', () => {
       })
     ).rejects.toThrow();
   });
+
+  it('will throw an error if the networks do not match', () => {
+    const sdk = new OpenFormatSDK({
+      network: 'mumbai',
+      signer: new ethers.Wallet(
+        '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
+        new ethers.providers.JsonRpcProvider('http://localhost:8545')
+      ),
+    });
+
+    expect(
+      sdk.mint({
+        contractAddress: '0x...',
+      })
+    ).rejects.toThrow();
+  });
 });
