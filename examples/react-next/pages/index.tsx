@@ -7,6 +7,7 @@ import {
   useWallet
 } from "@simpleweb/open-format-react";
 import { gql } from "graphql-request";
+import { useMint } from "@simpleweb/open-format-react";
 
 const Home: NextPage = () => {
   const { isConnected } = useWallet();
@@ -25,7 +26,7 @@ const Home: NextPage = () => {
     `
   });
 
-  const { deploy } = useDeploy();
+  const { deploy, data: deployedContract } = useDeploy();
 
   async function handleDeploy() {
     try {
@@ -36,6 +37,20 @@ const Home: NextPage = () => {
         symbol: "TEST",
         url: "ipfs://"
       });
+    } catch (error) {
+      console.log("handleDeploy", error);
+    }
+  }
+
+  const { mint } = useMint();
+
+  async function handleMint() {
+    try {
+      if (typeof deployedContract?.contractAddress !== "string") {
+        throw new Error("Contract address not sent");
+      }
+
+      await mint({ contractAddress: deployedContract.contractAddress });
     } catch (error) {
       console.log("handleDeploy", error);
     }
@@ -52,6 +67,12 @@ const Home: NextPage = () => {
       {isConnected && (
         <div>
           <button onClick={handleDeploy}>Deploy NFT</button>
+        </div>
+      )}
+
+      {deployedContract && (
+        <div>
+          <button onClick={handleMint}>Mint NFT</button>
         </div>
       )}
 
