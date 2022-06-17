@@ -4,9 +4,8 @@ import { useOpenFormat } from '../provider';
 export function useMint() {
   const { sdk } = useOpenFormat();
 
-  // @TODO fix types
   const { mutateAsync, ...mutation } = useMutation<
-    unknown,
+    Awaited<ReturnType<typeof sdk.mint>>,
     unknown,
     Parameters<typeof sdk.mint>[0]
   >(data => {

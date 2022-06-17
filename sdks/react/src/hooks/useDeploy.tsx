@@ -8,9 +8,8 @@ import { useOpenFormat } from '../provider';
 export function useDeploy() {
   const { sdk } = useOpenFormat();
 
-  // @TODO fix types
   const { mutateAsync, ...mutation } = useMutation<
-    { contractAddress: string },
+    Awaited<ReturnType<typeof sdk.deploy>>,
     unknown,
     Parameters<typeof sdk.deploy>[0]
   >(data => {
