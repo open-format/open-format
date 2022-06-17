@@ -67,6 +67,7 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
+    "@simpleweb/open-format-contracts": "^0.1.0",
     "graphql": "^16.5.0",
     "graphql-request": "^4.3.0",
     "lodash.merge": "^4.6.2"
