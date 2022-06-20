@@ -2180,6 +2180,11 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
+"@simpleweb/open-format-contracts@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@simpleweb/open-format-contracts/-/open-format-contracts-0.1.0.tgz#9542978ed2eb2ecd2ba497a18ffe4c7732ae31e0"
+  integrity sha512-1BF9cTbCTWWLSx3/A2xMPIiaQmtUuRDF/qd2nZjKUevfuduKtvVTJ5RDRo6D3LzjMufh+Rmlv5chNByfjzhNfw==
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.3.tgz#3802ddd21a50a949b6721ddd72da36e67e7f1b2d"
