@@ -21,5 +21,8 @@
   },
   "devDependencies": {
     "turbo": "^1.2.16"
+  },
+  "resolutions": {
+    "**/typescript": "^4.7.2"
   }
 }

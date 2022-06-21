@@ -1,23 +1,19 @@
 import { useMutation } from 'react-query';
 import { useOpenFormat } from '../provider';
 
-/**
- * Gets the deploy function from the sdk
- * @returns deploy function
- */
-export function useDeploy() {
+export function useMint() {
   const { sdk } = useOpenFormat();
 
   const { mutateAsync, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.deploy>>,
+    Awaited<ReturnType<typeof sdk.mint>>,
     unknown,
-    Parameters<typeof sdk.deploy>[0]
+    Parameters<typeof sdk.mint>[0]
   >(data => {
-    return sdk.deploy(data);
+    return sdk.mint(data);
   });
 
   return {
     ...mutation,
-    deploy: mutateAsync,
+    mint: mutateAsync,
   };
 }

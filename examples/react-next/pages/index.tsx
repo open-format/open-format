@@ -1,12 +1,13 @@
-import { NextPage } from "next";
 import {
   ConnectButton,
   useDeploy,
+  useMint,
   useRawRequest,
   useSaleData,
   useWallet
 } from "@simpleweb/open-format-react";
 import { gql } from "graphql-request";
+import { NextPage } from "next";
 
 const Home: NextPage = () => {
   const { isConnected } = useWallet();
@@ -25,7 +26,35 @@ const Home: NextPage = () => {
     `
   });
 
-  const { deploy } = useDeploy();
+  const { deploy, data: deployedContract } = useDeploy();
+
+  async function handleDeploy() {
+    try {
+      await deploy({
+        maxSupply: 100,
+        mintingPrice: 0.01,
+        name: "Test",
+        symbol: "TEST",
+        url: "ipfs://"
+      });
+    } catch (error) {
+      console.log("handleDeploy", error);
+    }
+  }
+
+  const { mint } = useMint();
+
+  async function handleMint() {
+    try {
+      if (typeof deployedContract?.contractAddress !== "string") {
+        throw new Error("Contract address not sent");
+      }
+
+      await mint({ contractAddress: deployedContract.contractAddress });
+    } catch (error) {
+      console.log("handleDeploy", error);
+    }
+  }
 
   return (
     <div>
@@ -37,19 +66,13 @@ const Home: NextPage = () => {
 
       {isConnected && (
         <div>
-          <button
-            onClick={() => {
-              deploy({
-                maxSupply: 100,
-                mintingPrice: 0.01,
-                name: "Test",
-                symbol: "TEST",
-                url: "ipfs://"
-              });
-            }}
-          >
-            Deploy NFT
-          </button>
+          <button onClick={handleDeploy}>Deploy NFT</button>
+        </div>
+      )}
+
+      {deployedContract && (
+        <div>
+          <button onClick={handleMint}>Mint NFT</button>
         </div>
       )}
 

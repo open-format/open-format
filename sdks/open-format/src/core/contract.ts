@@ -1,6 +1,31 @@
 import base from '@simpleweb/open-format-contracts/abis/OpenFormat.json';
 import { ethers, Signer } from 'ethers';
 import { NFTMetadata } from '../types';
+import { OpenFormat } from '../contract-types';
+
+export async function mint({
+  contractAddress,
+  signer,
+}: {
+  contractAddress: string;
+  signer: Signer;
+}) {
+  const openFormat = new ethers.Contract(
+    contractAddress,
+    base.abi,
+    signer
+  ) as OpenFormat;
+
+  const mintingPrice = await openFormat.mintingPrice();
+
+  const tx = await openFormat['mint()']({
+    value: mintingPrice,
+  });
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
 
 /**
  * Deploys a version of the Open Format contract
