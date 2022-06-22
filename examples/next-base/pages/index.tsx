@@ -23,6 +23,10 @@ const Home: NextPage = () => {
           Create Your Next NFT platform
         </p>
 
+        <p>
+          No need to build your own connection button we have sorted all that for you, Click below to see how easy it is to connect your wallet!!
+        </p>
+
         <div className={styles.grid}>
           <ConnectButton className={styles.button} />        
         </div>
