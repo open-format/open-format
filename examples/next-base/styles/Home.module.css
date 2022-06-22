@@ -131,3 +131,26 @@
   color: #0070f3;
   text-decoration: none;
 }
+
+.input {
+  background-color: #ffffff9c;
+  border: 1px solid grey;
+  margin: 1rem;
+  border-radius: 0.2rem;
+  height: 2rem;
+}
+
+.label {
+  float: left;
+}
+
+.formContainer {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  padding: 4rem;
+  margin-top: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
