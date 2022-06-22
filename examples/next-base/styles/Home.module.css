@@ -114,3 +114,16 @@
     flex-direction: column;
   }
 }
+
+.button {
+  background-color: rgb(57, 215, 57);
+  padding: 1rem 2rem;
+  border-radius: 5%;
+  font-size: 1.2rem;
+  border: none;
+  color: white;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: rgb(51, 189, 51);
+}
