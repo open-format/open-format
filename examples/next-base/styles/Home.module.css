@@ -164,6 +164,8 @@
   background-color: #ffffff9c;
   border: 1px solid grey;
   margin: 1rem;
+  padding: 1rem;
+  min-width: 200px;
   border-radius: 0.2rem;
   height: 2rem;
 }
