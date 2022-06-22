@@ -20,14 +20,20 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
          Welcome to the Open-Format Starter
         </h1>
+        <p>
+          <a className={styles.link} href='https://github.com/simpleweb/open-format/tree/main/sdks/react' target="_blank" rel="noopener noreferrer">
+          Back to the documentation
+          </a>
+        </p>
 
-        <p className={styles.description}>
+        <p >
           Create Your Next NFT platform
         </p>
 
         <p>
           No need to build your own connection button we have sorted all that for you, Click below to see how easy it is to connect your wallet!!
         </p>
+        
 
         <div className={styles.grid}>
           <ConnectButton className={styles.button} />        
