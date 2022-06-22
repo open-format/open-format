@@ -1,12 +1,45 @@
-import { ConnectButton, useWallet } from '@simpleweb/open-format-react';
+import { ConnectButton, useDeploy, useWallet } from '@simpleweb/open-format-react';
+import {  ChangeEvent, FormEvent } from "react";
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import Logo from '../components/logo';
 import styles from '../styles/Home.module.css'
+import { useState } from "react";
+
 
 const Home: NextPage = () => {
   const { isConnected } = useWallet();
+  const [mintingPrice, setMintingPrice] = useState<number>(0.01);
+  const [maxSupply, setMaxSupplySupply] = useState<number>(1);
+  const [name, setName] = useState<string>("");
+  const [symbol, setSymbol] = useState<string>("");
+
+  const handleChangeSalePrice = (e: ChangeEvent<HTMLInputElement>) => {
+    setMintingPrice(parseInt(e.currentTarget.value));
+  };
+  const handleChangeMaxSupply = (e: ChangeEvent<HTMLInputElement>) => {
+    setMaxSupplySupply(parseInt(e.currentTarget.value));
+  };
+  const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.currentTarget.value);
+  };
+  const handleChangeSymbol = (e: ChangeEvent<HTMLInputElement>) => {
+    setSymbol(e.currentTarget.value);
+  };
+
+  const { deploy } = useDeploy();
+    
+  const submit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    deploy({
+        maxSupply,
+        mintingPrice,
+        name,
+        symbol,
+        url: 'ipfs://',
+      })
+  };
   
   return (
     <div className={styles.container}>
@@ -36,7 +69,58 @@ const Home: NextPage = () => {
         
 
         <div className={styles.grid}>
-          <ConnectButton className={styles.button} />        
+          <ConnectButton className={styles.button} />
+        </div>
+        <div>
+        <form onSubmit={(e) => submit(e)}>
+        <label htmlFor="salePrice">Name</label>
+        <input
+        placeholder='Enter a name here'
+          type="text"
+          id="name"
+          name="name"
+          onChange={handleChangeName}
+          value={name}
+        />
+
+        <label htmlFor="playerTwo">Symbol</label>
+        <input
+          placeholder='Blockchain ID'
+          type="text"
+          id="symbol"
+          name="symbol"
+          onChange={handleChangeSymbol}
+          value={symbol}
+        />
+        <label htmlFor="salePrice">Sale Price</label>
+        <input
+
+          type="number"
+          id="salePrice"
+          name="salePrice"
+          onChange={handleChangeSalePrice}
+          value={mintingPrice}
+        />
+
+        <label htmlFor="playerTwo">Max Supply</label>
+        <input
+          type="number"
+          id="maxSupply"
+          name="maxSupply"
+          onChange={handleChangeMaxSupply}
+          value={maxSupply}
+        />
+        
+      <>
+      {isConnected && (
+        <button
+        >
+          Deploy NFT
+        </button>
+      )}
+    </>
+      </form>
+
         </div>
       </main>
 
