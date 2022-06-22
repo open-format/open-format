@@ -5,7 +5,7 @@ import React from 'react';
 
 function Test() {
   const { data } = useSaleData({
-    tokenId: '0x021d35cd4849596f1013cf92f718ec7bf5541bc2',
+    tokenId: '0x0667c3fa16ea85166e1d7fbe6da14031c6b541a1',
   });
 
   return (
@@ -20,7 +20,7 @@ describe('useSaleData', () => {
     await waitFor(() => screen.getByTestId('tokenId'));
 
     expect(screen.getByTestId('tokenId')).toHaveTextContent(
-      '0x021d35cd4849596f1013cf92f718ec7bf5541bc2'
+      '0x0667c3fa16ea85166e1d7fbe6da14031c6b541a1'
     );
   });
 });

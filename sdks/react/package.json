@@ -66,6 +66,7 @@
     "ethers": "^5",
     "graphql-request": "^4.3.0",
     "husky": "^8.0.1",
+    "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
@@ -73,11 +74,10 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@simpleweb/open-format": "*",
+    "@simpleweb/open-format": "^0.1.0",
     "@web3-onboard/injected-wallets": "^2.0.9",
     "@web3-onboard/react": "2.1.6",
     "@web3-onboard/walletconnect": "^2.0.2",
-    "react": "^18.1.0",
     "react-query": "^3.39.1"
   }
 }

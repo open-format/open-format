@@ -6,7 +6,7 @@ describe('sdk.mint()', () => {
     const sdk = new OpenFormatSDK({
       network: 'http://localhost:8545',
       signer: new ethers.Wallet(
-        '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
+        '0x04c65fb1737cf9a5fb605b403b5027924309e53a3433d06029a0441cc03e2042',
         new ethers.providers.JsonRpcProvider('http://localhost:8545')
       ),
     });
@@ -38,7 +38,7 @@ describe('sdk.mint()', () => {
     const sdk = new OpenFormatSDK({
       network: 'mumbai',
       signer: new ethers.Wallet(
-        '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
+        '0x04c65fb1737cf9a5fb605b403b5027924309e53a3433d06029a0441cc03e2042',
         new ethers.providers.JsonRpcProvider('http://localhost:8545')
       ),
     });
