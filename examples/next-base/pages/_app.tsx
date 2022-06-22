@@ -1,8 +1,15 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import { OpenFormatProvider } from "@simpleweb/open-format-react";
+import { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <OpenFormatProvider config={{ network: "mumbai" }}>
+        <Component {...pageProps} />
+      </OpenFormatProvider>
+    </>
+  );
 }
 
-export default MyApp
+export default MyApp;
