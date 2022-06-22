@@ -12,6 +12,11 @@ export default function setup() {
           secretKey:
             '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
         },
+        {
+          balance: 1000000000000000000000,
+          secretKey:
+            '0x04c65fb1737cf9a5fb605b403b5027924309e53a3433d06029a0441cc03e2042',
+        },
       ],
     },
   });

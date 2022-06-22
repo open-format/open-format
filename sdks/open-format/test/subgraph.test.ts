@@ -18,9 +18,9 @@ describe('subgraph', () => {
     expect(typeof result.tokens[0].id).toBe('string');
   });
 
-  it('allows you to perform a raw request', async () => {
+  it('gets sale data for a token', async () => {
     const result = await sdk.getSaleDataForToken(
-      '0x021d35cd4849596f1013cf92f718ec7bf5541bc2'
+      '0x0667c3fa16ea85166e1d7fbe6da14031c6b541a1'
     );
 
     expect(result.token?.saleData.id).toBeTruthy();
