@@ -1,6 +1,8 @@
 import { ConnectButton, useWallet } from '@simpleweb/open-format-react';
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
+import Logo from '../components/logo';
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -33,7 +35,11 @@ const Home: NextPage = () => {
       </main>
 
       <footer className={styles.footer}>
-        Powered by simpleweb
+        <Link href={'https://simpleweb.co.uk'}>
+        <a>
+        <Logo />
+        </a>
+        </Link>
       </footer>
     </div>
   )
