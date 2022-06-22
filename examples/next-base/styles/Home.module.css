@@ -3,7 +3,6 @@
 }
 
 .main {
-  min-height: 100vh;
   padding: 2rem 0;
   flex: 1;
   display: flex;
@@ -42,6 +41,19 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+}
+
+.subtitle a:hover,
+.subtitle a:focus,
+.subtitle a:active {
+  text-decoration: underline;
+}
+
+.subtitle {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .title,
@@ -127,6 +139,22 @@
   background-color: rgb(51, 189, 51);
 }
 
+.buttonDeploy {
+  background-color: rgb(26, 189, 226);
+  padding: 1rem 1rem;
+  border-radius: 5%;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: 1rem;
+  border: none;
+  color: white;
+}
+.buttonDeploy:hover {
+  cursor: pointer;
+  background-color: rgb(23, 162, 181);
+}
+
 .link {
   color: #0070f3;
   text-decoration: none;
@@ -145,12 +173,15 @@
 }
 
 .formContainer {
+  margin-top: 2rem;
+}
+
+.form {
   display: flex;
   align-items: end;
   flex-direction: column;
-  border: 1px solid black;
   border-radius: 0.2rem;
-  padding: 4rem;
+  padding: 3rem 3rem;
   margin-top: 1rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;

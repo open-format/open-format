@@ -85,68 +85,71 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
           <ConnectButton className={styles.button} />
         </div>
-      <div>
+
+      <div className={styles.formContainer}>
+        <h2 className={styles.subtitle}>Deploy Your NFT here</h2>
+        <div>
+            <form
+              onSubmit={(e) => submit(e)}
+              className={styles.form}
+            >
         
-          <form 
-            onSubmit={(e) => submit(e)} 
-            className={styles.formContainer}
-          >
-            
-              <label htmlFor="salePrice">Name
+                <label htmlFor="salePrice">Name
+                <input
+                  className={styles.input}
+                  placeholder='Enter a name here'
+                  type="text"
+                  id="name"
+                  name="name"
+                  onChange={handleChangeName}
+                  value={name}
+                /></label>
+        
+              <label htmlFor="playerTwo">Symbol
               <input
                 className={styles.input}
-                placeholder='Enter a name here'
+                placeholder='Blockchain ID'
                 type="text"
-                id="name"
-                name="name"
-                onChange={handleChangeName}
-                value={name}
+                id="symbol"
+                name="symbol"
+                onChange={handleChangeSymbol}
+                value={symbol}
               /></label>
-            
-            <label htmlFor="playerTwo">Symbol
-            <input
-              className={styles.input}
-              placeholder='Blockchain ID'
-              type="text"
-              id="symbol"
-              name="symbol"
-              onChange={handleChangeSymbol}
-              value={symbol}
-            /></label>
-            
-            <label htmlFor="salePrice">Sale Price
-            <input
-              className={styles.input}
-              type="number"
-              id="salePrice"
-              name="salePrice"
-              onChange={handleChangeSalePrice}
-              value={mintingPrice}
-            /></label>
-            
-            <label
-            className={styles.label}
-            htmlFor="playerTwo">Max Supply
-            <input
-              className={styles.input}
-              type="number"
-              id="maxSupply"
-              name="maxSupply"
-              onChange={handleChangeMaxSupply}
-              value={maxSupply}
-            /></label>
-           
-          
-          <>
-          {isConnected && (
-            <button
-            >
-              Deploy NFT
-            </button>
-          )}
-                </>
-           </form>
-        </div>
+        
+              <label htmlFor="salePrice">Sale Price
+              <input
+                className={styles.input}
+                type="number"
+                id="salePrice"
+                name="salePrice"
+                onChange={handleChangeSalePrice}
+                value={mintingPrice}
+              /></label>
+        
+              <label
+              className={styles.label}
+              htmlFor="playerTwo">Max Supply
+              <input
+                className={styles.input}
+                type="number"
+                id="maxSupply"
+                name="maxSupply"
+                onChange={handleChangeMaxSupply}
+                value={maxSupply}
+              /></label>
+        
+        
+            <>
+            {isConnected && (
+              <button className={styles.buttonDeploy}
+              >
+                Deploy NFT
+              </button>
+            )}
+                  </>
+             </form>
+          </div>
+      </div>
         
       </main>
 
