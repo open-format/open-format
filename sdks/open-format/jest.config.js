@@ -2,6 +2,17 @@
 const config = {
   globalSetup: './test/setup.ts',
   globalTeardown: './test/teardown.ts',
+  preset: 'ts-jest/presets/default-esm',
+  transform: {},
+  extensionsToTreatAsEsm: ['.ts'],
+  globals: {
+    'ts-jest': {
+      useESM: true,
+    },
+  },
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
 };
 
-module.exports = config;
+export default config;
