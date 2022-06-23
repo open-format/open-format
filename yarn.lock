@@ -2232,10 +2232,10 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
-"@simpleweb/open-format-contracts@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@simpleweb/open-format-contracts/-/open-format-contracts-0.1.0.tgz#9542978ed2eb2ecd2ba497a18ffe4c7732ae31e0"
-  integrity sha512-1BF9cTbCTWWLSx3/A2xMPIiaQmtUuRDF/qd2nZjKUevfuduKtvVTJ5RDRo6D3LzjMufh+Rmlv5chNByfjzhNfw==
+"@simpleweb/open-format-contracts@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@simpleweb/open-format-contracts/-/open-format-contracts-0.2.0.tgz#0732e5550c5c5ce7972b79742f52172ed63e4e58"
+  integrity sha512-BKLLSNQyYa4OHjWzD8X7PuwXsqAUq3CntmWEWtDk+Kj2Yfm+1jnpE200oOx3QbESe5h5/hbF+wBhGNnEPxNSFw==
 
 "@sinclair/typebox@^0.23.3":
   version "0.23.5"
