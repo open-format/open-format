@@ -14,7 +14,7 @@ import styles from "../styles/Home.module.css";
 import { useState } from "react";
 
 const Home: NextPage = () => {
-  const { isConnected } = useWallet();
+  const { isConnected, wallet } = useWallet();
   const [mintingPrice, setMintingPrice] = useState<number>(0.01);
   const [maxSupply, setMaxSupplySupply] = useState<number>(1);
   const [name, setName] = useState<string>("");
@@ -37,19 +37,21 @@ const Home: NextPage = () => {
   const token = "0x85773e05293ba842f3893a44414c169E59D56a6e";
   const validToken = token.toLowerCase();
 
-  //Data retrival
+  //Data retrieval
   const { data: exampleContract } = useSaleData({
     tokenId: validToken as string
   });
 
   const exampleTokenSaleData = exampleContract?.token?.saleData;
 
+  //Deploy Function
   const {
     deploy,
     data: contractData,
     isLoading: contractDataLoading
   } = useDeploy();
 
+  //Data retrieval
   //If you mint your own NFT the contract address will be part of the data that is returned
   console.log({ contractData });
 
@@ -65,7 +67,7 @@ const Home: NextPage = () => {
     refetchSaleData();
   }, [contractDataLoading]);
 
-  //Basic exmaple implementation
+  //Basic exmaple implementation of deploy function
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -81,8 +83,10 @@ const Home: NextPage = () => {
     }
   };
 
+  //Mint Function
   const { mint } = useMint();
 
+  //Basic exmaple implementation of deploy function
   const submitPurchase = async () => {
     try {
       if (typeof validToken !== "string") {
