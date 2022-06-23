@@ -3,7 +3,7 @@
 }
 
 .main {
-  padding: 2rem 0;
+  padding: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -12,11 +12,22 @@
 
 .footer {
   display: flex;
+  flex-direction: column;
   flex: 1;
   padding: 2rem 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+}
+
+.divider {
+  display: flex;
+  padding: 0.5rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1rem;
 }
 
 .footer a {
@@ -76,12 +87,13 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
-.grid {
+.connectedButtonContainer {
+  margin-bottom: 2rem;
+}
+
+.connectedButton {
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
 }
 
 .card {
@@ -142,11 +154,10 @@
 .buttonDeploy {
   background-color: rgb(26, 189, 226);
   padding: 1rem 1rem;
-  border-radius: 5%;
+  border-radius: 0.2rem;
   font-size: 1.2rem;
   margin-top: 2rem;
   margin-left: auto;
-  margin-right: 1rem;
   border: none;
   color: white;
 }
@@ -162,29 +173,81 @@
 
 .input {
   background-color: #ffffff9c;
-  border: 1px solid grey;
-  margin: 1rem;
-  padding: 1rem;
+  border: 1.5px solid rgba(128, 128, 128, 0.447);
+  padding: 1rem 0.5rem;
   min-width: 200px;
   border-radius: 0.2rem;
   height: 2rem;
 }
 
 .label {
-  float: left;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.label::after {
+  content: ":";
 }
 
 .formContainer {
-  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
-  display: flex;
-  align-items: end;
-  flex-direction: column;
+  display: grid;
+  grid-gap: 5px;
+  width: 50%;
   border-radius: 0.2rem;
   padding: 3rem 3rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+@media (max-width: 1200px) {
+  .form {
+    width: 90vw;
+    flex-direction: column;
+  }
+}
+
+.ctaContainer {
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .ctaContainer {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.cta {
+  padding: 2rem;
+  margin: 1rem;
+  height: 150px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border-radius: 0.2rem;
+}
+.cta:hover {
+  background-color: #f3f3f3;
+}
+
+.header {
+  padding: 2rem;
+  text-align: center;
 }
