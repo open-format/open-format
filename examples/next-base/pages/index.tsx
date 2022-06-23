@@ -15,13 +15,13 @@ import { useState } from "react";
 
 const Home: NextPage = () => {
   const { isConnected, wallet } = useWallet();
-  const [mintingPrice, setMintingPrice] = useState<number>(0.01);
+  const [price, setPrice] = useState<string>("");
   const [maxSupply, setMaxSupplySupply] = useState<number>(1);
   const [name, setName] = useState<string>("");
   const [symbol, setSymbol] = useState<string>("");
 
   const handleChangeSalePrice = (e: ChangeEvent<HTMLInputElement>) => {
-    setMintingPrice(parseInt(e.currentTarget.value));
+    setPrice(e.currentTarget.value);
   };
   const handleChangeMaxSupply = (e: ChangeEvent<HTMLInputElement>) => {
     setMaxSupplySupply(parseInt(e.currentTarget.value));
@@ -69,6 +69,8 @@ const Home: NextPage = () => {
 
   //Basic exmaple implementation of deploy function
   const submit = async (e: FormEvent<HTMLFormElement>) => {
+    const mintingPrice = parseFloat(price);
+
     e.preventDefault();
     try {
       await deploy({
@@ -185,11 +187,12 @@ const Home: NextPage = () => {
                 </label>
                 <input
                   className={styles.input}
-                  type="number"
+                  placeholder="0.01"
+                  type="text"
                   id="salePrice"
                   name="salePrice"
                   onChange={handleChangeSalePrice}
-                  value={mintingPrice}
+                  value={price}
                 />
 
                 <label className={styles.label} htmlFor="maxSupply">
