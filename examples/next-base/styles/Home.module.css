@@ -302,3 +302,28 @@
   align-items: flex-start;
   padding: 1rem 0;
 }
+
+.yourContractHeading {
+  color: rgb(57, 215, 57);
+}
+
+.yourContractButton {
+  background-color: rgb(57, 215, 57);
+  padding: 1rem 1rem;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-left: auto;
+  border: none;
+  color: white;
+}
+.yourContractButton:hover {
+  cursor: pointer;
+  background-color: rgb(51, 189, 51);
+}
+
+.listItemHighlighted {
+  background-color: rgba(51, 189, 51, 0.318);
+  border: 1px solid transparent;
+  border-radius: 4px;
+}

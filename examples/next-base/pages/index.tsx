@@ -59,6 +59,8 @@ const Home: NextPage = () => {
 
   console.log({ myNewContract });
 
+  const myTokenSaleData = myNewContract?.token?.saleData;
+
   useEffect(() => {
     refetchSaleData();
   }, [contractDataLoading]);
@@ -205,34 +207,49 @@ const Home: NextPage = () => {
             <div className={styles.divider}></div>
             <h2 className={styles.subtitle}>Deployed NFT Contracts</h2>
             <div className={styles.nftGrid}>
-              <div className={styles.nftContainer}>
-                <div className={styles.nft}>
-                  <p style={{ color: "#0070f3" }} className={styles.subtitle}>
-                    Your Contract
-                  </p>
-                  <ul className={styles.list}>
-                    {Object.entries(exampleTokenSaleData).map((val, index) => {
-                      return (
-                        <li key={`${val}${index}`} className={styles.listItem}>
-                          {val[0]} {`=>`} {val[1]}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <button
-                    onClick={() => submitPurchase()}
-                    className={styles.buttonDeploy}
-                  >
-                    Mint NFT
-                  </button>
+              {myTokenSaleData && (
+                <div className={styles.nftContainer}>
+                  <div className={styles.nft}>
+                    <p
+                      style={{ color: "rgb(51, 189, 51)" }}
+                      className={styles.subtitle}
+                    >
+                      Your Contract
+                    </p>
+
+                    <ul className={styles.list}>
+                      {Object.entries(myTokenSaleData).map((val, index) => {
+                        return (
+                          <li
+                            key={`${val}${index}`}
+                            className={styles.listItem}
+                          >
+                            <span>{val[0]}</span> {`=>`}{" "}
+                            <span
+                              className={
+                                val[0] === "id" && styles.listItemHighlighted
+                              }
+                            >
+                              {val[1]}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <button
+                      onClick={() => submitPurchase()}
+                      className={styles.yourContractButton}
+                    >
+                      Mint NFT
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
               <div className={styles.nftContainer}>
                 <div className={styles.nft}>
                   <p style={{ color: "#0070f3" }} className={styles.subtitle}>
                     Example Contract
                   </p>
-
                   <ul className={styles.list}>
                     {Object.entries(exampleTokenSaleData).map((val, index) => {
                       return (
