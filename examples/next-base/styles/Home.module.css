@@ -27,7 +27,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 1rem;
 }
 
 .footer a {
@@ -203,11 +202,12 @@
   border-radius: 0.2rem;
   padding: 3rem 3rem;
   margin-top: 2rem;
+  margin-bottom: 2rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .form {
     width: 90vw;
     flex-direction: column;
@@ -248,6 +248,57 @@
 }
 
 .header {
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
+}
+
+.nftContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.nft {
+  display: flex;
+  margin: 2rem 0;
+  padding: 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border-radius: 0.2rem;
+}
+
+.nftGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 1280px) {
+  .nftGrid {
+    display: flex;
+    flex-direction: column;
+  }
+  .nft {
+    display: flex;
+    padding: 2rem;
+    width: 90vw;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 0.2rem;
+  }
+}
+
+.listItem {
+  list-style-type: none;
+  margin-top: 1rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 0;
 }

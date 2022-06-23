@@ -1,10 +1,11 @@
 import {
   ConnectButton,
   useDeploy,
+  useMint,
   useSaleData,
   useWallet
 } from "@simpleweb/open-format-react";
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent, useEffect } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -32,15 +33,37 @@ const Home: NextPage = () => {
     setSymbol(e.currentTarget.value);
   };
 
-  const { deploy, data: contractData } = useDeploy();
-  console.log({ ctxData: contractData?.contractAddress });
+  //Example Token
+  const token = "0x85773e05293ba842f3893a44414c169E59D56a6e";
+  const validToken = token.toLowerCase();
 
-  const { data: saleData } = useSaleData({
-    tokenId: "0x7c5d3ccd02df7b77ff36fb01e3f69f6f10cb9474"
+  //Data retrival
+  const { data: exampleContract } = useSaleData({
+    tokenId: validToken as string
   });
 
-  console.log(saleData);
+  const exampleTokenSaleData = exampleContract?.token?.saleData;
 
+  const {
+    deploy,
+    data: contractData,
+    isLoading: contractDataLoading
+  } = useDeploy();
+
+  //If you mint your own NFT the contract address will be part of the data that is returned
+  console.log({ contractData });
+
+  const { refetch: refetchSaleData, data: myNewContract } = useSaleData({
+    tokenId: contractData?.contractAddress.toLowerCase() as string
+  });
+
+  console.log({ myNewContract });
+
+  useEffect(() => {
+    refetchSaleData();
+  }, [contractDataLoading]);
+
+  //Basic exmaple implementation
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -53,6 +76,19 @@ const Home: NextPage = () => {
       });
     } catch (e) {
       console.log(e);
+    }
+  };
+
+  const { mint } = useMint();
+
+  const submitPurchase = async () => {
+    try {
+      if (typeof validToken !== "string") {
+        throw new Error("Contract address not sent");
+      }
+      await mint({ contractAddress: validToken });
+    } catch (error) {
+      console.log("handleDeploy", error);
     }
   };
 
@@ -77,12 +113,10 @@ const Home: NextPage = () => {
             <div className={styles.connectedButton}>
               <ConnectButton className={styles.button} />
             </div>
-            <div></div>
           </div>
           <h2 style={{ color: "#0070f3" }} className={styles.subtitle}>
             Build your own NFT ecosystem
           </h2>
-
           <h2>Links to the documentation</h2>
           <div className={styles.ctaContainer}>
             <a
@@ -112,7 +146,7 @@ const Home: NextPage = () => {
         {isConnected ? (
           <div>
             <div className={styles.formContainer}>
-              <p className={styles.subtitle}>Deploy Your NFT here</p>
+              <h2 className={styles.subtitle}>Deploy Your NFT here</h2>
               <form onSubmit={e => submit(e)} className={styles.form}>
                 <label className={styles.label} htmlFor="salePrice">
                   Name
@@ -127,7 +161,7 @@ const Home: NextPage = () => {
                   value={name}
                 />
 
-                <label className={styles.label} htmlFor="playerTwo">
+                <label className={styles.label} htmlFor="symbol">
                   Symbol
                 </label>
                 <input
@@ -152,7 +186,7 @@ const Home: NextPage = () => {
                   value={mintingPrice}
                 />
 
-                <label className={styles.label} htmlFor="playerTwo">
+                <label className={styles.label} htmlFor="maxSupply">
                   Max Supply
                 </label>
                 <input
@@ -169,8 +203,53 @@ const Home: NextPage = () => {
               </form>
             </div>
             <div className={styles.divider}></div>
-            <div>
-              <p className={styles.subtitle}>View your releases</p>
+            <h2 className={styles.subtitle}>Deployed NFT Contracts</h2>
+            <div className={styles.nftGrid}>
+              <div className={styles.nftContainer}>
+                <div className={styles.nft}>
+                  <p style={{ color: "#0070f3" }} className={styles.subtitle}>
+                    Your Contract
+                  </p>
+                  <ul className={styles.list}>
+                    {Object.entries(exampleTokenSaleData).map((val, index) => {
+                      return (
+                        <li key={`${val}${index}`} className={styles.listItem}>
+                          {val[0]} {`=>`} {val[1]}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <button
+                    onClick={() => submitPurchase()}
+                    className={styles.buttonDeploy}
+                  >
+                    Mint NFT
+                  </button>
+                </div>
+              </div>
+              <div className={styles.nftContainer}>
+                <div className={styles.nft}>
+                  <p style={{ color: "#0070f3" }} className={styles.subtitle}>
+                    Example Contract
+                  </p>
+
+                  <ul className={styles.list}>
+                    {Object.entries(exampleTokenSaleData).map((val, index) => {
+                      return (
+                        <li key={`${val}${index}`} className={styles.listItem}>
+                          {val[0]} {`=>`} {val[1]}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <button
+                    onClick={() => submitPurchase()}
+                    className={styles.buttonDeploy}
+                  >
+                    Mint NFT
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
