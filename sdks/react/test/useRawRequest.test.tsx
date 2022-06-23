@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, waitFor } from './utilities';
+import { render, screen, waitFor } from '../src/utilities';
 import { useRawRequest } from '../src/hooks';
 import { gql } from 'graphql-request';
 import React from 'react';

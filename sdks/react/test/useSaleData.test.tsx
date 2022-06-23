@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { useSaleData } from '../src/hooks';
-import { render, screen, waitFor } from './utilities';
+import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
 
 function Test() {
