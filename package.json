@@ -20,6 +20,7 @@
     "build": "turbo run build --filter=!./examples/*"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.23.0",
     "turbo": "^1.2.16"
   },
   "resolutions": {
