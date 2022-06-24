@@ -124,12 +124,12 @@ const Home: NextPage = () => {
   const { mint } = useMint();
 
   //Basic exmaple implementation of deploy function
-  const submitPurchase = async () => {
+  const submitPurchase = async (address: string) => {
     try {
       if (typeof validToken !== "string") {
         throw new Error("Contract address not sent");
       }
-      await mint({ contractAddress: validToken });
+      await mint({ contractAddress: address });
     } catch (error) {
       console.log("handleDeploy", error);
     }
@@ -289,12 +289,26 @@ const Home: NextPage = () => {
                         );
                       })}
                     </ul>
-                    <button
-                      onClick={() => submitPurchase()}
-                      className={styles.yourContractButton}
-                    >
-                      Mint NFT
-                    </button>
+                    <div className={styles.flex}>
+                      {parseInt(myTokenSaleData.totalSold) > 0 && (
+                        <button
+                          onClick={() =>
+                            router.push(
+                              `https://testnets.opensea.io/${myAddress}`
+                            )
+                          }
+                          className={styles.yourContractButton}
+                        >
+                          View on OpenSea
+                        </button>
+                      )}
+                      <button
+                        onClick={() => submitPurchase(myTokenSaleData.id)}
+                        className={styles.yourContractButton}
+                      >
+                        Mint NFT
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -315,16 +329,14 @@ const Home: NextPage = () => {
                   <div className={styles.flex}>
                     <button
                       onClick={() =>
-                        router.push(
-                          `https://testnets.opensea.io/assets/mumbai/${validToken}/0`
-                        )
+                        router.push(`https://testnets.opensea.io/${myAddress}`)
                       }
                       className={styles.buttonDeploy}
                     >
                       View on OpenSea
                     </button>
                     <button
-                      onClick={() => submitPurchase()}
+                      onClick={() => submitPurchase(validToken)}
                       className={styles.buttonDeploy}
                     >
                       Mint NFT
