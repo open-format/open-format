@@ -2,6 +2,7 @@ import {
   ConnectButton,
   useDeploy,
   useMint,
+  useRawRequest,
   useSaleData,
   useWallet
 } from "@simpleweb/open-format-react";
@@ -12,13 +13,18 @@ import Link from "next/link";
 import Logo from "../components/logo";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
+import { gql } from "graphql-request";
 
 const Home: NextPage = () => {
   const { isConnected, wallet } = useWallet();
+  const myAddress = wallet?.accounts[0].address;
   const [price, setPrice] = useState<string>("");
   const [maxSupply, setMaxSupplySupply] = useState<number>(1);
   const [name, setName] = useState<string>("");
-  const [symbol, setSymbol] = useState<string>("");
+  const [image, setImage] = useState<File>();
+  const [description, setDescription] = useState<string>("");
+
+  console.log(image);
 
   const handleChangeSalePrice = (e: ChangeEvent<HTMLInputElement>) => {
     setPrice(e.currentTarget.value);
@@ -29,8 +35,14 @@ const Home: NextPage = () => {
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
   };
-  const handleChangeSymbol = (e: ChangeEvent<HTMLInputElement>) => {
-    setSymbol(e.currentTarget.value);
+  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files;
+    if (file) {
+      setImage(file[0]);
+    }
+  };
+  const handleChangeDescription = (e: ChangeEvent<HTMLInputElement>) => {
+    setDescription(e.currentTarget.value);
   };
 
   //Example Token
@@ -44,6 +56,21 @@ const Home: NextPage = () => {
 
   const exampleTokenSaleData = exampleContract?.token?.saleData;
 
+  //Gettting all of the minted NFT's that are associated with this address
+  const { data: historicTokens } = useRawRequest({
+    query: gql`
+      {
+        creator(id: "${myAddress}") {
+          tokens {
+            id
+          }
+        }
+      }
+    `
+  });
+
+  console.log({ historicTokens });
+
   //Deploy Function
   const {
     deploy,
@@ -53,13 +80,13 @@ const Home: NextPage = () => {
 
   //Data retrieval
   //If you mint your own NFT the contract address will be part of the data that is returned
-  console.log({ contractData });
+  // console.log({ contractData });
 
   const { refetch: refetchSaleData, data: myNewContract } = useSaleData({
     tokenId: contractData?.contractAddress.toLowerCase() as string
   });
 
-  console.log({ myNewContract });
+  // console.log({ myNewContract });
 
   const myTokenSaleData = myNewContract?.token?.saleData;
 
@@ -70,6 +97,7 @@ const Home: NextPage = () => {
   //Basic exmaple implementation of deploy function
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     const mintingPrice = parseFloat(price);
+    const symbol = "";
 
     e.preventDefault();
     try {
@@ -78,7 +106,8 @@ const Home: NextPage = () => {
         mintingPrice,
         name,
         symbol,
-        url: "ipfs://"
+        url:
+          "ipfs://bafkreiesshhicqjqd5dtah3kzn5m3ucphqdl2ycc75jxkj6zld3luszm7m"
       });
     } catch (e) {
       console.log(e);
@@ -148,10 +177,8 @@ const Home: NextPage = () => {
               </div>
             </a>
           </div>
-
-          <div className={styles.divider}></div>
         </div>
-        {isConnected ? (
+        {isConnected && (
           <div>
             <div className={styles.formContainer}>
               <h2 className={styles.subtitle}>Deploy Your NFT here</h2>
@@ -161,25 +188,36 @@ const Home: NextPage = () => {
                 </label>
                 <input
                   className={styles.input}
-                  placeholder="Enter a name here"
+                  placeholder="Enter a description here"
                   type="text"
                   id="name"
                   name="name"
                   onChange={handleChangeName}
                   value={name}
                 />
-
-                <label className={styles.label} htmlFor="symbol">
-                  Symbol
+                <label className={styles.label} htmlFor="salePrice">
+                  Description
                 </label>
                 <input
                   className={styles.input}
-                  placeholder="Blockchain ID"
+                  placeholder="0.01"
                   type="text"
-                  id="symbol"
-                  name="symbol"
-                  onChange={handleChangeSymbol}
-                  value={symbol}
+                  id="salePrice"
+                  name="salePrice"
+                  onChange={handleChangeDescription}
+                  value={description}
+                />
+
+                <label className={styles.label} htmlFor="image">
+                  Image
+                </label>
+                <input
+                  className={styles.customFileInput}
+                  type="file"
+                  id="image"
+                  name="image"
+                  onChange={handleChangeImage}
+                  value={""}
                 />
 
                 <label className={styles.label} htmlFor="salePrice">
@@ -234,7 +272,9 @@ const Home: NextPage = () => {
                             <span>{val[0]}</span> {`=>`}{" "}
                             <span
                               className={
-                                val[0] === "id" && styles.listItemHighlighted
+                                val[0] === "id"
+                                  ? styles.listItemHighlighted
+                                  : ""
                               }
                             >
                               {val[1]}
@@ -275,10 +315,6 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <div>
-            <p>Some content here</p>
           </div>
         )}
       </main>

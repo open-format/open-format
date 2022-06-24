@@ -327,3 +327,23 @@
   border: 1px solid transparent;
   border-radius: 4px;
 }
+
+.customFileInput::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.customFileInput::before {
+  content: "Upload Image";
+  display: inline-block;
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.customFileInput:hover::before {
+  background-color: rgb(207, 207, 207);
+}
+.customFileInput:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
