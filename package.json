@@ -20,9 +20,12 @@
     "build": "turbo run build --filter=!./examples/*"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.23.0",
     "turbo": "^1.2.16"
   },
   "resolutions": {
+    "**/tsdx/jest": "^28.1.1",
+    "**/tsdx/ts-jest": "^28.0.5",
     "**/typescript": "^4.7.2"
   }
 }

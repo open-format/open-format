@@ -1,4 +1,4 @@
-import base from '@simpleweb/open-format-contracts/abis/OpenFormat.json';
+import base from '@simpleweb/open-format-contracts/abi';
 import { ethers, Signer } from 'ethers';
 import { NFTMetadata } from '../types';
 import { OpenFormat } from '../contract-types';
