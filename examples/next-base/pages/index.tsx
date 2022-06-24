@@ -21,12 +21,15 @@ const Home: NextPage = () => {
   const { isConnected, wallet } = useWallet();
   const router = useRouter();
   const myAddress = wallet?.accounts[0].address;
+
+  //Form state
   const [price, setPrice] = useState<string>("");
   const [maxSupply, setMaxSupplySupply] = useState<number>(1);
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<File>();
   const [description, setDescription] = useState<string>("");
 
+  //Form state handlers
   const handleChangeSalePrice = (e: ChangeEvent<HTMLInputElement>) => {
     setPrice(e.currentTarget.value);
   };
@@ -54,7 +57,6 @@ const Home: NextPage = () => {
   const { data: exampleContract } = useSaleData({
     tokenId: validToken as string
   });
-
   const exampleTokenSaleData = exampleContract?.token?.saleData;
 
   //Gettting all of the minted NFT's that are associated with this address
@@ -70,32 +72,41 @@ const Home: NextPage = () => {
     `
   });
 
+  //view the connected wallets historic tokens
   console.log({ historicTokens });
 
   //Deploy Function
+
   const {
     deploy,
     data: contractData,
-    isLoading: contractDataLoading
+    isLoading: loadingExampleContract
   } = useDeploy();
 
   //Data retrieval
   //If you mint your own NFT the contract address will be part of the data that is returned
 
-  const { refetch: refetchSaleData, data: myNewContract } = useSaleData({
+  const {
+    refetch: refetchSaleData,
+    data: myNewContract,
+    isLoading: loadingNewContract
+  } = useSaleData({
     tokenId: contractData?.contractAddress.toLowerCase() as string
   });
 
   const myTokenSaleData = myNewContract?.token?.saleData;
 
   useEffect(() => {
-    refetchSaleData();
-  }, [contractDataLoading]);
+    if (!myTokenSaleData) {
+      refetchSaleData();
+    }
+  }, [myTokenSaleData]);
 
   //Basic exmaple implementation of deploy function
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const mintingPrice = parseFloat(price);
+    //You may want to create a new input for this in your application for now we are hard coding it
     const symbol = "OPEN_FORMAT";
     try {
       if (image) {
@@ -104,9 +115,10 @@ const Home: NextPage = () => {
           description,
           image
         };
+        //Building out the data object.
+        //For more information on what this needs to look like you can visit https://docs.opensea.io/docs/metadata-standards
         const metadata = buildMetadata(nftData);
         const ipfsData = await uploadToIPFS(metadata);
-        console.log(ipfsData);
         await deploy({
           maxSupply,
           mintingPrice,
@@ -194,7 +206,7 @@ const Home: NextPage = () => {
                 </label>
                 <input
                   className={styles.input}
-                  placeholder="Enter a description here"
+                  placeholder="Enter a name...."
                   type="text"
                   id="name"
                   name="name"
@@ -206,7 +218,7 @@ const Home: NextPage = () => {
                 </label>
                 <input
                   className={styles.input}
-                  placeholder="0.01"
+                  placeholder="Enter a description...."
                   type="text"
                   id="salePrice"
                   name="salePrice"
@@ -223,7 +235,6 @@ const Home: NextPage = () => {
                   id="image"
                   name="image"
                   onChange={handleChangeImage}
-                  value={""}
                 />
 
                 <label className={styles.label} htmlFor="salePrice">
@@ -312,38 +323,47 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               )}
-              <div className={styles.nftContainer}>
-                <div className={styles.nft}>
-                  <p style={{ color: "#0070f3" }} className={styles.subtitle}>
-                    Example Contract
-                  </p>
-                  <ul className={styles.list}>
-                    {Object.entries(exampleTokenSaleData).map((val, index) => {
-                      return (
-                        <li key={`${val}${index}`} className={styles.listItem}>
-                          {val[0]} {`=>`} {val[1]}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <div className={styles.flex}>
-                    <button
-                      onClick={() =>
-                        router.push(`https://testnets.opensea.io/${myAddress}`)
-                      }
-                      className={styles.buttonDeploy}
-                    >
-                      View on OpenSea
-                    </button>
-                    <button
-                      onClick={() => submitPurchase(validToken)}
-                      className={styles.buttonDeploy}
-                    >
-                      Mint NFT
-                    </button>
+              {exampleTokenSaleData && (
+                <div className={styles.nftContainer}>
+                  <div className={styles.nft}>
+                    <p style={{ color: "#0070f3" }} className={styles.subtitle}>
+                      Example Contract
+                    </p>
+                    <ul className={styles.list}>
+                      {Object.entries(exampleTokenSaleData).map(
+                        (val, index) => {
+                          return (
+                            <li
+                              key={`${val}${index}`}
+                              className={styles.listItem}
+                            >
+                              {val[0]} {`=>`} {val[1]}
+                            </li>
+                          );
+                        }
+                      )}
+                    </ul>
+                    <div className={styles.flex}>
+                      <button
+                        onClick={() =>
+                          router.push(
+                            `https://testnets.opensea.io/${myAddress}`
+                          )
+                        }
+                        className={styles.buttonDeploy}
+                      >
+                        View on OpenSea
+                      </button>
+                      <button
+                        onClick={() => submitPurchase(validToken)}
+                        className={styles.buttonDeploy}
+                      >
+                        Mint NFT
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         )}
