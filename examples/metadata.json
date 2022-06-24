@@ -1,0 +1,25 @@
+{
+  "name": "EXAMPLENFT001",
+  "artist": "Minimal",
+  "attributes": [
+    {
+      "trait_type": "Style",
+      "value": "Minimalist"
+    },
+    {
+      "trait_type": "Paint type",
+      "value": "acrylic"
+    },
+    {
+      "trait_type": "Year created",
+      "value": "2022"
+    },
+    {
+      "trait_type": "Name of piece",
+      "value": "Less is more"
+    }
+  ],
+  "description": "The GOAT of minimalism",
+  "image": "ipfs://bafkreib22d54jwcefxmkwzsun2jhmt5quydlpo3q5hg4w5mkiibybxs7ci",
+  "release_type": "art"
+}

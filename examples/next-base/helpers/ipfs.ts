@@ -1,4 +1,4 @@
-import { File, NFTStorage } from "nft.storage";
+import { NFTStorage } from "nft.storage";
 
 if (typeof process.env.NEXT_PUBLIC_NFT_STORAGE_TOKEN !== "string")
   throw new Error("Please set the NEXT_PUBLIC_CHAIN_ID environment variable.");
@@ -7,7 +7,7 @@ const client = new NFTStorage({
   token: process.env.NEXT_PUBLIC_NFT_STORAGE_TOKEN
 });
 
-export const uploadToIPFS = async (data: Metadata) => {
+export const uploadToIPFS = async (data: IPFSData) => {
   if (!data) throw Error("Data is invalid");
   return await client.store(data);
 };
@@ -20,10 +20,8 @@ export const uploadToIPFS = async (data: Metadata) => {
  * with it's own IPFS CID linking back to the generated metadata.json.
  */
 
-export const buildMetadata = data => {
+export const buildMetadata = (data: IPFSData) => {
   const { name, description, image } = data;
-  console.log(data);
-
   // name, description and image are required by nft.storage.
   const metadata = {
     name,

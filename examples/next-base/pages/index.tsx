@@ -14,17 +14,18 @@ import Logo from "../components/logo";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
 import { gql } from "graphql-request";
+import { useRouter } from "next/router";
+import { buildMetadata, uploadToIPFS } from "../helpers/ipfs";
 
 const Home: NextPage = () => {
   const { isConnected, wallet } = useWallet();
+  const router = useRouter();
   const myAddress = wallet?.accounts[0].address;
   const [price, setPrice] = useState<string>("");
   const [maxSupply, setMaxSupplySupply] = useState<number>(1);
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<File>();
   const [description, setDescription] = useState<string>("");
-
-  console.log(image);
 
   const handleChangeSalePrice = (e: ChangeEvent<HTMLInputElement>) => {
     setPrice(e.currentTarget.value);
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
   };
 
   //Example Token
-  const token = "0x85773e05293ba842f3893a44414c169E59D56a6e";
+  const token = "0x4720FaC0bf595a77aD7b82E6c509970fc3D08C33";
   const validToken = token.toLowerCase();
 
   //Data retrieval
@@ -80,13 +81,10 @@ const Home: NextPage = () => {
 
   //Data retrieval
   //If you mint your own NFT the contract address will be part of the data that is returned
-  // console.log({ contractData });
 
   const { refetch: refetchSaleData, data: myNewContract } = useSaleData({
     tokenId: contractData?.contractAddress.toLowerCase() as string
   });
-
-  // console.log({ myNewContract });
 
   const myTokenSaleData = myNewContract?.token?.saleData;
 
@@ -96,21 +94,29 @@ const Home: NextPage = () => {
 
   //Basic exmaple implementation of deploy function
   const submit = async (e: FormEvent<HTMLFormElement>) => {
-    const mintingPrice = parseFloat(price);
-    const symbol = "";
-
     e.preventDefault();
+    const mintingPrice = parseFloat(price);
+    const symbol = "OPEN_FORMAT";
     try {
-      await deploy({
-        maxSupply,
-        mintingPrice,
-        name,
-        symbol,
-        url:
-          "ipfs://bafkreiesshhicqjqd5dtah3kzn5m3ucphqdl2ycc75jxkj6zld3luszm7m"
-      });
-    } catch (e) {
-      console.log(e);
+      if (image) {
+        const nftData: IPFSData = {
+          name,
+          description,
+          image
+        };
+        const metadata = buildMetadata(nftData);
+        const ipfsData = await uploadToIPFS(metadata);
+        console.log(ipfsData);
+        await deploy({
+          maxSupply,
+          mintingPrice,
+          name,
+          symbol,
+          url: ipfsData.url
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -306,12 +312,24 @@ const Home: NextPage = () => {
                       );
                     })}
                   </ul>
-                  <button
-                    onClick={() => submitPurchase()}
-                    className={styles.buttonDeploy}
-                  >
-                    Mint NFT
-                  </button>
+                  <div className={styles.flex}>
+                    <button
+                      onClick={() =>
+                        router.push(
+                          `https://testnets.opensea.io/assets/mumbai/${validToken}/0`
+                        )
+                      }
+                      className={styles.buttonDeploy}
+                    >
+                      View on OpenSea
+                    </button>
+                    <button
+                      onClick={() => submitPurchase()}
+                      className={styles.buttonDeploy}
+                    >
+                      Mint NFT
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

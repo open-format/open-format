@@ -156,7 +156,6 @@
   border-radius: 0.2rem;
   font-size: 1.2rem;
   margin-top: 2rem;
-  margin-left: auto;
   border: none;
   color: white;
 }
@@ -346,4 +345,12 @@
 }
 .customFileInput:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0;
 }
