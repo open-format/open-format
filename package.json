@@ -15,6 +15,7 @@
   },
   "packageManager": "yarn@1.22.17",
   "scripts": {
+    "prepare": "yarn workspace @simpleweb/open-format generate-contract-types",
     "start": "turbo run start --parallel --filter=!./examples/*",
     "test": "turbo run test --filter=!./examples/*",
     "build": "turbo run build --filter=!./examples/*"
