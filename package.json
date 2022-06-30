@@ -15,6 +15,7 @@
   },
   "packageManager": "yarn@1.22.17",
   "scripts": {
+    "prepare": "yarn workspace @simpleweb/open-format generate-contract-types",
     "start": "turbo run start --parallel --filter=!./examples/*",
     "test": "turbo run test --filter=!./examples/*",
     "build": "turbo run build --filter=!./examples/*"
@@ -24,6 +25,8 @@
     "turbo": "^1.2.16"
   },
   "resolutions": {
+    "**/react": "^18.1.0",
+    "**/react-dom": "^18.1.0",
     "**/tsdx/jest": "^28.1.1",
     "**/tsdx/ts-jest": "^28.0.5",
     "**/typescript": "^4.7.2"
