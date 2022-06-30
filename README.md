@@ -1,11 +1,28 @@
 # Open Format
 
-A monorepo (powered by [Turborepo](https://turborepo.org/)) to host all the Open Format SDKs.
+Build your own NFT ecosystem. Trustless, permissionless and collaborative.
+
+- Create data rich NFT collections with minting, selling, payment splitting and royalty functionality built in.
+- Use our subgraph to search, filter and sort NFT collections on open format to create unique marketplace experiences.
+- Deposit external revenue streams into a NFT collection that is split between NFT holders.
+- Add a commission to allow developers and external sellers to benefit from your NFT sales.
 
 ## SDKs
 
 - `@simpleweb/open-format` - [Open Format JavaScript SDK](/sdks/open-format/)
 - `@simpleweb/open-format-react` - [React wrapper of the JavaScript SDK](/sdks/react/)
+
+## Documentation
+
+[Read the documentation](https://docs.openformat.simpleweb.co.uk/).
+
+- [Quickstart](https://docs.openformat.simpleweb.co.uk/guides/quickstart/creating-an-nft)
+- [JavaScript](https://docs.openformat.simpleweb.co.uk/sdk/javascript)
+- [React](https://docs.openformat.simpleweb.co.uk/sdk/react)
+
+## Demos
+
+- [whitelabel - Music NFT marketplace](https://whitelabel-market.netlify.app/)
 
 ## Examples
 
@@ -13,34 +30,10 @@ A monorepo (powered by [Turborepo](https://turborepo.org/)) to host all the Open
 
 From [examples/react-next](examples/react-next/) you can `yarn run start` to run the Next.js app which utiltises `@simpleweb/open-format-react`.
 
-## Installation
+### Node.js
 
-From the root you can install all of the SDK's dependencies.
+From [examples/node-deploy](examples/node-deploy/) you can run the various scripts to deploy, mint and try out the subgraph which utiltises `@simpleweb/open-format`.
 
-```shell
-yarn install
-```
+## Contributing
 
-## Development
-
-As different SDKs depend on each other, all of them must be built and re-built at the same time.
-
-```shell
-yarn run start
-```
-
-The test suite for each SDK can also be all together.
-
-```shell
-yarn run test
-```
-
-All SDKs can also be built.
-
-```shell
-yarn run build
-```
-
-## Building and publishing
-
-@TODO write building and publishing docs on first release
+If you would like to contribute to the develpoment of Open Fromat please checkout our [contributing guidelines](CONTRIBUTING.md).
