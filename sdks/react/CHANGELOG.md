@@ -1,5 +1,11 @@
 # @simpleweb/open-format-react
 
+## 0.1.2
+
+### Patch Changes
+
+- fe59cfd: Persist wallet connection state
+
 ## 0.1.1
 
 ### Patch Changes
