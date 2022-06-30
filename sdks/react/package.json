@@ -1,6 +1,6 @@
 {
   "name": "@simpleweb/open-format-react",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "repository": "https://github.com/simpleweb/open-format/tree/main/sdks/react",
   "author": "Benjamin Reid <ben@simpleweb.co.uk>",
   "publishConfig": {
