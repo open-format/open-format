@@ -12,6 +12,13 @@ import * as subgraph from './subgraph';
 interface SDKOptions {
   network: Chain;
   signer?: Signer | string;
+  factory?: string;
+}
+
+function invariant(condition: any, message: string): asserts condition {
+  if (!condition) {
+    throw new Error(message);
+  }
 }
 
 /**
@@ -81,6 +88,17 @@ export class OpenFormatSDK {
 
   rawRequest = subgraph.rawRequest;
   getSaleDataForToken = subgraph.getSaleDataForToken;
+
+  /**
+   * Gets tokens for a given factory
+   * @param {Object} params
+   * @param {string} params.factoryId - id of the factory
+   * @returns tokens
+   */
+  getTokens() {
+    invariant(typeof this.options.factory === 'string', 'Factory ID not set');
+    return subgraph.getTokens({ factoryId: this.options.factory });
+  }
 
   /**
    * Throws an error if the current signer and provider's networks differ
