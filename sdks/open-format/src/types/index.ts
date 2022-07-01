@@ -1,3 +1,11 @@
+import { Signer } from 'ethers';
+
+export interface SDKOptions {
+  network: Chain;
+  signer?: Signer | string;
+  factory?: string;
+}
+
 export type Chain = 'mainnet' | 'mumbai' | 'localhost' | (string & {});
 
 export type TokenProperty = {

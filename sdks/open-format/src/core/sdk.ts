@@ -5,15 +5,9 @@ import {
   getProviderUrl,
   getSigner,
 } from '../helpers/providers';
-import { Chain, NFTMetadata } from '../types';
+import { NFTMetadata, SDKOptions } from '../types';
 import * as contract from './contract';
 import * as subgraph from './subgraph';
-
-interface SDKOptions {
-  network: Chain;
-  signer?: Signer | string;
-  factory?: string;
-}
 
 function invariant(condition: any, message: string): asserts condition {
   if (!condition) {

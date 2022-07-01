@@ -1,4 +1,4 @@
-import { Chain, OpenFormatSDK } from '@simpleweb/open-format';
+import { OpenFormatSDK, SDKOptions } from '@simpleweb/open-format';
 import { useConnectWallet, useSetChain } from '@web3-onboard/react';
 import { ethers } from 'ethers';
 import React, { createContext, useContext, useEffect, useRef } from 'react';
@@ -27,11 +27,9 @@ export function OpenFormatProvider({
   },
 }: {
   children: React.ReactNode;
-  config?: {
-    network: Chain;
-  };
+  config?: SDKOptions;
 }) {
-  const sdk = useRef(new OpenFormatSDK({ network: config.network }));
+  const sdk = useRef(new OpenFormatSDK(config));
 
   const [{ wallet }] = useConnectWallet();
   const [{ connectedChain }, setChain] = useSetChain();
