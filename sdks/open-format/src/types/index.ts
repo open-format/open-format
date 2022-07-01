@@ -6,7 +6,7 @@ export type TokenProperty = {
   value: string;
 };
 
-export type ReleaseType = 'art' | 'ticket' | 'audio';
+export type ReleaseType = 'art' | 'ticket' | 'audio' | 'video';
 
 export type ChainConfig = {
   id: Chain;
