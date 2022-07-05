@@ -60,7 +60,7 @@ export function ConnectButton({
         if (isConnected && wallet) {
           disconnect(wallet);
         } else {
-          connect({});
+          connect();
         }
       }}
       {...props}
