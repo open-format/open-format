@@ -3,7 +3,16 @@ import { render, RenderOptions } from '@testing-library/react';
 import { OpenFormatProvider } from '../src/provider';
 
 const App: FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <OpenFormatProvider>{children}</OpenFormatProvider>;
+  return (
+    <OpenFormatProvider
+      config={{
+        network: 'localhost',
+        factory: '1fe0b323-223f-48aa-8797-137931473f49',
+      }}
+    >
+      {children}
+    </OpenFormatProvider>
+  );
 };
 
 const customRender = (

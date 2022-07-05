@@ -1,5 +1,5 @@
 import { gql, request, RequestDocument, Variables } from 'graphql-request';
-import { SaleDataResponse } from '../types';
+import { SaleDataResponse, TokensResponse } from '../types';
 
 const ENDPOINT =
   'https://api.thegraph.com/subgraphs/name/simpleweb/open-format';
@@ -55,4 +55,29 @@ export async function getSaleDataForToken(tokenId: string) {
   return await request<SaleDataResponse, { id: string }>(ENDPOINT, query, {
     id: tokenId,
   });
+}
+
+export async function getTokens({ factoryId }: { factoryId: string }) {
+  const query = gql`
+    query getTokensByFactoryID($factory_id: String) {
+      tokens(where: { factory_id: $factory_id }) {
+        id
+        properties {
+          id
+          key
+          value
+        }
+        release_type
+        createdAt
+      }
+    }
+  `;
+
+  return await request<TokensResponse, { factory_id: string }>(
+    ENDPOINT,
+    query,
+    {
+      factory_id: factoryId,
+    }
+  );
 }

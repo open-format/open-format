@@ -1,4 +1,20 @@
+import { Signer } from 'ethers';
+
+export interface SDKOptions {
+  network: Chain;
+  signer?: Signer | string;
+  factory?: string;
+}
+
 export type Chain = 'mainnet' | 'mumbai' | 'localhost' | (string & {});
+
+export type TokenProperty = {
+  id: string;
+  key: string;
+  value: string;
+};
+
+export type ReleaseType = 'art' | 'ticket' | 'audio' | 'video';
 
 export type ChainConfig = {
   id: Chain;
@@ -16,6 +32,10 @@ export interface NFTMetadata {
   mintingPrice: number;
 }
 
+/**
+ * Subgraph responses
+ */
+
 export interface SaleDataResponse {
   token: {
     saleData: {
@@ -31,4 +51,13 @@ export interface SaleDataResponse {
       secondaryCommission: string;
     };
   } | null;
+}
+
+export interface TokensResponse {
+  tokens: {
+    id: string;
+    properties: TokenProperty[];
+    release_type: ReleaseType;
+    createdAt: string;
+  }[];
 }
