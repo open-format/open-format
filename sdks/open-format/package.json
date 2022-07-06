@@ -1,6 +1,6 @@
 {
   "name": "@simpleweb/open-format",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "repository": "https://github.com/simpleweb/open-format/tree/main/sdks/open-format",
   "author": "Benjamin Reid <ben@simpleweb.co.uk>",
   "publishConfig": {
