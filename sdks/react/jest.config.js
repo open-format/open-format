@@ -1,5 +1,7 @@
 /** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
+  globalSetup: './test/setup.ts',
+  globalTeardown: './test/teardown.ts',
   testEnvironment: 'jsdom',
   preset: 'ts-jest/presets/default-esm',
   transform: {},
