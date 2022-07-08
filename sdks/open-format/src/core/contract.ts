@@ -47,6 +47,18 @@ export async function setRoyalties({
   return receipt;
 }
 
+export async function getRoyalties({
+  contractAddress,
+  signer,
+  salePrice,
+}: ContractArgs & { salePrice: number }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.royaltyInfo(0, salePrice);
+
+  return tx;
+}
+
 /**
  * Deploys a version of the Open Format contract
  * @private

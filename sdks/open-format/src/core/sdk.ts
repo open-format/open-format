@@ -107,6 +107,25 @@ export class OpenFormatSDK {
     });
   }
 
+  /**
+   * Gets royalties based on sale price
+   * @param {Object} params
+   * @param {number} params.salePrice - sale price to get
+   * @returns
+   */
+  async getRoyalties({ salePrice }: { salePrice: number }) {
+    invariant(this.signer, 'No signer set, aborting mint');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.getRoyalties({
+      salePrice,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
   rawRequest = subgraph.rawRequest;
   getSaleDataForToken = subgraph.getSaleDataForToken;
 
