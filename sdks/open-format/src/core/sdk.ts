@@ -58,26 +58,34 @@ export class OpenFormatSDK {
 
     await this.checkNetworksMatch();
 
-    return contract.deploy({
+    const tx = await contract.deploy({
       signer: this.signer,
       nft,
     });
+
+    this.options.contractAddress = tx.contractAddress;
+
+    return tx;
   }
 
   /**
    * Mints an NFT on a contract address
-   * @param {Object} options - options
-   * @param {string} options.contractAddress - The address of the contract to mint
    * @returns transaction
    */
-  async mint({ contractAddress }: { contractAddress: string }) {
+  async mint() {
+    if (!this.options.contractAddress) {
+      throw new Error('Contract address is required');
+    }
     if (!this.signer) {
       throw new Error('No signer set, aborting mint');
     }
 
     await this.checkNetworksMatch();
 
-    return contract.mint({ contractAddress, signer: this.signer });
+    return contract.mint({
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
   }
 
   rawRequest = subgraph.rawRequest;

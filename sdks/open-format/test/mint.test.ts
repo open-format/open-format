@@ -11,7 +11,7 @@ describe('sdk.mint()', () => {
       ),
     });
 
-    const { contractAddress } = await sdk.deploy({
+    await sdk.deploy({
       maxSupply: 100,
       mintingPrice: 0.01,
       name: 'Test',
@@ -19,7 +19,7 @@ describe('sdk.mint()', () => {
       url: 'ipfs://',
     });
 
-    const receipt = await sdk.mint({ contractAddress });
+    const receipt = await sdk.mint();
 
     expect(receipt.status).toBe(1);
   });
@@ -27,11 +27,7 @@ describe('sdk.mint()', () => {
   it('will throw an error without a signer', () => {
     const sdk = new OpenFormatSDK({ network: 'http://localhost:8545' });
 
-    expect(
-      sdk.mint({
-        contractAddress: '0x...',
-      })
-    ).rejects.toThrow();
+    expect(sdk.mint()).rejects.toThrow();
   });
 
   it('will throw an error if the networks do not match', () => {
@@ -43,10 +39,6 @@ describe('sdk.mint()', () => {
       ),
     });
 
-    expect(
-      sdk.mint({
-        contractAddress: '0x...',
-      })
-    ).rejects.toThrow();
+    expect(sdk.mint()).rejects.toThrow();
   });
 });
