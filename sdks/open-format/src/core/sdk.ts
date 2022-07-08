@@ -88,6 +88,29 @@ export class OpenFormatSDK {
     });
   }
 
+  /**
+   * Setup royalties to be paid to an address
+   * @param {Object} params
+   * @param {number} params.royaltyReceiverAddress - address of the receiver of the royalties
+   * @param {number} params.royaltyPercentage - the percentage between 0-1000 they will receive
+   * @returns
+   */
+  async setRoyalties(params: {
+    royaltyReceiverAddress: string;
+    royaltyPercentage: number;
+  }) {
+    invariant(this.signer, 'No signer set, aborting mint');
+    invariant(this.options.contractAddress, 'No signer set, aborting mint');
+
+    await this.checkNetworksMatch();
+
+    return contract.setRoyalties({
+      ...params,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
   rawRequest = subgraph.rawRequest;
   getSaleDataForToken = subgraph.getSaleDataForToken;
 
