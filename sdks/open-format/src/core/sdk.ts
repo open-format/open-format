@@ -73,16 +73,54 @@ export class OpenFormatSDK {
    * @returns transaction
    */
   async mint() {
-    if (!this.options.contractAddress) {
-      throw new Error('Contract address is required');
-    }
-    if (!this.signer) {
-      throw new Error('No signer set, aborting mint');
-    }
+    invariant(this.signer, 'No signer set, aborting mint');
+    invariant(this.options.contractAddress, 'No contract address set');
 
     await this.checkNetworksMatch();
 
     return contract.mint({
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
+   * Setup royalties to be paid to an address
+   * @param {Object} params
+   * @param {number} params.royaltyReceiverAddress - address of the receiver of the royalties
+   * @param {number} params.royaltyPercentage - the percentage between 0-1000 they will receive
+   * @returns
+   */
+  async setRoyalties(params: {
+    royaltyReceiverAddress: string;
+    royaltyPercentage: number;
+  }) {
+    invariant(this.signer, 'No signer set, aborting mint');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.setRoyalties({
+      ...params,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
+   * Gets royalties based on sale price
+   * @param {Object} params
+   * @param {number} params.salePrice - sale price to get
+   * @returns
+   */
+  async getRoyalties({ salePrice }: { salePrice: number }) {
+    invariant(this.signer, 'No signer set, aborting mint');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.getRoyalties({
+      salePrice,
       contractAddress: this.options.contractAddress,
       signer: this.signer,
     });

@@ -35,14 +35,16 @@ export function OpenFormatProvider({
   const [{ connectedChain }, setChain] = useSetChain();
 
   useEffect(() => {
-    if (wallet) {
-      sdk.current.signer = new ethers.providers.Web3Provider(
-        wallet.provider
-      ).getSigner();
-    } else {
-      sdk.current.signer = undefined;
+    if (!config.signer) {
+      if (wallet) {
+        sdk.current.signer = new ethers.providers.Web3Provider(
+          wallet.provider
+        ).getSigner();
+      } else {
+        sdk.current.signer = undefined;
+      }
     }
-  }, [wallet]);
+  }, [wallet, config]);
 
   // keep user on desired chain
   useEffect(() => {

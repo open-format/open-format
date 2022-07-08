@@ -3,18 +3,17 @@ import { ethers, Signer } from 'ethers';
 import { NFTMetadata } from '../types';
 import { OpenFormat } from '../contract-types';
 
-export async function mint({
-  contractAddress,
-  signer,
-}: {
+type ContractArgs = {
   contractAddress: string;
   signer: Signer;
-}) {
-  const openFormat = new ethers.Contract(
-    contractAddress,
-    base.abi,
-    signer
-  ) as OpenFormat;
+};
+
+function getContract({ contractAddress, signer }: ContractArgs) {
+  return new ethers.Contract(contractAddress, base.abi, signer) as OpenFormat;
+}
+
+export async function mint({ contractAddress, signer }: ContractArgs) {
+  const openFormat = getContract({ contractAddress, signer });
 
   const mintingPrice = await openFormat.mintingPrice();
 
@@ -25,6 +24,39 @@ export async function mint({
   const receipt = await tx.wait();
 
   return receipt;
+}
+
+export async function setRoyalties({
+  contractAddress,
+  signer,
+  royaltyReceiverAddress,
+  royaltyPercentage,
+}: ContractArgs & {
+  royaltyReceiverAddress: string;
+  royaltyPercentage: number;
+}) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.setRoyalties(
+    royaltyReceiverAddress,
+    royaltyPercentage
+  );
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
+export async function getRoyalties({
+  contractAddress,
+  signer,
+  salePrice,
+}: ContractArgs & { salePrice: number }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.royaltyInfo(0, salePrice);
+
+  return tx;
 }
 
 /**

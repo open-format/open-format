@@ -6,10 +6,9 @@ export function useMint() {
 
   const { mutateAsync, ...mutation } = useMutation<
     Awaited<ReturnType<typeof sdk.mint>>,
-    unknown,
-    Parameters<typeof sdk.mint>[0]
-  >(data => {
-    return sdk.mint(data);
+    unknown
+  >(() => {
+    return sdk.mint();
   });
 
   return {
