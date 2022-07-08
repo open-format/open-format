@@ -73,12 +73,8 @@ export class OpenFormatSDK {
    * @returns transaction
    */
   async mint() {
-    if (!this.options.contractAddress) {
-      throw new Error('Contract address is required');
-    }
-    if (!this.signer) {
-      throw new Error('No signer set, aborting mint');
-    }
+    invariant(this.signer, 'No signer set, aborting mint');
+    invariant(this.options.contractAddress, 'No signer set, aborting mint');
 
     await this.checkNetworksMatch();
 
