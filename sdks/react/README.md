@@ -70,6 +70,22 @@ function MyComponent() {
   return <>{data && <pre>{JSON.stringify(data, null, 2)}</pre>}</>;
 }
 ```
+#### Request Configuration
+
+[react-query](https://react-query.tanstack.com) is being used under the hood to make the request, and it is possible to pass through configuration options.
+
+```tsx
+const { data } = useRawRequest({
+  query: gql`
+    {
+      tokens {
+        id
+      }
+    }
+  `,
+  config: {...}
+});
+```
 
 ### Connecting to a wallet
 
