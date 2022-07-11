@@ -1,5 +1,18 @@
 # @simpleweb/open-format-react
 
+## 0.3.0
+
+### Minor Changes
+
+- e52449b: Allows for react-query configuration options to be passed through when using the raw request hook
+- 110f46c: Adds the functionality to get and set royalties
+
+### Patch Changes
+
+- Updated dependencies [110f46c]
+- Updated dependencies [ed3358b]
+  - @simpleweb/open-format@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
