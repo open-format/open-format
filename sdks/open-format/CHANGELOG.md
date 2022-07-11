@@ -1,5 +1,12 @@
 # @simpleweb/open-format
 
+## 0.3.0
+
+### Minor Changes
+
+- 110f46c: Adds the functionality to get and set royalties
+- ed3358b: Stores and allows configuration of a contract address
+
 ## 0.2.0
 
 ### Minor Changes
