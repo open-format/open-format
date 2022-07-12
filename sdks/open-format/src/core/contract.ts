@@ -66,7 +66,6 @@ export async function setupRevenueSharing({
   shares,
   holderPercentage,
 }: ContractArgs & {
-  contractAddress: string;
   collaborators: string[];
   shares: number[];
   holderPercentage: number;
