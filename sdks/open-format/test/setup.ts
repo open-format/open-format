@@ -23,7 +23,7 @@ export default function setup() {
     },
   });
 
-  (globalThis as any).__GANACHE__ = server;
+  (globalThis as any).__GANACHE_OPEN_FORMAT__ = server;
 
   return new Promise<void>((resolve, reject) => {
     server.listen(8545, error => {
