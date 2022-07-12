@@ -2,6 +2,9 @@ import ganache from 'ganache';
 
 export default function setup() {
   const server = ganache.server({
+    fork: {
+      url: 'https://matic-mumbai.chainstacklabs.com/',
+    },
     logging: {
       quiet: true,
     },

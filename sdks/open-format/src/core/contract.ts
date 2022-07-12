@@ -1,5 +1,5 @@
 import base from '@simpleweb/open-format-contracts';
-import { ethers, Signer } from 'ethers';
+import { ethers, BigNumberish, Signer } from 'ethers';
 import { NFTMetadata } from '../types';
 import { OpenFormat } from '../contract-types';
 
@@ -62,18 +62,20 @@ export async function getRoyalties({
 export async function setupRevenueSharing({
   contractAddress,
   signer,
+  revShareExtensionAddress,
   collaborators,
   shares,
   holderPercentage,
 }: ContractArgs & {
+  revShareExtensionAddress: string;
   collaborators: string[];
-  shares: number[];
-  holderPercentage: number;
+  shares: BigNumberish[];
+  holderPercentage: BigNumberish;
 }) {
   const openFormat = getContract({ contractAddress, signer });
 
   const tx = await openFormat.setApprovedRevShareExtension(
-    contractAddress,
+    revShareExtensionAddress,
     collaborators,
     shares,
     holderPercentage
@@ -82,6 +84,17 @@ export async function setupRevenueSharing({
   const receipt = await tx.wait();
 
   return receipt;
+}
+
+export async function checkRevenueSharingSetup({
+  contractAddress,
+  signer,
+}: ContractArgs) {
+  const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+  const openFormat = getContract({ contractAddress, signer });
+  const approved = await openFormat.approvedRevShareExtension();
+
+  return approved !== ZERO_ADDRESS;
 }
 
 /**
