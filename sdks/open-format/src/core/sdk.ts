@@ -126,6 +126,29 @@ export class OpenFormatSDK {
     });
   }
 
+  /**
+   * Sets up Revenue Sharing
+   * @param {Object} params
+   * @param {string[]} collaborators - list of collaborators addresses
+   * @param {number[]} shares - list of shares for each collaborator
+   * @param {number} holderPercentage - the holders percentage
+   * @returns
+   */
+  async setupRevenueSharing(params: {
+    collaborators: string[];
+    shares: number[];
+    holderPercentage: number;
+  }) {
+    invariant(this.signer, 'No signer set, aborting revenue sharing setup');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    return contract.setupRevenueSharing({
+      ...params,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
   rawRequest = subgraph.rawRequest;
   getSaleDataForToken = subgraph.getSaleDataForToken;
 

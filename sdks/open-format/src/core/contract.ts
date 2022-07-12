@@ -59,6 +59,32 @@ export async function getRoyalties({
   return tx;
 }
 
+export async function setupRevenueSharing({
+  contractAddress,
+  signer,
+  collaborators,
+  shares,
+  holderPercentage,
+}: ContractArgs & {
+  contractAddress: string;
+  collaborators: string[];
+  shares: number[];
+  holderPercentage: number;
+}) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.setApprovedRevShareExtension(
+    contractAddress,
+    collaborators,
+    shares,
+    holderPercentage
+  );
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 /**
  * Deploys a version of the Open Format contract
  * @private
