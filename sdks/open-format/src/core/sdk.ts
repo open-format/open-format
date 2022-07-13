@@ -144,6 +144,8 @@ export class OpenFormatSDK {
     invariant(this.signer, 'No signer set, aborting revenue sharing setup');
     invariant(this.options.contractAddress, 'No contract address set');
 
+    await this.checkNetworksMatch();
+
     return contract.setupRevenueSharing({
       ...params,
       contractAddress: this.options.contractAddress,
