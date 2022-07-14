@@ -95,7 +95,7 @@ export class OpenFormatSDK {
     royaltyReceiverAddress: string;
     royaltyPercentage: number;
   }) {
-    invariant(this.signer, 'No signer set, aborting mint');
+    invariant(this.signer, 'No signer set, aborting setting royalties');
     invariant(this.options.contractAddress, 'No contract address set');
 
     await this.checkNetworksMatch();
@@ -114,7 +114,7 @@ export class OpenFormatSDK {
    * @returns
    */
   async getRoyalties({ salePrice }: { salePrice: number }) {
-    invariant(this.signer, 'No signer set, aborting mint');
+    invariant(this.signer, 'No signer set, aborting getting royalties');
     invariant(this.options.contractAddress, 'No contract address set');
 
     await this.checkNetworksMatch();
