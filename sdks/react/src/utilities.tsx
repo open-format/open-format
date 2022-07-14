@@ -5,14 +5,14 @@ import { ethers } from 'ethers';
 
 const signer = new ethers.Wallet(
   '0x04c65fb1737cf9a5fb605b403b5027924309e53a3433d06029a0441cc03e2042',
-  new ethers.providers.JsonRpcProvider('http://localhost:8545')
+  new ethers.providers.JsonRpcProvider('http://localhost:8546')
 );
 
 const App: FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <OpenFormatProvider
       config={{
-        network: 'localhost',
+        network: 'http://localhost:8546',
         factory: '1fe0b323-223f-48aa-8797-137931473f49',
         signer,
       }}
