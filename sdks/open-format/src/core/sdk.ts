@@ -1,4 +1,4 @@
-import { providers, Signer } from 'ethers';
+import { providers, BigNumberish, Signer } from 'ethers';
 import merge from 'lodash.merge';
 import {
   getProviderFromUrl,
@@ -121,6 +121,37 @@ export class OpenFormatSDK {
 
     return contract.getRoyalties({
       salePrice,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
+   * Sets up Revenue Sharing
+   * @param {Object} params
+   * @param {string} contractAddress - address of the contract
+   * @param {{
+   *  address: string;
+   *  share: BigNumberish;
+   * }[]} collaborators - list of collaborators addresses
+   * @param {number} holderPercentage - the holders percentage
+   * @returns
+   */
+  async setupRevenueSharing(params: {
+    revShareExtensionAddress: string;
+    collaborators: {
+      address: string;
+      share: BigNumberish;
+    }[];
+    holderPercentage: BigNumberish;
+  }) {
+    invariant(this.signer, 'No signer set, aborting revenue sharing setup');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.setupRevenueSharing({
+      ...params,
       contractAddress: this.options.contractAddress,
       signer: this.signer,
     });

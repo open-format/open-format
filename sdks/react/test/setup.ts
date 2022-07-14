@@ -2,6 +2,14 @@ import ganache from 'ganache';
 
 export default function setup() {
   const server = ganache.server({
+    fork: {
+      // Are you seeing issues when running tests?
+      // If so, it could be a possibility that this RPC could be down.
+      // Visit chainlist.org, show testnets and search for Mumbai.
+      // Click the down arrow on Mumbai and you will see a list of URLs that can
+      // be used here if one of them is down.
+      url: 'https://matic-testnet-archive-rpc.bwarelabs.com/',
+    },
     logging: {
       quiet: true,
     },

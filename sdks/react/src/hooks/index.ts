@@ -1,6 +1,7 @@
 export * from './useDeploy';
 export * from './useMint';
 export * from './useRawRequest';
+export * from './useRevenueSharing';
 export * from './useRoyalties';
 export * from './useSaleData';
 export * from './useSetRoyalties';
