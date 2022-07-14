@@ -26,10 +26,15 @@ describe('sdk revenue', () => {
     const receipt = await sdk?.setupRevenueSharing({
       revShareExtensionAddress: '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
       collaborators: [
-        '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
-        '0x21b2be9090d1d319e57b67c4b5d37bc5ec29a9d0',
+        {
+          address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
+          share: 7700,
+        },
+        {
+          address: '0x21b2be9090d1d319e57b67c4b5d37bc5ec29a9d0',
+          share: 1000,
+        },
       ],
-      shares: [7700, 1000],
       holderPercentage: 1000,
     });
 

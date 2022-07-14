@@ -64,20 +64,21 @@ export async function setupRevenueSharing({
   signer,
   revShareExtensionAddress,
   collaborators,
-  shares,
   holderPercentage,
 }: ContractArgs & {
   revShareExtensionAddress: string;
-  collaborators: string[];
-  shares: BigNumberish[];
+  collaborators: {
+    address: string;
+    share: BigNumberish;
+  }[];
   holderPercentage: BigNumberish;
 }) {
   const openFormat = getContract({ contractAddress, signer });
 
   const tx = await openFormat.setApprovedRevShareExtension(
     revShareExtensionAddress,
-    collaborators,
-    shares,
+    collaborators.map(collaborator => collaborator.address),
+    collaborators.map(collaborator => collaborator.share),
     holderPercentage
   );
 
