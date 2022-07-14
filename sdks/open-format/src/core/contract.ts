@@ -2,6 +2,7 @@ import base from '@simpleweb/open-format-contracts';
 import { ethers, BigNumberish, Signer } from 'ethers';
 import { NFTMetadata } from '../types';
 import { OpenFormat } from '../contract-types';
+import isZeroAddress from '../helpers/zeroAddress';
 
 type ContractArgs = {
   contractAddress: string;
@@ -87,15 +88,31 @@ export async function setupRevenueSharing({
   return receipt;
 }
 
-export async function checkRevenueSharingSetup({
+export async function allocateRevenueShares({
+  allocation,
   contractAddress,
   signer,
-}: ContractArgs) {
-  const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+}: ContractArgs & {
+  allocation: {
+    address: string;
+    share: BigNumberish;
+  }[];
+}) {
   const openFormat = getContract({ contractAddress, signer });
   const approved = await openFormat.approvedRevShareExtension();
 
-  return approved !== ZERO_ADDRESS;
+  if (isZeroAddress(approved)) {
+    throw new Error(`Revenue sharing is not setup`);
+  }
+
+  const tx = await openFormat.allocateShares(
+    allocation.map(a => a.address),
+    allocation.map(a => a.share)
+  );
+
+  const receipt = await tx.wait();
+
+  return receipt;
 }
 
 /**
