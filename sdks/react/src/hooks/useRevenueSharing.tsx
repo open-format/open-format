@@ -1,47 +1,19 @@
-import { useQuery } from 'react-query';
-import { BigNumberish } from 'ethers';
+import { useMutation } from 'react-query';
 import { useOpenFormat } from '../provider';
 
-/**
- * Sets up Revenue Sharing
- * @param {Object} options
- * @param {string} contractAddress - address of the contract
- * @param {string[]} collaborators - list of collaborators addresses
- * @param {number[]} shares - list of shares for each collaborator
- * @param {number} holderPercentage - the holders percentage
- * @returns
- */
-export function useRevenueSharing({
-  revShareExtensionAddress,
-  collaborators,
-  shares,
-  holderPercentage,
-}: {
-  revShareExtensionAddress: string;
-  collaborators: string[];
-  shares: BigNumberish[];
-  holderPercentage: BigNumberish;
-}) {
+export function useRevenueSharing() {
   const { sdk } = useOpenFormat();
 
-  const query = useQuery(
-    [
-      'setupRevenueSharing',
-      {
-        revShareExtensionAddress,
-        collaborators,
-        shares,
-        holderPercentage,
-      },
-    ],
-    () =>
-      sdk.setupRevenueSharing({
-        revShareExtensionAddress,
-        collaborators,
-        shares,
-        holderPercentage,
-      })
-  );
+  const { mutateAsync: setup, ...mutation } = useMutation<
+    Awaited<ReturnType<typeof sdk.setupRevenueSharing>>,
+    unknown,
+    Parameters<typeof sdk.setupRevenueSharing>[0]
+  >(params => {
+    return sdk.setupRevenueSharing(params);
+  });
 
-  return query;
+  return {
+    ...mutation,
+    setupRevenueSharing: setup,
+  };
 }
