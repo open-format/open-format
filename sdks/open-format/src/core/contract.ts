@@ -102,7 +102,7 @@ export async function allocateRevenueShares({
   const approved = await openFormat.approvedRevShareExtension();
 
   if (isZeroAddress(approved)) {
-    throw new Error(`Revenue sharing is not setup`);
+    throw new Error(`Revenue sharing has not been setup`);
   }
 
   const tx = await openFormat.allocateShares(
