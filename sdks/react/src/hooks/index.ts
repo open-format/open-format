@@ -8,3 +8,5 @@ export * from './useSaleData';
 export * from './useSetRoyalties';
 export * from './useTokens';
 export * from './useWallet';
+export * from './useWithdrawCollaboratorFunds';
+export * from './useWithdrawTokenFunds';
