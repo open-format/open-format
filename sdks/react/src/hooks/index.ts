@@ -7,6 +7,7 @@ export * from './useRevenueSharingAllocation';
 export * from './useSetupRevenueSharing';
 export * from './useRoyalties';
 export * from './useSaleData';
+export * from './useSetPrimaryCommissionPercentage';
 export * from './useSetRoyalties';
 export * from './useTokens';
 export * from './useWallet';
