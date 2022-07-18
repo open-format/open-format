@@ -186,7 +186,7 @@ export class OpenFormatSDK {
   /**
    * Get the balance of a collaborator
    * @param {{ address: string; }} address - Address of the collaborator
-   * @returns
+   * @returns BigNumber
    */
   async getCollaboratorBalance(address: string) {
     invariant(this.signer, 'No signer set, aborting revenue sharing setup');
@@ -225,7 +225,7 @@ export class OpenFormatSDK {
   /**
    * Get the balance of a token
    * @param {{ token: BigNumberish; }} token - Token number
-   * @returns
+   * @returns BigNumber
    */
   async getTokenBalance(token: BigNumberish) {
     invariant(this.signer, 'No signer set, aborting get token balance');

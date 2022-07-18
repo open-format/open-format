@@ -1,4 +1,6 @@
 export * from './useDeploy';
+export * from './useGetCollaboratorBalance';
+export * from './useGetTokenBalance';
 export * from './useMint';
 export * from './useRawRequest';
 export * from './useRevenueSharingAllocation';
