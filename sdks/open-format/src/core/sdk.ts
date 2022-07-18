@@ -185,11 +185,14 @@ export class OpenFormatSDK {
 
   /**
    * Withdrawl of collaborator funds
-   * @param {{ address: string; }} params - array of account addresses and shares
+   * @param {{ address: string; }} address - Address of the collaborator
    * @returns
    */
   async withdrawCollaboratorFunds(address: string) {
-    invariant(this.signer, 'No signer set, aborting revenue sharing setup');
+    invariant(
+      this.signer,
+      'No signer set, aborting withdrawl of collaborator funds'
+    );
     invariant(this.options.contractAddress, 'No contract address set');
 
     await this.checkNetworksMatch();
@@ -202,12 +205,12 @@ export class OpenFormatSDK {
   }
 
   /**
-   * Withdrawl of collaborator funds
-   * @param {{ address: string; }} params - array of account addresses and shares
+   * Withdrawl of token funds
+   * @param {{ token: BigNumberish; }} token - Token number
    * @returns
    */
   async withdrawTokenFunds(token: BigNumberish) {
-    invariant(this.signer, 'No signer set, aborting revenue sharing setup');
+    invariant(this.signer, 'No signer set, aborting withdrawl of token funds');
     invariant(this.options.contractAddress, 'No contract address set');
 
     await this.checkNetworksMatch();
