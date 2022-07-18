@@ -85,6 +85,24 @@ export class OpenFormatSDK {
   }
 
   /**
+   * Mints an NFT with commission on a contract address
+   * @param {string} address - address of the contract
+   * @returns transaction
+   */
+  async mintWithCommission(address: string) {
+    invariant(this.signer, 'No signer set, aborting mint');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.mintWithCommission({
+      address,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
    * Setup royalties to be paid to an address
    * @param {Object} params
    * @param {number} params.royaltyReceiverAddress - address of the receiver of the royalties
@@ -129,12 +147,12 @@ export class OpenFormatSDK {
   /**
    * Sets up Revenue Sharing
    * @param {Object} params
-   * @param {string} contractAddress - address of the contract
+   * @param {string} params.contractAddress - address of the contract
    * @param {{
    *  address: string;
    *  share: BigNumberish;
-   * }[]} collaborators - list of collaborators addresses
-   * @param {number} holderPercentage - the holders percentage
+   * }[]} params.collaborators - list of collaborators addresses
+   * @param {number} params.holderPercentage - the holders percentage
    * @returns
    */
   async setupRevenueSharing(params: {
@@ -185,7 +203,7 @@ export class OpenFormatSDK {
 
   /**
    * Get the balance of a collaborator
-   * @param {{ address: string; }} address - Address of the collaborator
+   * @param {string} address - Address of the collaborator
    * @returns BigNumber
    */
   async getCollaboratorBalance(address: string) {
@@ -203,7 +221,7 @@ export class OpenFormatSDK {
 
   /**
    * Withdrawl of collaborator funds
-   * @param {{ address: string; }} address - Address of the collaborator
+   * @param {string} address - Address of the collaborator
    * @returns
    */
   async withdrawCollaboratorFunds(address: string) {
@@ -224,7 +242,7 @@ export class OpenFormatSDK {
 
   /**
    * Get the balance of a token
-   * @param {{ token: BigNumberish; }} token - Token number
+   * @param {BigNumberish} token - Token number
    * @returns BigNumber
    */
   async getTokenBalance(token: BigNumberish) {
@@ -242,7 +260,7 @@ export class OpenFormatSDK {
 
   /**
    * Withdrawl of token funds
-   * @param {{ token: BigNumberish; }} token - Token number
+   * @param {BigNumberish} token - Token number
    * @returns
    */
   async withdrawTokenFunds(token: BigNumberish) {
@@ -281,7 +299,7 @@ export class OpenFormatSDK {
 
   /**
    * Sets the percentages of the secondary commission
-   * @param {{ percent: BigNumberish; }} percent - Percent
+   * @param {BigNumberish} percent - Percent
    * @returns
    */
   async setSecondaryCommissionPercent(percent: BigNumberish) {

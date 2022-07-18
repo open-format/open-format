@@ -27,6 +27,26 @@ export async function mint({ contractAddress, signer }: ContractArgs) {
   return receipt;
 }
 
+export async function mintWithCommission({
+  address,
+  contractAddress,
+  signer,
+}: ContractArgs & {
+  address: string;
+}) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const mintingPrice = await openFormat.mintingPrice();
+
+  const tx = await openFormat['mint(address)'](address, {
+    value: mintingPrice,
+  });
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 export async function setRoyalties({
   contractAddress,
   signer,
