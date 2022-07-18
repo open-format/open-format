@@ -5,7 +5,7 @@ export function useWithdrawTokenFunds() {
   const { sdk } = useOpenFormat();
 
   const { mutateAsync: withdraw, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.setupRevenueSharing>>,
+    Awaited<ReturnType<typeof sdk.withdrawTokenFunds>>,
     unknown,
     Parameters<typeof sdk.withdrawTokenFunds>[0]
   >(params => {

@@ -5,7 +5,7 @@ export function useRevenueSharingAllocation() {
   const { sdk } = useOpenFormat();
 
   const { mutateAsync: allocate, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.setupRevenueSharing>>,
+    Awaited<ReturnType<typeof sdk.allocateRevenueShares>>,
     unknown,
     Parameters<typeof sdk.allocateRevenueShares>[0]
   >(params => {
