@@ -194,7 +194,7 @@ export class OpenFormatSDK {
 
     await this.checkNetworksMatch();
 
-    return contract.withdrawCollaboratorFunds({
+    return contract.getCollaboratorBalance({
       address,
       contractAddress: this.options.contractAddress,
       signer: this.signer,
