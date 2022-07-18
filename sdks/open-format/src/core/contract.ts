@@ -167,6 +167,20 @@ export async function withdrawTokenFunds({
   return receipt;
 }
 
+export async function setPrimaryCommissionPercent({
+  percent,
+  contractAddress,
+  signer,
+}: ContractArgs & { percent: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.setPrimaryCommissionPct(percent);
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 /**
  * Deploys a version of the Open Format contract
  * @private

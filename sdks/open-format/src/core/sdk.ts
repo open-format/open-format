@@ -258,6 +258,24 @@ export class OpenFormatSDK {
     });
   }
 
+  /**
+   * Sets the percentages of the primary commission
+   * @param {{ percent: BigNumberish; }} percent - Percent
+   * @returns
+   */
+  async setPrimaryCommissionPercent(percent: BigNumberish) {
+    invariant(this.signer, 'No signer set, aborting withdrawl of token funds');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.setPrimaryCommissionPercent({
+      percent,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
   rawRequest = subgraph.rawRequest;
   getSaleDataForToken = subgraph.getSaleDataForToken;
 
