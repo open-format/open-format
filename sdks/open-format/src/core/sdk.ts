@@ -184,6 +184,24 @@ export class OpenFormatSDK {
   }
 
   /**
+   * Get the balance of a collaborator
+   * @param {{ address: string; }} address - Address of the collaborator
+   * @returns BigNumber
+   */
+  async getCollaboratorBalance(address: string) {
+    invariant(this.signer, 'No signer set, aborting revenue sharing setup');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.getCollaboratorBalance({
+      address,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
    * Withdrawl of collaborator funds
    * @param {{ address: string; }} address - Address of the collaborator
    * @returns
@@ -199,6 +217,24 @@ export class OpenFormatSDK {
 
     return contract.withdrawCollaboratorFunds({
       address,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
+   * Get the balance of a token
+   * @param {{ token: BigNumberish; }} token - Token number
+   * @returns BigNumber
+   */
+  async getTokenBalance(token: BigNumberish) {
+    invariant(this.signer, 'No signer set, aborting get token balance');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.getTokenBalance({
+      token,
       contractAddress: this.options.contractAddress,
       signer: this.signer,
     });
