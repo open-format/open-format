@@ -115,6 +115,34 @@ export async function allocateRevenueShares({
   return receipt;
 }
 
+export async function withdrawCollaboratorFunds({
+  address,
+  contractAddress,
+  signer,
+}: ContractArgs & { address: string }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat['withdraw(address)'](address);
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
+export async function withdrawTokenFunds({
+  token,
+  contractAddress,
+  signer,
+}: ContractArgs & { token: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat['withdraw(uint256)'](token);
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 /**
  * Deploys a version of the Open Format contract
  * @private

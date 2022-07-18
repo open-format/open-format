@@ -183,6 +183,45 @@ export class OpenFormatSDK {
     });
   }
 
+  /**
+   * Withdrawl of collaborator funds
+   * @param {{ address: string; }} address - Address of the collaborator
+   * @returns
+   */
+  async withdrawCollaboratorFunds(address: string) {
+    invariant(
+      this.signer,
+      'No signer set, aborting withdrawl of collaborator funds'
+    );
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.withdrawCollaboratorFunds({
+      address,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
+   * Withdrawl of token funds
+   * @param {{ token: BigNumberish; }} token - Token number
+   * @returns
+   */
+  async withdrawTokenFunds(token: BigNumberish) {
+    invariant(this.signer, 'No signer set, aborting withdrawl of token funds');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.withdrawTokenFunds({
+      token,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
   rawRequest = subgraph.rawRequest;
   getSaleDataForToken = subgraph.getSaleDataForToken;
 
