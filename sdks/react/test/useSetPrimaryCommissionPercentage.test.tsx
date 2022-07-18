@@ -34,7 +34,7 @@ function Test() {
           setPrimaryCommissionPercent(500);
         }}
       >
-        Set royalties
+        Set Primary Commission Percent
       </button>
 
       {primaryCommissionData && (
