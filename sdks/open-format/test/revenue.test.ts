@@ -40,4 +40,34 @@ describe('sdk revenue', () => {
 
     expect(receipt?.status).toBe(1);
   });
+
+  it('allocation of shares', async () => {
+    await sdk?.setupRevenueSharing({
+      revShareExtensionAddress: '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
+      collaborators: [
+        {
+          address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
+          share: 1000,
+        },
+        {
+          address: '0x21b2be9090d1d319e57b67c4b5d37bc5ec29a9d0',
+          share: 1000,
+        },
+      ],
+      holderPercentage: 5000,
+    });
+
+    const receipt = await sdk?.allocateRevenueShares([
+      {
+        address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
+        share: 500,
+      },
+      {
+        address: '0x21b2be9090d1d319e57b67c4b5d37bc5ec29a9d0',
+        share: 500,
+      },
+    ]);
+
+    expect(receipt?.status).toBe(1);
+  });
 });

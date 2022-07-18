@@ -157,6 +157,32 @@ export class OpenFormatSDK {
     });
   }
 
+  /**
+   * Allocation of shares
+   * @param {{
+   *  address: string;
+   *  share: BigNumberish;
+   * }[]} params - array of account addresses and shares
+   * @returns
+   */
+  async allocateRevenueShares(
+    params: {
+      address: string;
+      share: BigNumberish;
+    }[]
+  ) {
+    invariant(this.signer, 'No signer set, aborting revenue sharing setup');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.allocateRevenueShares({
+      allocation: params,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
   rawRequest = subgraph.rawRequest;
   getSaleDataForToken = subgraph.getSaleDataForToken;
 

@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom';
-import { useDeploy, useRevenueSharing } from '../src/hooks';
+import { useDeploy, useSetupRevenueSharing } from '../src/hooks';
 import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
 
 function Test() {
   const { deploy, data: deployData } = useDeploy();
-  const { setupRevenueSharing, data: revenueShareData } = useRevenueSharing();
+  const { setup, data: setupRevenueShareData } = useSetupRevenueSharing();
 
   return (
     <>
@@ -29,32 +29,32 @@ function Test() {
       <button
         data-testid="setupRevenueSharing"
         onClick={() => {
-          setupRevenueSharing({
+          setup({
             revShareExtensionAddress:
               '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
             collaborators: [
               {
                 address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
-                share: 7700,
+                share: 500,
               },
               {
                 address: '0x21b2be9090d1d319e57b67c4b5d37bc5ec29a9d0',
-                share: 1000,
+                share: 500,
               },
             ],
-            holderPercentage: 1000,
+            holderPercentage: 5000,
           });
         }}
       >
         Setup Revenue Sharing
       </button>
 
-      {revenueShareData && <div data-testid="revenueShareData"></div>}
+      {setupRevenueShareData && <div data-testid="setupRevenueShareData"></div>}
     </>
   );
 }
 
-describe('useRevenueSharing', () => {
+describe('useSetupRevenueSharing', () => {
   it('allows you to setup revenue sharing', async () => {
     render(<Test />);
 
@@ -62,6 +62,6 @@ describe('useRevenueSharing', () => {
     await waitFor(() => screen.getByTestId('deployData'));
 
     screen.getByTestId('setupRevenueSharing').click();
-    await waitFor(() => screen.getByTestId('revenueShareData'));
+    await waitFor(() => screen.getByTestId('setupRevenueShareData'));
   });
 });
