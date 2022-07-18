@@ -1,16 +1,18 @@
 import '@testing-library/jest-dom';
 import { ethers } from 'ethers';
+import React from 'react';
 import {
   useDeploy,
   useMint,
-  useSetupRevenueSharing,
   useRevenueSharingAllocation,
+  useSetupRevenueSharing,
   useWithdrawTokenFunds,
 } from '../src/hooks';
+import { useOpenFormat } from '../src/provider';
 import { render, screen, waitFor } from '../src/utilities';
-import React from 'react';
 
 function Withdraw() {
+  const { sdk } = useOpenFormat();
   const { mint } = useMint();
   const { withdraw, data: withdrawData } = useWithdrawTokenFunds();
 
