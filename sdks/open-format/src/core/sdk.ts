@@ -259,7 +259,7 @@ export class OpenFormatSDK {
   }
 
   /**
-   * Sets the percentages of the primary commission
+   * Sets the percentage of the primary commission
    * @param {{ percent: BigNumberish; }} percent - Percent
    * @returns
    */
