@@ -129,6 +129,30 @@ export async function withdrawCollaboratorFunds({
   return receipt;
 }
 
+export async function getCollaboratorBalance({
+  address,
+  contractAddress,
+  signer,
+}: ContractArgs & { address: string }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const balance = await openFormat.getSingleCollaboratorBalance(address);
+
+  return balance;
+}
+
+export async function getTokenBalance({
+  token,
+  contractAddress,
+  signer,
+}: ContractArgs & { token: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const balance = await openFormat.getSingleTokenBalance(token);
+
+  return balance;
+}
+
 export async function withdrawTokenFunds({
   token,
   contractAddress,
