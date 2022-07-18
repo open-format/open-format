@@ -3,4 +3,4 @@
 "@simpleweb/open-format-react": minor
 ---
 
-Adds a new get a collaborator or token balance functions
+Adds the functionality to get a collaborator or token balance
