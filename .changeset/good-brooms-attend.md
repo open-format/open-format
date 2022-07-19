@@ -3,4 +3,4 @@
 "@simpleweb/open-format-react": minor
 ---
 
-Adds the functionality to get a collaborator or token balance
+Adds the functionality to set the primary commission percentage
