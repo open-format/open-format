@@ -215,6 +215,43 @@ export async function setSecondaryCommissionPercent({
   return receipt;
 }
 
+export async function setTokenSalePrice({
+  tokenId,
+  price,
+  contractAddress,
+  signer,
+}: ContractArgs & { tokenId: BigNumberish; price: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.setTokenSalePrice(tokenId, price);
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
+export async function buyWithCommission({
+  tokenId,
+  address,
+  contractAddress,
+  signer,
+}: ContractArgs & { tokenId: BigNumberish; address: string }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tokenSalePrice = await openFormat.getTokenSalePrice(tokenId);
+  const secondaryCommissionPct = await openFormat.getSecondaryCommissionPct();
+
+  const commission = tokenSalePrice.mul(secondaryCommissionPct).div(10000);
+
+  const tx = await openFormat['buy(uint256,address)'](tokenId, address, {
+    value: tokenSalePrice.add(commission),
+  });
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 /**
  * Deploys a version of the Open Format contract
  * @private

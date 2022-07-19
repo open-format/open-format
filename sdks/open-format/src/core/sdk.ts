@@ -318,6 +318,56 @@ export class OpenFormatSDK {
     });
   }
 
+  async setTokenSalePrice({
+    tokenId,
+    price,
+  }: {
+    tokenId: BigNumberish;
+    price: BigNumberish;
+  }) {
+    invariant(this.signer, 'No signer set, aborting set token sale price');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.setTokenSalePrice({
+      tokenId,
+      price,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
+   * Buy with commission
+   * @param {Object} params
+   * @param {number} params.tokenId - id of the token
+   * @param {number} params.address - Address
+   * @returns
+   */
+  async buyWithCommission({
+    tokenId,
+    address,
+  }: {
+    tokenId: BigNumberish;
+    address: string;
+  }) {
+    invariant(
+      this.signer,
+      'No signer set, aborting set secondary commission percent'
+    );
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.buyWithCommission({
+      tokenId,
+      address,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
   rawRequest = subgraph.rawRequest;
   getSaleDataForToken = subgraph.getSaleDataForToken;
 
