@@ -26,7 +26,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest) --runInBand",
     "lint": "tsdx lint",
     "prepare": "yarn run generate-contract-types && tsdx build",
     "generate-contract-types": "typechain --target ethers-v5 --out-dir src/contract-types '../../node_modules/@simpleweb/open-format-contracts/abis/*.json'",
