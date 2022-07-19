@@ -301,5 +301,7 @@ export async function deploy({
 
   const receipt = await contract.deployTransaction.wait();
 
+  await contract.deployed();
+
   return receipt;
 }
