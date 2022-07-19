@@ -339,6 +339,25 @@ export class OpenFormatSDK {
   }
 
   /**
+   * Buy
+   * @param {Object} params
+   * @param {number} params.tokenId - id of the token
+   * @returns
+   */
+  async buy(tokenId: BigNumberish) {
+    invariant(this.signer, 'No signer set, aborting buy');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.buy({
+      tokenId,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
    * Buy with commission
    * @param {Object} params
    * @param {number} params.tokenId - id of the token
@@ -352,10 +371,7 @@ export class OpenFormatSDK {
     tokenId: BigNumberish;
     address: string;
   }) {
-    invariant(
-      this.signer,
-      'No signer set, aborting set secondary commission percent'
-    );
+    invariant(this.signer, 'No signer set, aborting buy with commission');
     invariant(this.options.contractAddress, 'No contract address set');
 
     await this.checkNetworksMatch();

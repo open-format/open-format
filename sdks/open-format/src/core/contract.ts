@@ -230,6 +230,24 @@ export async function setTokenSalePrice({
   return receipt;
 }
 
+export async function buy({
+  tokenId,
+  contractAddress,
+  signer,
+}: ContractArgs & { tokenId: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tokenSalePrice = await openFormat.getTokenSalePrice(tokenId);
+
+  const tx = await openFormat['buy(uint256)'](tokenId, {
+    value: tokenSalePrice,
+  });
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 export async function buyWithCommission({
   tokenId,
   address,
