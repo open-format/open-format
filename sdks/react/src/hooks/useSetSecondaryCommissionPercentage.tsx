@@ -8,11 +8,11 @@ export function useSetSecondaryCommissionPercentage() {
     mutateAsync: setSecondaryCommissionPercentage,
     ...mutation
   } = useMutation<
-    Awaited<ReturnType<typeof sdk.setSecondaryCommissionPercentage>>,
+    Awaited<ReturnType<typeof sdk.setSecondaryCommissionPercent>>,
     unknown,
-    Parameters<typeof sdk.setSecondaryCommissionPercentage>[0]
+    Parameters<typeof sdk.setSecondaryCommissionPercent>[0]
   >(percent => {
-    return sdk.setSecondaryCommissionPercentage(percent);
+    return sdk.setSecondaryCommissionPercent(percent);
   });
 
   return {

@@ -2,6 +2,7 @@ export * from './useDeploy';
 export * from './useGetCollaboratorBalance';
 export * from './useGetTokenBalance';
 export * from './useMint';
+export * from './useMintWithCommission';
 export * from './useRawRequest';
 export * from './useRevenueSharingAllocation';
 export * from './useSetupRevenueSharing';
