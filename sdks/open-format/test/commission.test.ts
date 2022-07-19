@@ -33,4 +33,12 @@ describe('sdk commission', () => {
 
     expect(receipt?.status).toBe(1);
   });
+
+  it('mints with commission', async () => {
+    const receipt = await sdk?.mintWithCommission(
+      '0xee4abd006630aea6fa3e685c99506db31c09b3f4'
+    );
+
+    expect(receipt?.status).toBe(1);
+  });
 });
