@@ -27,4 +27,10 @@ describe('sdk commission', () => {
 
     expect(receipt?.status).toBe(1);
   });
+
+  it('sets the secondary commission percetnage', async () => {
+    const receipt = await sdk?.setSecondaryCommissionPercent(1000);
+
+    expect(receipt?.status).toBe(1);
+  });
 });

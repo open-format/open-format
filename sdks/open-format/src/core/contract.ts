@@ -181,6 +181,20 @@ export async function setPrimaryCommissionPercent({
   return receipt;
 }
 
+export async function setSecondaryCommissionPercent({
+  percent,
+  contractAddress,
+  signer,
+}: ContractArgs & { percent: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.setSecondaryCommissionPct(percent);
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 /**
  * Deploys a version of the Open Format contract
  * @private

@@ -9,6 +9,7 @@ export * from './useRoyalties';
 export * from './useSaleData';
 export * from './useSetPrimaryCommissionPercentage';
 export * from './useSetRoyalties';
+export * from './useSetSecondaryCommissionPercentage';
 export * from './useTokens';
 export * from './useWallet';
 export * from './useWithdrawCollaboratorFunds';

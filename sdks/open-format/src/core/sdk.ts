@@ -264,12 +264,36 @@ export class OpenFormatSDK {
    * @returns
    */
   async setPrimaryCommissionPercent(percent: BigNumberish) {
-    invariant(this.signer, 'No signer set, aborting withdrawl of token funds');
+    invariant(
+      this.signer,
+      'No signer set, aborting set primary commission percent'
+    );
     invariant(this.options.contractAddress, 'No contract address set');
 
     await this.checkNetworksMatch();
 
     return contract.setPrimaryCommissionPercent({
+      percent,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
+  /**
+   * Sets the percentages of the secondary commission
+   * @param {{ percent: BigNumberish; }} percent - Percent
+   * @returns
+   */
+  async setSecondaryCommissionPercent(percent: BigNumberish) {
+    invariant(
+      this.signer,
+      'No signer set, aborting set secondary commission percent'
+    );
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.setSecondaryCommissionPercent({
       percent,
       contractAddress: this.options.contractAddress,
       signer: this.signer,
