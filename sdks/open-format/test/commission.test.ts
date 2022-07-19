@@ -41,4 +41,17 @@ describe('sdk commission', () => {
 
     expect(receipt?.status).toBe(1);
   });
+
+  it('buy with commission', async () => {
+    await sdk?.mintWithCommission('0xee4abd006630aea6fa3e685c99506db31c09b3f4');
+
+    await sdk?.setTokenSalePrice({ tokenId: 0, price: 1000 });
+
+    const receipt = await sdk?.buyWithCommission({
+      tokenId: 0,
+      address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
+    });
+
+    expect(receipt?.status).toBe(1);
+  });
 });

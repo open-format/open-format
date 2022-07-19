@@ -318,6 +318,26 @@ export class OpenFormatSDK {
     });
   }
 
+  async setTokenSalePrice({
+    tokenId,
+    price,
+  }: {
+    tokenId: BigNumberish;
+    price: BigNumberish;
+  }) {
+    invariant(this.signer, 'No signer set, aborting set token sale price');
+    invariant(this.options.contractAddress, 'No contract address set');
+
+    await this.checkNetworksMatch();
+
+    return contract.setTokenSalePrice({
+      tokenId,
+      price,
+      contractAddress: this.options.contractAddress,
+      signer: this.signer,
+    });
+  }
+
   /**
    * Buy with commission
    * @param {Object} params
