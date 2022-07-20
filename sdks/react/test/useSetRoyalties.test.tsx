@@ -1,30 +1,13 @@
-import React from 'react';
 import '@testing-library/jest-dom';
-import { useDeploy, useSetRoyalties } from '../src/hooks';
-import { render, screen, waitFor } from '../src/utilities';
+import React from 'react';
+import { useNFT, useSetRoyalties } from '../src/hooks';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-  const { setRoyalties, data: royaltyData } = useSetRoyalties();
-
+function SetRoyalties({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { setRoyalties, data: royaltyData } = useSetRoyalties(nft);
   return (
     <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-      {deployData && <div data-testid="deployData"></div>}
-
       <button
         data-testid="setRoyalties"
         onClick={() => {
@@ -45,12 +28,15 @@ function Test() {
 
 describe('useSetRoyalties', () => {
   it('allows you to set royalties', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>
+        {({ address }) => <SetRoyalties address={address} />}
+      </DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const set = await waitFor(() => screen.getByTestId('setRoyalties'));
 
-    screen.getByTestId('setRoyalties').click();
+    set.click();
     await waitFor(() => screen.getByTestId('status'));
 
     expect(screen.getByTestId('status').innerHTML).toBe('1');

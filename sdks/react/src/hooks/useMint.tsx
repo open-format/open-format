@@ -1,4 +1,4 @@
-import { OpenFormatNFT } from '@simpleweb/open-format/dist/core/nft';
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
 
 export function useMint(nft: OpenFormatNFT) {

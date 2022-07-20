@@ -1,16 +1,18 @@
 import '@testing-library/jest-dom';
-import {
-  useDeploy,
-  useMintWithCommission,
-  useSetTokenSalePrice,
-  useBuyWithCommission,
-} from '../src/hooks';
-import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
+import {
+  useBuyWithCommission,
+  useMintWithCommission,
+  useNFT,
+  useSetTokenSalePrice,
+} from '../src/hooks';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
-function Buy() {
-  const { setTokenSalePrice } = useSetTokenSalePrice();
-  const { buyWithCommission, data } = useBuyWithCommission();
+function Buy({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { setTokenSalePrice } = useSetTokenSalePrice(nft);
+  const { buyWithCommission, data: buyData } = useBuyWithCommission(nft);
+  const { mintWithCommission, data: mintData } = useMintWithCommission(nft);
 
   const onBuy = async () => {
     await setTokenSalePrice({ tokenId: 0, price: 1000 });
@@ -23,36 +25,6 @@ function Buy() {
 
   return (
     <>
-      <button data-testid="buy" onClick={onBuy}>
-        Buy With Commission
-      </button>
-      {data && <span data-testid="buyData"></span>}
-    </>
-  );
-}
-
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-  const { mintWithCommission, data } = useMintWithCommission();
-
-  return (
-    <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-      {deployData && <div data-testid="deployData"></div>}
-
       <button
         data-testid="mint"
         onClick={() =>
@@ -61,24 +33,26 @@ function Test() {
       >
         Mint With Commission
       </button>
-      {data && (
-        <>
-          <span data-testid="mintData"></span>
-          <Buy />
-        </>
-      )}
+
+      <button data-testid="buy" onClick={onBuy}>
+        Buy With Commission
+      </button>
+
+      {mintData && <span data-testid="mintData"></span>}
+      {buyData && <span data-testid="buyData"></span>}
     </>
   );
 }
 
 describe('useBuyWithCommission', () => {
   it('allows you to buy with commission', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>{({ address }) => <Buy address={address} />}</DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const mintButton = await waitFor(() => screen.getByTestId('mint'));
 
-    screen.getByTestId('mint').click();
+    mintButton.click();
     await waitFor(() => screen.getByTestId('mintData'));
 
     screen.getByTestId('buy').click();

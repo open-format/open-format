@@ -1,15 +1,13 @@
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
-import { useOpenFormat } from '../provider';
 
-export function useSetupRevenueSharing() {
-  const { sdk } = useOpenFormat();
-
+export function useSetupRevenueSharing(nft: OpenFormatNFT) {
   const { mutateAsync: setup, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.setupRevenueSharing>>,
+    Awaited<ReturnType<typeof nft.setupRevenueSharing>>,
     unknown,
-    Parameters<typeof sdk.setupRevenueSharing>[0]
+    Parameters<typeof nft.setupRevenueSharing>[0]
   >(params => {
-    return sdk.setupRevenueSharing(params);
+    return nft.setupRevenueSharing(params);
   });
 
   return {

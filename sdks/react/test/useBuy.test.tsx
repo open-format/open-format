@@ -1,19 +1,13 @@
 import '@testing-library/jest-dom';
-import {
-  useDeploy,
-  useMint,
-  useSetTokenSalePrice,
-  useBuy,
-  useNFT,
-} from '../src/hooks';
-import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
+import { useBuy, useMint, useNFT, useSetTokenSalePrice } from '../src/hooks';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
 function Buy({ address }: { address: string }) {
   const nft = useNFT(address);
   const { mint, data: mintData } = useMint(nft);
-  const { setTokenSalePrice } = useSetTokenSalePrice();
-  const { buy, data } = useBuy();
+  const { setTokenSalePrice } = useSetTokenSalePrice(nft);
+  const { buy, data } = useBuy(nft);
 
   const onBuy = async () => {
     await setTokenSalePrice({ tokenId: 0, price: 1000 });
@@ -41,44 +35,15 @@ function Buy({ address }: { address: string }) {
   );
 }
 
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-
-  return (
-    <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-      {deployData && <div data-testid="deployData"></div>}
-
-      {deployData && (
-        <>
-          <Buy address={deployData.contractAddress} />
-        </>
-      )}
-    </>
-  );
-}
-
 describe('useBuy', () => {
   it('allows you to buy', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>{({ address }) => <Buy address={address} />}</DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const mintButton = await waitFor(() => screen.getByTestId('mint'));
 
-    screen.getByTestId('mint').click();
+    mintButton.click();
     await waitFor(() => screen.getByTestId('mintData'));
 
     screen.getByTestId('buy').click();

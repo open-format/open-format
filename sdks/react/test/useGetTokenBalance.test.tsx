@@ -2,24 +2,22 @@ import '@testing-library/jest-dom';
 import { ethers } from 'ethers';
 import React from 'react';
 import {
-  useDeploy,
+  useGetTokenBalance,
   useMint,
+  useNFT,
   useRevenueSharingAllocation,
   useSetupRevenueSharing,
-  useGetTokenBalance,
-  useNFT,
 } from '../src/hooks';
-import { useOpenFormat } from '../src/provider';
-import { render, screen, waitFor } from '../src/utilities';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
-function Balance() {
-  const { data: balanceData } = useGetTokenBalance(0);
+function Balance({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { data: balanceData } = useGetTokenBalance(nft, 0);
 
   return <>{balanceData && <span data-testid="balance"></span>}</>;
 }
 
 function Transact({ address }: { address: string }) {
-  const { sdk } = useOpenFormat();
   const nft = useNFT(address);
   const { mint } = useMint(nft);
   const [complete, setCompletion] = React.useState(false);
@@ -33,7 +31,7 @@ function Transact({ address }: { address: string }) {
     await mint();
 
     await account.sendTransaction({
-      to: sdk.options.contractAddress,
+      to: nft.address,
       value: '500',
     });
 
@@ -45,10 +43,11 @@ function Transact({ address }: { address: string }) {
       <button data-testid="transact" onClick={onTransact}>
         Transact
       </button>
+
       {complete && (
         <>
           <span data-testid="transacted"></span>
-          <Balance />
+          <Balance address={address} />
         </>
       )}
     </>
@@ -56,10 +55,37 @@ function Transact({ address }: { address: string }) {
 }
 
 function Allocation({ address }: { address: string }) {
-  const { allocate, data: allocationData } = useRevenueSharingAllocation();
+  const nft = useNFT(address);
+  const { setup, data: revenueShareData } = useSetupRevenueSharing(nft);
+  const { allocate, data: allocationData } = useRevenueSharingAllocation(nft);
 
   return (
     <>
+      <button
+        data-testid="setupRevenueSharing"
+        onClick={() => {
+          setup({
+            revShareExtensionAddress:
+              '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
+            collaborators: [
+              {
+                address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
+                share: 1000,
+              },
+              {
+                address: '0x21b2be9090d1d319e57b67c4b5d37bc5ec29a9d0',
+                share: 1000,
+              },
+            ],
+            holderPercentage: 5000,
+          });
+        }}
+      >
+        Setup Revenue Sharing
+      </button>
+
+      {revenueShareData && <div data-testid="revenueShareData"></div>}
+
       <button
         data-testid="allocate"
         onClick={() =>
@@ -87,75 +113,25 @@ function Allocation({ address }: { address: string }) {
   );
 }
 
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-  const { setup, data: revenueShareData } = useSetupRevenueSharing();
-
-  return (
-    <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-
-      {deployData && <div data-testid="deployData"></div>}
-
-      <button
-        data-testid="setupRevenueSharing"
-        onClick={() => {
-          setup({
-            revShareExtensionAddress:
-              '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
-            collaborators: [
-              {
-                address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
-                share: 1000,
-              },
-              {
-                address: '0x21b2be9090d1d319e57b67c4b5d37bc5ec29a9d0',
-                share: 1000,
-              },
-            ],
-            holderPercentage: 5000,
-          });
-        }}
-      >
-        Setup Revenue Sharing
-      </button>
-
-      {revenueShareData && deployData && (
-        <>
-          <div data-testid="revenueShareData"></div>
-          <Allocation address={deployData.contractAddress} />
-        </>
-      )}
-    </>
-  );
-}
-
 describe('useGetTokenBalance', () => {
   it('allows you to get the balance of a token', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>
+        {({ address }) => <Allocation address={address} />}
+      </DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const setupButton = await waitFor(() =>
+      screen.getByTestId('setupRevenueSharing')
+    );
 
-    screen.getByTestId('setupRevenueSharing').click();
+    setupButton.click();
     await waitFor(() => screen.getByTestId('revenueShareData'));
 
     screen.getByTestId('allocate').click();
     await waitFor(() => screen.getByTestId('allocation'));
 
+    // @TODO this test seems to get stuck here, regardless of the refactor, needs investigating
     screen.getByTestId('transact').click();
     await waitFor(() => screen.getByTestId('transacted'));
 

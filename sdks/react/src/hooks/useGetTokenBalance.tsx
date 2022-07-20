@@ -1,17 +1,15 @@
-import { useQuery } from 'react-query';
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { BigNumberish } from 'ethers';
-import { useOpenFormat } from '../provider';
+import { useQuery } from 'react-query';
 
 /**
  * Hook to get balance for a token
  * @param {{ token: BigNumberish }} token - Token ID
  * @returns BigNumber
  */
-export function useGetTokenBalance(token: BigNumberish) {
-  const { sdk } = useOpenFormat();
-
+export function useGetTokenBalance(nft: OpenFormatNFT, token: BigNumberish) {
   const query = useQuery(['getTokenBalance', token], () =>
-    sdk.getTokenBalance(token)
+    nft.getTokenBalance(token)
   );
 
   return query;

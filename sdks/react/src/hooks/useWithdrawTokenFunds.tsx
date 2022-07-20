@@ -1,15 +1,13 @@
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
-import { useOpenFormat } from '../provider';
 
-export function useWithdrawTokenFunds() {
-  const { sdk } = useOpenFormat();
-
+export function useWithdrawTokenFunds(nft: OpenFormatNFT) {
   const { mutateAsync: withdraw, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.withdrawTokenFunds>>,
+    Awaited<ReturnType<typeof nft.withdrawTokenFunds>>,
     unknown,
-    Parameters<typeof sdk.withdrawTokenFunds>[0]
+    Parameters<typeof nft.withdrawTokenFunds>[0]
   >(params => {
-    return sdk.withdrawTokenFunds(params);
+    return nft.withdrawTokenFunds(params);
   });
 
   return {

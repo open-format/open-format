@@ -2,21 +2,18 @@ import '@testing-library/jest-dom';
 import { ethers } from 'ethers';
 import React from 'react';
 import {
-  useDeploy,
   useMint,
   useNFT,
   useRevenueSharingAllocation,
   useSetupRevenueSharing,
   useWithdrawTokenFunds,
 } from '../src/hooks';
-import { useOpenFormat } from '../src/provider';
-import { render, screen, waitFor } from '../src/utilities';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
 function Withdraw({ address }: { address: string }) {
-  const { sdk } = useOpenFormat();
   const nft = useNFT(address);
   const { mint } = useMint(nft);
-  const { withdraw, data: withdrawData } = useWithdrawTokenFunds();
+  const { withdraw, data: withdrawData } = useWithdrawTokenFunds(nft);
 
   const account = new ethers.Wallet(
     '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
@@ -27,7 +24,7 @@ function Withdraw({ address }: { address: string }) {
     await mint();
 
     await account.sendTransaction({
-      to: sdk.options.contractAddress,
+      to: nft.address,
       value: '500',
     });
 
@@ -45,7 +42,8 @@ function Withdraw({ address }: { address: string }) {
 }
 
 function Allocation({ address }: { address: string }) {
-  const { allocate, data: allocationData } = useRevenueSharingAllocation();
+  const nft = useNFT(address);
+  const { allocate, data: allocationData } = useRevenueSharingAllocation(nft);
 
   return (
     <>
@@ -76,29 +74,12 @@ function Allocation({ address }: { address: string }) {
   );
 }
 
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-  const { setup, data: revenueShareData } = useSetupRevenueSharing();
+function Setup({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { setup, data: revenueShareData } = useSetupRevenueSharing(nft);
 
   return (
     <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-
-      {deployData && <div data-testid="deployData"></div>}
-
       <button
         data-testid="setupRevenueSharing"
         onClick={() => {
@@ -122,10 +103,10 @@ function Test() {
         Setup Revenue Sharing
       </button>
 
-      {revenueShareData && deployData && (
+      {revenueShareData && (
         <>
           <div data-testid="revenueShareData"></div>
-          <Allocation address={deployData.contractAddress} />
+          <Allocation address={address} />
         </>
       )}
     </>
@@ -134,12 +115,18 @@ function Test() {
 
 describe('useRevenueSharingAllocation', () => {
   it('allows you to allocate shares', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>
+        {({ address }) => <Setup address={address} />}
+      </DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const setup = await waitFor(() =>
+      screen.getByTestId('setupRevenueSharing')
+    );
 
-    screen.getByTestId('setupRevenueSharing').click();
+    setup.click();
+    // @TODO gets stuck here
     await waitFor(() => screen.getByTestId('revenueShareData'));
 
     screen.getByTestId('allocate').click();

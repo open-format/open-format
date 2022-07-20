@@ -1,10 +1,11 @@
 import '@testing-library/jest-dom';
-import { useDeploy, useRoyalties, useSetRoyalties } from '../src/hooks';
-import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
+import { useNFT, useRoyalties, useSetRoyalties } from '../src/hooks';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
-function Royalties() {
-  const { data: royaltiesData } = useRoyalties({ salePrice: 500 });
+function GetRoyalties({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { data: royaltiesData } = useRoyalties(nft, 500);
 
   return (
     <>
@@ -13,28 +14,12 @@ function Royalties() {
   );
 }
 
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-  const { setRoyalties, data: royaltyData } = useSetRoyalties();
+function Royalties({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { setRoyalties, data: royaltyData } = useSetRoyalties(nft);
 
   return (
     <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-      {deployData && <div data-testid="deployData"></div>}
-
       <button
         data-testid="setRoyalties"
         onClick={() => {
@@ -50,8 +35,8 @@ function Test() {
 
       {royaltyData && (
         <>
-          <span data-testid="status">{royaltyData.status}</span>
-          <Royalties />
+          <span data-testid="status">{royaltyData.status}</span>{' '}
+          <GetRoyalties address={address} />
         </>
       )}
     </>
@@ -60,12 +45,15 @@ function Test() {
 
 describe('useRoyalties', () => {
   it('allows you to get royalties', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>
+        {({ address }) => <Royalties address={address} />}
+      </DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const royalties = await waitFor(() => screen.getByTestId('setRoyalties'));
 
-    screen.getByTestId('setRoyalties').click();
+    royalties.click();
     await waitFor(() => screen.getByTestId('status'));
 
     await waitFor(() => screen.getByTestId('royalties'));

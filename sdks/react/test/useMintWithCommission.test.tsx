@@ -1,30 +1,14 @@
 import '@testing-library/jest-dom';
-import { useDeploy, useMintWithCommission } from '../src/hooks';
-import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
+import { useMintWithCommission, useNFT } from '../src/hooks';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-  const { mintWithCommission, data } = useMintWithCommission();
+function MintCommission({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { mintWithCommission, data } = useMintWithCommission(nft);
 
   return (
     <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-      {deployData && <div data-testid="deployData"></div>}
-
       <button
         data-testid="mint"
         onClick={() =>
@@ -40,12 +24,14 @@ function Test() {
 
 describe('useMintWithCommission', () => {
   it('allows you to mint with commission', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>
+        {({ address }) => <MintCommission address={address} />}
+      </DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
-
-    screen.getByTestId('mint').click();
+    const mint = await waitFor(() => screen.getByTestId('mint'));
+    mint.click();
     await waitFor(() => screen.getByTestId('mintData'));
   });
 });

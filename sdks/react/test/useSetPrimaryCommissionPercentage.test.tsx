@@ -1,33 +1,17 @@
-import React from 'react';
 import '@testing-library/jest-dom';
-import { useDeploy, useSetPrimaryCommissionPercentage } from '../src/hooks';
-import { render, screen, waitFor } from '../src/utilities';
+import React from 'react';
+import { useNFT, useSetPrimaryCommissionPercentage } from '../src/hooks';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
+function SetCommission({ address }: { address: string }) {
+  const nft = useNFT(address);
   const {
     setPrimaryCommissionPercent,
     data: primaryCommissionData,
-  } = useSetPrimaryCommissionPercentage();
+  } = useSetPrimaryCommissionPercentage(nft);
 
   return (
     <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-      {deployData && <div data-testid="deployData"></div>}
-
       <button
         data-testid="setPrimaryCommissionPercent"
         onClick={() => {
@@ -46,12 +30,17 @@ function Test() {
 
 describe('useSetPrimaryCommissionPercentage', () => {
   it('allows you to set primary commission percentage', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>
+        {({ address }) => <SetCommission address={address} />}
+      </DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const set = await waitFor(() =>
+      screen.getByTestId('setPrimaryCommissionPercent')
+    );
 
-    screen.getByTestId('setPrimaryCommissionPercent').click();
+    set.click();
     await waitFor(() => screen.getByTestId('status'));
 
     expect(screen.getByTestId('status').innerHTML).toBe('1');
