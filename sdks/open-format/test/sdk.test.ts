@@ -16,18 +16,6 @@ describe('sdk', () => {
     expect(network.chainId).toBe(80001);
   });
 
-  it('sets a contract address when one is passed', () => {
-    const sdk = new OpenFormatSDK({
-      network: 'mainnet',
-      contractAddress:
-        '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7',
-    });
-
-    expect(sdk.options.contractAddress).toBe(
-      '0xc27786e23ac741aceef158731965a6285f350e114952201baad6149c18d735e7'
-    );
-  });
-
   it('will create a signer when a private key is passed as the signer option with a given network', async () => {
     const sdk = new OpenFormatSDK({
       network: 'mumbai',

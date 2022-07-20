@@ -29,9 +29,9 @@ describe('sdk buy', () => {
   });
 
   it('buy', async () => {
-    await sdk?.setTokenSalePrice({ tokenId: 0, price: 1000 });
+    await nft.setTokenSalePrice({ tokenId: 0, price: 1000 });
 
-    const receipt = await sdk?.buy(0);
+    const receipt = await nft.buy(0);
 
     expect(receipt?.status).toBe(1);
   });

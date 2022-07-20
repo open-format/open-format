@@ -4,7 +4,6 @@ export interface SDKOptions {
   network: Chain;
   signer?: Signer | string;
   factory?: string;
-  contractAddress?: string;
 }
 
 export type Chain = 'mainnet' | 'mumbai' | 'localhost' | (string & {});
