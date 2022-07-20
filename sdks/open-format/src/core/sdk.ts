@@ -56,9 +56,7 @@ export class OpenFormatSDK extends BaseContract {
    * @returns transaction
    */
   async deploy(nft: NFTMetadata) {
-    if (!this.signer) {
-      throw new Error('No signer set, aborting deploy');
-    }
+    invariant(this.signer, 'No signer set, cannot deploy');
 
     await this.checkNetworksMatch();
 
