@@ -7,6 +7,7 @@ import {
 } from '../helpers/providers';
 import { NFTMetadata, SDKOptions } from '../types';
 import * as contract from './contract';
+import { OpenFormatNFT } from './nft';
 import * as subgraph from './subgraph';
 
 function invariant(condition: any, message: string): asserts condition {
@@ -21,10 +22,8 @@ function invariant(condition: any, message: string): asserts condition {
  */
 export class OpenFormatSDK {
   options: SDKOptions;
-
   provider: providers.Provider;
-
-  signer?: Signer;
+  signer: Signer | undefined;
 
   static defaultOptions: SDKOptions = {
     network: 'http://localhost:8545',
@@ -69,19 +68,13 @@ export class OpenFormatSDK {
   }
 
   /**
-   * Mints an NFT on a contract address
-   * @returns transaction
+   * Returns a new instance of an OpenFormatNFT
+   * @param {string} address - Address of a deployed Open Format contract
+   * @returns OpenFormatNFT
    */
-  async mint() {
-    invariant(this.signer, 'No signer set, aborting mint');
-    invariant(this.options.contractAddress, 'No contract address set');
-
-    await this.checkNetworksMatch();
-
-    return contract.mint({
-      contractAddress: this.options.contractAddress,
-      signer: this.signer,
-    });
+  getNFT(address: string) {
+    invariant(this.signer, 'No signer set, cannot get NFT');
+    return new OpenFormatNFT(address, this.provider, this.signer);
   }
 
   /**
