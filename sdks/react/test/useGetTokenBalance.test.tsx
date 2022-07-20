@@ -7,6 +7,7 @@ import {
   useRevenueSharingAllocation,
   useSetupRevenueSharing,
   useGetTokenBalance,
+  useNFT,
 } from '../src/hooks';
 import { useOpenFormat } from '../src/provider';
 import { render, screen, waitFor } from '../src/utilities';
@@ -17,9 +18,10 @@ function Balance() {
   return <>{balanceData && <span data-testid="balance"></span>}</>;
 }
 
-function Transact() {
+function Transact({ address }: { address: string }) {
   const { sdk } = useOpenFormat();
-  const { mint } = useMint();
+  const nft = useNFT(address);
+  const { mint } = useMint(nft);
   const [complete, setCompletion] = React.useState(false);
 
   const account = new ethers.Wallet(
@@ -53,7 +55,7 @@ function Transact() {
   );
 }
 
-function Allocation() {
+function Allocation({ address }: { address: string }) {
   const { allocate, data: allocationData } = useRevenueSharingAllocation();
 
   return (
@@ -78,7 +80,7 @@ function Allocation() {
       {allocationData && (
         <>
           <span data-testid="allocation"></span>
-          <Transact />
+          <Transact address={address} />
         </>
       )}
     </>
@@ -131,10 +133,10 @@ function Test() {
         Setup Revenue Sharing
       </button>
 
-      {revenueShareData && (
+      {revenueShareData && deployData && (
         <>
           <div data-testid="revenueShareData"></div>
-          <Allocation />
+          <Allocation address={deployData.contractAddress} />
         </>
       )}
     </>

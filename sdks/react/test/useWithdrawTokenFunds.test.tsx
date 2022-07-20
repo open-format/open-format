@@ -4,6 +4,7 @@ import React from 'react';
 import {
   useDeploy,
   useMint,
+  useNFT,
   useRevenueSharingAllocation,
   useSetupRevenueSharing,
   useWithdrawTokenFunds,
@@ -11,9 +12,10 @@ import {
 import { useOpenFormat } from '../src/provider';
 import { render, screen, waitFor } from '../src/utilities';
 
-function Withdraw() {
+function Withdraw({ address }: { address: string }) {
   const { sdk } = useOpenFormat();
-  const { mint } = useMint();
+  const nft = useNFT(address);
+  const { mint } = useMint(nft);
   const { withdraw, data: withdrawData } = useWithdrawTokenFunds();
 
   const account = new ethers.Wallet(
@@ -42,7 +44,7 @@ function Withdraw() {
   );
 }
 
-function Allocation() {
+function Allocation({ address }: { address: string }) {
   const { allocate, data: allocationData } = useRevenueSharingAllocation();
 
   return (
@@ -67,7 +69,7 @@ function Allocation() {
       {allocationData && (
         <>
           <span data-testid="allocation"></span>
-          <Withdraw />
+          <Withdraw address={address} />
         </>
       )}
     </>
@@ -120,10 +122,10 @@ function Test() {
         Setup Revenue Sharing
       </button>
 
-      {revenueShareData && (
+      {revenueShareData && deployData && (
         <>
           <div data-testid="revenueShareData"></div>
-          <Allocation />
+          <Allocation address={deployData.contractAddress} />
         </>
       )}
     </>

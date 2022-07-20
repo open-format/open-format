@@ -5,12 +5,14 @@ import {
   useSetupRevenueSharing,
   useRevenueSharingAllocation,
   useWithdrawCollaboratorFunds,
+  useNFT,
 } from '../src/hooks';
 import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
 
-function Withdraw() {
-  const { mint } = useMint();
+function Withdraw({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { mint } = useMint(nft);
   const { withdraw, data: withdrawData } = useWithdrawCollaboratorFunds();
 
   const onWithdraw = async () => {
@@ -28,7 +30,7 @@ function Withdraw() {
   );
 }
 
-function Allocation() {
+function Allocation({ address }: { address: string }) {
   const { allocate, data: allocationData } = useRevenueSharingAllocation();
 
   return (
@@ -53,7 +55,7 @@ function Allocation() {
       {allocationData && (
         <>
           <span data-testid="allocation"></span>
-          <Withdraw />
+          <Withdraw address={address} />
         </>
       )}
     </>
@@ -106,10 +108,10 @@ function Test() {
         Setup Revenue Sharing
       </button>
 
-      {revenueShareData && (
+      {revenueShareData && deployData && (
         <>
           <div data-testid="revenueShareData"></div>
-          <Allocation />
+          <Allocation address={deployData.contractAddress} />
         </>
       )}
     </>

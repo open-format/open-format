@@ -1,9 +1,17 @@
 import '@testing-library/jest-dom';
-import { useDeploy, useMint, useSetTokenSalePrice, useBuy } from '../src/hooks';
+import {
+  useDeploy,
+  useMint,
+  useSetTokenSalePrice,
+  useBuy,
+  useNFT,
+} from '../src/hooks';
 import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
 
-function Buy() {
+function Buy({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { mint, data: mintData } = useMint(nft);
   const { setTokenSalePrice } = useSetTokenSalePrice();
   const { buy, data } = useBuy();
 
@@ -15,9 +23,19 @@ function Buy() {
 
   return (
     <>
-      <button data-testid="buy" onClick={onBuy}>
-        Buy
+      <button data-testid="mint" onClick={() => mint()}>
+        Mint
       </button>
+
+      {mintData && (
+        <>
+          <span data-testid="mintData"></span>
+          <button data-testid="buy" onClick={onBuy}>
+            Buy
+          </button>
+        </>
+      )}
+
       {data && <span data-testid="buyData"></span>}
     </>
   );
@@ -25,7 +43,6 @@ function Buy() {
 
 function Test() {
   const { deploy, data: deployData } = useDeploy();
-  const { mint, data } = useMint();
 
   return (
     <>
@@ -45,13 +62,9 @@ function Test() {
       </button>
       {deployData && <div data-testid="deployData"></div>}
 
-      <button data-testid="mint" onClick={() => mint()}>
-        Mint
-      </button>
-      {data && (
+      {deployData && (
         <>
-          <span data-testid="mintData"></span>
-          <Buy />
+          <Buy address={deployData.contractAddress} />
         </>
       )}
     </>

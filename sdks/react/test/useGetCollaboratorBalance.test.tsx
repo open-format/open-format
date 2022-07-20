@@ -5,6 +5,7 @@ import {
   useSetupRevenueSharing,
   useRevenueSharingAllocation,
   useGetCollaboratorBalance,
+  useNFT,
 } from '../src/hooks';
 import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
@@ -17,8 +18,9 @@ function Balance() {
   return <>{balanceData && <span data-testid="balance"></span>}</>;
 }
 
-function Mint() {
-  const { mint } = useMint();
+function Mint({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { mint } = useMint(nft);
   const [complete, setCompletion] = React.useState(false);
 
   const onMint = async () => {
@@ -41,7 +43,7 @@ function Mint() {
   );
 }
 
-function Allocation() {
+function Allocation({ address }: { address: string }) {
   const { allocate, data: allocationData } = useRevenueSharingAllocation();
 
   return (
@@ -66,7 +68,7 @@ function Allocation() {
       {allocationData && (
         <>
           <span data-testid="allocation"></span>
-          <Mint />
+          <Mint address={address} />
         </>
       )}
     </>
@@ -119,10 +121,10 @@ function Test() {
         Setup Revenue Sharing
       </button>
 
-      {revenueShareData && (
+      {revenueShareData && deployData && (
         <>
           <div data-testid="revenueShareData"></div>
-          <Allocation />
+          <Allocation address={deployData.contractAddress} />
         </>
       )}
     </>
