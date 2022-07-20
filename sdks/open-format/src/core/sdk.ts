@@ -1,4 +1,4 @@
-import { providers, BigNumberish, Signer } from 'ethers';
+import { BigNumberish } from 'ethers';
 import merge from 'lodash.merge';
 import {
   getProviderFromUrl,
@@ -6,6 +6,7 @@ import {
   getSigner,
 } from '../helpers/providers';
 import { NFTMetadata, SDKOptions } from '../types';
+import { BaseContract } from './base';
 import * as contract from './contract';
 import { OpenFormatNFT } from './nft';
 import * as subgraph from './subgraph';
@@ -20,16 +21,20 @@ function invariant(condition: any, message: string): asserts condition {
  * Creates a new instance of the Open Format SDK
  * @public
  */
-export class OpenFormatSDK {
+export class OpenFormatSDK extends BaseContract {
   options: SDKOptions;
-  provider: providers.Provider;
-  signer: Signer | undefined;
 
   static defaultOptions: SDKOptions = {
     network: 'http://localhost:8545',
   };
 
   constructor(options?: SDKOptions) {
+    super(
+      getProviderFromUrl(
+        merge({}, OpenFormatSDK.defaultOptions, options).network
+      )
+    );
+
     this.options = merge({}, OpenFormatSDK.defaultOptions, options);
 
     const providerUrl = getProviderUrl(this.options.network);
@@ -389,20 +394,5 @@ export class OpenFormatSDK {
   getTokens() {
     invariant(typeof this.options.factory === 'string', 'Factory ID not set');
     return subgraph.getTokens({ factoryId: this.options.factory });
-  }
-
-  /**
-   * Throws an error if the current signer and provider's networks differ
-   * @private
-   */
-  private async checkNetworksMatch() {
-    if (this.signer) {
-      const signerNetwork = await this.signer.provider?.getNetwork();
-      const providerNetwork = await this.provider.getNetwork();
-
-      if (signerNetwork?.chainId !== providerNetwork.chainId) {
-        throw new Error(`Chains don't match`);
-      }
-    }
   }
 }
