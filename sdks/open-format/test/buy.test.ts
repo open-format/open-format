@@ -1,8 +1,10 @@
 import { ethers } from 'ethers';
+import { OpenFormatNFT } from '../src/core/nft';
 import { OpenFormatSDK } from '../src/index';
 
 describe('sdk buy', () => {
   let sdk: null | OpenFormatSDK = null;
+  let nft: OpenFormatNFT;
 
   beforeEach(async () => {
     sdk = new OpenFormatSDK({
@@ -13,7 +15,7 @@ describe('sdk buy', () => {
       ),
     });
 
-    await sdk.deploy({
+    const { contractAddress } = await sdk.deploy({
       maxSupply: 100,
       mintingPrice: 0.01,
       name: 'Test',
@@ -21,7 +23,9 @@ describe('sdk buy', () => {
       url: 'ipfs://',
     });
 
-    await sdk?.mint();
+    nft = sdk.getNFT(contractAddress);
+
+    await nft.mint();
   });
 
   it('buy', async () => {

@@ -1,8 +1,10 @@
 import { BigNumber, ethers } from 'ethers';
+import { OpenFormatNFT } from '../src/core/nft';
 import { OpenFormatSDK } from '../src/index';
 
 describe('sdk revenue', () => {
   let sdk: null | OpenFormatSDK = null;
+  let nft: OpenFormatNFT;
 
   beforeEach(async () => {
     sdk = new OpenFormatSDK({
@@ -13,13 +15,15 @@ describe('sdk revenue', () => {
       ),
     });
 
-    await sdk.deploy({
+    const { contractAddress } = await sdk.deploy({
       maxSupply: 100,
       mintingPrice: 0.01,
       name: 'Test',
       symbol: 'TEST',
       url: 'ipfs://',
     });
+
+    nft = sdk.getNFT(contractAddress);
   });
 
   it('sets up revenue sharing', async () => {
@@ -98,7 +102,7 @@ describe('sdk revenue', () => {
       },
     ]);
 
-    await sdk?.mint();
+    await nft.mint();
 
     const receipt = await sdk?.getCollaboratorBalance(
       '0xee4abd006630aea6fa3e685c99506db31c09b3f4'
@@ -134,7 +138,7 @@ describe('sdk revenue', () => {
       },
     ]);
 
-    await sdk?.mint();
+    await nft.mint();
 
     const receipt = await sdk?.withdrawCollaboratorFunds(
       '0xee4abd006630aea6fa3e685c99506db31c09b3f4'
@@ -175,7 +179,7 @@ describe('sdk revenue', () => {
       },
     ]);
 
-    await sdk?.mint();
+    await nft.mint();
 
     await account.sendTransaction({
       to: sdk?.options.contractAddress,
@@ -219,7 +223,7 @@ describe('sdk revenue', () => {
       },
     ]);
 
-    await sdk?.mint();
+    await nft.mint();
 
     await account.sendTransaction({
       to: sdk?.options.contractAddress,
