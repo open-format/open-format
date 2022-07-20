@@ -70,6 +70,7 @@ function MyComponent() {
   return <>{data && <pre>{JSON.stringify(data, null, 2)}</pre>}</>;
 }
 ```
+
 #### Request Configuration
 
 [react-query](https://react-query.tanstack.com) is being used under the hood to make the request, and it is possible to pass through configuration options.
@@ -145,16 +146,15 @@ function MyComponent() {
 Once you have deployed a contract you can then mint NFTs from it. The `contractAddress` can be accessed when deploying a contract `const { contractAddress } = await deploy()`.
 
 ```tsx
-import { useMint } from '@simpleweb/open-format-react';
+import { useMint, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const { mint } = useMint();
+  const nft = useNFT('0x...');
+  const { mint } = useMint(nft);
 
   return (
     <>
-      <button onClick={() => mint({ contractAddress: '0x...' })}>
-        Mint NFT
-      </button>
+      <button onClick={() => mint()}>Mint NFT</button>
     </>
   );
 }
