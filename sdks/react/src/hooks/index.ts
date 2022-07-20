@@ -5,6 +5,7 @@ export * from './useGetCollaboratorBalance';
 export * from './useGetTokenBalance';
 export * from './useMint';
 export * from './useMintWithCommission';
+export * from './useNFT';
 export * from './useRawRequest';
 export * from './useRevenueSharingAllocation';
 export * from './useRoyalties';
