@@ -1,5 +1,8 @@
 import { providers, Signer } from 'ethers';
 
+/**
+ * Creates a new instance of the BaseContract which manages the provider and signer
+ */
 export class BaseContract {
   provider: providers.Provider;
   signer: Signer | undefined;

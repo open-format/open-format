@@ -2,6 +2,9 @@ import { providers, Signer } from 'ethers';
 import { BaseContract } from './base';
 import * as contract from './contract';
 
+/**
+ * Creates a new instances of the OpenFormatNFT class which allows you to interact with a single deployed NFT
+ */
 export class OpenFormatNFT extends BaseContract {
   address: string;
   signer: Signer;
