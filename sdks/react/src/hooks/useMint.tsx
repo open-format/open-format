@@ -1,14 +1,12 @@
+import { OpenFormatNFT } from '@simpleweb/open-format/dist/core/nft';
 import { useMutation } from 'react-query';
-import { useOpenFormat } from '../provider';
 
-export function useMint() {
-  const { sdk } = useOpenFormat();
-
+export function useMint(nft: OpenFormatNFT) {
   const { mutateAsync, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.mint>>,
+    Awaited<ReturnType<typeof nft.mint>>,
     unknown
   >(() => {
-    return sdk.mint();
+    return nft.mint();
   });
 
   return {
