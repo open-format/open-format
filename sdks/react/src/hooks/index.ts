@@ -7,6 +7,7 @@ export * from './useGetPrimaryCommissionPercentage';
 export * from './useGetSecondaryCommissionPercentage';
 export * from './useGetTokenBalance';
 export * from './useGetTokenSalePrice';
+export * from './useGetTotalSupply';
 export * from './useMint';
 export * from './useMintWithCommission';
 export * from './useNFT';

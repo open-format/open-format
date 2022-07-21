@@ -18,7 +18,7 @@ function SetSecondary({ address }: { address: string }) {
           setSecondaryCommissionPercentage(500);
         }}
       >
-        set Secondary Commission Percentage
+        Set Secondary Commission Percent
       </button>
 
       {secondaryCommissionData && (
