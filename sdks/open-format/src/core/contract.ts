@@ -201,6 +201,17 @@ export async function setPrimaryCommissionPercent({
   return receipt;
 }
 
+export async function getPrimaryCommissionPercent({
+  contractAddress,
+  signer,
+}: ContractArgs) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const percent = await openFormat.getPrimaryCommissionPct();
+
+  return percent;
+}
+
 export async function setSecondaryCommissionPercent({
   percent,
   contractAddress,
@@ -213,6 +224,17 @@ export async function setSecondaryCommissionPercent({
   const receipt = await tx.wait();
 
   return receipt;
+}
+
+export async function getSecondaryCommissionPercent({
+  contractAddress,
+  signer,
+}: ContractArgs) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const percent = await openFormat.getSecondaryCommissionPct();
+
+  return percent;
 }
 
 export async function setTokenSalePrice({

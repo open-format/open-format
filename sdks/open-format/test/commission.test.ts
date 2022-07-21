@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { OpenFormatNFT } from '../src/core/nft';
 import { OpenFormatSDK } from '../src/index';
 
@@ -32,10 +32,22 @@ describe('sdk commission', () => {
     expect(receipt?.status).toBe(1);
   });
 
+  it('gets the primary commission percetnage', async () => {
+    const receipt = await nft.getPrimaryCommissionPercent();
+
+    expect(receipt).toBeInstanceOf(BigNumber);
+  });
+
   it('sets the secondary commission percetnage', async () => {
     const receipt = await nft.setSecondaryCommissionPercent(1000);
 
     expect(receipt?.status).toBe(1);
+  });
+
+  it('gets the secondary commission percetnage', async () => {
+    const receipt = await nft.getSecondaryCommissionPercent();
+
+    expect(receipt).toBeInstanceOf(BigNumber);
   });
 
   it('mints with commission', async () => {

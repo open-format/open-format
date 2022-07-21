@@ -2,6 +2,8 @@ export * from './useBuy';
 export * from './useBuyWithCommission';
 export * from './useDeploy';
 export * from './useGetCollaboratorBalance';
+export * from './useGetPrimaryCommissionPercentage';
+export * from './useGetSecondaryCommissionPercentage';
 export * from './useGetTokenBalance';
 export * from './useMint';
 export * from './useMintWithCommission';
