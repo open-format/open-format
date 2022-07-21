@@ -280,6 +280,28 @@ export async function getTokenSalePrice({
   return price;
 }
 
+export async function getMaxSupply({ contractAddress, signer }: ContractArgs) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const supply = await openFormat.getMaxSupply();
+
+  return supply;
+}
+
+export async function setMaxSupply({
+  amount,
+  contractAddress,
+  signer,
+}: ContractArgs & { amount: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.setMaxSupply(amount);
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 export async function buy({
   tokenId,
   contractAddress,
