@@ -162,14 +162,14 @@ export class OpenFormatNFT extends BaseContract {
 
   /**
    * Get the balance of a token
-   * @param {BigNumberish} token - Token number
+   * @param {BigNumberish} tokenId - Id of the token
    * @returns BigNumber
    */
-  async getTokenBalance(token: BigNumberish) {
+  async getTokenBalance(tokenId: BigNumberish) {
     await this.checkNetworksMatch();
 
     return contract.getTokenBalance({
-      token,
+      tokenId,
       contractAddress: this.address,
       signer: this.signer,
     });
@@ -177,14 +177,14 @@ export class OpenFormatNFT extends BaseContract {
 
   /**
    * Withdrawl of token funds
-   * @param {BigNumberish} token - Token number
+   * @param {BigNumberish} tokenId - Id of the token
    * @returns
    */
-  async withdrawTokenFunds(token: BigNumberish) {
+  async withdrawTokenFunds(tokenId: BigNumberish) {
     await this.checkNetworksMatch();
 
     return contract.withdrawTokenFunds({
-      token,
+      tokenId,
       contractAddress: this.address,
       signer: this.signer,
     });
@@ -192,7 +192,7 @@ export class OpenFormatNFT extends BaseContract {
 
   /**
    * Sets the percentage of the primary commission
-   * @param {{ percent: BigNumberish; }} percent - Percent
+   * @param {BigNumberish} percent - Percent of primary commission
    * @returns
    */
   async setPrimaryCommissionPercent(percent: BigNumberish) {
@@ -220,7 +220,7 @@ export class OpenFormatNFT extends BaseContract {
 
   /**
    * Sets the percentage of the secondary commission
-   * @param {BigNumberish} percent - Percent
+   * @param {BigNumberish} percent - Percent of secondary commission
    * @returns
    */
   async setSecondaryCommissionPercent(percent: BigNumberish) {
@@ -246,6 +246,13 @@ export class OpenFormatNFT extends BaseContract {
     });
   }
 
+  /**
+   * Sets the token sale price
+   * @param {Object} params
+   * @param {BigNumberish} params.tokenId - Id of the token
+   * @param {BigNumberish} params.price - Price of the token
+   * @returns
+   */
   async setTokenSalePrice({
     tokenId,
     price,
@@ -264,9 +271,24 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   /**
+   * Gets the token sale price
+   * @param {BigNumberish} tokenId - Id of the token
+   * @returns price
+   */
+  async getTokenSalePrice(tokenId: BigNumberish) {
+    await this.checkNetworksMatch();
+
+    return contract.getTokenSalePrice({
+      tokenId,
+      contractAddress: this.address,
+      signer: this.signer,
+    });
+  }
+
+  /**
    * Buy
    * @param {Object} params
-   * @param {number} params.tokenId - id of the token
+   * @param {BigNumberish} params.tokenId - id of the token
    * @returns
    */
   async buy(tokenId: BigNumberish) {
@@ -282,7 +304,7 @@ export class OpenFormatNFT extends BaseContract {
   /**
    * Buy with commission
    * @param {Object} params
-   * @param {number} params.tokenId - id of the token
+   * @param {BigNumberish} params.tokenId - id of the token
    * @param {number} params.address - Address
    * @returns
    */
