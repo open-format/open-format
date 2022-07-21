@@ -2,8 +2,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: 🚀 Feature Request
-    url: https://github.com/simpleweb/open-format/discussions/new?category=ideas
-    about: Submit your own feature request or see if your the feature you would like has already been requested, if so then upvote it
+    url: https://github.com/simpleweb/open-format/discussions/categories/ideas
+    about: Submit your own feature request, upvote an existing request or simply view our feature backlog
   - name: 🤔 Support question
     url: https://github.com/simpleweb/open-format/discussions/new?category=question
     about: Issues are dedicated to bugs and documentation improvements, if you have questions, please use Github Discussions.
