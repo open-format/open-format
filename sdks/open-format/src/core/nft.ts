@@ -301,6 +301,19 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   /**
+   * Gets the max supply
+   * @returns BigNumberish
+   */
+  async getMaxSupply() {
+    await this.checkNetworksMatch();
+
+    return contract.getMaxSupply({
+      contractAddress: this.address,
+      signer: this.signer,
+    });
+  }
+
+  /**
    * Sets the max supply
    * @param {BigNumberish} amount - The maximum amount of the supply
    * @returns transaction
@@ -316,13 +329,13 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   /**
-   * Gets the max supply
+   * Gets the total supply
    * @returns BigNumberish
    */
-  async getMaxSupply() {
+  async getTotalSupply() {
     await this.checkNetworksMatch();
 
-    return contract.getMaxSupply({
+    return contract.getTotalSupply({
       contractAddress: this.address,
       signer: this.signer,
     });

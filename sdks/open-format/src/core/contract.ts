@@ -302,6 +302,17 @@ export async function setMaxSupply({
   return receipt;
 }
 
+export async function getTotalSupply({
+  contractAddress,
+  signer,
+}: ContractArgs) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const supply = await openFormat.getTotalSupply();
+
+  return supply;
+}
+
 export async function buy({
   tokenId,
   contractAddress,

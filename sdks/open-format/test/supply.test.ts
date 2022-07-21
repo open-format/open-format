@@ -26,14 +26,20 @@ describe('sdk supply', () => {
     nft = sdk.getNFT(contractAddress);
   });
 
+  it('gets the max supply', async () => {
+    const receipt = await nft.getMaxSupply();
+
+    expect(receipt).toBeInstanceOf(BigNumber);
+  });
+
   it('sets the max supply', async () => {
     const receipt = await nft.setMaxSupply(1000);
 
     expect(receipt?.status).toBe(1);
   });
 
-  it('gets the max supply', async () => {
-    const receipt = await nft.getMaxSupply();
+  it('gets the total supply', async () => {
+    const receipt = await nft.getTotalSupply();
 
     expect(receipt).toBeInstanceOf(BigNumber);
   });
