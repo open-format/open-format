@@ -44,7 +44,7 @@ describe('sdk commission', () => {
     expect(receipt?.status).toBe(1);
   });
 
-  it('gets the primary commission percetnage', async () => {
+  it('gets the secondary commission percetnage', async () => {
     const receipt = await nft.getSecondaryCommissionPercent();
 
     expect(receipt).toBeInstanceOf(BigNumber);
