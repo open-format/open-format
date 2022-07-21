@@ -16,7 +16,7 @@ yarn add @simpleweb/open-format-react ethers
 
 ## Documentation
 
-@TODO: Add link to documentation when it exists
+[View the docs](https://docs.openformat.simpleweb.co.uk/sdk/react)
 
 You can [checkout an example Next.js to see how it works](https://github.com/simpleweb/open-format/tree/main/examples/react-next).
 
