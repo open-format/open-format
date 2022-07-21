@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
  * @returns royalties for price
  */
 export function useRoyalties(nft: OpenFormatNFT, salePrice: number) {
-  const query = useQuery(['getRoyalties', salePrice], () =>
+  const query = useQuery(['royalties', salePrice], () =>
     nft.getRoyalties({ salePrice })
   );
 
