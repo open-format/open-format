@@ -1,7 +1,8 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useEffect } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import { OpenFormatProvider } from '../src/provider';
 import { ethers } from 'ethers';
+import { useDeploy } from './hooks';
 
 const signer = new ethers.Wallet(
   '0x04c65fb1737cf9a5fb605b403b5027924309e53a3433d06029a0441cc03e2042',
@@ -21,6 +22,35 @@ const App: FC<{ children: React.ReactNode }> = ({ children }) => {
     </OpenFormatProvider>
   );
 };
+
+export function DeployedTest({
+  children,
+}: {
+  children: (props: { address: string }) => React.ReactNode;
+}) {
+  const { deploy, data } = useDeploy();
+
+  useEffect(() => {
+    deploy({
+      maxSupply: 100,
+      mintingPrice: 0.01,
+      name: 'Test',
+      symbol: 'TEST',
+      url: 'ipfs://',
+    });
+  }, []);
+
+  if (!data) {
+    return null;
+  }
+
+  return (
+    <>
+      <span data-testid="deploy" />
+      {children({ address: data.contractAddress })}
+    </>
+  );
+}
 
 const customRender = (
   ui: ReactElement,

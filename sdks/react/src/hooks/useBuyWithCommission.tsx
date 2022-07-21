@@ -1,15 +1,13 @@
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
-import { useOpenFormat } from '../provider';
 
-export function useBuyWithCommission() {
-  const { sdk } = useOpenFormat();
-
+export function useBuyWithCommission(nft: OpenFormatNFT) {
   const { mutateAsync, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.buyWithCommission>>,
+    Awaited<ReturnType<typeof nft.buyWithCommission>>,
     unknown,
-    Parameters<typeof sdk.buyWithCommission>[0]
+    Parameters<typeof nft.buyWithCommission>[0]
   >(data => {
-    return sdk.buyWithCommission(data);
+    return nft.buyWithCommission(data);
   });
 
   return {

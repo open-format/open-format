@@ -11,7 +11,7 @@ describe('sdk royalties', () => {
       ),
     });
 
-    await sdk.deploy({
+    const { contractAddress } = await sdk.deploy({
       maxSupply: 100,
       mintingPrice: 0.01,
       name: 'Test',
@@ -19,7 +19,9 @@ describe('sdk royalties', () => {
       url: 'ipfs://',
     });
 
-    const receipt = await sdk.setRoyalties({
+    const nft = sdk.getNFT(contractAddress);
+
+    const receipt = await nft.setRoyalties({
       royaltyReceiverAddress: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
       royaltyPercentage: 500,
     });
@@ -36,7 +38,7 @@ describe('sdk royalties', () => {
       ),
     });
 
-    await sdk.deploy({
+    const { contractAddress } = await sdk.deploy({
       maxSupply: 100,
       mintingPrice: 0.01,
       name: 'Test',
@@ -44,12 +46,14 @@ describe('sdk royalties', () => {
       url: 'ipfs://',
     });
 
-    await sdk.setRoyalties({
+    const nft = sdk.getNFT(contractAddress);
+
+    await nft.setRoyalties({
       royaltyReceiverAddress: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
       royaltyPercentage: 500,
     });
 
-    const result = await sdk.getRoyalties({ salePrice: 500 });
+    const result = await nft.getRoyalties({ salePrice: 500 });
 
     expect(result[1].toNumber()).toBe(25);
   });

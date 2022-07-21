@@ -1,17 +1,18 @@
 import '@testing-library/jest-dom';
+import React from 'react';
 import {
-  useDeploy,
   useMint,
-  useSetupRevenueSharing,
+  useNFT,
   useRevenueSharingAllocation,
+  useSetupRevenueSharing,
   useWithdrawCollaboratorFunds,
 } from '../src/hooks';
-import { render, screen, waitFor } from '../src/utilities';
-import React from 'react';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
-function Withdraw() {
-  const { mint } = useMint();
-  const { withdraw, data: withdrawData } = useWithdrawCollaboratorFunds();
+function Withdraw({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { mint } = useMint(nft);
+  const { withdraw, data: withdrawData } = useWithdrawCollaboratorFunds(nft);
 
   const onWithdraw = async () => {
     await mint();
@@ -28,8 +29,9 @@ function Withdraw() {
   );
 }
 
-function Allocation() {
-  const { allocate, data: allocationData } = useRevenueSharingAllocation();
+function Allocation({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { allocate, data: allocationData } = useRevenueSharingAllocation(nft);
 
   return (
     <>
@@ -53,36 +55,19 @@ function Allocation() {
       {allocationData && (
         <>
           <span data-testid="allocation"></span>
-          <Withdraw />
+          <Withdraw address={address} />
         </>
       )}
     </>
   );
 }
 
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-  const { setup, data: revenueShareData } = useSetupRevenueSharing();
+function WithdrawCollab({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { setup, data: revenueShareData } = useSetupRevenueSharing(nft);
 
   return (
     <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-
-      {deployData && <div data-testid="deployData"></div>}
-
       <button
         data-testid="setupRevenueSharing"
         onClick={() => {
@@ -109,7 +94,7 @@ function Test() {
       {revenueShareData && (
         <>
           <div data-testid="revenueShareData"></div>
-          <Allocation />
+          <Allocation address={address} />
         </>
       )}
     </>
@@ -118,17 +103,23 @@ function Test() {
 
 describe('useRevenueSharingAllocation', () => {
   it('allows you to allocate shares', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>
+        {({ address }) => <WithdrawCollab address={address} />}
+      </DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const setup = await waitFor(() =>
+      screen.getByTestId('setupRevenueSharing')
+    );
 
-    screen.getByTestId('setupRevenueSharing').click();
+    setup.click();
     await waitFor(() => screen.getByTestId('revenueShareData'));
 
     screen.getByTestId('allocate').click();
     await waitFor(() => screen.getByTestId('allocation'));
 
+    // @TODO seems to get stuck here
     screen.getByTestId('withdraw').click();
     await waitFor(() => screen.getByTestId('withdrawal'));
   });

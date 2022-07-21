@@ -1,15 +1,13 @@
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
-import { useOpenFormat } from '../provider';
 
-export function useSetPrimaryCommissionPercentage() {
-  const { sdk } = useOpenFormat();
-
+export function useSetPrimaryCommissionPercentage(nft: OpenFormatNFT) {
   const { mutateAsync: setPrimaryCommissionPercent, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.setPrimaryCommissionPercent>>,
+    Awaited<ReturnType<typeof nft.setPrimaryCommissionPercent>>,
     unknown,
-    Parameters<typeof sdk.setPrimaryCommissionPercent>[0]
+    Parameters<typeof nft.setPrimaryCommissionPercent>[0]
   >(percent => {
-    return sdk.setPrimaryCommissionPercent(percent);
+    return nft.setPrimaryCommissionPercent(percent);
   });
 
   return {

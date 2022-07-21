@@ -1,16 +1,14 @@
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useQuery } from 'react-query';
-import { useOpenFormat } from '../provider';
 
 /**
  * Hook to get royalites for a price
  * @param {{ salePrice: number }} options - sales price
  * @returns royalties for price
  */
-export function useRoyalties({ salePrice }: { salePrice: number }) {
-  const { sdk } = useOpenFormat();
-
+export function useRoyalties(nft: OpenFormatNFT, salePrice: number) {
   const query = useQuery(['getRoyalties', salePrice], () =>
-    sdk.getRoyalties({ salePrice })
+    nft.getRoyalties({ salePrice })
   );
 
   return query;

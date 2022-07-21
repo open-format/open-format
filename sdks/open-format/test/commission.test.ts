@@ -1,8 +1,10 @@
 import { ethers } from 'ethers';
+import { OpenFormatNFT } from '../src/core/nft';
 import { OpenFormatSDK } from '../src/index';
 
 describe('sdk commission', () => {
   let sdk: null | OpenFormatSDK = null;
+  let nft: OpenFormatNFT;
 
   beforeEach(async () => {
     sdk = new OpenFormatSDK({
@@ -13,29 +15,31 @@ describe('sdk commission', () => {
       ),
     });
 
-    await sdk.deploy({
+    const { contractAddress } = await sdk.deploy({
       maxSupply: 100,
       mintingPrice: 0.01,
       name: 'Test',
       symbol: 'TEST',
       url: 'ipfs://',
     });
+
+    nft = sdk.getNFT(contractAddress);
   });
 
   it('sets the primary commission percetnage', async () => {
-    const receipt = await sdk?.setPrimaryCommissionPercent(1000);
+    const receipt = await nft.setPrimaryCommissionPercent(1000);
 
     expect(receipt?.status).toBe(1);
   });
 
   it('sets the secondary commission percetnage', async () => {
-    const receipt = await sdk?.setSecondaryCommissionPercent(1000);
+    const receipt = await nft.setSecondaryCommissionPercent(1000);
 
     expect(receipt?.status).toBe(1);
   });
 
   it('mints with commission', async () => {
-    const receipt = await sdk?.mintWithCommission(
+    const receipt = await nft.mintWithCommission(
       '0xee4abd006630aea6fa3e685c99506db31c09b3f4'
     );
 
@@ -43,11 +47,11 @@ describe('sdk commission', () => {
   });
 
   it('buy with commission', async () => {
-    await sdk?.mintWithCommission('0xee4abd006630aea6fa3e685c99506db31c09b3f4');
+    await nft.mintWithCommission('0xee4abd006630aea6fa3e685c99506db31c09b3f4');
 
-    await sdk?.setTokenSalePrice({ tokenId: 0, price: 1000 });
+    await nft.setTokenSalePrice({ tokenId: 0, price: 1000 });
 
-    const receipt = await sdk?.buyWithCommission({
+    const receipt = await nft.buyWithCommission({
       tokenId: 0,
       address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
     });

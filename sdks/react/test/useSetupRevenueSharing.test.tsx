@@ -1,31 +1,14 @@
 import '@testing-library/jest-dom';
-import { useDeploy, useSetupRevenueSharing } from '../src/hooks';
-import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
+import { useNFT, useSetupRevenueSharing } from '../src/hooks';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-  const { setup, data: setupRevenueShareData } = useSetupRevenueSharing();
+function SetupSharing({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { setup, data: setupRevenueShareData } = useSetupRevenueSharing(nft);
 
   return (
     <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-
-      {deployData && <div data-testid="deployData"></div>}
-
       <button
         data-testid="setupRevenueSharing"
         onClick={() => {
@@ -56,12 +39,17 @@ function Test() {
 
 describe('useSetupRevenueSharing', () => {
   it('allows you to setup revenue sharing', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>
+        {({ address }) => <SetupSharing address={address} />}
+      </DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const setup = await waitFor(() =>
+      screen.getByTestId('setupRevenueSharing')
+    );
 
-    screen.getByTestId('setupRevenueSharing').click();
+    setup.click();
     await waitFor(() => screen.getByTestId('setupRevenueShareData'));
   });
 });

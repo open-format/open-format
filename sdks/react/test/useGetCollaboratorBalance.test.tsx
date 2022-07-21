@@ -1,101 +1,51 @@
 import '@testing-library/jest-dom';
-import {
-  useDeploy,
-  useMint,
-  useSetupRevenueSharing,
-  useRevenueSharingAllocation,
-  useGetCollaboratorBalance,
-} from '../src/hooks';
-import { render, screen, waitFor } from '../src/utilities';
 import React from 'react';
+import {
+  useGetCollaboratorBalance,
+  useMint,
+  useNFT,
+  useRevenueSharingAllocation,
+  useSetupRevenueSharing,
+} from '../src/hooks';
+import { DeployedTest, render, screen, waitFor } from '../src/utilities';
 
-function Balance() {
+function Balance({ address }: { address: string }) {
+  const nft = useNFT(address);
   const { data: balanceData } = useGetCollaboratorBalance(
+    nft,
     '0xee4abd006630aea6fa3e685c99506db31c09b3f4'
   );
 
   return <>{balanceData && <span data-testid="balance"></span>}</>;
 }
 
-function Mint() {
-  const { mint } = useMint();
-  const [complete, setCompletion] = React.useState(false);
-
-  const onMint = async () => {
-    await mint();
-    setCompletion(true);
-  };
+function Mint({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { mint, data } = useMint(nft);
 
   return (
     <>
-      <button data-testid="mint" onClick={onMint}>
+      <button data-testid="mint" onClick={() => mint()}>
         Mint
       </button>
-      {complete && (
+
+      {data && (
         <>
           <span data-testid="minted"></span>
-          <Balance />
+          <Balance address={address} />
         </>
       )}
     </>
   );
 }
 
-function Allocation() {
-  const { allocate, data: allocationData } = useRevenueSharingAllocation();
+function Allocation({ address }: { address: string }) {
+  const nft = useNFT(address);
+  const { setup, data: revenueShareData } = useSetupRevenueSharing(nft);
+  const { allocate, data: allocationData } = useRevenueSharingAllocation(nft);
 
   return (
     <>
-      <button
-        data-testid="allocate"
-        onClick={() =>
-          allocate([
-            {
-              address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
-              share: 500,
-            },
-            {
-              address: '0x21b2be9090d1d319e57b67c4b5d37bc5ec29a9d0',
-              share: 500,
-            },
-          ])
-        }
-      >
-        Allocate Shares
-      </button>
-      {allocationData && (
-        <>
-          <span data-testid="allocation"></span>
-          <Mint />
-        </>
-      )}
-    </>
-  );
-}
-
-function Test() {
-  const { deploy, data: deployData } = useDeploy();
-  const { setup, data: revenueShareData } = useSetupRevenueSharing();
-
-  return (
-    <>
-      <button
-        data-testid="deploy"
-        onClick={() => {
-          deploy({
-            maxSupply: 100,
-            mintingPrice: 0.01,
-            name: 'Test',
-            symbol: 'TEST',
-            url: 'ipfs://',
-          });
-        }}
-      >
-        Deploy
-      </button>
-
-      {deployData && <div data-testid="deployData"></div>}
-
       <button
         data-testid="setupRevenueSharing"
         onClick={() => {
@@ -119,10 +69,30 @@ function Test() {
         Setup Revenue Sharing
       </button>
 
-      {revenueShareData && (
+      {revenueShareData && <div data-testid="revenueShareData"></div>}
+
+      <button
+        data-testid="allocate"
+        onClick={() =>
+          allocate([
+            {
+              address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
+              share: 500,
+            },
+            {
+              address: '0x21b2be9090d1d319e57b67c4b5d37bc5ec29a9d0',
+              share: 500,
+            },
+          ])
+        }
+      >
+        Allocate Shares
+      </button>
+
+      {allocationData && (
         <>
-          <div data-testid="revenueShareData"></div>
-          <Allocation />
+          <span data-testid="allocation"></span>
+          <Mint address={address} />
         </>
       )}
     </>
@@ -131,12 +101,17 @@ function Test() {
 
 describe('useGetCollaboratorBalance', () => {
   it('allows you to get the balance of a collaborator', async () => {
-    render(<Test />);
+    render(
+      <DeployedTest>
+        {({ address }) => <Allocation address={address} />}
+      </DeployedTest>
+    );
 
-    screen.getByTestId('deploy').click();
-    await waitFor(() => screen.getByTestId('deployData'));
+    const revenueSharingButton = await waitFor(() =>
+      screen.getByTestId('setupRevenueSharing')
+    );
 
-    screen.getByTestId('setupRevenueSharing').click();
+    revenueSharingButton.click();
     await waitFor(() => screen.getByTestId('revenueShareData'));
 
     screen.getByTestId('allocate').click();

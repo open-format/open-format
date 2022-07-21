@@ -1,15 +1,13 @@
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
-import { useOpenFormat } from '../provider';
 
-export function useBuy() {
-  const { sdk } = useOpenFormat();
-
+export function useBuy(nft: OpenFormatNFT) {
   const { mutateAsync, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.buy>>,
+    Awaited<ReturnType<typeof nft.buy>>,
     unknown,
-    Parameters<typeof sdk.buy>[0]
+    Parameters<typeof nft.buy>[0]
   >(data => {
-    return sdk.buy(data);
+    return nft.buy(data);
   });
 
   return {

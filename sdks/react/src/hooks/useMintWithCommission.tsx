@@ -1,15 +1,13 @@
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
-import { useOpenFormat } from '../provider';
 
-export function useMintWithCommission() {
-  const { sdk } = useOpenFormat();
-
+export function useMintWithCommission(nft: OpenFormatNFT) {
   const { mutateAsync, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.mintWithCommission>>,
+    Awaited<ReturnType<typeof nft.mintWithCommission>>,
     unknown,
-    Parameters<typeof sdk.mintWithCommission>[0]
+    Parameters<typeof nft.mintWithCommission>[0]
   >(address => {
-    return sdk.mintWithCommission(address);
+    return nft.mintWithCommission(address);
   });
 
   return {

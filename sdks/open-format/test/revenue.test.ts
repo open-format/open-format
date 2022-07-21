@@ -1,8 +1,10 @@
 import { BigNumber, ethers } from 'ethers';
+import { OpenFormatNFT } from '../src/core/nft';
 import { OpenFormatSDK } from '../src/index';
 
 describe('sdk revenue', () => {
   let sdk: null | OpenFormatSDK = null;
+  let nft: OpenFormatNFT;
 
   beforeEach(async () => {
     sdk = new OpenFormatSDK({
@@ -13,17 +15,19 @@ describe('sdk revenue', () => {
       ),
     });
 
-    await sdk.deploy({
+    const { contractAddress } = await sdk.deploy({
       maxSupply: 100,
       mintingPrice: 0.01,
       name: 'Test',
       symbol: 'TEST',
       url: 'ipfs://',
     });
+
+    nft = sdk.getNFT(contractAddress);
   });
 
   it('sets up revenue sharing', async () => {
-    const receipt = await sdk?.setupRevenueSharing({
+    const receipt = await nft.setupRevenueSharing({
       revShareExtensionAddress: '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
       collaborators: [
         {
@@ -42,7 +46,7 @@ describe('sdk revenue', () => {
   });
 
   it('allocation of shares', async () => {
-    await sdk?.setupRevenueSharing({
+    await nft.setupRevenueSharing({
       revShareExtensionAddress: '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
       collaborators: [
         {
@@ -57,7 +61,7 @@ describe('sdk revenue', () => {
       holderPercentage: 5000,
     });
 
-    const receipt = await sdk?.allocateRevenueShares([
+    const receipt = await nft.allocateRevenueShares([
       {
         address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
         share: 500,
@@ -72,7 +76,7 @@ describe('sdk revenue', () => {
   });
 
   it('allows retrieval of a collaborators balance', async () => {
-    await sdk?.setupRevenueSharing({
+    await nft.setupRevenueSharing({
       revShareExtensionAddress: '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
       collaborators: [
         {
@@ -87,7 +91,7 @@ describe('sdk revenue', () => {
       holderPercentage: 5000,
     });
 
-    await sdk?.allocateRevenueShares([
+    await nft.allocateRevenueShares([
       {
         address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
         share: 500,
@@ -98,9 +102,9 @@ describe('sdk revenue', () => {
       },
     ]);
 
-    await sdk?.mint();
+    await nft.mint();
 
-    const receipt = await sdk?.getCollaboratorBalance(
+    const receipt = await nft.getCollaboratorBalance(
       '0xee4abd006630aea6fa3e685c99506db31c09b3f4'
     );
 
@@ -108,7 +112,7 @@ describe('sdk revenue', () => {
   });
 
   it('allows withdrawal of collaborator funds', async () => {
-    await sdk?.setupRevenueSharing({
+    await nft.setupRevenueSharing({
       revShareExtensionAddress: '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
       collaborators: [
         {
@@ -123,7 +127,7 @@ describe('sdk revenue', () => {
       holderPercentage: 5000,
     });
 
-    await sdk?.allocateRevenueShares([
+    await nft.allocateRevenueShares([
       {
         address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
         share: 500,
@@ -134,9 +138,9 @@ describe('sdk revenue', () => {
       },
     ]);
 
-    await sdk?.mint();
+    await nft.mint();
 
-    const receipt = await sdk?.withdrawCollaboratorFunds(
+    const receipt = await nft.withdrawCollaboratorFunds(
       '0xee4abd006630aea6fa3e685c99506db31c09b3f4'
     );
 
@@ -149,7 +153,7 @@ describe('sdk revenue', () => {
       new ethers.providers.JsonRpcProvider('http://localhost:8545')
     );
 
-    await sdk?.setupRevenueSharing({
+    await nft.setupRevenueSharing({
       revShareExtensionAddress: '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
       collaborators: [
         {
@@ -164,7 +168,7 @@ describe('sdk revenue', () => {
       holderPercentage: 5000,
     });
 
-    await sdk?.allocateRevenueShares([
+    await nft.allocateRevenueShares([
       {
         address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
         share: 500,
@@ -175,14 +179,14 @@ describe('sdk revenue', () => {
       },
     ]);
 
-    await sdk?.mint();
+    await nft.mint();
 
     await account.sendTransaction({
-      to: sdk?.options.contractAddress,
+      to: nft.address,
       value: '500',
     });
 
-    const receipt = await sdk?.getTokenBalance(0);
+    const receipt = await nft.getTokenBalance(0);
 
     expect(receipt).toBeInstanceOf(BigNumber);
   });
@@ -193,7 +197,7 @@ describe('sdk revenue', () => {
       new ethers.providers.JsonRpcProvider('http://localhost:8545')
     );
 
-    await sdk?.setupRevenueSharing({
+    await nft.setupRevenueSharing({
       revShareExtensionAddress: '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212',
       collaborators: [
         {
@@ -208,7 +212,7 @@ describe('sdk revenue', () => {
       holderPercentage: 5000,
     });
 
-    await sdk?.allocateRevenueShares([
+    await nft.allocateRevenueShares([
       {
         address: '0xee4abd006630aea6fa3e685c99506db31c09b3f4',
         share: 500,
@@ -219,14 +223,14 @@ describe('sdk revenue', () => {
       },
     ]);
 
-    await sdk?.mint();
+    await nft.mint();
 
     await account.sendTransaction({
-      to: sdk?.options.contractAddress,
+      to: nft.address,
       value: '500',
     });
 
-    const receipt = await sdk?.withdrawTokenFunds(0);
+    const receipt = await nft.withdrawTokenFunds(0);
 
     expect(receipt?.status).toBe(1);
   });

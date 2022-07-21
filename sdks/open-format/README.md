@@ -54,7 +54,7 @@ const sdk = new OpenFormatSDK({
 Now can now deploy your NFT.
 
 ```tsx
-await sdk.deploy({
+const { contractAddress } = await sdk.deploy({
   maxSupply: 100,
   mintingPrice: 0.01,
   name: 'Test 1',
@@ -65,10 +65,11 @@ await sdk.deploy({
 
 ### Minting an NFT
 
-Once your contract is deployed, you can then call `mint()`.
+Once your contract is deployed you can use the `contractAddress` is returns to create a new NFT instance and mint it.
 
 ```tsx
-await sdk.mint();
+const nft = sdk.getNFT(contractAddress);
+await nft.mint();
 ```
 
 ### Reading from the subgraph

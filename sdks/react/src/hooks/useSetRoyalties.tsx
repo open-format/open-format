@@ -1,15 +1,13 @@
+import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
-import { useOpenFormat } from '../provider';
 
-export function useSetRoyalties() {
-  const { sdk } = useOpenFormat();
-
+export function useSetRoyalties(nft: OpenFormatNFT) {
   const { mutateAsync, ...mutation } = useMutation<
-    Awaited<ReturnType<typeof sdk.setRoyalties>>,
+    Awaited<ReturnType<typeof nft.setRoyalties>>,
     unknown,
-    Parameters<typeof sdk.setRoyalties>[0]
+    Parameters<typeof nft.setRoyalties>[0]
   >(params => {
-    return sdk.setRoyalties(params);
+    return nft.setRoyalties(params);
   });
 
   return {
