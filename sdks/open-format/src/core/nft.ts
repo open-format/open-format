@@ -206,7 +206,20 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   /**
-   * Sets the percentages of the secondary commission
+   * Gets the percentage of the primary commission
+   * @returns percent
+   */
+  async getPrimaryCommissionPercent() {
+    await this.checkNetworksMatch();
+
+    return contract.getPrimaryCommissionPercent({
+      contractAddress: this.address,
+      signer: this.signer,
+    });
+  }
+
+  /**
+   * Sets the percentage of the secondary commission
    * @param {BigNumberish} percent - Percent
    * @returns
    */
@@ -215,6 +228,19 @@ export class OpenFormatNFT extends BaseContract {
 
     return contract.setSecondaryCommissionPercent({
       percent,
+      contractAddress: this.address,
+      signer: this.signer,
+    });
+  }
+
+  /**
+   * Gets the percentage of the secondary commission
+   * @returns percent
+   */
+  async getSecondaryCommissionPercent() {
+    await this.checkNetworksMatch();
+
+    return contract.getSecondaryCommissionPercent({
       contractAddress: this.address,
       signer: this.signer,
     });
