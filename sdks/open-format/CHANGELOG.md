@@ -1,5 +1,25 @@
 # @simpleweb/open-format
 
+## 0.4.0
+
+### Minor Changes
+
+- 92fd065: Adds the functionality to buy
+- 518e51d: Adds the functionality to setup revenue sharing
+- 58f9aaa: Adds the functionality to mint with commission
+- 911d064: Adds the functionality to withdraw revenue funds
+- 6c846a6: Adds the functionality to buy with secondary commission
+- c2d04bf: Adds the functionality to set the primary commission percentage
+- 7d2fa57: Adds the functionality to set the secondary commission percentage
+- 8db82c9: Adds the functionality to get a collaborator or token balance
+- 3f8d31c: Changes the SDK to interact with multiple NFTs
+- c7f0f6c: Adds the functionality to allocate shares to collaborators
+
+### Patch Changes
+
+- 88f5a83: Waits for the successful deployment of the contract before returning
+- 7939481: Correct invariant messages to reflect what is being aborted
+
 ## 0.3.0
 
 ### Minor Changes
