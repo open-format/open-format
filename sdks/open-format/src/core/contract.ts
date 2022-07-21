@@ -47,6 +47,22 @@ export async function mintWithCommission({
   return receipt;
 }
 
+export async function setMintingPrice({
+  price,
+  contractAddress,
+  signer,
+}: ContractArgs & {
+  price: BigNumberish;
+}) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.setMintingPrice(price);
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 export async function setRoyalties({
   contractAddress,
   signer,

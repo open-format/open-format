@@ -44,6 +44,21 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   /**
+   * Mints an NFT with commission on a contract address
+   * @param {BigNumberish} price - mint price to set
+   * @returns transaction
+   */
+  async setMintingPrice(price: BigNumberish) {
+    await this.checkNetworksMatch();
+
+    return contract.setMintingPrice({
+      price,
+      contractAddress: this.address,
+      signer: this.signer,
+    });
+  }
+
+  /**
    * Setup royalties to be paid to an address
    * @param {Object} params
    * @param {number} params.royaltyReceiverAddress - address of the receiver of the royalties
