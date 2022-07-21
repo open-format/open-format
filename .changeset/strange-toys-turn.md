@@ -3,4 +3,4 @@
 "@simpleweb/open-format-react": minor
 ---
 
-Adds in functionality to allow you to get and set the max supply
+Adds in functionality to allow you to get and set the max supply and get total supply
