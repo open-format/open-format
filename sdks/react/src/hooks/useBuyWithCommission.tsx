@@ -6,8 +6,8 @@ export function useBuyWithCommission(nft: OpenFormatNFT) {
     Awaited<ReturnType<typeof nft.buyWithCommission>>,
     unknown,
     Parameters<typeof nft.buyWithCommission>[0]
-  >(data => {
-    return nft.buyWithCommission(data);
+  >(params => {
+    return nft.buyWithCommission(params);
   });
 
   return {

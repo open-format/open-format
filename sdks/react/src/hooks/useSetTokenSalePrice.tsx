@@ -6,8 +6,8 @@ export function useSetTokenSalePrice(nft: OpenFormatNFT) {
     Awaited<ReturnType<typeof nft.setTokenSalePrice>>,
     unknown,
     Parameters<typeof nft.setTokenSalePrice>[0]
-  >(data => {
-    return nft.setTokenSalePrice(data);
+  >(params => {
+    return nft.setTokenSalePrice(params);
   });
 
   return {

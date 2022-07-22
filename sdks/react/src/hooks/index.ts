@@ -1,3 +1,4 @@
+export * from './useBurn';
 export * from './useBuy';
 export * from './useBuyWithCommission';
 export * from './useDeploy';
@@ -17,6 +18,7 @@ export * from './useSetRoyalties';
 export * from './useSetSecondaryCommissionPercentage';
 export * from './useSetTokenSalePrice';
 export * from './useSetupRevenueSharing';
+export * from './useTogglePauseState';
 export * from './useTokens';
 export * from './useWallet';
 export * from './useWithdrawCollaboratorFunds';
