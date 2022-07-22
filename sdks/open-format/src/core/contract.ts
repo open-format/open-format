@@ -292,6 +292,33 @@ export async function buyWithCommission({
   return receipt;
 }
 
+export async function togglePauseState({
+  contractAddress,
+  signer,
+}: ContractArgs) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.togglePausedState();
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
+export async function burn({
+  tokenId,
+  contractAddress,
+  signer,
+}: ContractArgs & { tokenId: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.burn(tokenId);
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 /**
  * Deploys a version of the Open Format contract
  * @private
