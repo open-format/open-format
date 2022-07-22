@@ -380,4 +380,23 @@ export class OpenFormatNFT extends BaseContract {
       signer: this.signer,
     });
   }
+
+  async togglePauseState() {
+    await this.checkNetworksMatch();
+
+    return contract.togglePauseState({
+      contractAddress: this.address,
+      signer: this.signer,
+    });
+  }
+
+  async burn(tokenId: BigNumberish) {
+    await this.checkNetworksMatch();
+
+    return contract.burn({
+      tokenId,
+      contractAddress: this.address,
+      signer: this.signer,
+    });
+  }
 }
