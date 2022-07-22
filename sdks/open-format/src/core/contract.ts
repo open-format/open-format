@@ -162,25 +162,25 @@ export async function getCollaboratorBalance({
 }
 
 export async function getTokenBalance({
-  token,
+  tokenId,
   contractAddress,
   signer,
-}: ContractArgs & { token: BigNumberish }) {
+}: ContractArgs & { tokenId: BigNumberish }) {
   const openFormat = getContract({ contractAddress, signer });
 
-  const balance = await openFormat.getSingleTokenBalance(token);
+  const balance = await openFormat.getSingleTokenBalance(tokenId);
 
   return balance;
 }
 
 export async function withdrawTokenFunds({
-  token,
+  tokenId,
   contractAddress,
   signer,
-}: ContractArgs & { token: BigNumberish }) {
+}: ContractArgs & { tokenId: BigNumberish }) {
   const openFormat = getContract({ contractAddress, signer });
 
-  const tx = await openFormat['withdraw(uint256)'](token);
+  const tx = await openFormat['withdraw(uint256)'](tokenId);
 
   const receipt = await tx.wait();
 
@@ -250,6 +250,18 @@ export async function setTokenSalePrice({
   const receipt = await tx.wait();
 
   return receipt;
+}
+
+export async function getTokenSalePrice({
+  tokenId,
+  contractAddress,
+  signer,
+}: ContractArgs & { tokenId: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const price = await openFormat.getTokenSalePrice(tokenId);
+
+  return price;
 }
 
 export async function buy({
