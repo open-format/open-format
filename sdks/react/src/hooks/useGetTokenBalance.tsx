@@ -8,7 +8,7 @@ import { useQuery } from 'react-query';
  * @returns BigNumber
  */
 export function useGetTokenBalance(nft: OpenFormatNFT, token: BigNumberish) {
-  const query = useQuery(['getTokenBalance', token], () =>
+  const query = useQuery(['token-balance', token], () =>
     nft.getTokenBalance(token)
   );
 

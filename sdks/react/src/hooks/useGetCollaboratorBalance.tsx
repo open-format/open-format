@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
  * @returns BigNumber
  */
 export function useGetCollaboratorBalance(nft: OpenFormatNFT, address: string) {
-  const query = useQuery(['getCollaboratorBalance', address], () =>
+  const query = useQuery(['collaborator-balance', address], () =>
     nft.getCollaboratorBalance(address)
   );
 

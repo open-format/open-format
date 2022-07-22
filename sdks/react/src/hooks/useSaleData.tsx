@@ -9,7 +9,7 @@ import { useOpenFormat } from '../provider';
 export function useSaleData({ tokenId }: { tokenId: string }) {
   const { sdk } = useOpenFormat();
 
-  const query = useQuery(['saleData', tokenId], () =>
+  const query = useQuery(['sale-data', tokenId], () =>
     sdk.getSaleDataForToken(tokenId)
   );
 
