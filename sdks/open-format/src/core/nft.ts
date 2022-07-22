@@ -301,6 +301,21 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   /**
+   * Gets the creator of a token
+   * @param {BigNumberish} tokenId - Id of the token
+   * @returns creator
+   */
+  async getTokenCreator(tokenId: BigNumberish) {
+    await this.checkNetworksMatch();
+
+    return contract.getTokenCreator({
+      tokenId,
+      contractAddress: this.address,
+      signer: this.signer,
+    });
+  }
+
+  /**
    * Gets the max supply
    * @returns BigNumberish
    */

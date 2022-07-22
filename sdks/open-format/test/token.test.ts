@@ -39,4 +39,10 @@ describe('sdk token', () => {
 
     expect(price).toBeInstanceOf(BigNumber);
   });
+
+  it('get the creator of a token', async () => {
+    const creator = await nft.getTokenCreator(0);
+
+    expect(creator).toBe('0x21b2Be9090D1d319e57B67c4B5d37bc5ec29a9d0');
+  });
 });

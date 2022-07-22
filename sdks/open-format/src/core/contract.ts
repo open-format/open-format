@@ -177,18 +177,6 @@ export async function getCollaboratorBalance({
   return balance;
 }
 
-export async function getTokenBalance({
-  tokenId,
-  contractAddress,
-  signer,
-}: ContractArgs & { tokenId: BigNumberish }) {
-  const openFormat = getContract({ contractAddress, signer });
-
-  const balance = await openFormat.getSingleTokenBalance(tokenId);
-
-  return balance;
-}
-
 export async function withdrawTokenFunds({
   tokenId,
   contractAddress,
@@ -201,6 +189,18 @@ export async function withdrawTokenFunds({
   const receipt = await tx.wait();
 
   return receipt;
+}
+
+export async function getTokenBalance({
+  tokenId,
+  contractAddress,
+  signer,
+}: ContractArgs & { tokenId: BigNumberish }) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const balance = await openFormat.getSingleTokenBalance(tokenId);
+
+  return balance;
 }
 
 export async function setPrimaryCommissionPercent({
@@ -266,6 +266,21 @@ export async function setTokenSalePrice({
   const receipt = await tx.wait();
 
   return receipt;
+}
+
+export async function getTokenCreator({
+  tokenId,
+  contractAddress,
+  signer,
+}: ContractArgs & { tokenId: BigNumberish }) {
+  const openFormat = getContract({
+    contractAddress,
+    signer,
+  });
+
+  const creator = await openFormat.creatorOf(tokenId);
+
+  return creator;
 }
 
 export async function getTokenSalePrice({
