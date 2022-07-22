@@ -51,8 +51,7 @@ describe('sdk.mint()', () => {
 
   it('sets the approved minting extension', async () => {
     const receipt = await nft.setApprovedMintingExtension(
-      // Replace this with the correct address
-      '0x0000000000000000000000000000000000000000'
+      '0xf9D93537eC4c68ea7FDd841f17f2Df78204a21ff'
     );
 
     expect(receipt.status).toBe(1);

@@ -15,8 +15,7 @@ function Set({ address }: { address: string }) {
         data-testid="setApprovedMintingExtension"
         onClick={() => {
           setApprovedMintingExtension(
-            // Replace this with the correct address
-            '0x0000000000000000000000000000000000000000'
+            '0xf9D93537eC4c68ea7FDd841f17f2Df78204a21ff'
           );
         }}
       >
