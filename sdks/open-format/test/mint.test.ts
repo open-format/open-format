@@ -48,4 +48,13 @@ describe('sdk.mint()', () => {
 
     expect(receipt.status).toBe(1);
   });
+
+  it('sets the approved minting extension', async () => {
+    const receipt = await nft.setApprovedMintingExtension(
+      // Replace this with the correct address
+      '0x0000000000000000000000000000000000000000'
+    );
+
+    expect(receipt.status).toBe(1);
+  });
 });
