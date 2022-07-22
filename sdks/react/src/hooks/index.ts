@@ -13,6 +13,7 @@ export * from './useRawRequest';
 export * from './useRevenueSharingAllocation';
 export * from './useRoyalties';
 export * from './useSaleData';
+export * from './useSetMintingPrice';
 export * from './useSetPrimaryCommissionPercentage';
 export * from './useSetRoyalties';
 export * from './useSetSecondaryCommissionPercentage';
