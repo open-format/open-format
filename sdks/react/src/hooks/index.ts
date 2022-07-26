@@ -17,6 +17,7 @@ export * from './useRawRequest';
 export * from './useRevenueSharingAllocation';
 export * from './useRoyalties';
 export * from './useSaleData';
+export * from './useSetApprovedMintingExtension';
 export * from './useSetMintingPrice';
 export * from './useSetMaxSupply';
 export * from './useSetPrimaryCommissionPercentage';

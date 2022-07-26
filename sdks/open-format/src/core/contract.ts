@@ -63,6 +63,24 @@ export async function setMintingPrice({
   return receipt;
 }
 
+export async function setApprovedMintingExtension({
+  extensionContractAddress,
+  contractAddress,
+  signer,
+}: ContractArgs & {
+  extensionContractAddress: string;
+}) {
+  const openFormat = getContract({ contractAddress, signer });
+
+  const tx = await openFormat.setApprovedMintingExtension(
+    extensionContractAddress
+  );
+
+  const receipt = await tx.wait();
+
+  return receipt;
+}
+
 export async function setRoyalties({
   contractAddress,
   signer,

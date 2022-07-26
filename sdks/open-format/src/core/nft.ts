@@ -59,6 +59,21 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   /**
+   * Sets the approved minting share extension
+   * @param {string} extensionContractAddress - The contract address of the approved minting extension
+   * @returns transaction
+   */
+  async setApprovedMintingExtension(extensionContractAddress: string) {
+    await this.checkNetworksMatch();
+
+    return contract.setApprovedMintingExtension({
+      extensionContractAddress,
+      contractAddress: this.address,
+      signer: this.signer,
+    });
+  }
+
+  /**
    * Setup royalties to be paid to an address
    * @param {Object} params
    * @param {number} params.royaltyReceiverAddress - address of the receiver of the royalties
