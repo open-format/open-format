@@ -1,8 +1,8 @@
 import base from '@simpleweb/open-format-contracts';
-import { ethers, BigNumberish, Signer } from 'ethers';
-import { NFTMetadata } from '../types';
+import { BigNumberish, ethers, Signer, Transaction } from 'ethers';
 import { OpenFormat } from '../contract-types';
 import isZeroAddress from '../helpers/zeroAddress';
+import { NFTMetadata } from '../types';
 
 type ContractArgs = {
   contractAddress: string;
@@ -406,9 +406,11 @@ export async function burn({
 export async function deploy({
   signer,
   nft,
+  transactionArgs,
 }: {
   signer: Signer;
   nft: NFTMetadata;
+  transactionArgs: Transaction;
 }) {
   const openFormatContract = new ethers.ContractFactory(
     base.abi,
@@ -421,7 +423,8 @@ export async function deploy({
     nft.symbol,
     nft.url,
     nft.maxSupply,
-    ethers.utils.parseEther(nft.mintingPrice.toString())
+    ethers.utils.parseEther(nft.mintingPrice.toString()),
+    { ...transactionArgs }
   );
 
   const receipt = await contract.deployTransaction.wait();

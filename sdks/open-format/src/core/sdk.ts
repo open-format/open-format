@@ -1,3 +1,4 @@
+import { Transaction } from 'ethers';
 import merge from 'lodash.merge';
 import {
   getProviderFromUrl,
@@ -54,7 +55,7 @@ export class OpenFormatSDK extends BaseContract {
    * @param {string} nft.url - storage URL
    * @returns transaction
    */
-  async deploy(nft: NFTMetadata) {
+  async deploy(nft: NFTMetadata, transactionArgs: Transaction) {
     invariant(this.signer, 'No signer set, cannot deploy');
 
     await this.checkNetworksMatch();
@@ -62,6 +63,7 @@ export class OpenFormatSDK extends BaseContract {
     const tx = await contract.deploy({
       signer: this.signer,
       nft,
+      transactionArgs,
     });
 
     return tx;
