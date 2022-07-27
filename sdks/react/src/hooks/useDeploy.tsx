@@ -11,9 +11,9 @@ export function useDeploy() {
   const { mutateAsync, ...mutation } = useMutation<
     Awaited<ReturnType<typeof sdk.deploy>>,
     unknown,
-    Parameters<typeof sdk.deploy>[0]
+    Parameters<typeof sdk.deploy>
   >(data => {
-    return sdk.deploy(data);
+    return sdk.deploy(...data);
   });
 
   return {

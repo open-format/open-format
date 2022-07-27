@@ -410,7 +410,7 @@ export async function deploy({
 }: {
   signer: Signer;
   nft: NFTMetadata;
-  transactionArgs: Transaction;
+  transactionArgs?: Transaction;
 }) {
   const openFormatContract = new ethers.ContractFactory(
     base.abi,
@@ -424,7 +424,7 @@ export async function deploy({
     nft.url,
     nft.maxSupply,
     ethers.utils.parseEther(nft.mintingPrice.toString()),
-    { ...transactionArgs }
+    transactionArgs && { transactionArgs }
   );
 
   const receipt = await contract.deployTransaction.wait();
