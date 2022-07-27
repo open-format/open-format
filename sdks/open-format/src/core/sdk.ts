@@ -63,7 +63,7 @@ export class OpenFormatSDK extends BaseContract {
     const tx = await contract.deploy({
       signer: this.signer,
       nft,
-      ...(transactionArgs && { transactionArgs }),
+      transactionArgs,
     });
 
     return tx;
