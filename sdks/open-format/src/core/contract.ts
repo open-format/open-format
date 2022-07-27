@@ -424,7 +424,7 @@ export async function deploy({
     nft.url,
     nft.maxSupply,
     ethers.utils.parseEther(nft.mintingPrice.toString()),
-    transactionArgs && { transactionArgs }
+    { ...transactionArgs }
   );
 
   const receipt = await contract.deployTransaction.wait();
