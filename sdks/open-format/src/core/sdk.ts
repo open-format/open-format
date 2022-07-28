@@ -1,5 +1,6 @@
 import { Transaction } from 'ethers';
 import merge from 'lodash.merge';
+import { invariant } from '../helpers/invariant';
 import {
   getProviderFromUrl,
   getProviderUrl,
@@ -10,12 +11,6 @@ import { BaseContract } from './base';
 import * as contract from './contract';
 import { OpenFormatNFT } from './nft';
 import * as subgraph from './subgraph';
-
-function invariant(condition: any, message: string): asserts condition {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
 
 /**
  * Creates a new instance of the Open Format SDK
@@ -75,7 +70,6 @@ export class OpenFormatSDK extends BaseContract {
    * @returns OpenFormatNFT
    */
   getNFT(address: string) {
-    invariant(this.signer, 'No signer set, cannot get NFT');
     return new OpenFormatNFT(address, this.provider, this.signer);
   }
 

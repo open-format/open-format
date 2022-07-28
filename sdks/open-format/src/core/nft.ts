@@ -1,4 +1,5 @@
 import { BigNumberish, providers, Signer } from 'ethers';
+import { invariant } from '../helpers/invariant';
 import { BaseContract } from './base';
 import * as contract from './contract';
 
@@ -7,9 +8,8 @@ import * as contract from './contract';
  */
 export class OpenFormatNFT extends BaseContract {
   address: string;
-  signer: Signer;
 
-  constructor(address: string, provider: providers.Provider, signer: Signer) {
+  constructor(address: string, provider: providers.Provider, signer?: Signer) {
     super(provider, signer);
     this.address = address;
     this.signer = signer;
@@ -20,6 +20,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns transaction
    */
   async mint() {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.mint({
@@ -34,6 +36,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns transaction
    */
   async mintWithCommission(address: string) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.mintWithCommission({
@@ -49,6 +53,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns transaction
    */
   async setMintingPrice(price: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.setMintingPrice({
@@ -64,6 +70,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns transaction
    */
   async setApprovedMintingExtension(extensionContractAddress: string) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.setApprovedMintingExtension({
@@ -84,6 +92,8 @@ export class OpenFormatNFT extends BaseContract {
     royaltyReceiverAddress: string;
     royaltyPercentage: number;
   }) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.setRoyalties({
@@ -100,6 +110,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns
    */
   async getRoyalties({ salePrice }: { salePrice: number }) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.getRoyalties({
@@ -128,6 +140,8 @@ export class OpenFormatNFT extends BaseContract {
     }[];
     holderPercentage: BigNumberish;
   }) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.setupRevenueSharing({
@@ -151,6 +165,8 @@ export class OpenFormatNFT extends BaseContract {
       share: BigNumberish;
     }[]
   ) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.allocateRevenueShares({
@@ -166,6 +182,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns BigNumber
    */
   async getCollaboratorBalance(address: string) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.getCollaboratorBalance({
@@ -181,6 +199,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns
    */
   async withdrawCollaboratorFunds(address: string) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.withdrawCollaboratorFunds({
@@ -196,6 +216,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns BigNumber
    */
   async getTokenBalance(tokenId: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.getTokenBalance({
@@ -211,6 +233,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns
    */
   async withdrawTokenFunds(tokenId: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.withdrawTokenFunds({
@@ -226,6 +250,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns
    */
   async setPrimaryCommissionPercent(percent: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.setPrimaryCommissionPercent({
@@ -240,6 +266,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns percent
    */
   async getPrimaryCommissionPercent() {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.getPrimaryCommissionPercent({
@@ -254,6 +282,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns
    */
   async setSecondaryCommissionPercent(percent: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.setSecondaryCommissionPercent({
@@ -268,6 +298,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns percent
    */
   async getSecondaryCommissionPercent() {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.getSecondaryCommissionPercent({
@@ -290,6 +322,8 @@ export class OpenFormatNFT extends BaseContract {
     tokenId: BigNumberish;
     price: BigNumberish;
   }) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.setTokenSalePrice({
@@ -306,6 +340,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns price
    */
   async getTokenSalePrice(tokenId: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.getTokenSalePrice({
@@ -321,6 +357,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns creator
    */
   async getTokenCreator(tokenId: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.getTokenCreator({
@@ -335,6 +373,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns BigNumberish
    */
   async getMaxSupply() {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.getMaxSupply({
@@ -349,6 +389,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns transaction
    */
   async setMaxSupply(amount: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.setMaxSupply({
@@ -363,6 +405,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns BigNumberish
    */
   async getTotalSupply() {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.getTotalSupply({
@@ -378,6 +422,8 @@ export class OpenFormatNFT extends BaseContract {
    * @returns
    */
   async buy(tokenId: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.buy({
@@ -401,6 +447,8 @@ export class OpenFormatNFT extends BaseContract {
     tokenId: BigNumberish;
     address: string;
   }) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.buyWithCommission({
@@ -412,6 +460,8 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   async togglePauseState() {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.togglePauseState({
@@ -421,6 +471,8 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   async burn(tokenId: BigNumberish) {
+    invariant(this.signer, 'No signer set');
+
     await this.checkNetworksMatch();
 
     return contract.burn({
