@@ -3,9 +3,12 @@ import { Transaction } from 'ethers';
 import { useOpenFormat } from '../provider';
 
 /**
- * Gets the deploy function from the sdk
- * @param {Transaction} [transactionArgs]
- * @returns deploy function
+ * Hook to get the deploy function from the SDK
+ *
+ * @example
+ * ```tsx
+ * const { ...mutation, deploy } = useDeploy();
+ * ```
  */
 export function useDeploy(transactionArgs?: Transaction) {
   const { sdk } = useOpenFormat();

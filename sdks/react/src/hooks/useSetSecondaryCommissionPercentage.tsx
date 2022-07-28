@@ -1,11 +1,18 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
 
+/**
+ * Hook to set the percentage of the secondary commission
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ *
+ * @example
+ * ```tsx
+ * const { ...mutation, setSecondaryCommissionPercentage } = useSetSecondaryCommissionPercentage(nft);
+ * ```
+ *
+ */
 export function useSetSecondaryCommissionPercentage(nft: OpenFormatNFT) {
-  const {
-    mutateAsync: setSecondaryCommissionPercentage,
-    ...mutation
-  } = useMutation<
+  const { mutateAsync, ...mutation } = useMutation<
     Awaited<ReturnType<typeof nft.setSecondaryCommissionPercent>>,
     unknown,
     Parameters<typeof nft.setSecondaryCommissionPercent>[0]
@@ -15,6 +22,6 @@ export function useSetSecondaryCommissionPercentage(nft: OpenFormatNFT) {
 
   return {
     ...mutation,
-    setSecondaryCommissionPercentage,
+    setSecondaryCommissionPercentage: mutateAsync,
   };
 }
