@@ -3,13 +3,17 @@ import { BigNumberish } from 'ethers';
 import { useQuery } from 'react-query';
 
 /**
- * Hook to get sale price for a token
- * @param {{ token: BigNumberish }} token - Token ID
- * @returns BigNumber
+ * Hook to get the sale price of a token
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ * @param {BigNumberish} tokenId Token ID
+ * @returns {UseQueryResult}
  */
-export function useGetTokenSalePrice(nft: OpenFormatNFT, token: BigNumberish) {
-  const query = useQuery(['getTokenSalePrice', token], () =>
-    nft.getTokenSalePrice(token)
+export function useGetTokenSalePrice(
+  nft: OpenFormatNFT,
+  tokenId: BigNumberish
+) {
+  const query = useQuery(['getTokenSalePrice', tokenId], () =>
+    nft.getTokenSalePrice(tokenId)
   );
 
   return query;

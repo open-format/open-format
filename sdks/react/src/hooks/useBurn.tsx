@@ -1,6 +1,17 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
 import { useMutation } from 'react-query';
 
+/**
+ * Hook to burn a token
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ *
+ * @example
+ * ```tsx
+ * const { ...mutation, burn } = useBurn(nft);
+ * ```
+ *
+ * [SDK: Burn](/js/nft.md#burn)
+ */
 export function useBurn(nft: OpenFormatNFT) {
   const { mutateAsync, ...mutation } = useMutation<
     Awaited<ReturnType<typeof nft.burn>>,
