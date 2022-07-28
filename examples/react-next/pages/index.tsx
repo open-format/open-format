@@ -2,6 +2,7 @@ import {
   ConnectButton,
   useDeploy,
   useMint,
+  useNFT,
   useRawRequest,
   useSaleData,
   useWallet
@@ -26,7 +27,11 @@ const Home: NextPage = () => {
     `
   });
 
-  const { deploy, data: deployedContract } = useDeploy();
+  const {
+    deploy,
+    isLoading: isDeploying,
+    data: deployedContract
+  } = useDeploy();
 
   async function handleDeploy() {
     try {
@@ -42,20 +47,6 @@ const Home: NextPage = () => {
     }
   }
 
-  const { mint } = useMint();
-
-  async function handleMint() {
-    try {
-      if (typeof deployedContract?.contractAddress !== "string") {
-        throw new Error("Contract address not sent");
-      }
-
-      await mint({ contractAddress: deployedContract.contractAddress });
-    } catch (error) {
-      console.log("handleDeploy", error);
-    }
-  }
-
   return (
     <div>
       <h1>Open Format React</h1>
@@ -66,14 +57,16 @@ const Home: NextPage = () => {
 
       {isConnected && (
         <div>
-          <button onClick={handleDeploy}>Deploy NFT</button>
+          <button onClick={handleDeploy}>
+            {isDeploying ? "Deploying..." : "Deploy"}
+          </button>
         </div>
       )}
 
       {deployedContract && (
-        <div>
-          <button onClick={handleMint}>Mint NFT</button>
-        </div>
+        <>
+          <Nft address={deployedContract.contractAddress} />
+        </>
       )}
 
       {saleData.isLoading ? (
@@ -90,5 +83,25 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+function Nft({ address }: { address: string }) {
+  const nft = useNFT(address);
+
+  const { mint } = useMint(nft);
+
+  async function handleMint() {
+    try {
+      await mint();
+    } catch (error) {
+      console.log("handleDeploy", error);
+    }
+  }
+  return (
+    <>
+      <p>NFT: {address}</p>
+      <button onClick={handleMint}>Mint</button>
+    </>
+  );
+}
 
 export default Home;
