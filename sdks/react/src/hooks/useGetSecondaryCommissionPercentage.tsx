@@ -1,5 +1,5 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 /**
  * Hook to get secondary commission percentage

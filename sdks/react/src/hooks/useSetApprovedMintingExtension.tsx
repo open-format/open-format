@@ -1,5 +1,5 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 
 export function useSetApprovedMintingExtension(nft: OpenFormatNFT) {
   const { mutateAsync: setApprovedMintingExtension, ...mutation } = useMutation<
