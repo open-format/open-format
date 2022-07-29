@@ -11,6 +11,7 @@
   "author": "Benjamin Reid",
   "license": "ISC",
   "dependencies": {
-    "@simpleweb/open-format": "^0.1.2"
+    "@simpleweb/open-format": "^0.4.0",
+    "ethers": "^5.6.9"
   }
 }
