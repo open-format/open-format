@@ -9,7 +9,6 @@
 
 ## Guides
 
-* [Overview](guides/overview.md)
 * [Quickstart](guides/quickstart/README.md)
   * [Creating an NFT](guides/quickstart/creating-nft.md)
   * [Reading from the Subgraph](guides/quickstart/reading-subgraph.md)
@@ -30,10 +29,12 @@
 
 ## SDKs
 
-* [Javascript](sdks/javascript/overview.md)
+* [Javascript](sdks/javascript/README.md)
   * [NFT](sdks/javascript/nft.md)
   * [SDK](sdks/javascript/sdk.md)
-* [React](sdks/react/overview.md)
+* [React](sdks/react/README.md)
+  * [OpenFormatProvider](sdks/react/openformatprovider.md)
+  * [ConnectButton](sdks/react/connectbutton.md)
   * [Hooks](sdks/react/hooks.md)
 
 ## Contracts

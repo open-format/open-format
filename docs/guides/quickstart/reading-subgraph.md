@@ -1,6 +1,6 @@
 # Reading from the Subgraph
 
-Following on from the [Deploying an NFT](broken-reference)section, add a file called `subgraph.js`. Here we create a new instance of the SDK and construct a GraphQL query against the [Open Format Subgraph](https://api.thegraph.com/subgraphs/name/simpleweb/open-format/graphql).
+Following on from the [Creating an NFT](creating-nft.md) section, add a file called `subgraph.js`. Here we create a new instance of the SDK and construct a GraphQL query against the [Open Format Subgraph](https://api.thegraph.com/subgraphs/name/simpleweb/open-format/graphql).
 
 {% code title="subgraph.js" %}
 ```typescript
@@ -32,7 +32,7 @@ console.log(result);
 ```
 {% endcode %}
 
-Save the file and run `node subgraph.js`. You should see a list of `mediaItems` logged in your console.&#x20;
+Save the file and run `node subgraph.js`. You should see a list of `mediaItems` logged in your console.
 
 ```json
 {
@@ -68,7 +68,7 @@ Save the file and run `node subgraph.js`. You should see a list of `mediaItems` 
 }
 ```
 
-Now let's find your NFT collection. For this, you will need the contract address of your NFT collection. You can get this from [PolygonScan (Mumbai) explorer](https://mumbai.polygonscan.com/).&#x20;
+Now let's find your NFT collection. For this, you will need the contract address of your NFT collection. You can get this from [PolygonScan (Mumbai) explorer](https://mumbai.polygonscan.com/).
 
 Now let's go back into the `subgraph.js` file. We can use the `getSaleDataForToken` method to get the sale data for you token by passing it your contract address (see below where your address will be on the [Polygonscan (Mumbai) explorer](https://mumbai.polygonscan.com/)).
 

@@ -29,10 +29,10 @@ Open Format is a trustless, permissionless and collaborative NFT protocol. It en
 
 ## SDKs
 
-* [Javascript](sdks/javascript/overview.md)
+* [Javascript](sdks/javascript/)
   * [NFT](sdks/javascript/nft.md)
   * [SDK](sdks/javascript/sdk.md)
-* [React](sdks/react/overview.md)
+* [React](sdks/react/)
   * [Hooks](sdks/react/hooks.md)
 
 ## Contracts

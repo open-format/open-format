@@ -22,12 +22,8 @@ This example requires an Ethereum wallet (we recommend using [Metamask](https://
 {% hint style="info" %}
 You can use our example project to get up and running even faster. Install it with the following command, install the dependencies and update `YOUR_PRIVATE_KEY` with your private key.
 
-```bash
-npx degit simpleweb/open-format/examples/node-deploy example
-```
+`npx degit simpleweb/open-format/examples/node-deploy example`
 {% endhint %}
-
-The simplest way to deploy an Open Format contract is by using the Open Format SDK. In this example we'll create a simple Node.js script to deploy the contract.
 
 First create a new project to work with.
 
@@ -103,7 +99,6 @@ node index.js
 If everything is working as expected you should see a message saying Deploying....
 
 Wait for a minute or so and your deployment should be complete! Click the link in your terminal to view the transaction on Polygonscan.
-
 
 ![](../../polygonscan-transaction.png)
 
