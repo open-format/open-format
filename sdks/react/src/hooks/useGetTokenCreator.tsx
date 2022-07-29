@@ -1,6 +1,6 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
 import { BigNumberish } from 'ethers';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 /**
  * Hook to get the creator of a token

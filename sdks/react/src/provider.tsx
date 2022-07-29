@@ -2,7 +2,7 @@ import { OpenFormatSDK, SDKOptions } from '@simpleweb/open-format';
 import { useConnectWallet, useSetChain } from '@web3-onboard/react';
 import { ethers } from 'ethers';
 import React, { createContext, useContext, useEffect, useRef } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './onboard';
 
 const OpenFormatContext = createContext<{ sdk: OpenFormatSDK } | undefined>(

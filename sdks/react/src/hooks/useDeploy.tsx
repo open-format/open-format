@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import { Transaction } from 'ethers';
 import { useOpenFormat } from '../provider';
 
