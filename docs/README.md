@@ -1,33 +1,22 @@
-# Getting Started
+# Home
 
 Open Format is a trustless, permissionless and collaborative NFT protocol. It enables developers and creators to create, release and monetize their NFT collections in unique marketplace experiences.
 
 ## Protocol
 
-* [Overview](protocol/overview.md)
-* [How Open Format Works](protocol/how-open-format-works.md)
+Here you can learn about Open Format and how it works.
 
-## Guides
+* [Overview](protocol/how-open-format-works.md)
 
-* [Quickstart](guides/quickstart/)
-  * [Creating an NFT](guides/quickstart/creating-nft.md)
-  * [Reading from the Subgraph](guides/quickstart/reading-subgraph.md)
-  * [Contract Interaction](guides/quickstart/contract-interaction.md)
-  * [Building a Factory](guides/quickstart/building-factory.md)
-* [Minting](guides/minting.md)
-* [Buying and Selling](guides/buying-selling.md)
-* [Metadata](guides/metadata/)
-  * [Release Types](guides/metadata/release-types.md)
-  * [Factory ID](guides/metadata/factory-id.md)
-  * [Formatting](guides/metadata/formatting.md)
-  * [Querying the Subgraph](guides/metadata/querying-subgraph.md)
-  * [Example: Ticket](guides/metadata/ticket-example.md)
-  * [Gotchas](guides/metadata/gotchas.md)
-* [Revenue Sharing](guides/revenue-sharing/)
-  * [Deposit and Withdrawals](guides/revenue-sharing/deposits-withdrawals.md)
-  * [Token Balances](guides/revenue-sharing/token-balances.md)
+## Templates
+
+Want to jump straight in? Here can you can quickly clone and deploy any of our templates.&#x20;
+
+* [Open Format NFT](templates/open-format-nft.md)
 
 ## SDKs
+
+Our SDKs provide you with easy to use methods to interact with Open Format.
 
 * [Javascript](sdks/javascript/)
   * [NFT](sdks/javascript/nft.md)
@@ -37,10 +26,13 @@ Open Format is a trustless, permissionless and collaborative NFT protocol. It en
 
 ## Contracts
 
+Want to see under the hood? View our contracts for a more in-depth understanding of Open Format. You can also see our list of error codes returned by the contracts.
+
 * [Open Format](contracts/open-format.md)
-* [Payment Splitter](contracts/payment-splitter.md)
 * [Error Codes](contracts/error-codes.md)
 
 ## Links
+
+We're building community. A strong community will help us shape the future of Open Format.&#x20;
 
 * [Join our Discord](https://discord.gg/8WV52tVqbZ)
