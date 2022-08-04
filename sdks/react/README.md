@@ -23,8 +23,8 @@ You can [checkout an example Next.js to see how it works](https://github.com/sim
 ## Getting started
 
 - Start by adding the `OpenFormatProvider` around your app.
-- The provider accepts a config object where you set your network url.
-- We have provided a hard coded example of a test network on mumbai. A full list of networks can found [here.](https://chainlist.org/)
+- The provider accepts a config object where you set the network. This must be a full URL.
+- We have provided an example using a test network on Mumbai. A list of networks can found on [chainlist.org](https://chainlist.org/).
 
 ```tsx
 import { OpenFormatProvider } from "@simpleweb/open-format-react";
@@ -34,13 +34,14 @@ function App() {
     <>
       <OpenFormatProvider
         config={{ network: "https://matic-mumbai.chainstacklabs.com" }}
-      ></OpenFormatProvider>
+      >
+        {/* the rest of your app... */}
+      </OpenFormatProvider>
     </>
   );
 }
-```
 
-````
+```
 
 ### Reading from the subgraph
 
@@ -54,7 +55,7 @@ function MyComponent() {
 
   return <>{data && <pre>{JSON.stringify(data, null, 2)}</pre>}</>;
 }
-````
+```
 
 Or you can make raw requests against the subgraph.
 
