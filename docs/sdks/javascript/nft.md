@@ -38,8 +38,7 @@ Creates a new instances of the OpenFormatNFT class which allows you to interact 
 
 Mints an NFT from a deployed Open Format contract
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
-
+**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
 
 #### openFormatNFT.mintWithCommission(address) ⇒ `ContractReceipt`
 
@@ -170,9 +169,6 @@ Gets the percentage of the primary commission
 
 The percentage of primary commission
 
-\
-
-
 #### openFormatNFT.setSecondaryCommissionPercent(percent) ⇒ `ContractReceipt`
 
 Sets the percentage of the secondary commission
@@ -191,9 +187,6 @@ Gets the percentage of the secondary commission
 **Returns**: `BigNumberish` -
 
 The percentage of secondary commission
-
-\
-
 
 #### openFormatNFT.setTokenSalePrice(params) ⇒ `ContractReceipt`
 
@@ -242,9 +235,6 @@ Gets the max supply
 
 Max supply
 
-\
-
-
 #### openFormatNFT.setMaxSupply(amount) ⇒ `ContractReceipt`
 
 Sets the max supply
@@ -263,9 +253,6 @@ Gets the total supply
 **Returns**: `BigNumberish` -
 
 Total supply
-
-\
-
 
 #### openFormatNFT.buy(params) ⇒ `ContractReceipt`
 
@@ -294,8 +281,7 @@ Buy with commission
 
 Toggle the paused state
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
-
+**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
 
 #### openFormatNFT.burn(tokenId) ⇒ `ContractReceipt`
 
