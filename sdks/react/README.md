@@ -26,26 +26,22 @@ You can [checkout an example Next.js to see how it works](https://github.com/sim
 - As the provider takes care of initialising the SDK for you, you don't have to do much else but you need to pass it a config object to specify which network you want to interact with.
 
 ```tsx
-import { OpenFormatProvider } from "@simpleweb/open-format-react";
+import { OpenFormatProvider } from '@simpleweb/open-format-react';
 
 function App() {
   return (
     <>
-      <OpenFormatProvider
-        config={{ network: "mumbai" }}
-      >
+      <OpenFormatProvider config={{ network: 'mumbai' }}>
         {/* the rest of your app... */}
       </OpenFormatProvider>
     </>
   );
 }
-
 ```
 
-| Parameter        | Type           | Description  |
-| ------------- |:-------------:| :-----|
-| network      | chain | "mainnet", "mumbai" or "localhost"
-
+| Parameter | Type  | Description                        |
+| --------- | :---: | :--------------------------------- |
+| network   | chain | 'mainnet', 'mumbai' or 'localhost' |
 
 ### Reading from the subgraph
 
@@ -64,8 +60,8 @@ function MyComponent() {
 Or you can make raw requests against the subgraph.
 
 ```tsx
-import { useRawRequest } from "@simpleweb/open-format-react";
-import { gql } from "graphql-request";
+import { useRawRequest } from '@simpleweb/open-format-react';
+import { gql } from 'graphql-request';
 
 function MyComponent() {
   const { data } = useRawRequest({
@@ -106,7 +102,7 @@ Before you can deploy or perform any interactions with the contract you'll want 
 You can allow people to connect their wallets using the `<ConnectButton />` component (which uses [Onboard](https://www.blocknative.com/onboard)) and the `useWallet` hook to get the connection state and the wallet itself if required.
 
 ```tsx
-import { ConnectButton, useWallet } from "@simpleweb/open-format-react";
+import { ConnectButton, useWallet } from '@simpleweb/open-format-react';
 
 function MyComponent() {
   const { isConnected, wallet } = useWallet();
@@ -124,7 +120,7 @@ function MyComponent() {
 Deploying a contract is simple, you just need to make sure a wallet is connected first.
 
 ```tsx
-import { useDeploy, useWallet } from "@simpleweb/open-format-react";
+import { useDeploy, useWallet } from '@simpleweb/open-format-react';
 
 function MyComponent() {
   const { isConnected } = useWallet();
@@ -138,9 +134,9 @@ function MyComponent() {
             deploy({
               maxSupply: 100,
               mintingPrice: 0.01,
-              name: "Test",
-              symbol: "TEST",
-              url: "ipfs://"
+              name: 'Test',
+              symbol: 'TEST',
+              url: 'ipfs://'
             })
           }
         >
@@ -157,10 +153,10 @@ function MyComponent() {
 Once you have deployed a contract you can then mint NFTs from it. The `contractAddress` can be accessed when deploying a contract `const { contractAddress } = await deploy()`.
 
 ```tsx
-import { useMint, useNFT } from "@simpleweb/open-format-react";
+import { useMint, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const nft = useNFT("0x...");
+  const nft = useNFT('0x...');
   const { mint } = useMint(nft);
 
   return (
