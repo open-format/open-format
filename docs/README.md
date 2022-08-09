@@ -1,6 +1,6 @@
 # Home
 
-Open Format is a trustless, permissionless and collaborative NFT protocol. It enables developers and creators to create, release and monetize their NFT collections in unique marketplace experiences.
+Open Format is a trustless, permissionless and collaborative NFT protocol. It enables developers and creators to create, release and monetise their NFT collections in unique marketplace experiences.
 
 ## Protocol
 
@@ -28,7 +28,7 @@ Our SDKs provide you with easy to use methods to interact with Open Format.
 
 Want to see under the hood? View our contracts for a more in-depth understanding of Open Format. You can also see our list of error codes returned by the contracts.
 
-* [Open Format](./#contracts)
+* [Open Format](broken-reference)
 * [Error Codes](contracts/error-codes.md)
 
 ## Links
@@ -36,3 +36,4 @@ Want to see under the hood? View our contracts for a more in-depth understanding
 We're building community. A strong community will help us shape the future of Open Format.&#x20;
 
 * [Join our Discord](https://discord.gg/8WV52tVqbZ)
+* [Visit our site ](https://openformat.simpleweb.co.uk/)to get an overview of what Open Format can do for you.
