@@ -1,6 +1,6 @@
 # Home
 
-Open Format is a trustless, permissionless and collaborative NFT protocol. It enables developers and creators to create, release and monetize their NFT collections in unique marketplace experiences.
+Open Format is a trustless, permissionless and collaborative NFT protocol. It enables developers and creators to create, release and monetise their NFT collections in unique marketplace experiences.
 
 ## Protocol
 
