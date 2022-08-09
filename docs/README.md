@@ -36,3 +36,4 @@ Want to see under the hood? View our contracts for a more in-depth understanding
 We're building community. A strong community will help us shape the future of Open Format.&#x20;
 
 * [Join our Discord](https://discord.gg/8WV52tVqbZ)
+* [Visit our site ](https://openformat.simpleweb.co.uk/)to get an overview of what Open Format can do for you.
