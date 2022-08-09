@@ -2780,6 +2780,11 @@
   dependencies:
     tslib "^2.1.0"
 
+"@godaddy/dmd@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@godaddy/dmd/-/dmd-1.0.3.tgz#27cf52b6294dbe799879cbdbd9da6e41d36635ac"
+  integrity sha512-KYHGKLYG34Ni8a3zf3YQ+hOed5pc+Mg6dboh1XOAQiX9lZARY8ZiO4F7xsX/vk3ozAu/JkjDJw+AUt5ar9divg==
+
 "@hapi/hoek@^9.0.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"

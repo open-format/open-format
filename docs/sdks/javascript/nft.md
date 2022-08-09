@@ -1,308 +1,314 @@
-# NFT
+<a name="OpenFormatNFT"></a>
 
-### OpenFormatNFT
+## OpenFormatNFT
+<p>Creates a new instances of the OpenFormatNFT class which allows you to interact with a single deployed NFT</p>
 
-Creates a new instances of the OpenFormatNFT class which allows you to interact with a single deployed NFT
+**Kind**: global class  
+**Access**: public  
 
-**Kind**: global class\
-**Access**: public
+* [OpenFormatNFT](#OpenFormatNFT)
+    * [.mint()](#OpenFormatNFT+mint) ⇒ <code>ContractReceipt</code>
+    * [.mintWithCommission(address)](#OpenFormatNFT+mintWithCommission) ⇒ <code>ContractReceipt</code>
+    * [.setMintingPrice(price)](#OpenFormatNFT+setMintingPrice) ⇒ <code>ContractReceipt</code>
+    * [.setApprovedMintingExtension(extensionContractAddress)](#OpenFormatNFT+setApprovedMintingExtension) ⇒
+    * [.setRoyalties(params)](#OpenFormatNFT+setRoyalties) ⇒ <code>ContractReceipt</code>
+    * [.getRoyalties(params)](#OpenFormatNFT+getRoyalties) ⇒ <code>ContractReceipt</code>
+    * [.setupRevenueSharing(params)](#OpenFormatNFT+setupRevenueSharing) ⇒ <code>ContractReceipt</code>
+    * [.allocateRevenueShares(params)](#OpenFormatNFT+allocateRevenueShares) ⇒ <code>ContractReceipt</code>
+    * [.getCollaboratorBalance(address)](#OpenFormatNFT+getCollaboratorBalance) ⇒ <code>BigNumberish</code>
+    * [.withdrawCollaboratorFunds(address)](#OpenFormatNFT+withdrawCollaboratorFunds) ⇒ <code>ContractReceipt</code>
+    * [.getTokenBalance(tokenId)](#OpenFormatNFT+getTokenBalance) ⇒ <code>BigNumberish</code>
+    * [.withdrawTokenFunds(tokenId)](#OpenFormatNFT+withdrawTokenFunds) ⇒ <code>ContractReceipt</code>
+    * [.setPrimaryCommissionPercent(percent)](#OpenFormatNFT+setPrimaryCommissionPercent) ⇒ <code>ContractReceipt</code>
+    * [.getPrimaryCommissionPercent()](#OpenFormatNFT+getPrimaryCommissionPercent) ⇒ <code>BigNumberish</code>
+    * [.setSecondaryCommissionPercent(percent)](#OpenFormatNFT+setSecondaryCommissionPercent) ⇒ <code>ContractReceipt</code>
+    * [.getSecondaryCommissionPercent()](#OpenFormatNFT+getSecondaryCommissionPercent) ⇒ <code>BigNumberish</code>
+    * [.setTokenSalePrice(params)](#OpenFormatNFT+setTokenSalePrice) ⇒ <code>ContractReceipt</code>
+    * [.getTokenSalePrice(tokenId)](#OpenFormatNFT+getTokenSalePrice) ⇒ <code>BigNumberish</code>
+    * [.getTokenCreator(tokenId)](#OpenFormatNFT+getTokenCreator) ⇒ <code>string</code>
+    * [.getMaxSupply()](#OpenFormatNFT+getMaxSupply) ⇒ <code>BigNumberish</code>
+    * [.setMaxSupply(amount)](#OpenFormatNFT+setMaxSupply) ⇒ <code>ContractReceipt</code>
+    * [.getTotalSupply()](#OpenFormatNFT+getTotalSupply) ⇒ <code>BigNumberish</code>
+    * [.buy(params)](#OpenFormatNFT+buy) ⇒ <code>ContractReceipt</code>
+    * [.buyWithCommission(params)](#OpenFormatNFT+buyWithCommission) ⇒ <code>ContractReceipt</code>
+    * [.togglePauseState()](#OpenFormatNFT+togglePauseState) ⇒ <code>ContractReceipt</code>
+    * [.burn(tokenId)](#OpenFormatNFT+burn) ⇒ <code>ContractReceipt</code>
 
-* [OpenFormatNFT](nft.md#OpenFormatNFT)
-  * [.mint()](nft.md#OpenFormatNFT+mint) ⇒ `ContractReceipt`
-  * [.mintWithCommission(address)](nft.md#OpenFormatNFT+mintWithCommission) ⇒ `ContractReceipt`
-  * [.setMintingPrice(price)](nft.md#OpenFormatNFT+setMintingPrice) ⇒ `ContractReceipt`
-  * [.setRoyalties(params)](nft.md#OpenFormatNFT+setRoyalties) ⇒ `ContractReceipt`
-  * [.getRoyalties(params)](nft.md#OpenFormatNFT+getRoyalties) ⇒ `ContractReceipt`
-  * [.setupRevenueSharing(params)](nft.md#OpenFormatNFT+setupRevenueSharing) ⇒ `ContractReceipt`
-  * [.allocateRevenueShares(params)](nft.md#OpenFormatNFT+allocateRevenueShares) ⇒ `ContractReceipt`
-  * [.getCollaboratorBalance(address)](nft.md#OpenFormatNFT+getCollaboratorBalance) ⇒ `BigNumberish`
-  * [.withdrawCollaboratorFunds(address)](nft.md#OpenFormatNFT+withdrawCollaboratorFunds) ⇒ `ContractReceipt`
-  * [.getTokenBalance(tokenId)](nft.md#OpenFormatNFT+getTokenBalance) ⇒ `BigNumberish`
-  * [.withdrawTokenFunds(tokenId)](nft.md#OpenFormatNFT+withdrawTokenFunds) ⇒ `ContractReceipt`
-  * [.setPrimaryCommissionPercent(percent)](nft.md#OpenFormatNFT+setPrimaryCommissionPercent) ⇒ `ContractReceipt`
-  * [.getPrimaryCommissionPercent()](nft.md#OpenFormatNFT+getPrimaryCommissionPercent) ⇒ `BigNumberish`
-  * [.setSecondaryCommissionPercent(percent)](nft.md#OpenFormatNFT+setSecondaryCommissionPercent) ⇒ `ContractReceipt`
-  * [.getSecondaryCommissionPercent()](nft.md#OpenFormatNFT+getSecondaryCommissionPercent) ⇒ `BigNumberish`
-  * [.setTokenSalePrice(params)](nft.md#OpenFormatNFT+setTokenSalePrice) ⇒ `ContractReceipt`
-  * [.getTokenSalePrice(tokenId)](nft.md#OpenFormatNFT+getTokenSalePrice) ⇒ `BigNumberish`
-  * [.getTokenCreator(tokenId)](nft.md#OpenFormatNFT+getTokenCreator) ⇒ `string`
-  * [.getMaxSupply()](nft.md#OpenFormatNFT+getMaxSupply) ⇒ `BigNumberish`
-  * [.setMaxSupply(amount)](nft.md#OpenFormatNFT+setMaxSupply) ⇒ `ContractReceipt`
-  * [.getTotalSupply()](nft.md#OpenFormatNFT+getTotalSupply) ⇒ `BigNumberish`
-  * [.buy(params)](nft.md#OpenFormatNFT+buy) ⇒ `ContractReceipt`
-  * [.buyWithCommission(params)](nft.md#OpenFormatNFT+buyWithCommission) ⇒ `ContractReceipt`
-  * [.togglePauseState()](nft.md#OpenFormatNFT+togglePauseState) ⇒ `ContractReceipt`
-  * [.burn(tokenId)](nft.md#OpenFormatNFT+burn) ⇒ `ContractReceipt`
+<a name="OpenFormatNFT+mint"></a>
 
-#### openFormatNFT.mint() ⇒ `ContractReceipt`
+### openFormatNFT.mint() ⇒ <code>ContractReceipt</code>
+<p>Mints an NFT from a deployed Open Format contract</p>
 
-Mints an NFT from a deployed Open Format contract
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
+<a name="OpenFormatNFT+mintWithCommission"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
+### openFormatNFT.mintWithCommission(address) ⇒ <code>ContractReceipt</code>
+<p>Mints an NFT with commission on a contract address</p>
 
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.mintWithCommission(address) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| address | <code>string</code> | <p>Address of the contract</p> |
 
-Mints an NFT with commission on a contract address
+<a name="OpenFormatNFT+setMintingPrice"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.setMintingPrice(price) ⇒ <code>ContractReceipt</code>
+<p>Mints an NFT with commission on a contract address</p>
 
-| Param   | Type     | Description             |
-| ------- | -------- | ----------------------- |
-| address | `string` | Address of the contract |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.setMintingPrice(price) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| price | <code>BigNumberish</code> | <p>The desired price of minting</p> |
 
-Mints an NFT with commission on a contract address
+<a name="OpenFormatNFT+setApprovedMintingExtension"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.setApprovedMintingExtension(extensionContractAddress) ⇒
+<p>Sets the approved minting share extension</p>
 
-| Param | Type           | Description                  |
-| ----- | -------------- | ---------------------------- |
-| price | `BigNumberish` | The desired price of minting |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
+**Returns**: <p>transaction</p>  
 
-#### openFormatNFT.setRoyalties(params) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| extensionContractAddress | <code>string</code> | <p>The contract address of the approved minting extension</p> |
 
-Setup royalties to be paid to an address
+<a name="OpenFormatNFT+setRoyalties"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.setRoyalties(params) ⇒ <code>ContractReceipt</code>
+<p>Setup royalties to be paid to an address</p>
 
-| Param                         | Type     | Description                                     |
-| ----------------------------- | -------- | ----------------------------------------------- |
-| params                        | `Object` |                                                 |
-| params.royaltyReceiverAddress | `string` | Address of the receiver of the royalties        |
-| params.royaltyPercentage      | `number` | The percentage between 0-1000 they will receive |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.getRoyalties(params) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| params | <code>Object</code> |  |
+| params.royaltyReceiverAddress | <code>string</code> | <p>Address of the receiver of the royalties</p> |
+| params.royaltyPercentage | <code>number</code> | <p>The percentage between 0-1000 they will receive</p> |
 
-Gets royalties based on sale price
+<a name="OpenFormatNFT+getRoyalties"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.getRoyalties(params) ⇒ <code>ContractReceipt</code>
+<p>Gets royalties based on sale price</p>
 
-| Param            | Type     | Description                |
-| ---------------- | -------- | -------------------------- |
-| params           | `Object` |                            |
-| params.salePrice | `number` | Sale price to be retrieved |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.setupRevenueSharing(params) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| params | <code>Object</code> |  |
+| params.salePrice | <code>number</code> | <p>Sale price to be retrieved</p> |
 
-Sets up Revenue Sharing
+<a name="OpenFormatNFT+setupRevenueSharing"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.setupRevenueSharing(params) ⇒ <code>ContractReceipt</code>
+<p>Sets up Revenue Sharing</p>
 
-| Param                          | Type             | Description                 |
-| ------------------------------ | ---------------- | --------------------------- |
-| params                         | `Object`         |                             |
-| params.contractAddress         | `string`         | Address of the contract     |
-| params.collaborator            | `Array.<Object>` | Array of collaborators      |
-| params.collaborator\[].address | `string`         | Address of the collaborator |
-| params.collaborator\[].share   | `BigNumberish`   | Share for the collaborator  |
-| params.holderPercentage        | `number`         | The holders percentage      |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.allocateRevenueShares(params) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| params | <code>Object</code> |  |
+| params.contractAddress | <code>string</code> | <p>Address of the contract</p> |
+| params.collaborator | <code>Array.&lt;Object&gt;</code> | <p>Array of collaborators</p> |
+| params.collaborator[].address | <code>string</code> | <p>Address of the collaborator</p> |
+| params.collaborator[].share | <code>BigNumberish</code> | <p>Share for the collaborator</p> |
+| params.holderPercentage | <code>number</code> | <p>The holders percentage</p> |
 
-Allocation of shares
+<a name="OpenFormatNFT+allocateRevenueShares"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.allocateRevenueShares(params) ⇒ <code>ContractReceipt</code>
+<p>Allocation of shares</p>
 
-| Param             | Type             | Description                     |
-| ----------------- | ---------------- | ------------------------------- |
-| params            | `Array.<Object>` | Array of accounts               |
-| params\[].address | `string`         | Address of the account          |
-| params\[].share   | `BigNumberish`   | Allocated share for the account |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.getCollaboratorBalance(address) ⇒ `BigNumberish`
+| Param | Type | Description |
+| --- | --- | --- |
+| params | <code>Array.&lt;Object&gt;</code> | <p>Array of accounts</p> |
+| params[].address | <code>string</code> | <p>Address of the account</p> |
+| params[].share | <code>BigNumberish</code> | <p>Allocated share for the account</p> |
 
-Get the balance of a collaborator
+<a name="OpenFormatNFT+getCollaboratorBalance"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.getCollaboratorBalance(address) ⇒ <code>BigNumberish</code>
+<p>Get the balance of a collaborator</p>
 
-| Param   | Type     | Description                 |
-| ------- | -------- | --------------------------- |
-| address | `string` | Address of the collaborator |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.withdrawCollaboratorFunds(address) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| address | <code>string</code> | <p>Address of the collaborator</p> |
 
-Withdrawl of collaborator funds
+<a name="OpenFormatNFT+withdrawCollaboratorFunds"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.withdrawCollaboratorFunds(address) ⇒ <code>ContractReceipt</code>
+<p>Withdrawl of collaborator funds</p>
 
-| Param   | Type     | Description                 |
-| ------- | -------- | --------------------------- |
-| address | `string` | Address of the collaborator |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.getTokenBalance(tokenId) ⇒ `BigNumberish`
+| Param | Type | Description |
+| --- | --- | --- |
+| address | <code>string</code> | <p>Address of the collaborator</p> |
 
-Get the balance of a token
+<a name="OpenFormatNFT+getTokenBalance"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.getTokenBalance(tokenId) ⇒ <code>BigNumberish</code>
+<p>Get the balance of a token</p>
 
-| Param   | Type           | Description |
-| ------- | -------------- | ----------- |
-| tokenId | `BigNumberish` | Token ID    |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.withdrawTokenFunds(tokenId) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
 
-Withdrawl of token funds
+<a name="OpenFormatNFT+withdrawTokenFunds"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.withdrawTokenFunds(tokenId) ⇒ <code>ContractReceipt</code>
+<p>Withdrawl of token funds</p>
 
-| Param   | Type           | Description |
-| ------- | -------------- | ----------- |
-| tokenId | `BigNumberish` | Token ID    |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.setPrimaryCommissionPercent(percent) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
 
-Sets the percentage of the primary commission
+<a name="OpenFormatNFT+setPrimaryCommissionPercent"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.setPrimaryCommissionPercent(percent) ⇒ <code>ContractReceipt</code>
+<p>Sets the percentage of the primary commission</p>
 
-| Param   | Type           | Description                      |
-| ------- | -------------- | -------------------------------- |
-| percent | `BigNumberish` | Percentage of primary commission |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.getPrimaryCommissionPercent() ⇒ `BigNumberish`
+| Param | Type | Description |
+| --- | --- | --- |
+| percent | <code>BigNumberish</code> | <p>Percentage of primary commission</p> |
 
-Gets the percentage of the primary commission
+<a name="OpenFormatNFT+getPrimaryCommissionPercent"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
-**Returns**: `BigNumberish` -
+### openFormatNFT.getPrimaryCommissionPercent() ⇒ <code>BigNumberish</code>
+<p>Gets the percentage of the primary commission</p>
 
-The percentage of primary commission
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
+**Returns**: <code>BigNumberish</code> - <p>The percentage of primary commission</p>  
+<a name="OpenFormatNFT+setSecondaryCommissionPercent"></a>
 
-\
+### openFormatNFT.setSecondaryCommissionPercent(percent) ⇒ <code>ContractReceipt</code>
+<p>Sets the percentage of the secondary commission</p>
 
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.setSecondaryCommissionPercent(percent) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| percent | <code>BigNumberish</code> | <p>Percentage of secondary commission</p> |
 
-Sets the percentage of the secondary commission
+<a name="OpenFormatNFT+getSecondaryCommissionPercent"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.getSecondaryCommissionPercent() ⇒ <code>BigNumberish</code>
+<p>Gets the percentage of the secondary commission</p>
 
-| Param   | Type           | Description                        |
-| ------- | -------------- | ---------------------------------- |
-| percent | `BigNumberish` | Percentage of secondary commission |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
+**Returns**: <code>BigNumberish</code> - <p>The percentage of secondary commission</p>  
+<a name="OpenFormatNFT+setTokenSalePrice"></a>
 
-#### openFormatNFT.getSecondaryCommissionPercent() ⇒ `BigNumberish`
+### openFormatNFT.setTokenSalePrice(params) ⇒ <code>ContractReceipt</code>
+<p>Sets the token sale price</p>
 
-Gets the percentage of the secondary commission
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
-**Returns**: `BigNumberish` -
+| Param | Type | Description |
+| --- | --- | --- |
+| params | <code>Object</code> |  |
+| params.tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
+| params.price | <code>BigNumberish</code> | <p>Desired price of the token</p> |
 
-The percentage of secondary commission
+<a name="OpenFormatNFT+getTokenSalePrice"></a>
 
-\
+### openFormatNFT.getTokenSalePrice(tokenId) ⇒ <code>BigNumberish</code>
+<p>Gets the token sale price</p>
 
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
+**Returns**: <code>BigNumberish</code> - <p>Token sale price</p>  
 
-#### openFormatNFT.setTokenSalePrice(params) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
 
-Sets the token sale price
+<a name="OpenFormatNFT+getTokenCreator"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.getTokenCreator(tokenId) ⇒ <code>string</code>
+<p>Gets the creator of a token</p>
 
-| Param          | Type           | Description                |
-| -------------- | -------------- | -------------------------- |
-| params         | `Object`       |                            |
-| params.tokenId | `BigNumberish` | Token ID                   |
-| params.price   | `BigNumberish` | Desired price of the token |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
+**Returns**: <code>string</code> - <p>Creator of the token</p>  
 
-#### openFormatNFT.getTokenSalePrice(tokenId) ⇒ `BigNumberish`
+| Param | Type | Description |
+| --- | --- | --- |
+| tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
 
-Gets the token sale price
+<a name="OpenFormatNFT+getMaxSupply"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
-**Returns**: `BigNumberish` -
+### openFormatNFT.getMaxSupply() ⇒ <code>BigNumberish</code>
+<p>Gets the max supply</p>
 
-Token sale price
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
+**Returns**: <code>BigNumberish</code> - <p>Max supply</p>  
+<a name="OpenFormatNFT+setMaxSupply"></a>
 
-| Param   | Type           | Description |
-| ------- | -------------- | ----------- |
-| tokenId | `BigNumberish` | Token ID    |
+### openFormatNFT.setMaxSupply(amount) ⇒ <code>ContractReceipt</code>
+<p>Sets the max supply</p>
 
-#### openFormatNFT.getTokenCreator(tokenId) ⇒ `string`
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-Gets the creator of a token
+| Param | Type | Description |
+| --- | --- | --- |
+| amount | <code>BigNumberish</code> | <p>The maximum amount of the supply</p> |
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
-**Returns**: `string` -
+<a name="OpenFormatNFT+getTotalSupply"></a>
 
-Creator of the token
+### openFormatNFT.getTotalSupply() ⇒ <code>BigNumberish</code>
+<p>Gets the total supply</p>
 
-| Param   | Type           | Description |
-| ------- | -------------- | ----------- |
-| tokenId | `BigNumberish` | Token ID    |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
+**Returns**: <code>BigNumberish</code> - <p>Total supply</p>  
+<a name="OpenFormatNFT+buy"></a>
 
-#### openFormatNFT.getMaxSupply() ⇒ `BigNumberish`
+### openFormatNFT.buy(params) ⇒ <code>ContractReceipt</code>
+<p>Buy</p>
 
-Gets the max supply
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
-**Returns**: `BigNumberish` -
+| Param | Type | Description |
+| --- | --- | --- |
+| params | <code>Object</code> |  |
+| params.tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
 
-Max supply
+<a name="OpenFormatNFT+buyWithCommission"></a>
 
-\
+### openFormatNFT.buyWithCommission(params) ⇒ <code>ContractReceipt</code>
+<p>Buy with commission</p>
 
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-#### openFormatNFT.setMaxSupply(amount) ⇒ `ContractReceipt`
+| Param | Type | Description |
+| --- | --- | --- |
+| params | <code>Object</code> |  |
+| params.tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
+| params.address | <code>number</code> | <p>Address</p> |
 
-Sets the max supply
+<a name="OpenFormatNFT+togglePauseState"></a>
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
+### openFormatNFT.togglePauseState() ⇒ <code>ContractReceipt</code>
+<p>Toggle the paused state</p>
 
-| Param  | Type           | Description                      |
-| ------ | -------------- | -------------------------------- |
-| amount | `BigNumberish` | The maximum amount of the supply |
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
+<a name="OpenFormatNFT+burn"></a>
 
-#### openFormatNFT.getTotalSupply() ⇒ `BigNumberish`
+### openFormatNFT.burn(tokenId) ⇒ <code>ContractReceipt</code>
+<p>Burn a token</p>
 
-Gets the total supply
+**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
 
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
-**Returns**: `BigNumberish` -
+| Param | Type | Description |
+| --- | --- | --- |
+| tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
 
-Total supply
-
-\
-
-
-#### openFormatNFT.buy(params) ⇒ `ContractReceipt`
-
-Buy
-
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
-
-| Param          | Type           | Description |
-| -------------- | -------------- | ----------- |
-| params         | `Object`       |             |
-| params.tokenId | `BigNumberish` | Token ID    |
-
-#### openFormatNFT.buyWithCommission(params) ⇒ `ContractReceipt`
-
-Buy with commission
-
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
-
-| Param          | Type           | Description |
-| -------------- | -------------- | ----------- |
-| params         | `Object`       |             |
-| params.tokenId | `BigNumberish` | Token ID    |
-| params.address | `number`       | Address     |
-
-#### openFormatNFT.togglePauseState() ⇒ `ContractReceipt`
-
-Toggle the paused state
-
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)\
-
-
-#### openFormatNFT.burn(tokenId) ⇒ `ContractReceipt`
-
-Burn a token
-
-**Kind**: instance method of [`OpenFormatNFT`](nft.md#OpenFormatNFT)
-
-| Param   | Type           | Description |
-| ------- | -------------- | ----------- |
-| tokenId | `BigNumberish` | Token ID    |
