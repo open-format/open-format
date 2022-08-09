@@ -22,7 +22,8 @@ You can [checkout an example Next.js to see how it works](https://github.com/sim
 
 ## Getting started
 
-Start by adding the `OpenFormatProvider` around your app.
+- The `OpenFormatProvider` is how you initialise the SDK. It should typically wrap your entire application so you can access the various hooks it provides.
+- As the provider takes care of initialising the SDK for you, you don't have to do much else but you need to pass it a config object to specify which network you want to interact with.
 
 ```tsx
 import { OpenFormatProvider } from '@simpleweb/open-format-react';
@@ -30,11 +31,17 @@ import { OpenFormatProvider } from '@simpleweb/open-format-react';
 function App() {
   return (
     <>
-      <OpenFormatProvider>{/* the rest of your app... */}</OpenFormatProvider>
+      <OpenFormatProvider config={{ network: 'mumbai' }}>
+        {/* the rest of your app... */}
+      </OpenFormatProvider>
     </>
   );
 }
 ```
+
+| Parameter | Type  | Description                        |
+| --------- | :---: | :--------------------------------- |
+| network   | chain | 'mainnet', 'mumbai' or 'localhost' |
 
 ### Reading from the subgraph
 
@@ -64,7 +71,7 @@ function MyComponent() {
           id
         }
       }
-    `,
+    `
   });
 
   return <>{data && <pre>{JSON.stringify(data, null, 2)}</pre>}</>;
@@ -129,7 +136,7 @@ function MyComponent() {
               mintingPrice: 0.01,
               name: 'Test',
               symbol: 'TEST',
-              url: 'ipfs://',
+              url: 'ipfs://'
             })
           }
         >
