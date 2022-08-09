@@ -2,127 +2,127 @@
 
 ### Functions
 
-[useBurn(nft)](hooks.md#useBurn)
+[useBurn(nft)](hooks.md#useburn-nft)
 
 Hook to burn a token
 
-[useBuy(nft)](hooks.md#useBuy)
+[useBuy(nft)](hooks.md#usebuy-nft)
 
 Hook to buy
 
-[useBuyWithCommission(nft)](hooks.md#useBuyWithCommission)
+u[seBuyWithCommission(nft)](hooks.md#usebuywithcommission-nft)
 
 Hook to buy with commission
 
-[useDeploy()](hooks.md#useDeploy)
+[useDeploy()](hooks.md#usedeploy)
 
 Hook to get the deploy function from the SDK
 
-[useGetCollaboratorBalance(nft, address)](hooks.md#useGetCollaboratorBalance) ⇒ `UseQueryResult`
+[useGetCollaboratorBalance(nft, address)](hooks.md#usegetcollaboratorbalance-nft-address-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get the balance of a collaborator
 
-[useGetMaxSupply(nft)](hooks.md#useGetMaxSupply) ⇒ `UseQueryResult`
+u[seGetMaxSupply(nft)](hooks.md#usegetmaxsupply-nft-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get max supply
 
-[useGetPrimaryCommissionPercent(nft)](hooks.md#useGetPrimaryCommissionPercent) ⇒ `UseQueryResult`
+[useGetPrimaryCommissionPercent(nft)](hooks.md#usegetprimarycommissionpercent-nft-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get primary commission percentage
 
-[useGetSecondaryCommissionPercent(nft)](hooks.md#useGetSecondaryCommissionPercent) ⇒ `UseQueryResult`
+[useGetSecondaryCommissionPercent(nft)](hooks.md#usegetsecondarycommissionpercent-nft-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get secondary commission percentage
 
-[useGetTokenBalance(nft, tokenId)](hooks.md#useGetTokenBalance) ⇒ `UseQueryResult`
+[useGetTokenBalance(nft, tokenId)](hooks.md#usegettokenbalance-nft-tokenid-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get the balance of a token
 
-[useGetTokenCreator(nft, tokenId)](hooks.md#useGetTokenCreator) ⇒ `UseQueryResult`
+[useGetTokenCreator(nft, tokenId)](hooks.md#usegettokencreator-nft-tokenid-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get the creator of a token
 
-[useGetTokenSalePrice(nft, tokenId)](hooks.md#useGetTokenSalePrice) ⇒ `UseQueryResult`
+[useGetTokenSalePrice(nft, tokenId)](hooks.md#usegettokensaleprice-nft-tokenid-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get the sale price of a token
 
-[useGetTotalSupply(nft)](hooks.md#useGetTotalSupply) ⇒ `UseQueryResult`
+[useGetTotalSupply(nft)](hooks.md#usegettotalsupply-nft-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get the total supply
 
-[useMint(nft)](hooks.md#useMint)
+[useMint(nft)](hooks.md#usemint-nft)
 
 Hook to mint
 
-[useMintWithCommission(nft)](hooks.md#useMintWithCommission)
+[useMintWithCommission(nft)](hooks.md#usemintwithcommission-nft)
 
 Hook to mint with commission
 
-[useNFT(address)](hooks.md#useNFT) ⇒
+[useNFT(address)](hooks.md#usenft-address) ⇒
 
 Hook to return a new instance of an OpenFormatNFT
 
-[useRawRequest(options)](hooks.md#useRawRequest) ⇒ `any`
+[useRawRequest(options)](hooks.md#userawrequest-options-any) ⇒ `any`
 
 Performs a custom query against the subgraph
 
-[useRevenueSharingAllocation(nft)](hooks.md#useRevenueSharingAllocation)
+[useRevenueSharingAllocation(nft)](hooks.md#userevenuesharingallocation-nft)
 
 Hook to allocate revenue shares
 
-[useRoyalties(nft, salePrice)](hooks.md#useRoyalties) ⇒ `UseQueryResult`
+[useRoyalties(nft, salePrice)](hooks.md#useroyalties-nft-saleprice-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get the sale price of a token
 
-[useSaleData(nft, options)](hooks.md#useSaleData) ⇒ `UseQueryResult`
+[useSaleData(nft, options)](hooks.md#usesaledata-nft-options-usequeryresult) ⇒ `UseQueryResult`
 
 Hook to get sales data for a specific token
 
-[useSetMaxSupply(nft)](hooks.md#useSetMaxSupply)
+[useSetMaxSupply(nft)](hooks.md#usesetmaxsupply-nft)
 
 Hook to set the max supply
 
-[useSetMintingPrice(nft)](hooks.md#useSetMintingPrice)
+[useSetMintingPrice(nft)](hooks.md#usesetmintingprice-nft)
 
 Hook to set the price of minting
 
-[useSetPrimaryCommissionPercentage(nft)](hooks.md#useSetPrimaryCommissionPercentage)
+[useSetPrimaryCommissionPercentage(nft)](hooks.md#usesetprimarycommissionpercentage-nft)
 
 Hook to set the percentage of the primary commission
 
-[useSetRoyalties(nft)](hooks.md#useSetRoyalties)
+[useSetRoyalties(nft)](hooks.md#usesetroyalties-nft)
 
 Hook to setup royalties to be paid to an address
 
-[useSetSecondaryCommissionPercentage(nft)](hooks.md#useSetSecondaryCommissionPercentage)
+[useSetSecondaryCommissionPercentage(nft)](hooks.md#usesetsecondarycommissionpercentage-nft)
 
 Hook to set the percentage of the secondary commission
 
-[useSetTokenSalePrice(nft)](hooks.md#useSetTokenSalePrice)
+[useSetTokenSalePrice(nft)](hooks.md#usesettokensaleprice-nft)
 
 Hook to set the sale proce of a token
 
-[useSetupRevenueSharing(nft)](hooks.md#useSetupRevenueSharing)
+[useSetupRevenueSharing(nft)](hooks.md#usesetuprevenuesharing-nft)
 
 Hook to setup revenue sharing
 
-[useTogglePauseState(nft)](hooks.md#useTogglePauseState)
+[useTogglePauseState(nft)](hooks.md#usetogglepausestate-nft)
 
 Hook to toggle the paused state
 
-[useTokens()](hooks.md#useTokens) ⇒ `UseQueryResult`
+[useTokens() ](hooks.md#usetokens-usequeryresult)⇒ `UseQueryResult`
 
 Hook to get token data
 
-[useWallet()](hooks.md#useWallet)
+[useWallet()](hooks.md#usewallet)
 
 Hook to get the wallet state
 
-[useWithdrawCollaboratorFunds(nft)](hooks.md#useWithdrawCollaboratorFunds)
+[useWithdrawCollaboratorFunds(nft)](hooks.md#usewithdrawcollaboratorfunds-nft)
 
 Hook to withdraw collaborator funds
 
-[useWithdrawTokenFunds(nft)](hooks.md#useWithdrawTokenFunds)
+[useWithdrawTokenFunds(nft)](hooks.md#usewithdrawtokenfunds-nft)
 
 Hook to withdraw token funds
 
@@ -499,8 +499,7 @@ const { ...mutation, togglePauseState } = useTogglePauseState(nft);
 
 Hook to get token data
 
-**Kind**: global function\
-
+**Kind**: global function\\
 
 ### useWallet()
 

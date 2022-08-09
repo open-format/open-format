@@ -8,31 +8,31 @@ Creates a new instances of the OpenFormatNFT class which allows you to interact 
 **Access**: public
 
 * [OpenFormatNFT](nft.md#OpenFormatNFT)
-  * [.mint()](nft.md#OpenFormatNFT+mint) ⇒ `ContractReceipt`
-  * [.mintWithCommission(address)](nft.md#OpenFormatNFT+mintWithCommission) ⇒ `ContractReceipt`
-  * [.setMintingPrice(price)](nft.md#OpenFormatNFT+setMintingPrice) ⇒ `ContractReceipt`
-  * [.setRoyalties(params)](nft.md#OpenFormatNFT+setRoyalties) ⇒ `ContractReceipt`
-  * [.getRoyalties(params)](nft.md#OpenFormatNFT+getRoyalties) ⇒ `ContractReceipt`
-  * [.setupRevenueSharing(params)](nft.md#OpenFormatNFT+setupRevenueSharing) ⇒ `ContractReceipt`
-  * [.allocateRevenueShares(params)](nft.md#OpenFormatNFT+allocateRevenueShares) ⇒ `ContractReceipt`
-  * [.getCollaboratorBalance(address)](nft.md#OpenFormatNFT+getCollaboratorBalance) ⇒ `BigNumberish`
-  * [.withdrawCollaboratorFunds(address)](nft.md#OpenFormatNFT+withdrawCollaboratorFunds) ⇒ `ContractReceipt`
-  * [.getTokenBalance(tokenId)](nft.md#OpenFormatNFT+getTokenBalance) ⇒ `BigNumberish`
-  * [.withdrawTokenFunds(tokenId)](nft.md#OpenFormatNFT+withdrawTokenFunds) ⇒ `ContractReceipt`
-  * [.setPrimaryCommissionPercent(percent)](nft.md#OpenFormatNFT+setPrimaryCommissionPercent) ⇒ `ContractReceipt`
-  * [.getPrimaryCommissionPercent()](nft.md#OpenFormatNFT+getPrimaryCommissionPercent) ⇒ `BigNumberish`
-  * [.setSecondaryCommissionPercent(percent)](nft.md#OpenFormatNFT+setSecondaryCommissionPercent) ⇒ `ContractReceipt`
-  * [.getSecondaryCommissionPercent()](nft.md#OpenFormatNFT+getSecondaryCommissionPercent) ⇒ `BigNumberish`
-  * [.setTokenSalePrice(params)](nft.md#OpenFormatNFT+setTokenSalePrice) ⇒ `ContractReceipt`
-  * [.getTokenSalePrice(tokenId)](nft.md#OpenFormatNFT+getTokenSalePrice) ⇒ `BigNumberish`
-  * [.getTokenCreator(tokenId)](nft.md#OpenFormatNFT+getTokenCreator) ⇒ `string`
-  * [.getMaxSupply()](nft.md#OpenFormatNFT+getMaxSupply) ⇒ `BigNumberish`
-  * [.setMaxSupply(amount)](nft.md#OpenFormatNFT+setMaxSupply) ⇒ `ContractReceipt`
-  * [.getTotalSupply()](nft.md#OpenFormatNFT+getTotalSupply) ⇒ `BigNumberish`
-  * [.buy(params)](nft.md#OpenFormatNFT+buy) ⇒ `ContractReceipt`
-  * [.buyWithCommission(params)](nft.md#OpenFormatNFT+buyWithCommission) ⇒ `ContractReceipt`
-  * [.togglePauseState()](nft.md#OpenFormatNFT+togglePauseState) ⇒ `ContractReceipt`
-  * [.burn(tokenId)](nft.md#OpenFormatNFT+burn) ⇒ `ContractReceipt`
+  * [.mint()](nft.md#openformatnft.mint-contractreceipt) ⇒ `ContractReceipt`
+  * [.mintWithCommission(address)](nft.md#openformatnft.mintwithcommission-address-contractreceipt) ⇒ `ContractReceipt`
+  * [.setMintingPrice(price)](nft.md#openformatnft.setmintingprice-price-contractreceipt) ⇒ `ContractReceipt`
+  * [.setRoyalties(params)](nft.md#openformatnft.setroyalties-params-contractreceipt) ⇒ `ContractReceipt`
+  * [.getRoyalties(params)](nft.md#openformatnft.getroyalties-params-contractreceipt) ⇒ `ContractReceipt`
+  * [.setupRevenueSharing(params)](nft.md#openformatnft.setuprevenuesharing-params-contractreceipt) ⇒ `ContractReceipt`
+  * [.allocateRevenueShares(params)](nft.md#openformatnft.allocaterevenueshares-params-contractreceipt) ⇒ `ContractReceipt`
+  * [.getCollaboratorBalance(address)](nft.md#openformatnft.getcollaboratorbalance-address-bignumberish) ⇒ `BigNumberish`
+  * [.withdrawCollaboratorFunds(address)](nft.md#openformatnft.withdrawcollaboratorfunds-address-contractreceipt) ⇒ `ContractReceipt`
+  * [.getTokenBalance(tokenId)](nft.md#openformatnft.gettokenbalance-tokenid-bignumberish) ⇒ `BigNumberish`
+  * [.withdrawTokenFunds(tokenId)](nft.md#openformatnft.withdrawcollaboratorfunds-address-contractreceipt) ⇒ `ContractReceipt`
+  * [.setPrimaryCommissionPercent(percent)](nft.md#openformatnft.setprimarycommissionpercent-percent-contractreceipt) ⇒ `ContractReceipt`
+  * [.getPrimaryCommissionPercent()](nft.md#openformatnft.getprimarycommissionpercent-bignumberish) ⇒ `BigNumberish`
+  * [.setSecondaryCommissionPercent(percent)](nft.md#openformatnft.setsecondarycommissionpercent-percent-contractreceipt) ⇒ `ContractReceipt`
+  * [.getSecondaryCommissionPercent()](nft.md#openformatnft.getsecondarycommissionpercent-bignumberish) ⇒ `BigNumberish`
+  * [.setTokenSalePrice(params)](nft.md#openformatnft.settokensaleprice-params-contractreceipt) ⇒ `ContractReceipt`
+  * [.getTokenSalePrice(tokenId)](nft.md#openformatnft.gettokensaleprice-tokenid-bignumberish) ⇒ `BigNumberish`
+  * [.getTokenCreator(tokenId)](nft.md#openformatnft.gettokencreator-tokenid-string) ⇒ `string`
+  * [.getMaxSupply()](nft.md#openformatnft.getmaxsupply-bignumberish) ⇒ `BigNumberish`
+  * [.setMaxSupply(amount)](nft.md#openformatnft.setmaxsupply-amount-contractreceipt) ⇒ `ContractReceipt`
+  * [.getTotalSupply()](nft.md#openformatnft.gettotalsupply-bignumberish) ⇒ `BigNumberish`
+  * [.buy(params)](nft.md#openformatnft.buy-params-contractreceipt) ⇒ `ContractReceipt`
+  * .[buyWithCommission(params)](nft.md#openformatnft.buywithcommission-params-contractreceipt) ⇒ `ContractReceipt`
+  * [.togglePauseState()](nft.md#openformatnft.togglepausestate-contractreceipt) ⇒ `ContractReceipt`
+  * [.burn(tokenId)](nft.md#openformatnft.burn-tokenid-contractreceipt) ⇒ `ContractReceipt`
 
 #### openFormatNFT.mint() ⇒ `ContractReceipt`
 

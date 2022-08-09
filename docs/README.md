@@ -28,7 +28,7 @@ Our SDKs provide you with easy to use methods to interact with Open Format.
 
 Want to see under the hood? View our contracts for a more in-depth understanding of Open Format. You can also see our list of error codes returned by the contracts.
 
-* [Open Format](./#contracts)
+* [Open Format](broken-reference)
 * [Error Codes](contracts/error-codes.md)
 
 ## Links
