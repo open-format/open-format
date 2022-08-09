@@ -39,7 +39,7 @@ This enables developers to create highly customisable, scoped frontends for disp
 
 ## Buying and Selling
 
-Buying and selling of NFT's happens on a secondary marketplace. It enables owners of an NFT to resell the NFT. We want NFT owners to be able to sell on any secondary market, so we've written to contracts in a way to enable this. If you're building your own marketplace using the Open Format protocol, we provide a few helpful functions.
+Buying and selling of NFT's happens on a secondary marketplace. It enables owners of an NFT to resell the NFT. We want NFT owners to be able to sell on any secondary market, so we've written contracts in a way to enable this. If you're building your own marketplace using the Open Format protocol, we provide a few helpful functions.
 
 
 
