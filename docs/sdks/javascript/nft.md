@@ -311,4 +311,3 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
-

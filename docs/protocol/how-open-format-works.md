@@ -1,8 +1,13 @@
 ---
-description: At its core, Open Format comprises of two fundamental principles. Creating NFTs and reading NFTs. This section explains how this works within the Open Format protocol.
+description: >-
+  At its core, Open Format comprises of two fundamental principles. Creating
+  NFTs and reading NFTs. This section explains how this works within the Open
+  Format protocol.
 ---
 
-# How it works
+# Overview
+
+![](../.gitbook/assets/open-format.gif)
 
 ## Creating an NFT
 
@@ -35,3 +40,13 @@ This enables developers to create highly customisable, scoped frontends for disp
 ## Buying and Selling
 
 Buying and selling of NFT's happens on a secondary marketplace. It enables owners of an NFT to resell the NFT. We want NFT owners to be able to sell on any secondary market, so we've written to contracts in a way to enable this. If you're building your own marketplace using the Open Format protocol, we provide a few helpful functions.
+
+
+
+## Use cases
+
+* You're a musician who wants to release your music as an NFT and create a marketplace for your fans to trade your music.
+* You're an agency and want to create custom branded minting and marketplace experiences for your clients.
+* You're in a band or have collaborated on some work and want to release an NFT where any earnings can be automatically split between multiple parties.
+* You're part of a community who wants to release a NFT where a percentage of the earnings go back to NFT holders.
+* You want to create a decentralise video platform similar to YouTube.
