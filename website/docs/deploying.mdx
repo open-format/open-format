@@ -3,29 +3,39 @@ import TabItem from '@theme/TabItem';
 
 # Deploying
 
-There is only one function you need in order for you to be able to deploy an NFT, the deploy function.
+Deploying is the process of creating a new instance of the Open Format contract on the blockchain.
+Open Format is currently available on the Polygon Mainnet and Polygon Mumbai networks. 
 
 :::tip Gotcha's
 The metadata URL should return a JSON blob of data with the metadata for your NFT. For now, we only support metadata store on IPFS.
 :::
 
+### Deploy
+
+The deploy function creates a new instance of the Open Format contract on chain.
+
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```js
+```jsx
 import { OpenFormatSDK } from '@simpleweb/open-format';
 
 const sdk = new OpenFormatSDK({
   network: 'mumbai',
 });
 
-await sdk.deploy({
-  maxSupply: 100,
-  mintingPrice: 0.01,
-  name: "TICKET",
-  symbol: "FESTIVAL",
-  url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
-});
+const deployHandler = async () => {
+  await sdk.deploy({
+    maxSupply: 100,
+    mintingPrice: 0.01,
+    name: "TICKET",
+    symbol: "FESTIVAL",
+    url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
+  });
+}
+
+<button onClick={() => deployHandler()}>Deploy NFT</button>
+
 ```
 
 </TabItem>
@@ -35,26 +45,23 @@ await sdk.deploy({
 import { useDeploy, useWallet } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const { isConnected } = useWallet();
   const { deploy } = useDeploy();
 
   return (
     <>
-      {isConnected && (
-        <button
-          onClick={() =>
-            deploy({
-              maxSupply: 100,
-              mintingPrice: 0.01,
-              name: "TICKET",
-              symbol: "FESTIVAL",
-              url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
-            })
-          }
-        >
-          Deploy NFT
-        </button>
-      )}
+      <button
+        onClick={() =>
+          deploy({
+            maxSupply: 100,
+            mintingPrice: 0.01,
+            name: "TICKET",
+            symbol: "FESTIVAL",
+            url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
+          })
+        }
+      >
+        Deploy NFT
+      </button>
     </>
   );
 }
