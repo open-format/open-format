@@ -1,6 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const EDIT_LINK = "https://github.com/simpleweb/open-format/tree/main/website";
 const GITHUB_LINK = "https://github.com/simpleweb/open-format";
 const TWITTER_LINK = "https://twitter.com/simpleweb";
 const DISCORD_LINK = "https://discord.gg/8WV52tVqbZ";
@@ -36,7 +37,7 @@ const config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: GITHUB_LINK
+          editUrl: EDIT_LINK
         },
         blog: false,
         theme: {
