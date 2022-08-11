@@ -79,14 +79,16 @@ const config = {
             docId: "reference",
             position: "left"
           },
-          ...(process.env.NODE_ENV === "development" && [
-            {
-              label: "Styleguide",
-              type: "doc",
-              docId: "styleguide",
-              position: "left"
-            }
-          ]),
+          ...(process.env.NODE_ENV === "development"
+            ? [
+                {
+                  label: "Styleguide",
+                  type: "doc",
+                  docId: "styleguide",
+                  position: "left"
+                }
+              ]
+            : []),
           {
             href: GITHUB_LINK,
             className: "navbar-item-github",
@@ -105,34 +107,6 @@ const config = {
         ]
       },
       footer: {
-        links: [
-          {
-            title: "Docs",
-            items: [
-              {
-                label: "Tutorial",
-                to: "/docs/intro"
-              }
-            ]
-          },
-          {
-            title: "Community",
-            items: [
-              {
-                label: "Github",
-                href: GITHUB_LINK
-              },
-              {
-                label: "Discord",
-                href: DISCORD_LINK
-              },
-              {
-                label: "Twitter",
-                href: TWITTER_LINK
-              }
-            ]
-          }
-        ],
         copyright: `Copyright © ${new Date().getFullYear()} Simpleweb`
       },
       prism: {

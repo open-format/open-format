@@ -9,8 +9,6 @@ import { useMutation } from '@tanstack/react-query';
  * ```tsx
  * const { ...mutation, burn } = useBurn(nft);
  * ```
- *
- * [SDK: Burn](/js/nft.md#burn)
  */
 export function useBurn(nft: OpenFormatNFT) {
   const { mutateAsync, ...mutation } = useMutation<

@@ -649,8 +649,7 @@ a.hash-link {
 }
 
 .footer {
-  border-top: 1px solid var(--custom-border-color);
-  padding-bottom: 80px;
+  display: none;
 }
 
 .has-emphasis {
