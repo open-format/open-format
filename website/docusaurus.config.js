@@ -79,14 +79,16 @@ const config = {
             docId: "reference",
             position: "left"
           },
-          ...(process.env.NODE_ENV === "development" && [
-            {
-              label: "Styleguide",
-              type: "doc",
-              docId: "styleguide",
-              position: "left"
-            }
-          ]),
+          ...(process.env.NODE_ENV === "development"
+            ? [
+                {
+                  label: "Styleguide",
+                  type: "doc",
+                  docId: "styleguide",
+                  position: "left"
+                }
+              ]
+            : []),
           {
             href: GITHUB_LINK,
             className: "navbar-item-github",
