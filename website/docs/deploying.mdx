@@ -3,6 +3,12 @@ import TabItem from '@theme/TabItem';
 
 # Deploying
 
+There is only one function you need in order for you to be able to deploy an NFT, the deploy function.
+
+:::tip Gotcha's
+The metadata URL should return a JSON blob of data with the metadata for your NFT. For now, we only support metadata store on IPFS.
+:::
+
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
@@ -12,20 +18,43 @@ import { OpenFormatSDK } from '@simpleweb/open-format';
 const sdk = new OpenFormatSDK({
   network: 'mumbai',
 });
+
+await sdk.deploy({
+  maxSupply: 100,
+  mintingPrice: 0.01,
+  name: "TICKET",
+  symbol: "FESTIVAL",
+  url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
+});
 ```
 
 </TabItem>
 <TabItem value="react" label="React">
 
 ```jsx
-import { OpenFormatProvider } from '@simpleweb/open-format-react';
+import { useDeploy, useWallet } from '@simpleweb/open-format-react';
 
-function App() {
+function MyComponent() {
+  const { isConnected } = useWallet();
+  const { deploy } = useDeploy();
+
   return (
     <>
-      <OpenFormatProvider config={{ network: 'mumbai' }}>
-        {/* the rest of your app... */}
-      </OpenFormatProvider>
+      {isConnected && (
+        <button
+          onClick={() =>
+            deploy({
+              maxSupply: 100,
+              mintingPrice: 0.01,
+              name: "TICKET",
+              symbol: "FESTIVAL",
+              url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
+            })
+          }
+        >
+          Deploy NFT
+        </button>
+      )}
     </>
   );
 }
