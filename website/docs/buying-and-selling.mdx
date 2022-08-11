@@ -33,7 +33,7 @@ const tokenId = 0;
 const nft = sdk.getNFT(contractAddress);
 const buyHandler = async () => {
   await nft.buy(tokenId)
-  };
+};
 
 <button onClick={() => buy(tokenId)}>
   Buy NFT
@@ -63,9 +63,8 @@ const buyHandler = async () => {
         </button>
       </>
     );
-  }  
+  }
 ```
-
 
 
 
@@ -95,7 +94,7 @@ const nft = sdk.getNFT(contractAddress);
 
 const buyWithCommissionHandler = async () => {
   await nft.buyWithCommission(tokenId, address);
-  };
+};
 
 <button onClick={() => buyWithCommissionHandler(tokenId, commissionReceiverAddress)}>
   Buy NFT
@@ -105,11 +104,6 @@ const buyWithCommissionHandler = async () => {
 </TabItem>
 
 <TabItem value="react" label="React">
-
-<br />
-
-
-
 
 ```tsx
 import { useBuyWithCommission, useNFT } from '@simpleweb/open-format-react';
