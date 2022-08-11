@@ -1,8 +1,23 @@
-# Javascript
+---
+title: JavaScript SDK
+hide_title: true
+---
 
-The Open Format JavaScript SDK provides a simple way to interact with Open Format.
-
-Don't forget to checkout our [React SDK](../react/) which simplifies using the SDK even further.
+<h1 align="center">Open Format JavaScript SDK</h1>
+<p align="center">
+  <a href="https://www.npmjs.com/package/@simpleweb/open-format">
+    <img alt="npm" src="https://img.shields.io/npm/v/@simpleweb/open-format"/>
+  </a>
+</p>
+<p align="center">
+  <strong>
+    The Open Format JavaScript SDK provides a simple way to interact with Open Format.
+  </strong>
+  <br/>
+  <small>
+    Don't forget to checkout our <a href="./react">React SDK</a> which simplifies using the SDK even further.
+  </small>
+</p>
 
 ## Installation
 

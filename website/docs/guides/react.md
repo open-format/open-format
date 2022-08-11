@@ -1,6 +1,6 @@
 # React
 
-The React SDK adds a small abstraction over the [Javascript SDK](../javascript/) but this simplifies interacting with Open Format even further.
+The React SDK adds a small abstraction over the [Javascript SDK](./javascript) but this simplifies interacting with Open Format even further.
 
 ## Installation
 
