@@ -31,7 +31,7 @@ const contractAddress = '0x...';
 const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
-const buyHandler = async () => {
+const buyHandler = async (tokenId) => {
   await nft.buy(tokenId)
 };
 
