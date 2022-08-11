@@ -8,7 +8,7 @@ There are two functions that you can use in order for you to be able to facilita
 ### Secondary marketplaces
 
 One of the features of the open format protocol is the ability to re-sell NFT's on what is known as the secondary marketplace.
-Access to this functionality is made easy with the SDK, there are two specific methods that we will look over in this guide to help get you started, they are buy and buyWithCommission.
+Access to this functionality is made easy with the SDK, there are two specific methods that we will look over in this guide to help get you started, they are `buy` and `buyWithCommission`.
 
 :::tip Gotcha's
 
@@ -53,6 +53,7 @@ const buyHandler = async () => {
   function MyComponent() {
     const contractAddress = '0x...';
     const tokenId = 0;
+
     const nft = useNFT(contractAddress);
     const { buy } = useBuy(nft);
 
@@ -90,7 +91,7 @@ const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
 
-const buyWithCommissionHandler = async () => {
+const buyWithCommissionHandler = async (tokenId, address) => {
   await nft.buyWithCommission(tokenId, address);
 };
 
@@ -109,8 +110,9 @@ import { useBuyWithCommission, useNFT } from '@simpleweb/open-format-react';
 function MyComponent() {
   const commissionReceiverAddress = "0x...";
   const tokenId = 0;
+  const contractAddress = "0x...";
 
-  const nft = useNFT(tokenId);
+  const nft = useNFT(contractAddress);
   const { buyWithCommission } = useBuyWithCommission(nft);
 
   return (

@@ -6,6 +6,10 @@ import TabItem from '@theme/TabItem';
 Deploying is the process of creating a new instance of the Open Format contract on the blockchain.
 Open Format is currently available on the Polygon Mainnet and Polygon Mumbai networks. 
 
+### Creating NFT collections
+
+The SDK makes it simple to quickly and easily create fully customisable NFTs.
+
 :::tip Gotcha's
 The metadata URL should return a JSON blob of data with the metadata for your NFT. For now, we only support metadata store on IPFS.
 :::
@@ -14,15 +18,15 @@ The metadata URL should return a JSON blob of data with the metadata for your NF
 
 The deploy function creates a new instance of the Open Format contract on chain.
 
+
+
+
+
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
 ```jsx
 import { OpenFormatSDK } from '@simpleweb/open-format';
-
-const sdk = new OpenFormatSDK({
-  network: 'mumbai',
-});
 
 const deployHandler = async () => {
   await sdk.deploy({

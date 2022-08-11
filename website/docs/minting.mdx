@@ -7,7 +7,9 @@ Minting an NFT is the process of creating a permanent entry for an asset on a bl
 
 In the context of Open Format, the owner of a NFT can transfer, sell, burn and receive revenue shares. 
 
-On the other hand, the minting process can create revenue for creators and marketplace owners via a sales commission.
+### Primary and secondary marketplaces
+
+Minting is at the heart of the Open Format protocol. The SDK facilitates the primary and secondary sale of tokens and access to this functionality is made easy with these two specific methods that we will look over in this guide to help get you started, they are `mint` and `mintWithCommission`.
 
 ### Mint
 
@@ -16,24 +18,31 @@ This will mint an NFT and send it to the wallet of the sender.
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```ts
-await nft.mint()
+```jsx
+const contractAddress = "0x..."
+const nft = sdk.getNFT(contractAddress);
+
+cosnt mintHandler = async () => await nft.mint();
+
+<button onClick={() => mintHandler()}>
+  Mint NFT
+</button>
+
 ```
 
 </TabItem>
 <TabItem value="react" label="React">
 
 ```tsx
-import { useMint } from '@simpleweb/open-format-react';
+import { useMint, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const { mint } = useMint();
+  const nft = useNFT('0x...');
+  const { mint } = useMint(nft);
 
   return (
     <>
-      <button onClick={() => mint({ contractAddress: '0x...' })}>
-        Mint NFT
-      </button>
+      <button onClick={() => mint()}>Mint NFT</button>
     </>
   );
 }
@@ -46,20 +55,39 @@ function MyComponent() {
 
 This will mint an NFT, send it to the wallet of the sender and also send a percentage of the send value to the wallet address passed into the function.
 
+:::tip Gotchas
+
+Before calling the mint with commision function a commision percentage must be set by the creator of the NFT.
+This can be done by calling `setPrimaryCommissionPercent`.
+
+:::
+
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```ts
-await nft.mintWithCommission(commissionReceiverAddress)
+```jsx
+const contractAddress = "0x..."
+const commissionReceiverAddress = "0x..."
+
+const nft = sdk.getNFT(contractAddress);
+cosnt mintWithCommissionHandler = async (address) => await nft.mintWithCommission(address);
+
+ <button onClick={() => mintWithCommissionHandler(commissionReceiverAddress)}>Mint NFT</button>
+
 ```
 
 </TabItem>
 <TabItem value="react" label="React">
 
+
 ```tsx
-import { useMint } from '@simpleweb/open-format-react';
+import { useMint, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
+  const commissionReceiverAddress = "0x...";
+  const contractAddress = "0x...";
+
+  const nft = useNFT(contractAddress);
   const { mintWithCommission } = useMintWithCommission();
 
   return (
@@ -74,6 +102,3 @@ function MyComponent() {
 
 </TabItem>
 </Tabs>
-
-* You can get the `mintingPrice` from the contract or you can read it in the subgraph.
-* The `msg.value` must be greater than the `mintingPrice`.
