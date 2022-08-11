@@ -107,34 +107,6 @@ const config = {
         ]
       },
       footer: {
-        links: [
-          {
-            title: "Docs",
-            items: [
-              {
-                label: "Tutorial",
-                to: "/docs/intro"
-              }
-            ]
-          },
-          {
-            title: "Community",
-            items: [
-              {
-                label: "Github",
-                href: GITHUB_LINK
-              },
-              {
-                label: "Discord",
-                href: DISCORD_LINK
-              },
-              {
-                label: "Twitter",
-                href: TWITTER_LINK
-              }
-            ]
-          }
-        ],
         copyright: `Copyright © ${new Date().getFullYear()} Simpleweb`
       },
       prism: {
