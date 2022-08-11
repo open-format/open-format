@@ -5,7 +5,8 @@
   },
   "plugins": [
     "plugins/markdown",
-    "node_modules/jsdoc-babel"
+    "node_modules/jsdoc-babel",
+    "node_modules/@godaddy/dmd"
   ],
   "babel": {
     "extensions": [

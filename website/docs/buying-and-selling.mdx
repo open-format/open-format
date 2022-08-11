@@ -1,0 +1,135 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Buying
+
+There are two functions that you can use in order for you to be able to facilitate the secondary purchase of an NFT, that is, the purchase of an NFT that has already been minted by another wallet.
+
+### Secondary marketplaces
+
+One of the features of the open format protocol is the ability to re-sell NFT's on what is known as the secondary marketplace.
+Access to this functionality is made easy with the SDK, there are two specific methods that we will look over in this guide to help get you started, they are buy and buyWithCommission.
+
+:::tip Gotcha's
+
+Before calling the buy function a token must be set as available for sale.
+This can be done by calling `setTokenSalePrice`.
+
+:::
+
+## Buy
+
+The Buy function facilitates the secondary sale of an NFT.
+
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+
+```jsx
+const contractAddress = '0x...';
+const tokenId = 0;
+
+const nft = sdk.getNFT(contractAddress);
+const buyHandler = async () => {
+  await nft.buy(tokenId)
+  };
+
+<button onClick={() => buy(tokenId)}>
+  Buy NFT
+</button>
+
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+<br />
+
+
+```tsx
+  import { useBuy } from '@simpleweb/open-format-react';
+
+  function MyComponent() {
+    const contractAddress = '0x...';
+    const tokenId = 0;
+    const nft = useNFT(contractAddress);
+    const { buy } = useBuy(nft);
+
+    return (
+      <>
+        <button onClick={() => buy(tokenId)}>
+          Buy NFT
+        </button>
+      </>
+    );
+  }  
+```
+
+
+
+
+</TabItem>
+</Tabs>
+
+## Buy with commission
+
+The buy with commision function handles the secondary sale of an NFT with a commision set. The commision is then sent to the commissionReceiverAddress.
+
+:::tip Gotcha's
+
+Before calling the buy with commision function a commision percentage must be set by the creator of the NFT.
+This can be done by calling `setSecondaryCommissionPercent`.
+
+:::
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```jsx
+const contractAddress = '0x...';
+const commissionReceiverAddress = "0x...";
+const tokenId = 0;
+
+const nft = sdk.getNFT(contractAddress);
+
+const buyWithCommissionHandler = async () => {
+  await nft.buyWithCommission(tokenId, address);
+  };
+
+<button onClick={() => buyWithCommissionHandler(tokenId, commissionReceiverAddress)}>
+  Buy NFT
+</button>
+
+```
+</TabItem>
+
+<TabItem value="react" label="React">
+
+<br />
+
+
+
+
+```tsx
+import { useBuyWithCommission, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const commissionReceiverAddress = "0x...";
+  const tokenId = 0;
+
+  const nft = useNFT(tokenId);
+  const { buyWithCommission } = useBuyWithCommission(nft);
+
+  return (
+    <>
+      <button onClick={() => buyWithCommission({tokenId, address})}>
+        Buy NFT
+      </button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

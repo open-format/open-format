@@ -1,3 +1,7 @@
+---
+title: NFT
+---
+
 <a name="OpenFormatNFT"></a>
 
 ## OpenFormatNFT
@@ -10,7 +14,7 @@
     * [.mint()](#OpenFormatNFT+mint) ⇒ <code>ContractReceipt</code>
     * [.mintWithCommission(address)](#OpenFormatNFT+mintWithCommission) ⇒ <code>ContractReceipt</code>
     * [.setMintingPrice(price)](#OpenFormatNFT+setMintingPrice) ⇒ <code>ContractReceipt</code>
-    * [.setApprovedMintingExtension(extensionContractAddress)](#OpenFormatNFT+setApprovedMintingExtension) ⇒
+    * [.setApprovedMintingExtension(extensionContractAddress)](#OpenFormatNFT+setApprovedMintingExtension) ⇒ <code>ContractReceipt</code>
     * [.setRoyalties(params)](#OpenFormatNFT+setRoyalties) ⇒ <code>ContractReceipt</code>
     * [.getRoyalties(params)](#OpenFormatNFT+getRoyalties) ⇒ <code>ContractReceipt</code>
     * [.setupRevenueSharing(params)](#OpenFormatNFT+setupRevenueSharing) ⇒ <code>ContractReceipt</code>
@@ -64,11 +68,10 @@
 
 <a name="OpenFormatNFT+setApprovedMintingExtension"></a>
 
-### openFormatNFT.setApprovedMintingExtension(extensionContractAddress) ⇒
+### openFormatNFT.setApprovedMintingExtension(extensionContractAddress) ⇒ <code>ContractReceipt</code>
 <p>Sets the approved minting share extension</p>
 
 **Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
-**Returns**: <p>transaction</p>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -311,3 +314,4 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
+

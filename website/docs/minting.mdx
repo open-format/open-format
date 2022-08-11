@@ -1,0 +1,75 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Minting
+
+There are two functions that can be called in the OpenFormat contract. We're using function overloading for minting so the syntax for calling the function is slightly different.
+
+### Mint
+
+This will mint an NFT and send it to the wallet of the sender.
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```ts
+await nft.mint()
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+```tsx
+import { useMint } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const { mint } = useMint();
+
+  return (
+    <>
+      <button onClick={() => mint({ contractAddress: '0x...' })}>
+        Mint NFT
+      </button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Mint with a sales commission
+
+This will mint an NFT, send it to the wallet of the sender and also send a percentage of the send value to the wallet address passed into the function.
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```ts
+await nft.mintWithCommission(commissionReceiverAddress)
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+```tsx
+import { useMint } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const { mintWithCommission } = useMintWithCommission();
+
+  return (
+    <>
+      <button onClick={() => mint(commissionReceiverAddress)}>
+        Mint NFT
+      </button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+* You can get the `mintingPrice` from the contract or you can read it in the subgraph.
+* The `msg.value` must be greater than the `mintingPrice`.
