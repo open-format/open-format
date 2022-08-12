@@ -27,8 +27,12 @@ The deploy function creates a new instance of the Open Format contract on chain.
 
 ```jsx
 import { OpenFormatSDK } from '@simpleweb/open-format';
+  
+  const sdk = new OpenFormatSDK({
+    network: 'mumbai',
+    signer: '0x...',
+  });
 
-const deployHandler = async () => {
   await sdk.deploy({
     maxSupply: 100,
     mintingPrice: 0.01,
@@ -36,9 +40,6 @@ const deployHandler = async () => {
     symbol: "FESTIVAL",
     url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
   });
-}
-
-<button onClick={() => deployHandler()}>Deploy NFT</button>
 
 ```
 
