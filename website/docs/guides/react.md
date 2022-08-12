@@ -1,4 +1,9 @@
-# React
+---
+title: React
+hide_title: true
+---
+
+# Quickstart: React
 
 The React SDK adds a small abstraction over the [Javascript SDK](./javascript) but this simplifies interacting with Open Format even further.
 
@@ -14,7 +19,7 @@ npm install @simpleweb/open-format-react ethers
 yarn add @simpleweb/open-format-react ethers
 ```
 
-## Quick start
+## Setup
 
 Start by wrapping the `OpenFormatProvider` around your app.
 
@@ -38,7 +43,7 @@ function App() {
 }
 ```
 
-### Reading from the subgraph
+## Reading from the subgraph
 
 There are numerous hooks that you can use to pull data from the subgraph. These return a `Query` from `react-query`, please refer to [their documentation](https://tanstack.com/query/v4/docs/guides/queries) for further information.
 
@@ -73,7 +78,7 @@ function MyComponent() {
 }
 ```
 
-### Connecting to a wallet
+## Connecting to a wallet
 
 Before you can deploy or perform any interactions with the contract you'll want to connect a wallet.
 
@@ -93,7 +98,7 @@ function MyComponent() {
 }
 ```
 
-### Deploying a contract
+## Deploying a contract
 
 Deploying a contract is simple, you just need to make sure a wallet is connected first.
 
@@ -126,7 +131,7 @@ function MyComponent() {
 }
 ```
 
-### Minting an NFT
+## Minting an NFT
 
 Once you have deployed a contract you can then mint NFTs from it. The `contractAddress` can be accessed when deploying a contract `const { contractAddress } = await deploy()`.
 
