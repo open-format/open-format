@@ -1,23 +1,9 @@
 ---
-title: JavaScript SDK
+title: JavaScript
 hide_title: true
 ---
 
-<h1 align="center">Open Format JavaScript SDK</h1>
-<p align="center">
-  <a href="https://www.npmjs.com/package/@simpleweb/open-format">
-    <img alt="npm" src="https://img.shields.io/npm/v/@simpleweb/open-format"/>
-  </a>
-</p>
-<p align="center">
-  <strong>
-    The Open Format JavaScript SDK provides a simple way to interact with Open Format.
-  </strong>
-  <br/>
-  <small>
-    Don't forget to checkout our <a href="./react">React SDK</a> which simplifies using the SDK even further.
-  </small>
-</p>
+# Quickstart: JavaScript
 
 ## Installation
 
@@ -31,9 +17,7 @@ npm install @simpleweb/open-format ethers
 yarn add @simpleweb/open-format ethers
 ```
 
-## Quick start
-
-### Initialising the SDK
+## Initialising the SDK
 
 You can initialise the SDK by creating a new instance of `OpenFormatSDK` and selecting one of the available networks that are supported. This will create a new instance in "read-only" mode, meaning you can read from the subgraph but any interactions that require you to sign a transaction (deploying a new instance of the contract, minting an NFT, etc...) will throw an error.
 
@@ -103,7 +87,7 @@ More information on the graph can be found in the documentation [here.](https://
 
 ERC721 is a more complex standard than ERC20, with multiple optional extensions, and is split across a number of contracts. Check out the [API Reference](https://docs.openzeppelin.com/contracts/3.x/api/token/ERC721) to learn more about these.
 
-### Deploying an NFT
+## Deploying an NFT
 
 If you are just starting out, you'll typically want to deploy a version of the contract so you can start interacting with it. To do this, call the `deploy` method with the options you'd like.
 
