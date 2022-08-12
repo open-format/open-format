@@ -21,12 +21,7 @@ This will mint an NFT and send it to the wallet of the sender.
 ```jsx
 const contractAddress = "0x..."
 const nft = sdk.getNFT(contractAddress);
-
-cosnt mintHandler = async () => await nft.mint();
-
-<button onClick={() => mintHandler()}>
-  Mint NFT
-</button>
+await nft.mint();
 ```
 
 </TabItem>
@@ -69,9 +64,7 @@ const contractAddress = "0x..."
 const commissionReceiverAddress = "0x..."
 
 const nft = sdk.getNFT(contractAddress);
-cosnt mintWithCommissionHandler = async (address) => await nft.mintWithCommission(address);
-
-<button onClick={() => mintWithCommissionHandler(commissionReceiverAddress)}>Mint NFT</button>
+await nft.mintWithCommission(commissionReceiverAddress);
 ```
 
 </TabItem>
