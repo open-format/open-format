@@ -31,13 +31,7 @@ const contractAddress = '0x...';
 const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
-const buyHandler = async (tokenId) => {
-  await nft.buy(tokenId)
-};
-
-<button onClick={() => buy(tokenId)}>
-  Buy NFT
-</button>
+await nft.buy(tokenId);
 ```
 
 </TabItem>
@@ -89,14 +83,8 @@ const commissionReceiverAddress = "0x...";
 const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
+await nft.buyWithCommission(tokenId, commissionReceiverAddress);
 
-const buyWithCommissionHandler = async (tokenId, address) => {
-  await nft.buyWithCommission(tokenId, address);
-};
-
-<button onClick={() => buyWithCommissionHandler(tokenId, commissionReceiverAddress)}>
-  Buy NFT
-</button>
 ```
 </TabItem>
 
