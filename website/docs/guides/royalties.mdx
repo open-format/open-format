@@ -1,1 +1,101 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Royalties
+
+Royalties allow creators to receive a percentage of every secondary sale of their NFTs. We use the EIP-2981 Royalty Standard so all royalties are handled on-chain and are paid out instantly on completion of a sale.
+
+### Secondary Marketplaces
+
+One of the features of the open format protocol is the ability to re-sell NFT's on what is known as the secondary marketplace. Creators are still able to benefit from this sale by utilising the Royalty functionality that is baked into the Open Format protocol and therefore the SDK.
+There are two specific methods that relate to Royalties, they are `getRoyalties` and `setRoyalties`.
+
+### Set Royalties
+
+Sets the royalty percentage for a given NFT
+
+:::tip info
+
+The royalty percentage can only be set by the creator of a given NFT. It must be a number between 0 - 10000. e.g. 2.5% = 250
+
+
+:::
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+
+```jsx
+const contractAddress = "0x..."
+const royaltyReceiverAddress = '0x...'
+const royaltyPercentage = 500;
+
+const nft = sdk.getNFT(contractAddress);
+await nft.setRoyalties({
+  royaltyReceiverAddress,
+  royaltyPercentage
+});
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+```tsx
+import { useMint, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = "0x..."
+  const royaltyReceiverAddress = '0x...'
+  const royaltyPercentage = 500;
+
+  const nft = useNFT(contractAddress);
+  const { setRoyalties } = useSetRoyalties(nft);
+
+  return (
+    <>
+      <button onClick={() => setRoyalties({royaltyReceiverAddress, royaltyPercentage})}>Mint NFT</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Get Royalties
+
+Calculates and returns the address of the royalty receiver and the amount from a sale.
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+
+```jsx
+const contractAddress = "0x..."
+const salePrice = 500;
+
+const nft = sdk.getNFT(contractAddress);
+await nft.getRoyalties({salePrice});
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+```tsx
+import { useMint, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = "0x..."
+  const nft = useNFT(contractAddress);
+
+  const { data: royaltiesData } = useRoyalties(nft, 500);
+  return (
+    <>
+      {royaltiesData && <span>{royaltiesData[0]}</span>}
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
