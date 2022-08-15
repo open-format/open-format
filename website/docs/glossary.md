@@ -1,5 +1,11 @@
 # Glossary
 
+## NFT
+
+An NFT is a non-fungible token, which is a digital representation of a unique item. This can be anything from artwork or music to a piece of material going through a supply chain.
+
+When an NFT is created, an entry is permanently added to the blockchain. This is similar to adding an entry into a database in the web2 world.
+
 ## Signer
 
 Simply put a signer is just the account that manages transactions, more information on this can be found [here](https://docs.ethers.io/v5/api/signer/).
