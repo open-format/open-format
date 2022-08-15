@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 
 Minting an NFT is the process of creating a permanent entry for an asset on a blockchain. Each time an NFT is minted, a reference is created between the holder and the NFT contract in the form of a token id. Owners of NFTs have special privileges relating to their assign token id.
 
-In the context of Open Format, the owner of a NFT can transfer, sell, burn and receive revenue shares. 
+In the context of Open Format, the owner of a NFT can transfer, sell, burn and receive revenue shares.
 
 ### Primary and secondary marketplaces
 
@@ -18,7 +18,7 @@ This will mint an NFT and send it to the wallet of the sender.
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx
+```jsx showLineNumbers
 const contractAddress = "0x..."
 const nft = sdk.getNFT(contractAddress);
 
@@ -27,13 +27,12 @@ cosnt mintHandler = async () => await nft.mint();
 <button onClick={() => mintHandler()}>
   Mint NFT
 </button>
-
 ```
 
 </TabItem>
 <TabItem value="react" label="React">
 
-```tsx
+```tsx showLineNumbers
 import { useMint, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
@@ -65,22 +64,21 @@ This can be done by calling `setPrimaryCommissionPercent`.
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx
+```jsx showLineNumbers
 const contractAddress = "0x..."
 const commissionReceiverAddress = "0x..."
 
 const nft = sdk.getNFT(contractAddress);
 cosnt mintWithCommissionHandler = async (address) => await nft.mintWithCommission(address);
 
- <button onClick={() => mintWithCommissionHandler(commissionReceiverAddress)}>Mint NFT</button>
-
+<button onClick={() => mintWithCommissionHandler(commissionReceiverAddress)}>Mint NFT</button>
 ```
 
 </TabItem>
 <TabItem value="react" label="React">
 
 
-```tsx
+```tsx showLineNumbers
 import { useMint, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {

@@ -26,7 +26,7 @@ The Buy function facilitates the secondary sale of an NFT.
 <TabItem value="js" label="JavaScript">
 
 
-```jsx
+```jsx showLineNumbers
 const contractAddress = '0x...';
 const tokenId = 0;
 
@@ -38,7 +38,6 @@ const buyHandler = async (tokenId) => {
 <button onClick={() => buy(tokenId)}>
   Buy NFT
 </button>
-
 ```
 
 </TabItem>
@@ -47,24 +46,24 @@ const buyHandler = async (tokenId) => {
 <br />
 
 
-```tsx
-  import { useBuy } from '@simpleweb/open-format-react';
+```tsx showLineNumbers
+import { useBuy } from '@simpleweb/open-format-react';
 
-  function MyComponent() {
-    const contractAddress = '0x...';
-    const tokenId = 0;
+function MyComponent() {
+  const contractAddress = '0x...';
+  const tokenId = 0;
 
-    const nft = useNFT(contractAddress);
-    const { buy } = useBuy(nft);
+  const nft = useNFT(contractAddress);
+  const { buy } = useBuy(nft);
 
-    return (
-      <>
-        <button onClick={() => buy(tokenId)}>
-          Buy NFT
-        </button>
-      </>
-    );
-  }
+  return (
+    <>
+      <button onClick={() => buy(tokenId)}>
+        Buy NFT
+      </button>
+    </>
+  );
+}
 ```
 
 </TabItem>
@@ -84,7 +83,7 @@ This can be done by calling `setSecondaryCommissionPercent`.
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx
+```jsx showLineNumbers
 const contractAddress = '0x...';
 const commissionReceiverAddress = "0x...";
 const tokenId = 0;
@@ -98,13 +97,12 @@ const buyWithCommissionHandler = async (tokenId, address) => {
 <button onClick={() => buyWithCommissionHandler(tokenId, commissionReceiverAddress)}>
   Buy NFT
 </button>
-
 ```
 </TabItem>
 
 <TabItem value="react" label="React">
 
-```tsx
+```tsx showLineNumbers
 import { useBuyWithCommission, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
