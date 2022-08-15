@@ -17,8 +17,8 @@ const sidebars = {
   docs: [
     {
       type: "category",
-      label: "Introduction",
-      items: ["intro", "how-open-format-works"],
+      label: "Getting Started",
+      items: ["introduction", "what-is-open-format"],
       collapsible: false
     },
     {
@@ -31,6 +31,7 @@ const sidebars = {
       type: "category",
       label: "Guides",
       items: [
+        "guides/overview",
         "guides/deploying",
         "guides/minting",
         "guides/buying-and-selling",

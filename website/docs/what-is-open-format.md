@@ -1,4 +1,8 @@
-# How it works
+---
+title: What is Open Format?
+---
+
+## How it works
 
 At its core, Open Format comprises of two fundamental principles. Creating NFTs and reading NFTs. This section explains how this works within the Open Format protocol.
 

@@ -1,0 +1,27 @@
+import Link from '@docusaurus/Link'
+const guides = [
+  { name: "Deploying", href: "guides/deploying", description: "Creating a new instance of the Open Format contract on the blockchain" },
+  { name: "Minting", href: "guides/minting", description: "Creating a permanent entry for an asset on a blockchain" },
+  { name: "Buying and Selling", href: "guides/buying-and-selling", description: "Facilitate the secondary purchase of an NFT" },
+  { name: "Royalties", href: "guides/royalties" },
+  { name: "Revenue Sharing", href: "guides/revenue-sharing", description: "An Open Format NFT can accept funds and distribute them between its holders" },
+  { name: "Sales Commissions", href: "guides/sales-commissions", description: "When an Open Format NFT is sold on the secondary market the original created will receive commission" },
+  { name: "Metadata", href: "guides/metadata", description: "Allowing any data to be stored against an NFT" },
+]
+
+# Overview
+
+<div>
+  <div class="flex row is-multiline">
+    {guides.map((x) => (
+      <div key={x.name} class="col col--6">
+        <Link class="card" to={x.href} style={{ height: '100%' }}>
+          <div class="card__body">
+            <h4>{x.name}</h4>
+            <p>{x.description}</p>
+          </div>
+        </Link>
+      </div>
+    ))}
+  </div>
+</div>
