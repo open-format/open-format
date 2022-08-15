@@ -41,6 +41,12 @@ const sidebars = {
         "guides/metadata"
       ],
       collapsible: false
+    },
+    {
+      type: "category",
+      label: "Reference",
+      items: ["glossary"],
+      collapsible: false
     }
   ],
   reference: [
