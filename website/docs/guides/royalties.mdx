@@ -20,8 +20,8 @@ It must be a number between 0 - 10000. E.g. 2.5% = 250
 <TabItem value="js" label="JavaScript">
 
 ```jsx
-const contractAddress = "0x..."
-const royaltyReceiverAddress = '0x...'
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+const royaltyReceiverAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
 const royaltyPercentage = 500;
 
 const nft = sdk.getNFT(contractAddress);
@@ -38,8 +38,8 @@ await nft.setRoyalties({
 import { useSetRoyalties, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const contractAddress = "0x..."
-  const royaltyReceiverAddress = '0x...'
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+  const royaltyReceiverAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
   const royaltyPercentage = 500;
 
   const nft = useNFT(contractAddress);
@@ -65,7 +65,7 @@ Calculates and returns the address of the royalty receiver and the amount from a
 
 
 ```jsx
-const contractAddress = "0x..."
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const salePrice = 500;
 
 const nft = sdk.getNFT(contractAddress);
@@ -79,7 +79,7 @@ await nft.getRoyalties({salePrice});
 import { useRoyalties, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const contractAddress = "0x..."
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const salePrice = 500;
   const nft = useNFT(contractAddress);
 
