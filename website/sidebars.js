@@ -17,26 +17,27 @@ const sidebars = {
   docs: [
     {
       type: "category",
-      label: "Overview",
+      label: "Introduction",
       items: ["intro", "how-open-format-works"],
       collapsible: false
     },
     {
       type: "category",
       label: "Quickstart",
-      items: ["guides/javascript", "guides/react"],
+      items: ["quickstart/javascript", "quickstart/react"],
       collapsible: false
     },
     {
       type: "category",
       label: "Guides",
       items: [
-        "deploying",
-        "minting",
-        "buying-and-selling",
-        "royalties",
-        "revenue-sharing",
-        "sales-commissions"
+        "guides/deploying",
+        "guides/minting",
+        "guides/buying-and-selling",
+        "guides/royalties",
+        "guides/revenue-sharing",
+        "guides/sales-commissions",
+        "guides/metadata"
       ],
       collapsible: false
     }
@@ -48,12 +49,12 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "reference/javascript/sdk",
+          id: "api/javascript/sdk",
           label: "SDK"
         },
         {
           type: "doc",
-          id: "reference/javascript/nft",
+          id: "api/javascript/nft",
           label: "NFT"
         }
       ],
@@ -63,11 +64,11 @@ const sidebars = {
       type: "category",
       label: "React",
       items: [
-        "reference/react/openformatprovider",
-        "reference/react/connectbutton",
+        "api/react/openformatprovider",
+        "api/react/connectbutton",
         {
           type: "doc",
-          id: "reference/react/hooks",
+          id: "api/react/hooks",
           label: "Hooks"
         }
       ],
@@ -76,10 +77,7 @@ const sidebars = {
     {
       type: "category",
       label: "Contracts",
-      items: [
-        "reference/contracts/open-format",
-        "reference/contracts/error-codes"
-      ],
+      items: ["api/contracts/open-format", "api/contracts/error-codes"],
       collapsible: false
     }
   ]

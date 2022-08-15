@@ -43,21 +43,22 @@ await nft.buy(tokenId);
 ```tsx showLineNumbers
   import { useBuy, useNFT } from '@simpleweb/open-format-react';
 
-  function MyComponent() {
-    const contractAddress = '0x...';
-    const tokenId = 0;
+function MyComponent() {
+  const contractAddress = '0x...';
+  const tokenId = 0;
 
-    const nft = useNFT(contractAddress);
-    const { buy } = useBuy(nft);
+  const nft = useNFT(contractAddress);
+  const { buy } = useBuy(nft);
 
-    return (
-      <>
-        <button onClick={() => buy(tokenId)}>
-          Buy NFT
-        </button>
-      </>
-    );
-  }
+  return (
+    <>
+      <button onClick={() => buy(tokenId)}>
+        Buy NFT
+      </button>
+    </>
+  );
+}
+>>>>>>> bc343e3fa12d42d55665deb6f21a4ed5887f7ea5:website/docs/guides/buying-and-selling.mdx
 ```
 
 </TabItem>
