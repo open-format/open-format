@@ -18,7 +18,7 @@ Sets the primary commission percentage. This is used when mintWithCommission (li
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx showLineNumbers
+```jsx
 const contractAddress = "0x...";
 const salesCommissionPerentage = 1000;
 
@@ -29,7 +29,7 @@ await nft.setPrimaryCommissionPercent(salesCommissionPerentage);
 <TabItem value="react" label="React">
 
 
-```tsx showLineNumbers
+```tsx
 import { useSetPrimaryCommissionPercentage, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
@@ -40,13 +40,13 @@ function MyComponent() {
     const {
     setPrimaryCommissionPercent,
   } = useSetPrimaryCommissionPercentage(nft);
-  
+
   return (
     <>
       <button onClick={() => salesCommissionPerentage(salesCommissionPerentage)}></button>
     </>
-    )
-  }
+  )
+}
 ```
 </TabItem>
 </Tabs>
