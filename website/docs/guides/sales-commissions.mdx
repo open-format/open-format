@@ -1,1 +1,52 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 # Sales Commissions
+
+Sale commissions allow developers and marketplace owners to earn a commission from selling NFT's created within the Open Format ecosystem. Generally, in the Web2 world, if you want to sell something on a marketplace you pay a platform fee. Sale commissions allow you to do the same, but in a decentralised and trustless way.
+
+:::tip info
+
+The commission percentage must be a number between 0 - 10000. e.g. 2.5% = 250
+
+:::
+
+### Set primary sale commission percentage
+
+Sets the primary commission percentage. This is used when mintWithCommission (link to mintWithCommission) is called.
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```jsx showLineNumbers
+const contractAddress = "0x...";
+const salesCommissionPerentage = 1000;
+
+const nft = sdk.getNFT(contractAddress);
+await nft.setPrimaryCommissionPercent(salesCommissionPerentage);
+```
+</TabItem>
+<TabItem value="react" label="React">
+
+
+```tsx showLineNumbers
+import { useSetPrimaryCommissionPercentage, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = "0x..."
+  const salesCommissionPerentage = 1000;
+
+  const nft = useNFT(contractAddress);
+    const {
+    setPrimaryCommissionPercent,
+  } = useSetPrimaryCommissionPercentage(nft);
+  
+  return (
+    <>
+      <button onClick={() => salesCommissionPerentage(salesCommissionPerentage)}></button>
+    </>
+    )
+  }
+```
+</TabItem>
+</Tabs>
