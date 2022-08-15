@@ -18,7 +18,7 @@ When an NFT is created, an entry is permanently added to the blockchain. This is
 
 Creation is the entry point into the Open Format protocol. To create an NFT collection it needs to be deployed on chain. Open Format is currently available on the Polygon Mainnet and Polygon Mumbai networks. To create an NFT collection, you need to deploy a clone of our main contract. The [OpenFormat.sol](https://github.com/simpleweb/open-format-contracts/blob/main/contracts/OpenFormat.sol) contract is a [ERC721](https://docs.openzeppelin.com/contracts/3.x/erc721) contract on steroids, allowing developers to create an environment that makes it quick and easy to create highly customisable, data rich NFTs.
 
-As a developer, you can build a factory to enable creators to create their NFT collections.
+As a developer, you can build an interface to enable creators to create their NFT collections.
 
 ## Minting
 
