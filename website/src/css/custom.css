@@ -474,8 +474,6 @@ a.card:hover {
 .menu > ul.menu__list ul.menu__list .menu__link {
   border-radius: 0;
   font-size: 0.85rem;
-  /* margin-left: calc(var(--ifm-menu-link-padding-horizontal) * -1);
-  padding-left: var(--ifm-menu-link-padding-horizontal); */
 }
 .menu > ul.menu__list > li > ul.menu__list {
   border-left: 0px none;
