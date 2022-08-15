@@ -1,6 +1,6 @@
 # ConnectButton
 
-Rather than manually providing a signer during initialisation of the SDK you can use the `<ConnectButton/>` component which will allow users to connect their wallet's to something like Metamask.
+Rather than manually providing a [signer](/glossary#signer) during initialisation of the SDK you can use the `<ConnectButton/>` component which will allow users to connect their wallet's to something like Metamask.
 
 ```tsx
 import { ConnectButton } from '@simpleweb/open-format-react';

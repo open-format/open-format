@@ -69,7 +69,7 @@ const config = {
         title: "Open Format",
         logo: {
           alt: "Open Format Logo",
-          src: "img/logo.svg"
+          src: "img/logo.png"
         },
         items: [
           {
