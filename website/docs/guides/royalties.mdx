@@ -25,7 +25,7 @@ The royalty percentage can only be set by the creator of a given NFT. It must be
 <TabItem value="js" label="JavaScript">
 
 
-```jsx showLineNumbers
+```jsx
 const contractAddress = "0x..."
 const royaltyReceiverAddress = '0x...'
 const royaltyPercentage = 500;
@@ -40,7 +40,7 @@ await nft.setRoyalties({
 </TabItem>
 <TabItem value="react" label="React">
 
-```tsx showLineNumbers
+```tsx
 import { useSetRoyalties, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
@@ -70,7 +70,7 @@ Calculates and returns the address of the royalty receiver and the amount from a
 <TabItem value="js" label="JavaScript">
 
 
-```jsx showLineNumbers
+```jsx
 const contractAddress = "0x..."
 const salePrice = 500;
 
@@ -81,7 +81,7 @@ await nft.getRoyalties({salePrice});
 </TabItem>
 <TabItem value="react" label="React">
 
-```tsx showLineNumbers
+```tsx
 import { useRoyalties, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
