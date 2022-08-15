@@ -64,7 +64,7 @@ This can be done by calling `setPrimaryCommissionPercent`.
 
 ```jsx
 const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
-const commissionReceiverAddress = "0x...";
+const commissionReceiverAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
 
 const nft = sdk.getNFT(contractAddress);
 await nft.mintWithCommission(commissionReceiverAddress);
@@ -79,7 +79,7 @@ import { useMintWithCommission, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
   const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
-  const commissionReceiverAddress = "0x...";
+  const commissionReceiverAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
 
   const nft = useNFT(contractAddress);
   const { mintWithCommission } = useMintWithCommission();
