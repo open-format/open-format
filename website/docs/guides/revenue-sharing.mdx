@@ -44,7 +44,7 @@ In the code examples the DepositExtension is assigned to the `revenueShareExtens
 const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const address = "0x..."
 const share = 1000;
-const revShareExtensionAddress = "0x..."
+const revShareExtensionAddress = '0x2F1e29Ab4599c71360AaB7dbD17eBd7E0Fa20e59';
 const holdersPercentage = 5000;
 
 const nft = sdk.getNFT(contractAddress);
@@ -70,7 +70,7 @@ function MyComponent() {
   const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const address = "0x...";
   const share = 1000;
-  const revShareExtensionAddress = "0x...";
+  const revShareExtensionAddress = '0x2F1e29Ab4599c71360AaB7dbD17eBd7E0Fa20e59';
   const holdersPercentage = 5000;
 
   const nft = useNFT(contractAddress);
@@ -115,7 +115,7 @@ The signer can only allocate their own shares
 
 ```jsx
 const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
-const address = "0x...";
+const address = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
 const share = 1000;
 
 const nft = sdk.getNFT(contractAddress);
@@ -138,7 +138,7 @@ import { useRevenueSharingAllocation, useNFT } from '@simpleweb/open-format-reac
 
 function MyComponent() {
   const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
-  const address = "0x...";
+  const address = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
   const share = 1000;
 
   const nft = useNFT(contractAddress);
@@ -175,7 +175,7 @@ Gets the collaborator balance for a given collaborator address
 
 ```jsx
 const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
-const collaboratorAddress = "0x..."
+const collaboratorAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee'
 
 const nft = sdk.getNFT(contractAddress);
 await nft.getCollaboratorBalance(collaboratorAddress);
@@ -189,7 +189,7 @@ import { useGetCollaboratorBalance, useNFT } from '@simpleweb/open-format-react'
 
 function MyComponent() {
   const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
-  const collaboratorAddress = "0x..."
+  const collaboratorAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee'
 
   const nft = useNFT(contractAddress);
   const { data: balanceData } = useGetCollaboratorBalance(
@@ -257,7 +257,7 @@ Withdraw the collaborator balance for a given collaborator address
 
 ```jsx
 const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
-const collaboratorAddress = "0x...";
+const collaboratorAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
 
 const nft = sdk.getNFT(contractAddress);
 await nft.withdrawCollaboratorFunds(collaboratorAddress);
@@ -271,7 +271,7 @@ import { useWithdrawCollaboratorFunds, useNFT } from '@simpleweb/open-format-rea
 
 function MyComponent() {
   const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
-  const collaboratorAddress = "0x...";
+  const collaboratorAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
 
   const nft = useNFT(contractAddress);
   const { withdraw } = useWithdrawCollaboratorFunds(nft);
