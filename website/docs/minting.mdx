@@ -18,7 +18,7 @@ This will mint an NFT and send it to the wallet of the sender.
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx
+```jsx showLineNumbers
 const contractAddress = "0x..."
 
 const nft = sdk.getNFT(contractAddress);
@@ -28,7 +28,7 @@ await nft.mint();
 </TabItem>
 <TabItem value="react" label="React">
 
-```tsx
+```tsx showLineNumbers
 import { useMint, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
@@ -50,7 +50,7 @@ function MyComponent() {
 
 This will mint an NFT, send it to the wallet of the sender and also send a percentage of the send value to the wallet address passed into the function.
 
-:::tip Gotchas
+:::tip info
 
 Before calling the mint with commision function a commision percentage must be set by the creator of the NFT.
 This can be done by calling `setPrimaryCommissionPercent`.
@@ -60,7 +60,7 @@ This can be done by calling `setPrimaryCommissionPercent`.
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx
+```jsx showLineNumbers
 const contractAddress = "0x..."
 const commissionReceiverAddress = "0x..."
 
@@ -72,8 +72,8 @@ await nft.mintWithCommission(commissionReceiverAddress);
 <TabItem value="react" label="React">
 
 
-```tsx
-import { useMint, useNFT } from '@simpleweb/open-format-react';
+```tsx showLineNumbers
+import { useMintWithCommission, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
   const commissionReceiverAddress = "0x...";
@@ -84,7 +84,7 @@ function MyComponent() {
 
   return (
     <>
-      <button onClick={() => mint(commissionReceiverAddress)}>
+      <button onClick={() => mintWithCommission(commissionReceiverAddress)}>
         Mint NFT
       </button>
     </>
