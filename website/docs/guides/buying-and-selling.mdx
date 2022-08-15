@@ -21,12 +21,10 @@ This can be done by calling `setTokenSalePrice`.
 
 The Buy function facilitates the secondary sale of an NFT.
 
-
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-
-```jsx showLineNumbers
+```jsx
 const contractAddress = '0x...';
 const tokenId = 0;
 
@@ -37,11 +35,8 @@ await nft.buy(tokenId);
 </TabItem>
 <TabItem value="react" label="React">
 
-<br />
-
-
-```tsx showLineNumbers
-  import { useBuy, useNFT } from '@simpleweb/open-format-react';
+```tsx
+import { useBuy, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
   const contractAddress = '0x...';
@@ -84,7 +79,6 @@ const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
 await nft.buyWithCommission(tokenId, commissionReceiverAddress);
-
 ```
 </TabItem>
 

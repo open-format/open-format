@@ -18,7 +18,7 @@ This will mint an NFT and send it to the wallet of the sender.
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx showLineNumbers
+```jsx
 const contractAddress = "0x..."
 
 const nft = sdk.getNFT(contractAddress);
@@ -28,7 +28,7 @@ await nft.mint();
 </TabItem>
 <TabItem value="react" label="React">
 
-```tsx showLineNumbers
+```tsx
 import { useMint, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
@@ -60,7 +60,7 @@ This can be done by calling `setPrimaryCommissionPercent`.
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx showLineNumbers
+```jsx
 const contractAddress = "0x..."
 const commissionReceiverAddress = "0x..."
 
@@ -72,7 +72,7 @@ await nft.mintWithCommission(commissionReceiverAddress);
 <TabItem value="react" label="React">
 
 
-```tsx showLineNumbers
+```tsx
 import { useMintWithCommission, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {

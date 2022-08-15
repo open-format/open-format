@@ -5,9 +5,6 @@ import TabItem from '@theme/TabItem';
 
 Royalties allow creators to receive a percentage of every secondary sale of their NFTs. We use the EIP-2981 Royalty Standard so all royalties are handled on-chain and are paid out instantly on completion of a sale.
 
-### Secondary Marketplaces
-
-One of the features of the open format protocol is the ability to sell and re-sell NFT's on both the primary and secondary marketplace. Creators are able to benefit from sales on the secondary marketplace utilising the Royalty functionality that is baked into the Open Format protocol and therefore the SDK.
 There are two specific methods that relate to Royalties, they are `getRoyalties` and `setRoyalties`.
 
 ### Set Royalties
@@ -15,17 +12,14 @@ There are two specific methods that relate to Royalties, they are `getRoyalties`
 Sets the royalty percentage for a given NFT
 
 :::tip info
-
-The royalty percentage can only be set by the creator of a given NFT. It must be a number between 0 - 10000. e.g. 2.5% = 250
-
-
+The royalty percentage can only be set by the creator of a given NFT. <br/>
+It must be a number between 0 - 10000. E.g. 2.5% = 250
 :::
 
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-
-```jsx showLineNumbers
+```jsx
 const contractAddress = "0x..."
 const royaltyReceiverAddress = '0x...'
 const royaltyPercentage = 500;
@@ -40,7 +34,7 @@ await nft.setRoyalties({
 </TabItem>
 <TabItem value="react" label="React">
 
-```tsx showLineNumbers
+```tsx
 import { useSetRoyalties, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
@@ -70,7 +64,7 @@ Calculates and returns the address of the royalty receiver and the amount from a
 <TabItem value="js" label="JavaScript">
 
 
-```jsx showLineNumbers
+```jsx
 const contractAddress = "0x..."
 const salePrice = 500;
 
@@ -81,7 +75,7 @@ await nft.getRoyalties({salePrice});
 </TabItem>
 <TabItem value="react" label="React">
 
-```tsx showLineNumbers
+```tsx
 import { useRoyalties, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
