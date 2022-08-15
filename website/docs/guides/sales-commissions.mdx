@@ -19,7 +19,7 @@ Sets the primary commission percentage. This is used when mintWithCommission (li
 <TabItem value="js" label="JavaScript">
 
 ```jsx
-const contractAddress = "0x...";
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const salesCommissionPerentage = 1000;
 
 const nft = sdk.getNFT(contractAddress);
@@ -33,7 +33,7 @@ await nft.setPrimaryCommissionPercent(salesCommissionPerentage);
 import { useSetPrimaryCommissionPercentage, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const contractAddress = "0x..."
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const salesCommissionPerentage = 1000;
 
   const nft = useNFT(contractAddress);

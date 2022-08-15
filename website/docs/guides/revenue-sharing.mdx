@@ -41,7 +41,7 @@ In the code examples the DepositExtension is assigned to the `revenueShareExtens
 
 
 ```jsx
-const contractAddress = "0x..."
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const address = "0x..."
 const share = 1000;
 const revShareExtensionAddress = "0x..."
@@ -67,10 +67,10 @@ const nft = sdk.getNFT(contractAddress);
 import { useSetupRevenueSharing, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const contractAddress = "0x..."
-  const address = "0x..."
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+  const address = "0x...";
   const share = 1000;
-  const revShareExtensionAddress = "0x..."
+  const revShareExtensionAddress = "0x...";
   const holdersPercentage = 5000;
 
   const nft = useNFT(contractAddress);
@@ -114,7 +114,7 @@ The signer can only allocate their own shares
 :::
 
 ```jsx
-const contractAddress = "0x..."
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const address = "0x...";
 const share = 1000;
 
@@ -137,8 +137,7 @@ await nft.allocateRevenueShares({
 import { useRevenueSharingAllocation, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const commissionReceiverAddress = "0x...";
-  const contractAddress = "0x...";
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const address = "0x...";
   const share = 1000;
 
@@ -175,7 +174,7 @@ Gets the collaborator balance for a given collaborator address
 <TabItem value="js" label="JavaScript">
 
 ```jsx
-const contractAddress = "0x..."
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const collaboratorAddress = "0x..."
 
 const nft = sdk.getNFT(contractAddress);
@@ -189,7 +188,7 @@ await nft.getCollaboratorBalance(collaboratorAddress);
 import { useGetCollaboratorBalance, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const contractAddress = "0x..."
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const collaboratorAddress = "0x..."
 
   const nft = useNFT(contractAddress);
@@ -216,7 +215,7 @@ Gets a single token balance for a given token
 <TabItem value="js" label="JavaScript">
 
 ```jsx
-const contractAddress = "0x..."
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
@@ -230,7 +229,7 @@ await nft.getTokenBalance(tokenId);
 import { useGetTokenBalance, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const contractAddress = "0x..."
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const tokenId = 0;
 
   const nft = useNFT(contractAddress);
@@ -257,7 +256,7 @@ Withdraw the collaborator balance for a given collaborator address
 <TabItem value="js" label="JavaScript">
 
 ```jsx
-const contractAddress = "0x...";
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const collaboratorAddress = "0x...";
 
 const nft = sdk.getNFT(contractAddress);
@@ -271,7 +270,7 @@ await nft.withdrawCollaboratorFunds(collaboratorAddress);
 import { useWithdrawCollaboratorFunds, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const contractAddress = "0x..."
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const collaboratorAddress = "0x...";
 
   const nft = useNFT(contractAddress);
@@ -301,7 +300,7 @@ Only the token owner (or approved) can withdraw the balance of a given token.
 <TabItem value="js" label="JavaScript">
 
 ```jsx
-const contractAddress = "0x...";
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
@@ -315,7 +314,7 @@ await nft.withdrawTokenFunds(tokenId);
 import { useWithdrawTokenFunds, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
-  const contractAddress = "0x..."
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const tokenId = 0;
 
   const nft = useNFT(contractAddress);
