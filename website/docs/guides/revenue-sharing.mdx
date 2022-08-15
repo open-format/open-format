@@ -1,1 +1,333 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 # Revenue Sharing
+
+Revenue sharing is an Open Format extension. This means developers can write custom revenue sharing logic. Once revenue sharing is setup, MATIC can be sent directly to the NFT contract. Then, the revenue sharing extension will split the MATIC based on its configuration. New collaborators can be added at anytime by allocating shares to different wallet addresses.
+
+### Collabroation
+
+Revenue sharing allows creators to share revenue with collaborators and NFT holders, all on-chain. For example, a band could share streaming revenues between each band member and fans who have purchase their music NFTs.
+
+### Setup Revenue Sharing
+
+:::tip info
+
+We've created a revenue **[sharing extension](/reference/contracts/open-format#setapprovedrevshareextension)** to help you get started.
+In the code examples the DepositExtension is assigned to the `revenueShareExtensionAddress`.
+
+
+<Tabs>
+<TabItem value="mumbai" label="Mumbai">
+
+| Contract | Address  |
+| ------- | --- |
+| DepositExtension | 0x2F1e29Ab4599c71360AaB7dbD17eBd7E0Fa20e59 |
+
+</TabItem>
+<TabItem value="mainnet" label="Mainnet">
+
+| Contract | Address  |
+| ------- | --- |
+| DepositExtension | 0xe68620564F32045F90D80C195FFEB26315BdaF1e |
+  
+</TabItem>
+</Tabs>
+
+:::
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+
+```jsx showLineNumbers
+const contractAddress = "0x..."
+const address = "0x..."
+const share = 1000;
+const revShareExtensionAddress = "0x..."
+const holdersPercentage = 5000;
+
+const nft = sdk.getNFT(contractAddress);
+ await nft.setupRevenueSharing({
+  revShareExtensionAddress,
+  collaborators: [
+    {
+      address,
+      share
+    },
+  ],
+  holderPercentage,
+});
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+```tsx showLineNumbers
+import { useSetupRevenueSharing, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = "0x..."
+  const address = "0x..."
+  const share = 1000;
+  const revShareExtensionAddress = "0x..."
+  const holdersPercentage = 5000;
+
+  const nft = useNFT(contractAddress);
+  const { setup } = useSetupRevenueSharing(nft);
+
+  return (
+    <>
+      <button 
+      onClick={() => setup({
+        revShareExtensionAddress, 
+        collaborators: [
+          {
+            address,
+            share
+          },
+        ],
+        holderPercentage
+      })}>
+      Setup Revenue Sharing
+      </button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+### Allocate Shares
+
+Allocates shares from one collaborator address to another address
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+:::tip info
+
+The signer can only allocate their own shares
+
+:::
+
+```jsx showLineNumbers
+const contractAddress = "0x..."
+const address = "0x...";
+const share = 1000;
+
+const nft = sdk.getNFT(contractAddress);
+await nft.allocateRevenueShares({
+  [
+    {
+      address,
+      share
+    }
+  ]
+});
+
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+
+```tsx showLineNumbers
+import { useRevenueSharingAllocation, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const commissionReceiverAddress = "0x...";
+  const contractAddress = "0x...";
+  const address = "0x...";
+  const share = 1000;
+
+  const nft = useNFT(contractAddress);
+    const { allocate } = useRevenueSharingAllocation(nft);
+  
+
+  return (
+    <>
+      <button onClick={() => allocate(
+      [
+        { 
+          address,
+          share
+        }
+      ]
+      )}>
+        Allocate Shares
+      </button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Get Collaborator Balance
+
+Gets the collaborator balance for a given collaborator address
+
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```jsx showLineNumbers
+const contractAddress = "0x..."
+const collaboratorAddress = "0x..."
+
+const nft = sdk.getNFT(contractAddress);
+await nft.getCollaboratorBalance(collaboratorAddress);
+```
+</TabItem>
+<TabItem value="react" label="React">
+
+
+```tsx showLineNumbers
+import { useGetCollaboratorBalance, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = "0x..."
+  const collaboratorAddress = "0x..."
+
+  const nft = useNFT(contractAddress);
+  const { data: balanceData } = useGetCollaboratorBalance(
+    nft,
+    collaboratorAddress
+  );
+
+  return (
+    <>
+      {balanceData && <span>{balanceData}</span>}
+    </>
+    )
+}
+```
+</TabItem>
+</Tabs>
+
+### Get Token Balance
+
+Gets a single token balance for a given token
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```jsx showLineNumbers
+const contractAddress = "0x..."
+const tokenId = 0;
+
+const nft = sdk.getNFT(contractAddress);
+await nft.getTokenBalance(tokenId);
+```
+</TabItem>
+<TabItem value="react" label="React">
+
+
+```tsx showLineNumbers
+import { useGetTokenBalance, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = "0x..."
+  const tokenId = 0;
+
+  const nft = useNFT(contractAddress);
+  const { data: tokenData } = useGetTokenBalance(
+    nft
+    tokenId,    
+  );
+
+  return (
+    <>
+      {tokenData && <span>{tokenData}</span>}
+    </>
+    )
+}
+```
+</TabItem>
+</Tabs>
+
+### Withdraw Collaborator Funds
+
+Withdraw the collaborator balance for a given collaborator address
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```jsx showLineNumbers
+const contractAddress = "0x...";
+const collaboratorAddress = "0x...";
+
+const nft = sdk.getNFT(contractAddress);
+await nft.withdrawCollaboratorFunds(collaboratorAddress);
+```
+</TabItem>
+<TabItem value="react" label="React">
+
+
+```tsx showLineNumbers
+import { useWithdrawCollaboratorFunds, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = "0x..."
+  const collaboratorAddress = "0x...";
+
+  const nft = useNFT(contractAddress);
+  const { withdraw } = useWithdrawCollaboratorFunds(nft);
+
+  return (
+    <>
+      <button onClick={() => withdraw(collaboratorAddress)}></button>
+    </>
+    )
+}
+```
+</TabItem>
+</Tabs>
+
+### Withdraw Token Funds
+
+Withdraw the token balance for a given token
+
+:::tip info
+
+Only the token owner (or approved) can withdraw the balance of a given token.
+
+:::
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```jsx showLineNumbers
+const contractAddress = "0x...";
+const tokenId = 0;
+
+const nft = sdk.getNFT(contractAddress);
+await nft.withdrawTokenFunds(tokenId);
+```
+</TabItem>
+<TabItem value="react" label="React">
+
+
+```tsx showLineNumbers
+import { useWithdrawTokenFunds, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = "0x..."
+  const tokenId = 0;
+
+  const nft = useNFT(contractAddress);
+  const { withdraw } = useWithdrawTokenFunds(nft);
+
+  return (
+    <>
+      <button onClick={() => withdraw(tokenId)}></button>
+    </>
+    )
+  }
+```
+</TabItem>
+</Tabs>

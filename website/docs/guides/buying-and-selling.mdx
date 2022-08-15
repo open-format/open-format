@@ -8,9 +8,9 @@ There are two functions that you can use in order for you to be able to facilita
 ### Secondary marketplaces
 
 One of the features of the open format protocol is the ability to re-sell NFT's on what is known as the secondary marketplace.
-Access to this functionality is made easy with the SDK, there are two specific methods that we will look over in this guide to help get you started, they are `buy` and `buyWithCommission`.
+The `buy` function is what we will look over in this guide to get you started.
 
-:::tip Gotcha's
+:::tip info
 
 Before calling the buy function a token must be set as available for sale.
 This can be done by calling `setTokenSalePrice`.
@@ -26,18 +26,12 @@ The Buy function facilitates the secondary sale of an NFT.
 <TabItem value="js" label="JavaScript">
 
 
-```jsx
+```jsx showLineNumbers
 const contractAddress = '0x...';
 const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
-const buyHandler = async (tokenId) => {
-  await nft.buy(tokenId)
-};
-
-<button onClick={() => buy(tokenId)}>
-  Buy NFT
-</button>
+await nft.buy(tokenId);
 ```
 
 </TabItem>
@@ -46,8 +40,8 @@ const buyHandler = async (tokenId) => {
 <br />
 
 
-```tsx
-import { useBuy } from '@simpleweb/open-format-react';
+```tsx showLineNumbers
+  import { useBuy, useNFT } from '@simpleweb/open-format-react';
 
 function MyComponent() {
   const contractAddress = '0x...';
@@ -69,11 +63,11 @@ function MyComponent() {
 </TabItem>
 </Tabs>
 
-## Buy with commission
+<!-- ## Buy with commission
 
 The buy with commision function handles the secondary sale of an NFT with a commision set. The commision is then sent to the commissionReceiverAddress.
 
-:::tip Gotcha's
+:::tip info
 
 Before calling the buy with commision function a commision percentage must be set by the creator of the NFT.
 This can be done by calling `setSecondaryCommissionPercent`.
@@ -89,14 +83,8 @@ const commissionReceiverAddress = "0x...";
 const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
+await nft.buyWithCommission(tokenId, commissionReceiverAddress);
 
-const buyWithCommissionHandler = async (tokenId, address) => {
-  await nft.buyWithCommission(tokenId, address);
-};
-
-<button onClick={() => buyWithCommissionHandler(tokenId, commissionReceiverAddress)}>
-  Buy NFT
-</button>
 ```
 </TabItem>
 
@@ -124,4 +112,4 @@ function MyComponent() {
 ```
 
 </TabItem>
-</Tabs>
+</Tabs> -->

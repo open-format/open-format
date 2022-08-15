@@ -10,7 +10,7 @@ Open Format is currently available on the Polygon Mainnet and Polygon Mumbai net
 
 The SDK makes it simple to quickly and easily create fully customisable NFTs.
 
-:::tip Gotcha's
+:::tip info
 The metadata URL should return a JSON blob of data with the metadata for your NFT. For now, we only support metadata store on IPFS.
 :::
 
@@ -22,10 +22,14 @@ The deploy function creates a new instance of the Open Format contract on chain.
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx
+```jsx showLineNumbers
 import { OpenFormatSDK } from '@simpleweb/open-format';
+  
+  const sdk = new OpenFormatSDK({
+    network: 'mumbai',
+    signer: '0x...',
+  });
 
-const deployHandler = async () => {
   await sdk.deploy({
     maxSupply: 100,
     mintingPrice: 0.01,
@@ -33,16 +37,14 @@ const deployHandler = async () => {
     symbol: "FESTIVAL",
     url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
   });
-}
 
-<button onClick={() => deployHandler()}>Deploy NFT</button>
 ```
 
 </TabItem>
 <TabItem value="react" label="React">
 
-```jsx
-import { useDeploy, useWallet } from '@simpleweb/open-format-react';
+```jsx showLineNumbers
+import { useDeploy } from '@simpleweb/open-format-react';
 
 function MyComponent() {
   const { deploy } = useDeploy();
