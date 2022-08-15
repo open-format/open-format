@@ -19,7 +19,7 @@ npm install @simpleweb/open-format ethers
 
 ## Initialising the SDK
 
-You can initialise the SDK by creating a new instance of `OpenFormatSDK` and selecting one of the available networks that are supported. This will create a new instance in "read-only" mode, meaning you can read from the subgraph but any interactions that require you to sign a transaction (deploying a new instance of the contract, minting an NFT, etc...) will throw an error.
+You can initialise the SDK by creating a new instance of `OpenFormatSDK` and selecting one of the available [networks](/glossary#networks) that are supported. This will create a new instance in "read-only" mode, meaning you can read from the [subgraph](/glossary#subgraph) but any interactions that require you to sign a transaction (deploying a new instance of the contract, minting an NFT, etc...) will throw an error.
 
 ```tsx
 import { OpenFormatSDK } from '@simpleweb/open-format';
@@ -29,7 +29,7 @@ const sdk = new OpenFormatSDK({
 });
 ```
 
-If you wish to do more than just interact with the subgraph, you will have to provide a [`signer`](/glossary#signer) when initialising the SDK.
+If you wish to do more than just interact with the [subgraph](/glossary#subgraph), you will have to provide a [`signer`](/glossary#signer) when initialising the SDK.
 
 The easiest way to do this is by passing your wallet's private key as the [`signer`](/glossary#signer). You'd typically do this only from a Node.js context as to not expose your private key to the world.
 
