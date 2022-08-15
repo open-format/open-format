@@ -10,7 +10,7 @@ At its core, Open Format comprises of two fundamental principles. Creating NFTs 
 
 ## Deploying
 
-Deploying is the entry point into the Open Format protocol. To create an NFT collection it needs to be deployed on chain. Open Format is currently available on the Polygon Mainnet and Polygon Mumbai networks. To create an NFT collection, you need to deploy a clone of our main contract. The [OpenFormat.sol](https://github.com/simpleweb/open-format-contracts/blob/main/contracts/OpenFormat.sol) contract is a [ERC721](https://docs.openzeppelin.com/contracts/3.x/erc721) contract on steroids, allowing developers to create an environment that makes it quick and easy to create highly customisable, data rich NFTs.
+Deploying is the entry point into the Open Format protocol. To create an NFT collection it needs to be deployed on chain. Open Format is currently available on the [Polygon](/glossary#polygon) Mainnet and [Polygon](/glossary#polygon) Mumbai [networks](/glossary#networks). To create an NFT collection, you need to deploy a clone of our main contract. The [OpenFormat.sol](https://github.com/simpleweb/open-format-contracts/blob/main/contracts/OpenFormat.sol) contract is a [ERC721](https://docs.openzeppelin.com/contracts/3.x/erc721) contract on steroids, allowing developers to create an environment that makes it quick and easy to create highly customisable, data rich NFTs.
 
 As a developer, you can build an interface to enable creators to create their NFT collections.
 
@@ -26,7 +26,7 @@ On the other hand, the minting process can create revenue for creators and marke
 
 Metadata is one of the key features that makes the Open Format protocol so powerful. It allows any data to be stored against an NFT. When an NFT is created, a metadata URL is passed as a parameter into the deploy function. This metadata URL returns a JSON blob of data with the metadata for your NFT. For now, we only support metadata store on [IPFS](https://ipfs.io/).
 
-Once the NFT is deployed, our [subgraph](https://thegraph.com/hosted-service/subgraph/simpleweb/open-format) reads the associated metadata URL, generates a list of properties (e.g name, description, image, video url etc) and stores it against the NFT. The metadata can then be filtered and sorted in a frontend app.
+Once the NFT is deployed, [our subgraph](https://thegraph.com/hosted-service/subgraph/simpleweb/open-format) reads the associated metadata URL, generates a list of properties (e.g name, description, image, video url etc) and stores it against the NFT. The metadata can then be filtered and sorted in a frontend app.
 
 This enables developers to create highly customisable, scoped frontends for displaying NFTs created in the Open Format ecosystem.
 

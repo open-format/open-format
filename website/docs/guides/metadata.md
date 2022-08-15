@@ -57,7 +57,7 @@ The structure of the metadata is important to ensure cross platform compatibilit
 }
 ```
 
-You will see that the subgraph has converted the key/value pairs in the JSON blob into a list of properties. Then if you want to search for all events where the venue is "The Dog House", you can perform this query:
+You will see that the [subgraph](/glossary#subgraph) has converted the key/value pairs in the JSON blob into a list of properties. Then if you want to search for all events where the venue is "The Dog House", you can perform this query:
 
 ```graphql
 {
@@ -72,7 +72,7 @@ You will see that the subgraph has converted the key/value pairs in the JSON blo
 
 ## Release Types
 
-The release types help developers when filtering and sorting the subgraph. We highly recommend you choose one of the release types below. If you would like us to add a release type to this list, please let us know in [Discord](https://discord.com/invite/8WV52tVqbZ).
+The release types help developers when filtering and sorting the [subgraph](/glossary#subgraph). We highly recommend you choose one of the release types below. If you would like us to add a release type to this list, please let us know in [Discord](https://discord.com/invite/8WV52tVqbZ).
 
 
 * `video`
@@ -84,7 +84,7 @@ The release types help developers when filtering and sorting the subgraph. We hi
 ## Factory ID
 
 
-A factory ID is a unique identifier that's used for filtering the subgraph to only show NFTs created in specific factory frontend. This can be any string value, but for uniqueness, we recommend using [UUIDv4](https://www.uuidgenerator.net/). Simply add a key/value pair to your JSON blob in the metadata:
+A factory ID is a unique identifier that's used for filtering the [subgraph](/glossary#subgraph) to only show NFTs created in specific factory frontend. This can be any string value, but for uniqueness, we recommend using [UUIDv4](https://www.uuidgenerator.net/). Simply add a key/value pair to your JSON blob in the metadata:
 
 ```tsx
 {
@@ -93,7 +93,7 @@ A factory ID is a unique identifier that's used for filtering the subgraph to on
 }
 ```
 
-Our subgraph will look for this `factory_id` and store it against the created `Token` entity.
+Our [subgraph](/glossary#subgraph) will look for this `factory_id` and store it against the created `Token` entity.
 
 ## Formatting
 
@@ -111,7 +111,7 @@ We recommend any dates and times are formatted as a unix timestamp.
 
 ## Querying the Subgraph
 
-Each NFT is represented as a `Token` entity in the subgraph.
+Each NFT is represented as a `Token` entity in the [subgraph](/glossary#subgraph).
 
 ### Querying all tokens
 
