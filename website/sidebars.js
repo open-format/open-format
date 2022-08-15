@@ -24,20 +24,20 @@ const sidebars = {
     {
       type: "category",
       label: "Quickstart",
-      items: ["guides/javascript", "guides/react"],
+      items: ["quickstart/javascript", "quickstart/react"],
       collapsible: false
     },
     {
       type: "category",
       label: "Guides",
       items: [
-        "deploying",
-        "minting",
-        "buying-and-selling",
-        "royalties",
-        "revenue-sharing",
-        "sales-commissions",
-        "metadata"
+        "guides/deploying",
+        "guides/minting",
+        "guides/buying-and-selling",
+        "guides/royalties",
+        "guides/revenue-sharing",
+        "guides/sales-commissions",
+        "guides/metadata"
       ],
       collapsible: false
     }
