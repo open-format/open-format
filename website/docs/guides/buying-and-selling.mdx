@@ -43,6 +43,7 @@ await nft.buy(tokenId);
 ```tsx showLineNumbers
   import { useBuy, useNFT } from '@simpleweb/open-format-react';
 
+<<<<<<< HEAD
   function MyComponent() {
     const contractAddress = '0x...';
     const tokenId = 0;
@@ -58,6 +59,23 @@ await nft.buy(tokenId);
       </>
     );
   }
+=======
+function MyComponent() {
+  const contractAddress = '0x...';
+  const tokenId = 0;
+
+  const nft = useNFT(contractAddress);
+  const { buy } = useBuy(nft);
+
+  return (
+    <>
+      <button onClick={() => buy(tokenId)}>
+        Buy NFT
+      </button>
+    </>
+  );
+}
+>>>>>>> a05d62f (removing git ref line from vscode)
 ```
 
 </TabItem>
