@@ -38,7 +38,10 @@ const config = {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: EDIT_LINK,
-          breadcrumbs: false
+          breadcrumbs: false,
+          remarkPlugins: [
+            [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }]
+          ]
         },
         blog: false,
         theme: {
@@ -72,7 +75,7 @@ const config = {
           {
             label: "Docs",
             type: "doc",
-            docId: "intro",
+            docId: "introduction",
             position: "left"
           },
           {

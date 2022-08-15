@@ -1,0 +1,68 @@
+---
+slug: /
+sidebar_position: 1
+title: Introduction
+hide_table_of_contents: true
+---
+
+import JavascriptLogo from '@site/static/img/libraries/javascript-icon.svg'
+import ReactLogo from '@site/static/img/libraries/react-icon.svg'
+import Link from '@docusaurus/Link'
+const frameworks = [
+  {
+    name: 'JavaScript',
+    logo: JavascriptLogo,
+    href: '/quickstart/javascript',
+  },
+  { name: 'React', logo: ReactLogo, href: '/quickstart/javascript' },
+]
+
+# Getting Started
+
+Open Format is a trustless, permissionless and collaborative NFT protocol. It enables developers and creators to create, release and monetize their NFT collections in unique marketplace experiences.
+
+Start a project with our [marketplace starter](https://github.com/simpleweb/open-format-nft) or learn how to build your own services using Open Format yourself.
+
+<div class="container" style={{ padding: 0 }}>
+  <div class="row is-multiline">
+    {/* What is Open Format? */}
+    <div class="col col--4">
+      <Link class="card" to="/quickstart/overview" style={{ height: '100%' }}>
+        <div class="card__body">
+          <h4>What is Open Format?</h4>
+          <p>Discover more about the trustless, permissionless and collaborative NFT protocol.</p>
+        </div>
+      </Link>
+    </div>
+    {/* Guides */}
+    <div class="col col--4">
+      <Link class="card" to="/guides/overview" style={{ height: '100%' }}>
+        <div class="card__body">
+          <h4>Guides</h4>
+          <p>Comprehensive overview of Open Format's different APIs and concepts, and usage examples for different use cases.</p>
+        </div>
+      </Link>
+    </div>
+  </div>
+</div>
+
+## Start with a framework
+
+Open Format is just a protocol, which makes it compatible with a large number of tools and frameworks.
+
+<div>
+  <div class="row is-multiline">
+    {frameworks.map((x) => (
+      <div key={x.name} class="col col--3">
+        <Link class="card" to={x.href}>
+          <div class="card__body" style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+            {x.logo && (
+              <x.logo width="20" alt={x.name} style={{ display: 'block', maxHeight: 20 }} />
+            )}
+            <p>{x.name}</p>
+          </div>
+        </Link>
+      </div>
+    ))}
+  </div>
+</div>
