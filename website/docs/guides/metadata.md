@@ -61,7 +61,7 @@ You will see that the subgraph has converted the key/value pairs in the JSON blo
 
 ```graphql
 {
-  properties(where: {value_contains: "The Dog House"}) {
+  properties(where: { value_contains: "The Dog House" }) {
     tokens {
       id
       factory_id
@@ -74,15 +74,12 @@ You will see that the subgraph has converted the key/value pairs in the JSON blo
 
 The release types help developers when filtering and sorting the subgraph. We highly recommend you choose one of the release types below. If you would like us to add a release type to this list, please let us know in [Discord](https://discord.com/invite/8WV52tVqbZ).
 
-
-* `video`
-* `audio`
-* `ticket`
-* `image`
-
+- `video`
+- `audio`
+- `ticket`
+- `image`
 
 ## Factory ID
-
 
 A factory ID is a unique identifier that's used for filtering the subgraph to only show NFTs created in specific factory frontend. This can be any string value, but for uniqueness, we recommend using [UUIDv4](https://www.uuidgenerator.net/). Simply add a key/value pair to your JSON blob in the metadata:
 
@@ -129,7 +126,7 @@ Each NFT is represented as a `Token` entity in the subgraph.
 
 ```graphql
 {
-  token(id: "0x04acaf7c247f0165413cfae4065fefe3a0969d42") {
+  token(id: "0xc922b16f4e9d299fd5fc5b8375928fa761484042") {
     id
     factory_id
     release_type
@@ -143,7 +140,7 @@ You can use the `where` parameter in your queries to filter for different proper
 
 ```graphql
 {
-  tokens(where: {release_type: "audio"}) {
+  tokens(where: { release_type: "audio" }) {
     id
     factory_id
     release_type
