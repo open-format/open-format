@@ -42,6 +42,12 @@ const sdk = new OpenFormatSDK({
 });
 ```
 
+:::danger private keys
+
+**NEVER** pass a private key when initialising the SDK in the client, as this is something that you **DO NOT** want to expose to the world.
+
+:::
+
 Instead of passing a private key, you can also pass a [`signer`](/glossary#signer) instance when initialising the SDK. You'd generally get an instance of a [`signer`](/glossary#signer) by having the user connect their wallet but in this contrived example we are manually creating a [`signer`](/glossary#signer) with the `ethers` library.
 
 ```tsx
