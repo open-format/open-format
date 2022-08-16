@@ -81,7 +81,7 @@
   --ifm-font-family-monospace: var(--custom-font-code);
   --ifm-heading-font-family: var(--custom-font-base);
   --ifm-font-size-base: var(--custom-font-size-base);
-  --ifm-heading-font-weight: 400;
+  --ifm-heading-font-weight: 600;
   --ifm-font-weight-bold: 500;
 
   /* Globals */
@@ -245,16 +245,6 @@ blockquote p {
   color: var(--custom-content-color);
 }
 
-div[class^='announcementBar'],
-div[class*=' announcementBar'] {
-  padding-bottom: 5px;
-}
-div[class^='announcementBar'] button span,
-div[class*=' announcementBar'] button span {
-  color: #fff !important;
-  padding-bottom: 5px;
-  display: inline-block;
-}
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
@@ -459,6 +449,9 @@ a.card:hover {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+.menu > .menu__list > .menu__list-item > .menu__list-item-collapsible:hover {
+  background: transparent;
+}
 .menu > .menu__list > .menu__list-item > .menu__list-item-collapsible a {
   padding-left: var(--ifm-col-spacing-vertical);
 }
@@ -481,8 +474,6 @@ a.card:hover {
 .menu > ul.menu__list ul.menu__list .menu__link {
   border-radius: 0;
   font-size: 0.85rem;
-  /* margin-left: calc(var(--ifm-menu-link-padding-horizontal) * -1);
-  padding-left: var(--ifm-menu-link-padding-horizontal); */
 }
 .menu > ul.menu__list > li > ul.menu__list {
   border-left: 0px none;
@@ -569,17 +560,20 @@ a.card:hover {
 div.container.padding-vert--lg .row {
   min-height: 100vh;
 }
+
 /* Disable full height for child rows */
 div.container.padding-vert--lg .row .row {
   min-height: auto;
 }
+
 div[class^='docItemContainer_'] {
   max-width: none;
 }
+
 @media (min-width: 997px) {
   div[class^='docItemContainer_'] {
     max-width: none;
-    padding: 0 calc(var(--ifm-spacing-horizontal) * 2);
+    padding: calc(var(--ifm-spacing-vertical)) calc(var(--ifm-spacing-horizontal) * 2);
   }
 }
 

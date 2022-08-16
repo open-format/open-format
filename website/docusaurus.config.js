@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const EDIT_LINK = "https://github.com/simpleweb/open-format/tree/main/website";
+const EDIT_LINK = "https://github.com/simpleweb/open-format/edit/main/website";
 const GITHUB_LINK = "https://github.com/simpleweb/open-format";
 const TWITTER_LINK = "https://twitter.com/simpleweb";
 const DISCORD_LINK = "https://discord.gg/8WV52tVqbZ";
@@ -37,7 +37,11 @@ const config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: EDIT_LINK
+          editUrl: EDIT_LINK,
+          breadcrumbs: false,
+          remarkPlugins: [
+            [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }]
+          ]
         },
         blog: false,
         theme: {
@@ -65,19 +69,19 @@ const config = {
         title: "Open Format",
         logo: {
           alt: "Open Format Logo",
-          src: "img/logo.svg"
+          src: "img/logo.png"
         },
         items: [
           {
-            label: "Guides",
+            label: "Docs",
             type: "doc",
-            docId: "intro",
+            docId: "introduction",
             position: "left"
           },
           {
-            label: "Reference",
+            label: "API",
             type: "doc",
-            docId: "reference",
+            docId: "api",
             position: "left"
           },
           ...(process.env.NODE_ENV === "development"

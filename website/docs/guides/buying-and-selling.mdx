@@ -7,13 +7,12 @@ There are two functions that you can use in order for you to be able to facilita
 
 ### Secondary marketplaces
 
-One of the features of the open format protocol is the ability to re-sell NFT's on what is known as the secondary marketplace.
-Access to this functionality is made easy with the SDK, there are two specific methods that we will look over in this guide to help get you started, they are buy and buyWithCommission.
+One of the features of the Open Format protocol is the ability to re-sell NFT's on what is known as the secondary marketplace.
+The `buy` function is what we will look over in this guide to get you started.
 
-:::tip Gotcha's
+:::tip info
 
-Before calling the buy function a token must be set as available for sale.
-This can be done by calling `setTokenSalePrice`.
+Before calling the buy function the token owner must set the token as available for sale. This can be done by calling `setTokenSalePrice` and passing a new sale price [(in Wei)](/glossary#wei).
 
 :::
 
@@ -21,62 +20,48 @@ This can be done by calling `setTokenSalePrice`.
 
 The Buy function facilitates the secondary sale of an NFT.
 
-
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-
 ```jsx
-const contractAddress = '0x...';
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
-const buyHandler = async () => {
-  await nft.buy(tokenId)
-  };
-
-<button onClick={() => buy(tokenId)}>
-  Buy NFT
-</button>
-
+await nft.buy(tokenId);
 ```
 
 </TabItem>
 <TabItem value="react" label="React">
 
-<br />
-
-
 ```tsx
-  import { useBuy } from '@simpleweb/open-format-react';
+import { useBuy, useNFT } from '@simpleweb/open-format-react';
 
-  function MyComponent() {
-    const contractAddress = '0x...';
-    const tokenId = 0;
-    const nft = useNFT(contractAddress);
-    const { buy } = useBuy(nft);
+function MyComponent() {
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+  const tokenId = 0;
 
-    return (
-      <>
-        <button onClick={() => buy(tokenId)}>
-          Buy NFT
-        </button>
-      </>
-    );
-  }  
+  const nft = useNFT(contractAddress);
+  const { buy } = useBuy(nft);
+
+  return (
+    <>
+      <button onClick={() => buy(tokenId)}>
+        Buy NFT
+      </button>
+    </>
+  );
+}
 ```
-
-
-
 
 </TabItem>
 </Tabs>
 
-## Buy with commission
+<!-- <!-- ## Buy with commission
 
 The buy with commision function handles the secondary sale of an NFT with a commision set. The commision is then sent to the commissionReceiverAddress.
 
-:::tip Gotcha's
+:::tip info
 
 Before calling the buy with commision function a commision percentage must be set by the creator of the NFT.
 This can be done by calling `setSecondaryCommissionPercent`.
@@ -92,24 +77,11 @@ const commissionReceiverAddress = "0x...";
 const tokenId = 0;
 
 const nft = sdk.getNFT(contractAddress);
-
-const buyWithCommissionHandler = async () => {
-  await nft.buyWithCommission(tokenId, address);
-  };
-
-<button onClick={() => buyWithCommissionHandler(tokenId, commissionReceiverAddress)}>
-  Buy NFT
-</button>
-
+await nft.buyWithCommission(tokenId, commissionReceiverAddress);
 ```
 </TabItem>
 
 <TabItem value="react" label="React">
-
-<br />
-
-
-
 
 ```tsx
 import { useBuyWithCommission, useNFT } from '@simpleweb/open-format-react';
@@ -117,8 +89,10 @@ import { useBuyWithCommission, useNFT } from '@simpleweb/open-format-react';
 function MyComponent() {
   const commissionReceiverAddress = "0x...";
   const tokenId = 0;
+  const contractAddress = "0x...";
+  const contractAddress = "0x...";
 
-  const nft = useNFT(tokenId);
+  const nft = useNFT(contractAddress);
   const { buyWithCommission } = useBuyWithCommission(nft);
 
   return (
@@ -132,4 +106,5 @@ function MyComponent() {
 ```
 
 </TabItem>
-</Tabs>
+</Tabs> -->
+ -->

@@ -1,0 +1,98 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Minting
+
+Minting an NFT is the process of creating a permanent entry for an asset on a blockchain. Each time an NFT is minted, a reference is created between the holder and the NFT contract in the form of a token ID. Owners of NFTs have special privileges relating to their assign token ID.
+
+In the context of Open Format, the owner of a NFT can transfer, sell, burn and receive revenue shares.
+
+### Primary and secondary marketplaces
+
+Minting is at the heart of the Open Format protocol. The SDK facilitates the primary and secondary sale of tokens and access to this functionality is made easy with these two specific methods that we will look over in this guide to help get you started, they are `mint` and `mintWithCommission`.
+
+### Mint
+
+This will mint an NFT and send it to the wallet of the sender.
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```jsx
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+
+const nft = sdk.getNFT(contractAddress);
+await nft.mint();
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+```tsx
+import { useMint, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+
+  const nft = useNFT(contractAddress);
+  const { mint } = useMint(nft);
+
+  return (
+    <>
+      <button onClick={() => mint()}>Mint NFT</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Mint with a sales commission
+
+This will mint an NFT, send it to the wallet of the sender and also send a percentage of the send value to the wallet address passed into the function.
+
+:::tip info
+
+Before calling the mint with commision function a commision percentage must be set by the creator of the NFT.
+This can be done by calling `setPrimaryCommissionPercent`.
+
+:::
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```jsx
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+const commissionReceiverAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
+
+const nft = sdk.getNFT(contractAddress);
+await nft.mintWithCommission(commissionReceiverAddress);
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+
+```tsx
+import { useMintWithCommission, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+  const commissionReceiverAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
+
+  const nft = useNFT(contractAddress);
+  const { mintWithCommission } = useMintWithCommission(nft);
+
+  return (
+    <>
+      <button onClick={() => mintWithCommission(commissionReceiverAddress)}>
+        Mint NFT
+      </button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
