@@ -82,7 +82,7 @@ function MyComponent() {
   const commissionReceiverAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
 
   const nft = useNFT(contractAddress);
-  const { mintWithCommission } = useMintWithCommission();
+  const { mintWithCommission } = useMintWithCommission(nft);
 
   return (
     <>
