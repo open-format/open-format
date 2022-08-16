@@ -15,6 +15,101 @@ You can install the SDK with NPM or Yarn.
 npm install @simpleweb/open-format-react ethers
 ```
 
+### Webpack 5
+
+You'll need to add some dev dependencies with the following command:
+
+```bash npm2yarn
+npm install --save-dev assert buffer crypto-browserify stream-http https-browserify os-browserify process stream-browserify util stream
+```
+
+Then add the following to your webpack.config.js file:
+
+```js
+const webpack = require('webpack')
+
+module.exports = {
+  resolve: {
+    alias: {
+      assert: 'assert',
+      buffer: 'buffer',
+      crypto: 'crypto-browserify',
+      http: 'stream-http',
+      https: 'https-browserify',
+      os: 'os-browserify/browser',
+      process: 'process/browser',
+      stream: 'stream-browserify',
+      util: 'util'
+    }
+  },
+  experiments: {
+    asyncWebAssembly: true
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer']
+    })
+  ]
+}
+```
+
+If you're running a Next.js or still get the `Uncaught ReferenceError: Buffer is not defined in React` error with react-scripts v5 / webpack 5 after the above config, add the following to your App.
+
+```js
+import {Buffer} from 'buffer';
+window.Buffer = window.Buffer || require("buffer").Buffer;
+Buffer.from('anything','base64');
+```
+
+### Usage with Create React App
+
+[CRACO](https://www.npmjs.com/package/@craco/craco) provides an easy way to override webpack config which is obfuscated in Create React App built applications.
+
+```js title="craco.config.js"
+const webpack = require('webpack')
+
+module.exports = {
+  webpack: {
+    resolve: {
+      alias: {
+        assert: 'assert',
+        buffer: 'buffer',
+        crypto: 'crypto-browserify',
+        http: 'stream-http',
+        https: 'https-browserify',
+        os: 'os-browserify/browser',
+        process: 'process/browser',
+        stream: 'stream-browserify',
+        util: 'util'
+      }
+    },
+    experiments: {
+      asyncWebAssembly: true
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+        Buffer: ['buffer', 'Buffer']
+      })
+    ]
+  }
+}
+```
+
+Create a `craco.config.js` with the above content, and ensure its at the root of your project.
+
+
+Update the existing calls to react-scripts in the scripts section of your `package.json`` file to use the craco CLI:
+
+```json
+"scripts": {
+  "start": "craco start",
+  "build": "craco build",
+  "test": "craco test"
+}
+```
+
 ## Setup
 
 Start by wrapping the `OpenFormatProvider` around your app.
