@@ -44,7 +44,7 @@ const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const address = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
 const share = 1000;
 const revShareExtensionAddress = '0x2F1e29Ab4599c71360AaB7dbD17eBd7E0Fa20e59';
-const holdersPercentage = 5000;
+const holderPercentage = 5000;
 
 const nft = sdk.getNFT(contractAddress);
  await nft.setupRevenueSharing({
@@ -70,7 +70,7 @@ function MyComponent() {
   const address = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
   const share = 1000;
   const revShareExtensionAddress = '0x2F1e29Ab4599c71360AaB7dbD17eBd7E0Fa20e59';
-  const holdersPercentage = 5000;
+  const holderPercentage = 5000;
 
   const nft = useNFT(contractAddress);
   const { setup } = useSetupRevenueSharing(nft);
@@ -86,7 +86,7 @@ function MyComponent() {
             share
           },
         ],
-        holdersPercentage
+        holderPercentage
       })}>
       Setup Revenue Sharing
       </button>
