@@ -81,7 +81,7 @@
   --ifm-font-family-monospace: var(--custom-font-code);
   --ifm-heading-font-family: var(--custom-font-base);
   --ifm-font-size-base: var(--custom-font-size-base);
-  --ifm-heading-font-weight: 400;
+  --ifm-heading-font-weight: 600;
   --ifm-font-weight-bold: 500;
 
   /* Globals */
