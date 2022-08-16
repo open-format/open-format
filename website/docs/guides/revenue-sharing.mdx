@@ -44,7 +44,7 @@ Sets up revenue sharing. We recommend setting the creator as a single collaborat
 ```jsx
 const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
 const creatorAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
-const share = 10000;
+const share = 10000; // 100%
 const revShareExtensionAddress = '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212';
 const holderPercentage = 5000;
 
@@ -71,7 +71,7 @@ import { useSetupRevenueSharing, useNFT } from '@simpleweb/open-format-react';
 function MyComponent() {
   const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const creatorAddress = '0x16BB52a951e3DD1D2CdB95b1A70C2B05Ce1E4Cee';
-  const share = 10000;
+  const share = 10000; // 100%
   const revShareExtensionAddress = '0x483C3aDD26C87d2F99DcCB84Cbf61844B6aeD212';
   const holderPercentage = 5000;
 
@@ -201,7 +201,7 @@ function MyComponent() {
 
   return (
     <>
-      {balanceData && <span>{balanceData}</span>}
+      {balanceData && <span>{balanceData.toString()}</span>}
     </>
   )
 }
@@ -242,7 +242,7 @@ function MyComponent() {
 
   return (
     <>
-      {tokenData && <span>{tokenData}</span>}
+      {tokenData && <span>{tokenData.toString()}</span>}
     </>
   )
 }
