@@ -27,3 +27,15 @@ Querying data from projects that have high complexity (such as NFT's) is made ea
 ## ERC721 standard
 
 ERC721 is a more complex standard than ERC20, with multiple optional extensions, and is split across a number of contracts. Check out the [API Reference](https://docs.openzeppelin.com/contracts/3.x/api/token/ERC721) to learn more about these.
+
+## Ether
+
+Ether is the transactional token that facilitates operations on the Ethereum network. All of the programs and services linked with the Ethereum network require computing power (and that computing power is not free). Ether is a form of payment for network participants to execute their requested operations on the network.
+
+## Wei
+
+Wei is the smallest denomination of ether—the cryptocurrency coin used on the Ethereum network. One ether = 1,000,000,000,000,000,000 wei (10^18). Wei is mostly used when setting monetary values.
+
+## Gwei
+
+Put simply, 1 Gwei is 0.000000001 Ether (1 billionth of an Ether) that is used to measure the cost of transactions on the Ethereum network.
