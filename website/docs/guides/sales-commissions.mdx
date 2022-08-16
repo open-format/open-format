@@ -38,12 +38,48 @@ function MyComponent() {
 
   const nft = useNFT(contractAddress);
     const {
-    setPrimaryCommissionPercent,
+    setPrimaryCommissionPercent
   } = useSetPrimaryCommissionPercentage(nft);
 
   return (
     <>
-      <button onClick={() => salesCommissionPerentage(salesCommissionPerentage)}></button>
+      <button onClick={() => setPrimaryCommissionPercent(salesCommissionPerentage)}>Set Commission Percentage</button>
+    </>
+  )
+}
+```
+</TabItem>
+</Tabs>
+
+### Get primary sale commission percentage
+
+gets the primary commission percentage.
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```jsx
+const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+
+const nft = sdk.getNFT(contractAddress);
+await nft.getPrimaryCommissionPercent();
+```
+</TabItem>
+<TabItem value="react" label="React">
+
+
+```tsx
+import { useGetPrimaryCommissionPercentage, useNFT } from '@simpleweb/open-format-react';
+
+function MyComponent() {
+  const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
+
+  const nft = useNFT(contractAddress);  
+  const { data, isSuccess } = useGetPrimaryCommissionPercent(nft);
+
+  return (
+    <>
+      {isSuccess && <span>{data.toString()}</span>}
     </>
   )
 }

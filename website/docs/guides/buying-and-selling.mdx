@@ -12,8 +12,7 @@ The `buy` function is what we will look over in this guide to get you started.
 
 :::tip info
 
-Before calling the buy function a token must be set as available for sale.
-This can be done by calling `setTokenSalePrice`.
+Before calling the buy function the token owner must set the token as available for sale. This can be done by calling `setTokenSalePrice` and passing a new sale price [(in Wei)](/glossary#wei).
 
 :::
 
@@ -38,23 +37,6 @@ await nft.buy(tokenId);
 ```tsx
 import { useBuy, useNFT } from '@simpleweb/open-format-react';
 
-<<<<<<< HEAD
-  function MyComponent() {
-    const contractAddress = '0x...';
-    const tokenId = 0;
-
-    const nft = useNFT(contractAddress);
-    const { buy } = useBuy(nft);
-
-    return (
-      <>
-        <button onClick={() => buy(tokenId)}>
-          Buy NFT
-        </button>
-      </>
-    );
-  }
-=======
 function MyComponent() {
   const contractAddress = '0xc922b16f4e9d299fd5fc5b8375928fa761484042';
   const tokenId = 0;
@@ -70,13 +52,12 @@ function MyComponent() {
     </>
   );
 }
->>>>>>> a05d62f (removing git ref line from vscode)
 ```
 
 </TabItem>
 </Tabs>
 
-<!-- ## Buy with commission
+<!-- <!-- ## Buy with commission
 
 The buy with commision function handles the secondary sale of an NFT with a commision set. The commision is then sent to the commissionReceiverAddress.
 
@@ -109,6 +90,7 @@ function MyComponent() {
   const commissionReceiverAddress = "0x...";
   const tokenId = 0;
   const contractAddress = "0x...";
+  const contractAddress = "0x...";
 
   const nft = useNFT(contractAddress);
   const { buyWithCommission } = useBuyWithCommission(nft);
@@ -125,3 +107,4 @@ function MyComponent() {
 
 </TabItem>
 </Tabs> -->
+ -->
