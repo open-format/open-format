@@ -38,12 +38,12 @@ function MyComponent() {
 
   const nft = useNFT(contractAddress);
     const {
-    setPrimaryCommissionPercent,
+    setPrimaryCommissionPercent
   } = useSetPrimaryCommissionPercentage(nft);
 
   return (
     <>
-      <button onClick={() => salesCommissionPerentage(salesCommissionPerentage)}></button>
+      <button onClick={() => setPrimaryCommissionPercent(salesCommissionPerentage)}>Set Commission Percentage</button>
     </>
   )
 }
