@@ -1,5 +1,11 @@
 # @simpleweb/open-format
 
+## 0.6.0
+
+### Minor Changes
+
+- 448784f: Removes buying with commission functionality
+
 ## 0.5.0
 
 ### Minor Changes
