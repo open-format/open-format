@@ -434,32 +434,6 @@ export class OpenFormatNFT extends BaseContract {
   }
 
   /**
-   * Buy with commission
-   * @param {Object} params
-   * @param {BigNumberish} params.tokenId Token ID
-   * @param {number} params.address Address
-   * @returns {ContractReceipt}
-   */
-  async buyWithCommission({
-    tokenId,
-    address,
-  }: {
-    tokenId: BigNumberish;
-    address: string;
-  }) {
-    invariant(this.signer, 'No signer set');
-
-    await this.checkNetworksMatch();
-
-    return contract.buyWithCommission({
-      tokenId,
-      address,
-      contractAddress: this.address,
-      signer: this.signer,
-    });
-  }
-
-  /**
    * Toggle the paused state
    * @returns {ContractReceipt}
    */

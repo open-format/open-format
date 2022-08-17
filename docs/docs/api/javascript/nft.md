@@ -34,7 +34,6 @@ title: NFT
     * [.setMaxSupply(amount)](#OpenFormatNFT+setMaxSupply) ⇒ <code>ContractReceipt</code>
     * [.getTotalSupply()](#OpenFormatNFT+getTotalSupply) ⇒ <code>BigNumberish</code>
     * [.buy(params)](#OpenFormatNFT+buy) ⇒ <code>ContractReceipt</code>
-    * [.buyWithCommission(params)](#OpenFormatNFT+buyWithCommission) ⇒ <code>ContractReceipt</code>
     * [.togglePauseState()](#OpenFormatNFT+togglePauseState) ⇒ <code>ContractReceipt</code>
     * [.burn(tokenId)](#OpenFormatNFT+burn) ⇒ <code>ContractReceipt</code>
 
@@ -284,19 +283,6 @@ title: NFT
 | --- | --- | --- |
 | params | <code>Object</code> |  |
 | params.tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
-
-<a name="OpenFormatNFT+buyWithCommission"></a>
-
-### openFormatNFT.buyWithCommission(params) ⇒ <code>ContractReceipt</code>
-<p>Buy with commission</p>
-
-**Kind**: instance method of [<code>OpenFormatNFT</code>](#OpenFormatNFT)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| params | <code>Object</code> |  |
-| params.tokenId | <code>BigNumberish</code> | <p>Token ID</p> |
-| params.address | <code>number</code> | <p>Address</p> |
 
 <a name="OpenFormatNFT+togglePauseState"></a>
 
