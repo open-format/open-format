@@ -112,7 +112,7 @@ Each NFT is represented as a `Token` entity in the [subgraph](/glossary#subgraph
 
 :::tip
 
-GraphQL is case-sensitive, however it is not massively obvious. For example, contract addresses, token ids, etc should be all lowercase
+Addresses stored in the subgraph are not checksummed. You will need to ensure all addresses are lowercase before querying the subgraph
 
 :::
 
