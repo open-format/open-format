@@ -110,6 +110,12 @@ We recommend any dates and times are formatted as a unix timestamp.
 
 Each NFT is represented as a `Token` entity in the [subgraph](/glossary#subgraph).
 
+:::tip
+
+Addresses stored in the subgraph are not checksummed. You will need to ensure all addresses are lowercase before querying the subgraph
+
+:::
+
 ### Querying all tokens
 
 ```graphql

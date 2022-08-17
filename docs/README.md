@@ -1,39 +1,41 @@
-# Home
+# Website
 
-Open Format is a trustless, permissionless and collaborative NFT protocol. It enables developers and creators to create, release and monetise their NFT collections in unique marketplace experiences.
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-## Protocol
+### Installation
 
-Here you can learn about Open Format and how it works.
+```
+$ yarn
+```
 
-* [Overview](protocol/how-open-format-works.md)
+### Local Development
 
-## Templates
+```
+$ yarn start
+```
 
-Want to jump straight in? Here can you can quickly clone and deploy any of our templates.&#x20;
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-* [Open Format NFT](templates/open-format-nft.md)
+### Build
 
-## SDKs
+```
+$ yarn build
+```
 
-Our SDKs provide you with easy to use methods to interact with Open Format.
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-* [Javascript](sdks/javascript/)
-  * [NFT](sdks/javascript/nft.md)
-  * [SDK](sdks/javascript/sdk.md)
-* [React](sdks/react/)
-  * [Hooks](sdks/react/hooks.md)
+### Deployment
 
-## Contracts
+Using SSH:
 
-Want to see under the hood? View our contracts for a more in-depth understanding of Open Format. You can also see our list of error codes returned by the contracts.
+```
+$ USE_SSH=true yarn deploy
+```
 
-* [Open Format](broken-reference)
-* [Error Codes](contracts/error-codes.md)
+Not using SSH:
 
-## Links
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
 
-We're building community. A strong community will help us shape the future of Open Format.&#x20;
-
-* [Join our Discord](https://discord.gg/8WV52tVqbZ)
-* [Visit our site ](https://openformat.simpleweb.co.uk/)to get an overview of what Open Format can do for you.
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
