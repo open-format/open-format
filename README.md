@@ -14,11 +14,9 @@ Build your own NFT ecosystem. Trustless, permissionless and collaborative.
 
 ## Documentation
 
-[Read the documentation](https://docs.openformat.simpleweb.co.uk/).
-
-- [Quickstart](https://docs.openformat.simpleweb.co.uk/guides/quickstart/creating-an-nft)
-- [JavaScript](https://docs.openformat.simpleweb.co.uk/sdk/javascript)
-- [React](https://docs.openformat.simpleweb.co.uk/sdk/react)
+- [Introduction](https://docs.openformat.simpleweb.co.uk)
+- [JavaScript](https://docs.openformat.simpleweb.co.uk/quickstart/javascript)
+- [React](https://docs.openformat.simpleweb.co.uk/quickstart/react)
 
 ## Demos
 
