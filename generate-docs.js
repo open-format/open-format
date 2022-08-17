@@ -7,17 +7,17 @@ const files = [
   {
     name: "NFT",
     input: "sdks/open-format/src/core/nft.ts",
-    output: "website/docs/reference/javascript"
+    output: "docs/docs/api/javascript"
   },
   {
     name: "SDK",
     input: "sdks/open-format/src/core/sdk.ts",
-    output: "website/docs/reference/javascript"
+    output: "docs/docs/api/javascript"
   },
   {
     name: "Hooks",
     input: "sdks/react/src/hooks/*.tsx",
-    output: "website/docs/reference/react"
+    output: "docs/docs/api/react"
   }
 ];
 

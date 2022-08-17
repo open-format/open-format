@@ -110,6 +110,12 @@ We recommend any dates and times are formatted as a unix timestamp.
 
 Each NFT is represented as a `Token` entity in the [subgraph](/glossary#subgraph).
 
+:::tip
+
+GraphQL is case-sensitive, however it is not massively obvious. For example, contract addresses, token ids, etc should be all lowercase
+
+:::
+
 ### Querying all tokens
 
 ```graphql
