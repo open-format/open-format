@@ -14,11 +14,11 @@ Simply put a [signer](https://docs.ethers.io/v5/api/signer/) is just the account
 
 [Networks](https://ethereum.org/en/developers/docs/networks/) are different Ethereum environments you can access for a variety of use cases.
 
-The network used in the example above (mumbai) is one of the [Polygon](https://polygon.technology/) testnet networks where we can be used as a sandbox to test actions on the chain before deploying to mainnet (where real asset transactions occur).
+The network used in the example above (mumbai) is one of the [Polygon](https://polygon.technology/) testnet networks which we can be used as a sandbox to test actions on the chain before deploying to mainnet (where real asset transactions occur).
 
 ## Polygon
 
-[Polygon](https://polygon.technology/) is a side-chain built alongside its parent chain, in our case ethereum. It has specific benefits such as enhanced speed and reduced cost.
+[Polygon](https://polygon.technology/) is a side-chain built alongside its parent chain, in our case Ethereum. It has specific benefits such as enhanced speed and reduced cost.
 
 ## Subgraph
 
@@ -28,7 +28,7 @@ Querying data from projects that have high complexity (such as NFT's) is made ea
 
 ERC721 is a more complex standard than ERC20, with multiple optional extensions, and is split across a number of contracts. Check out the [API Reference](https://docs.openzeppelin.com/contracts/3.x/api/token/ERC721) to learn more about these.
 
-## Ether
+## Ether
 
 Ether is the transactional token that facilitates operations on the Ethereum network. All of the programs and services linked with the Ethereum network require computing power (and that computing power is not free). Ether is a form of payment for network participants to execute their requested operations on the network.
 
