@@ -451,7 +451,6 @@ export async function deploy({
     invariant(nft.description, 'A description must be set');
     invariant(nft.image, 'An image must be set');
     invariant(nft.releaseType, 'A release type must be set');
-    //invariant(nftStorageToken, 'an NFTStorage api key must be provided');
 
     const customMetadata = nft.metadata ?? {};
 
