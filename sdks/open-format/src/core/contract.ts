@@ -415,7 +415,6 @@ export async function burn({
   return receipt;
 }
 
-
 /**
  * Deploys a version of the Open Format contract
  * @private
@@ -449,7 +448,10 @@ export async function deploy({
     invariant(nft.description, 'A description must be set');
     invariant(nft.image, 'An image must be set');
     invariant(nft.releaseType, 'A release type must be set');
-    invariant(nftStorageToken, 'An NFT storage token must be set');
+    invariant(
+      nftStorageToken,
+      'An NFT storage token must be set - get one from nft.storage'
+    );
 
     const customMetadata = nft.metadata ?? {};
 
