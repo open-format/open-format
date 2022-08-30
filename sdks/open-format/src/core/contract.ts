@@ -415,8 +415,6 @@ export async function burn({
   return receipt;
 }
 
-const defaultNFTStorageToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDVkMjJDZDg2M2Y2NUVBN0ZjZjI3MEE5MUY2NTE5Nzc4OGRhRjU4NmMiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1OTAxMTU3OTQ2NSwibmFtZSI6Ik9wZW4gRm9ybWF0In0.v-0FkXH0IpVB_JdyG6Ho6kXPqy4DOVr_HZzsks3DES4';
 
 /**
  * Deploys a version of the Open Format contract
@@ -451,13 +449,12 @@ export async function deploy({
     invariant(nft.description, 'A description must be set');
     invariant(nft.image, 'An image must be set');
     invariant(nft.releaseType, 'A release type must be set');
+    invariant(nftStorageToken, 'An NFT storage token must be set');
 
     const customMetadata = nft.metadata ?? {};
 
-    console.log(nftStorageToken);
-
     const nftStorage = new NFTStorage({
-      token: nftStorageToken || defaultNFTStorageToken,
+      token: nftStorageToken,
     });
 
     const metadata = await nftStorage.store({
