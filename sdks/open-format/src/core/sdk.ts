@@ -65,7 +65,7 @@ export class OpenFormatSDK extends BaseContract {
       nft,
       transactionArgs,
       factory: this.options.factory,
-      nftStorageToken,
+      nftStorageToken: nftStorageToken || this.options.nftStorageToken,
     });
 
     return tx;
