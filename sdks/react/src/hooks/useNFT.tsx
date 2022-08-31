@@ -1,6 +1,5 @@
-import { useConnectWallet } from '@web3-onboard/react';
-import { ethers } from 'ethers';
 import { useEffect, useRef } from 'react';
+import { useSigner } from 'wagmi';
 import { useOpenFormat } from '../provider';
 
 /**
@@ -9,20 +8,20 @@ import { useOpenFormat } from '../provider';
  * @returns OpenFormatNFT
  */
 export function useNFT(address: string) {
-  const [{ wallet }] = useConnectWallet();
+  const { data: signer } = useSigner();
   const { sdk } = useOpenFormat();
 
   const nft = useRef(sdk.getNFT(address));
 
   useEffect(() => {
-    if (wallet) {
-      nft.current.signer = new ethers.providers.Web3Provider(
-        wallet.provider
-      ).getSigner();
+    if (signer) {
+      nft.current.signer = signer;
     } else {
+      // @ts-ignore
+      // @TODO fix this ts error
       nft.current.signer = undefined;
     }
-  }, [wallet]);
+  }, [signer]);
 
   return nft.current;
 }

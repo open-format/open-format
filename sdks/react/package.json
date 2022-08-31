@@ -78,8 +78,7 @@
   "dependencies": {
     "@simpleweb/open-format": "^0.6.0",
     "@tanstack/react-query": "^4.0.10",
-    "@web3-onboard/injected-wallets": "^2.0.12",
-    "@web3-onboard/react": "^2.2.2",
-    "@web3-onboard/walletconnect": "^2.0.5"
+    "connectkit": "^0.0.2",
+    "wagmi": "^0.6.4"
   }
 }
