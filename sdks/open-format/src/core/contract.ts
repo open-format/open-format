@@ -450,7 +450,7 @@ export async function deploy({
     invariant(nft.releaseType, 'A release type must be set');
     invariant(
       nftStorageToken,
-      'An NFT storage token must be set - get one from nft.storage'
+      'An NFT storage token must be set - more information https://docs.openformat.simpleweb.co.uk/guides/deploying'
     );
 
     const customMetadata = nft.metadata ?? {};
