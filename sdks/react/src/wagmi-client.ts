@@ -1,8 +1,9 @@
 import { chain, configureChains, createClient } from 'wagmi';
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
+import { InjectedConnector } from 'wagmi/connectors/injected';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { publicProvider } from 'wagmi/providers/public';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [chain.polygonMumbai],
@@ -18,12 +19,19 @@ const walletconnet = new WalletConnectConnector({
   },
 });
 
+const coinbase = new CoinbaseWalletConnector({
+  chains,
+  options: {
+    appName: 'Open Format',
+  },
+});
+
 const injected = new InjectedConnector({ chains });
 
 export const wagmiClient = createClient({
   // @TODO fix hydration issue
   // autoConnect: true,
-  connectors: [injected, metamask, walletconnet],
+  connectors: [injected, coinbase, metamask, walletconnet],
   provider,
   webSocketProvider,
 });
