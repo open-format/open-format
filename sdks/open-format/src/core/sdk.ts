@@ -48,9 +48,14 @@ export class OpenFormatSDK extends BaseContract {
    * @param {string} nft.name - name of the nft
    * @param {string} nft.symbol - symbol for the nft
    * @param {string} nft.url - storage URL
+   * @param {string} nftStorageToken - NFT storage access token
    * @returns transaction
    */
-  async deploy(nft: NFTMetadata, transactionArgs?: Transaction) {
+  async deploy(
+    nft: NFTMetadata,
+    transactionArgs?: Transaction,
+    nftStorageToken?: string
+  ) {
     invariant(this.signer, 'No signer set, cannot deploy');
 
     await this.checkNetworksMatch();
@@ -60,6 +65,7 @@ export class OpenFormatSDK extends BaseContract {
       nft,
       transactionArgs,
       factory: this.options.factory,
+      nftStorageToken: nftStorageToken || this.options.nftStorageToken,
     });
 
     return tx;
