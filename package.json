@@ -2,6 +2,7 @@
   "name": "open-format",
   "version": "0.0.0",
   "private": true,
+  "license": "Apache-2.0",
   "workspaces": [
     "packages/**",
     "sdks/**",

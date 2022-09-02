@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "repository": "https://github.com/simpleweb/open-format/tree/main/sdks/react",
   "author": "Benjamin Reid <ben@simpleweb.co.uk>",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
