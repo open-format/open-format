@@ -26,7 +26,7 @@ export class OpenFormatSDK extends BaseContract {
   constructor(options?: SDKOptions) {
     super(
       getProviderFromUrl(
-        merge({}, OpenFormatSDK.defaultOptions, options).network
+        getProviderUrl(merge({}, OpenFormatSDK.defaultOptions, options).network)
       )
     );
 
