@@ -14,14 +14,14 @@ export function useNFT(address: string) {
   const nft = useRef(sdk.getNFT(address));
 
   useEffect(() => {
-    if (signer) {
+    if (sdk.signer) {
+      nft.current.signer = sdk.signer;
+    } else if (signer) {
       nft.current.signer = signer;
     } else {
-      // @ts-ignore
-      // @TODO fix this ts error
       nft.current.signer = undefined;
     }
-  }, [signer]);
+  }, [signer, sdk.signer]);
 
   return nft.current;
 }
