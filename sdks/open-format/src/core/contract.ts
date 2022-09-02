@@ -421,6 +421,8 @@ export async function burn({
  * @param {Object} params - the signer and nft for the deploy
  * @param {Signer} params.signer - signer of the contract
  * @param {NFTMetadata} params.nft - metadata about the NFT to deploy
+ * @param {factory} params.factory - factory identifier
+ * @param {nftStorageToken} params.nftStorageToken - nft storage api token
  * @returns receipt
  */
 export async function deploy({
