@@ -27,7 +27,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "yarn node --experimental-vm-modules $(yarn bin jest) --runInBand",
+    "test": "tsdx test --passWithNoTests --runInBand",
     "lint": "tsdx lint",
     "prepare": "yarn run generate-contract-types && tsdx build",
     "generate-contract-types": "typechain --target ethers-v5 --out-dir src/contract-types '../../node_modules/@simpleweb/open-format-contracts/abis/*.json'",
@@ -41,6 +41,11 @@
     "hooks": {
       "pre-commit": "tsdx lint"
     }
+  },
+  "jest": {
+    "globalSetup": "./test/setup.ts",
+    "globalTeardown": "./test/teardown.ts",
+    "testTimeout": 10000
   },
   "prettier": {
     "printWidth": 80,
@@ -62,7 +67,6 @@
     "@size-limit/preset-small-lib": "^7.0.8",
     "@typechain/ethers-v5": "^10.1.0",
     "@types/lodash.merge": "^4.6.7",
-    "babel-jest": "^28.1.1",
     "ethers": "^5",
     "ganache": "^7.2.0",
     "husky": "^8.0.1",

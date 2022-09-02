@@ -27,7 +27,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "yarn node --experimental-vm-modules $(yarn bin jest) --runInBand",
+    "test": "tsdx test --passWithNoTests --runInBand",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
@@ -41,6 +41,11 @@
     "hooks": {
       "pre-commit": "tsdx lint"
     }
+  },
+  "jest": {
+    "globalSetup": "./test/setup.ts",
+    "globalTeardown": "./test/teardown.ts",
+    "testTimeout": 10000
   },
   "prettier": {
     "printWidth": 80,
@@ -67,7 +72,6 @@
     "ethers": "^5",
     "graphql-request": "^4.3.0",
     "husky": "^8.0.1",
-    "jest-environment-jsdom": "^28.1.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "size-limit": "^7.0.8",
