@@ -1,6 +1,16 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 
+/**
+ * Hook to buy
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ *
+ * @example
+ * ```tsx
+ * const { ...mutation, buy } = useBuy(nft);
+ * ```
+ *
+ */
 export function useBuy(nft: OpenFormatNFT) {
   const { mutateAsync, ...mutation } = useMutation<
     Awaited<ReturnType<typeof nft.buy>>,

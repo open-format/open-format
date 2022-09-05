@@ -1,8 +1,18 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 
+/**
+ * Hook to set the percentage of the primary commission
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ *
+ * @example
+ * ```tsx
+ * const { ...mutation, setPrimaryCommissionPercent } = useSetPrimaryCommissionPercentage(nft);
+ * ```
+ *
+ */
 export function useSetPrimaryCommissionPercentage(nft: OpenFormatNFT) {
-  const { mutateAsync: setPrimaryCommissionPercent, ...mutation } = useMutation<
+  const { mutateAsync, ...mutation } = useMutation<
     Awaited<ReturnType<typeof nft.setPrimaryCommissionPercent>>,
     unknown,
     Parameters<typeof nft.setPrimaryCommissionPercent>[0]
@@ -12,6 +22,6 @@ export function useSetPrimaryCommissionPercentage(nft: OpenFormatNFT) {
 
   return {
     ...mutation,
-    setPrimaryCommissionPercent,
+    setPrimaryCommissionPercent: mutateAsync,
   };
 }

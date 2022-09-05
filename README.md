@@ -3,7 +3,7 @@
 Build your own NFT ecosystem. Trustless, permissionless and collaborative.
 
 - Create data rich NFT collections with minting, selling, payment splitting and royalty functionality built in.
-- Use our subgraph to search, filter and sort NFT collections on open format to create unique marketplace experiences.
+- Use our subgraph to search, filter and sort NFT collections on Open Format to create unique marketplace experiences.
 - Deposit external revenue streams into a NFT collection that is split between NFT holders.
 - Add a commission to allow developers and external sellers to benefit from your NFT sales.
 
@@ -14,11 +14,9 @@ Build your own NFT ecosystem. Trustless, permissionless and collaborative.
 
 ## Documentation
 
-[Read the documentation](https://docs.openformat.simpleweb.co.uk/).
-
-- [Quickstart](https://docs.openformat.simpleweb.co.uk/guides/quickstart/creating-an-nft)
-- [JavaScript](https://docs.openformat.simpleweb.co.uk/sdk/javascript)
-- [React](https://docs.openformat.simpleweb.co.uk/sdk/react)
+- [Introduction](https://docs.openformat.simpleweb.co.uk)
+- [JavaScript](https://docs.openformat.simpleweb.co.uk/quickstart/javascript)
+- [React](https://docs.openformat.simpleweb.co.uk/quickstart/react)
 
 ## Demos
 

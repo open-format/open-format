@@ -1,6 +1,16 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 
+/**
+ * Hook to mint with commission
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ *
+ * @example
+ * ```tsx
+ * const { ...mutation, mintWithCommission } = useMintWithCommission(nft);
+ * ```
+ *
+ */
 export function useMintWithCommission(nft: OpenFormatNFT) {
   const { mutateAsync, ...mutation } = useMutation<
     Awaited<ReturnType<typeof nft.mintWithCommission>>,

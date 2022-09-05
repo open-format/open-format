@@ -1,10 +1,11 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useOpenFormat } from '../provider';
 
 /**
- * Hook to get sales data for token
- * @param {{ tokenId: string }} options - pass the `tokenId` to look up
- * @returns sales data for a token
+ * Hook to get sales data for a specific token
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ * @param {{ tokenId: string }} options Sale Price
+ * @returns {UseQueryResult}
  */
 export function useSaleData({ tokenId }: { tokenId: string }) {
   const { sdk } = useOpenFormat();

@@ -1,5 +1,29 @@
 # @simpleweb/open-format
 
+## 0.6.0
+
+### Minor Changes
+
+- 448784f: Removes buying with commission functionality
+
+## 0.5.0
+
+### Minor Changes
+
+- c8aff6b: Adds in functionality to allow you to get the token sale price
+- 0c5e873: Adds in functionality to allow you to set the approved minting extension
+- 476866c: Allows for transaction arguments to be passed into the deploy method
+- f8c3330: Adds in functionality to allow you to get the creator of a token
+- 4502e3a: Updates the documentation for the both SDKs
+- ccd9dd9: Ads in functionality to allow you to toggle the pause state or burn a token
+- e51899a: Adds in functionality to allow you to set the price of minting
+- 609fd5f: Adds in functionality to get the primary and secondary commission percentage
+- 0accb07: Adds in functionality to allow you to get and set the max supply and get total supply
+
+### Patch Changes
+
+- cec91e7: Allow signer to be lazily set in useNFT
+
 ## 0.4.0
 
 ### Minor Changes

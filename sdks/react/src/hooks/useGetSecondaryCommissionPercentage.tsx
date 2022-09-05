@@ -1,9 +1,10 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 /**
  * Hook to get secondary commission percentage
- * @returns BigNumber
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ * @returns {UseQueryResult}
  */
 export function useGetSecondaryCommissionPercent(nft: OpenFormatNFT) {
   const query = useQuery<

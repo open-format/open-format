@@ -1,8 +1,18 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 
+/**
+ * Hook to setup revenue sharing
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ *
+ * @example
+ * ```tsx
+ * const { ...mutation, setup } = useSetupRevenueSharing(nft);
+ * ```
+ *
+ */
 export function useSetupRevenueSharing(nft: OpenFormatNFT) {
-  const { mutateAsync: setup, ...mutation } = useMutation<
+  const { mutateAsync, ...mutation } = useMutation<
     Awaited<ReturnType<typeof nft.setupRevenueSharing>>,
     unknown,
     Parameters<typeof nft.setupRevenueSharing>[0]
@@ -12,6 +22,6 @@ export function useSetupRevenueSharing(nft: OpenFormatNFT) {
 
   return {
     ...mutation,
-    setup,
+    setup: mutateAsync,
   };
 }

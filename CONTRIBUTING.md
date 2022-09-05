@@ -52,7 +52,7 @@ git branch feature/name
 Do what you need to do code wise and then add a new `changeset` (we use [Changesets](https://github.com/changesets/changesets) to help version multiple packages consistently).
 
 ```shell
-yarn chanegset
+yarn changegset
 ```
 
 Once you've completed adding your `changeset`, create a new pull request.

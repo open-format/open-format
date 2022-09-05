@@ -1,11 +1,14 @@
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import { Transaction } from 'ethers';
 import { useOpenFormat } from '../provider';
 
 /**
- * Gets the deploy function from the sdk
- * @param {Transaction} [transactionArgs]
- * @returns deploy function
+ * Hook to get the deploy function from the SDK
+ *
+ * @example
+ * ```tsx
+ * const { ...mutation, deploy } = useDeploy();
+ * ```
  */
 export function useDeploy(transactionArgs?: Transaction) {
   const { sdk } = useOpenFormat();

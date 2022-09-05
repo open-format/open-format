@@ -1,10 +1,11 @@
 import { OpenFormatNFT } from '@simpleweb/open-format';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 /**
- * Hook to get royalites for a price
- * @param {{ salePrice: number }} options - sales price
- * @returns royalties for price
+ * Hook to get the sale price of a token
+ * @param {OpenFormatNFT} nft A deployed NFT instance
+ * @param {number} salePrice Sale Price
+ * @returns {UseQueryResult}
  */
 export function useRoyalties(nft: OpenFormatNFT, salePrice: number) {
   const query = useQuery(['royalties', salePrice], () =>

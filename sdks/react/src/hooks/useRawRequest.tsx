@@ -1,10 +1,10 @@
-import { useQuery, UseQueryOptions } from 'react-query';
+import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { useOpenFormat } from '../provider';
 
 /**
  * Performs a custom query against the subgraph
- * @param {{ query: string }} options - a GraphQL query
- * @returns data from the subgraph
+ * @param {{ query: string }} options A GraphQL query
+ * @returns {any} Data from the subgraph
  */
 export function useRawRequest<TQueryFnData, TError, TData = TQueryFnData>({
   query: rawQuery,

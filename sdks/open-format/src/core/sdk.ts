@@ -51,12 +51,13 @@ export class OpenFormatSDK extends BaseContract {
    * @param {string} nftStorageToken - NFT storage access token
    * @param {string} factory - factory identifier
    * @returns transaction
+   * @returns {ContractReceipt}
    */
   async deploy(
     nft: NFTMetadata,
     transactionArgs?: Transaction,
     nftStorageToken?: string,
-    factory?: string,
+    factory?: string
   ) {
     invariant(this.signer, 'No signer set, cannot deploy');
 
@@ -76,7 +77,7 @@ export class OpenFormatSDK extends BaseContract {
   /**
    * Returns a new instance of an OpenFormatNFT
    * @param {string} address - Address of a deployed Open Format contract
-   * @returns OpenFormatNFT
+   * @returns {OpenFormatNFT}
    */
   getNFT(address: string) {
     return new OpenFormatNFT(address, this.provider, this.signer);
@@ -89,7 +90,7 @@ export class OpenFormatSDK extends BaseContract {
    * Gets tokens for a given factory
    * @param {Object} params
    * @param {string} params.factoryId - id of the factory
-   * @returns tokens
+   * @returns {TokensResponse}
    */
   getTokens() {
     invariant(typeof this.options.factory === 'string', 'Factory ID not set');
