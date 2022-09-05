@@ -1,9 +1,9 @@
 import { OpenFormatSDK, SDKOptions } from '@simpleweb/open-format';
-import { useConnectWallet, useSetChain } from '@web3-onboard/react';
-import { ethers } from 'ethers';
-import React, { createContext, useContext, useEffect, useRef } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import './onboard';
+import { ConnectKitProvider } from 'connectkit';
+import React, { createContext, useContext, useEffect, useRef } from 'react';
+import { useSigner, WagmiConfig } from 'wagmi';
+import { wagmiClient } from './wagmi-client';
 
 const OpenFormatContext = createContext<{ sdk: OpenFormatSDK } | undefined>(
   undefined
@@ -29,42 +29,43 @@ export function OpenFormatProvider({
   children: React.ReactNode;
   config?: SDKOptions;
 }) {
+  return (
+    <WagmiConfig client={wagmiClient}>
+      <InnerProvider config={config}>{children}</InnerProvider>
+    </WagmiConfig>
+  );
+}
+
+function InnerProvider({
+  children,
+  config = {
+    network: 'localhost',
+  },
+}: {
+  children: React.ReactNode;
+  config?: SDKOptions;
+}) {
   const sdk = useRef(new OpenFormatSDK(config));
 
-  const [{ wallet }] = useConnectWallet();
-  const [{ connectedChain }, setChain] = useSetChain();
+  const { data: signer } = useSigner();
 
   useEffect(() => {
     if (!config.signer) {
-      if (wallet) {
-        sdk.current.signer = new ethers.providers.Web3Provider(
-          wallet.provider
-        ).getSigner();
+      if (signer) {
+        sdk.current.signer = signer;
       } else {
         sdk.current.signer = undefined;
       }
     }
-  }, [wallet, config]);
-
-  // keep user on desired chain
-  useEffect(() => {
-    if (connectedChain) {
-      const checkCorrectChain = async () => {
-        const network = await sdk.current.provider.getNetwork();
-        const desiredChainId = ethers.utils.hexValue(network.chainId);
-
-        if (desiredChainId !== connectedChain.id) {
-          setChain({ chainId: desiredChainId });
-        }
-      };
-
-      checkCorrectChain();
-    }
-  }, [connectedChain]);
+  }, [signer, config]);
 
   return (
     <OpenFormatContext.Provider value={{ sdk: sdk.current }}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <ConnectKitProvider>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </ConnectKitProvider>
     </OpenFormatContext.Provider>
   );
 }

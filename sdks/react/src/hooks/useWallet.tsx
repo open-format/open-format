@@ -1,4 +1,4 @@
-import { useConnectWallet } from '@web3-onboard/react';
+import { useAccount } from 'wagmi';
 
 /**
  * Hook to get the wallet state
@@ -9,12 +9,9 @@ import { useConnectWallet } from '@web3-onboard/react';
  * ```
  */
 export function useWallet() {
-  const [{ wallet }] = useConnectWallet();
-
-  const isConnected = !!wallet;
+  const account = useAccount();
 
   return {
-    isConnected,
-    wallet,
+    ...account,
   };
 }
