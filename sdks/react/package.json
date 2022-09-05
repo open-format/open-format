@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "repository": "https://github.com/simpleweb/open-format/tree/main/sdks/react",
   "author": "Benjamin Reid <ben@simpleweb.co.uk>",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
@@ -27,7 +27,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "yarn node --experimental-vm-modules $(yarn bin jest) --runInBand",
+    "test": "tsdx test --passWithNoTests --runInBand",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
@@ -41,6 +41,11 @@
     "hooks": {
       "pre-commit": "tsdx lint"
     }
+  },
+  "jest": {
+    "globalSetup": "./test/setup.ts",
+    "globalTeardown": "./test/teardown.ts",
+    "testTimeout": 10000
   },
   "prettier": {
     "printWidth": 80,
@@ -67,7 +72,6 @@
     "ethers": "^5",
     "graphql-request": "^4.3.0",
     "husky": "^8.0.1",
-    "jest-environment-jsdom": "^28.1.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "size-limit": "^7.0.8",
@@ -78,8 +82,7 @@
   "dependencies": {
     "@simpleweb/open-format": "^0.6.0",
     "@tanstack/react-query": "^4.0.10",
-    "@web3-onboard/injected-wallets": "^2.0.12",
-    "@web3-onboard/react": "^2.2.2",
-    "@web3-onboard/walletconnect": "^2.0.5"
+    "connectkit": "^0.0.2",
+    "wagmi": "^0.6.4"
   }
 }
