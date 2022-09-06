@@ -17,6 +17,8 @@ export type TokenProperty = {
 
 export type ReleaseType = 'image' | 'art' | 'ticket' | 'audio' | 'video';
 
+export type Attribute = { key: string; value: string };
+
 export type ChainConfig = {
   id: Chain;
   chainId: number;
@@ -35,6 +37,7 @@ export interface NFTMetadata {
   metadata?: {
     [key: string]: string;
   };
+  attributes?: Attribute[];
   maxSupply: number;
   mintingPrice: number;
 }
@@ -43,6 +46,7 @@ export interface IPFSData {
   name: string;
   description: string;
   image: Blob | File;
+  attributes?: Attribute[];
   factory_id?: string;
   release_type?: ReleaseType;
 }

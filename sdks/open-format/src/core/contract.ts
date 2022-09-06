@@ -473,6 +473,10 @@ export async function deploy({
       data.factory_id = factory;
     }
 
+    if (nft.attributes) {
+      data.attributes = nft.attributes;
+    }
+
     const metadata = await nftStorage.store(data);
 
     url = metadata.url;
