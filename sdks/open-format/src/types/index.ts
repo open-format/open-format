@@ -37,6 +37,14 @@ export interface NFTMetadata {
   mintingPrice: number;
 }
 
+export interface IPFSData {
+  name: string;
+  description: string;
+  image: Blob | File;
+  factory_id?: string;
+  release_type?: ReleaseType;
+}
+
 /**
  * Subgraph responses
  */

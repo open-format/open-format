@@ -4,7 +4,7 @@ import { NFTStorage } from 'nft.storage';
 import { OpenFormat } from '../contract-types';
 import { invariant } from '../helpers/invariant';
 import isZeroAddress from '../helpers/zeroAddress';
-import { NFTMetadata } from '../types';
+import { IPFSData, NFTMetadata } from '../types';
 
 type ContractArgs = {
   contractAddress: string;
@@ -134,8 +134,8 @@ export async function setupRevenueSharing({
 
   const tx = await openFormat.setApprovedRevShareExtension(
     revShareExtensionAddress,
-    collaborators.map(collaborator => collaborator.address),
-    collaborators.map(collaborator => collaborator.share),
+    collaborators.map((collaborator) => collaborator.address),
+    collaborators.map((collaborator) => collaborator.share),
     holderPercentage
   );
 
@@ -162,8 +162,8 @@ export async function allocateRevenueShares({
   }
 
   const tx = await openFormat.allocateShares(
-    allocation.map(a => a.address),
-    allocation.map(a => a.share)
+    allocation.map((a) => a.address),
+    allocation.map((a) => a.share)
   );
 
   const receipt = await tx.wait();
@@ -446,7 +446,7 @@ export async function deploy({
 
   let url = nft.url;
 
-  if (typeof url === 'undefined' && factory) {
+  if (typeof url === 'undefined') {
     invariant(nft.description, 'A description must be set');
     invariant(nft.image, 'An image must be set');
     invariant(nft.releaseType, 'A release type must be set');
@@ -461,14 +461,19 @@ export async function deploy({
       token: nftStorageToken,
     });
 
-    const metadata = await nftStorage.store({
+    const data: IPFSData = {
       name: nft.name,
       description: nft.description,
       image: nft.image,
-      factory_id: factory,
       release_type: nft.releaseType,
       ...customMetadata,
-    });
+    };
+
+    if (factory) {
+      data.factory_id = factory;
+    }
+
+    const metadata = await nftStorage.store(data);
 
     url = metadata.url;
   }
