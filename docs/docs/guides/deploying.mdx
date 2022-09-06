@@ -1,5 +1,5 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 # Deploying
 
@@ -31,10 +31,12 @@ const sdk = new OpenFormatSDK({
 });
 
 await sdk.deploy({
+  name: "TICKET",
+  description: "NFT ticket",
+  image: new File(...),
+  symbol: "FESTIVAL",
   maxSupply: 100,
   mintingPrice: 0.01,
-  name: "TICKET",
-  symbol: "FESTIVAL",
   releaseType: "ticket",
   metadata: {
     location: "Glastonbury",
@@ -46,16 +48,18 @@ await sdk.deploy({
 <TabItem value="react" label="React">
 
 ```tsx
-import { OpenFormatProvider } from '@simpleweb/open-format-react';
+import { OpenFormatProvider } from "@simpleweb/open-format-react";
 
 function App() {
   return (
     <>
-      <OpenFormatProvider config={{
-        network: 'mumbai',
-        factory: 'YOUR-FACTORY-ID',
-        nftStorageToken: 'xxx',
-      }}>
+      <OpenFormatProvider
+        config={{
+          network: "mumbai",
+          factory: "YOUR-FACTORY-ID",
+          nftStorageToken: "xxx",
+        }}
+      >
         {/* the rest of your app... */}
       </OpenFormatProvider>
     </>
@@ -64,7 +68,7 @@ function App() {
 ```
 
 ```tsx
-import { useDeploy } from '@simpleweb/open-format-react';
+import { useDeploy } from "@simpleweb/open-format-react";
 
 function MyComponent() {
   const { deploy } = useDeploy();
@@ -109,11 +113,11 @@ The metadata URL should return a JSON blob of data with the metadata for your NF
 <TabItem value="js" label="JavaScript">
 
 ```tsx
-import { OpenFormatSDK } from '@simpleweb/open-format';
+import { OpenFormatSDK } from "@simpleweb/open-format";
 
 const sdk = new OpenFormatSDK({
-  network: 'mumbai',
-  signer: '0x...',
+  network: "mumbai",
+  signer: "0x...",
 });
 
 await sdk.deploy({
@@ -121,7 +125,7 @@ await sdk.deploy({
   mintingPrice: 0.01,
   name: "TICKET",
   symbol: "FESTIVAL",
-  url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
+  url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza",
 });
 ```
 
@@ -129,7 +133,7 @@ await sdk.deploy({
 <TabItem value="react" label="React">
 
 ```tsx
-import { useDeploy } from '@simpleweb/open-format-react';
+import { useDeploy } from "@simpleweb/open-format-react";
 
 function MyComponent() {
   const { deploy } = useDeploy();
@@ -143,7 +147,7 @@ function MyComponent() {
             mintingPrice: 0.01,
             name: "TICKET",
             symbol: "FESTIVAL",
-            url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
+            url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza",
           })
         }
       >
