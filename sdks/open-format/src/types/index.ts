@@ -32,7 +32,9 @@ export interface NFTMetadata {
   releaseType?: ReleaseType;
   symbol: string;
   url?: string;
-  metadata?: Object;
+  metadata?: {
+    [key: string]: string;
+  };
   maxSupply: number;
   mintingPrice: number;
 }
