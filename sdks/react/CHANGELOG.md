@@ -1,5 +1,19 @@
 # @simpleweb/open-format-react
 
+## 0.7.0
+
+### Minor Changes
+
+- 4f8f238: Uses Wagmi + Connectkit to connect to your wallet in React
+
+### Patch Changes
+
+- 49f57c4: Updated licenses
+- Updated dependencies [a5aa284]
+- Updated dependencies [4f8f238]
+- Updated dependencies [49f57c4]
+  - @simpleweb/open-format@0.7.0
+
 ## 0.6.0
 
 ### Minor Changes
