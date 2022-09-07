@@ -1,5 +1,16 @@
 # @simpleweb/open-format
 
+## 0.7.0
+
+### Minor Changes
+
+- a5aa284: Allows for upload of IPFS data to https://nft.storage
+- 4f8f238: Uses Wagmi + Connectkit to connect to your wallet in React
+
+### Patch Changes
+
+- 49f57c4: Updated licenses
+
 ## 0.6.0
 
 ### Minor Changes
