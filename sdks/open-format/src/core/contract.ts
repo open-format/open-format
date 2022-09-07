@@ -1,8 +1,10 @@
 import base from '@simpleweb/open-format-contracts';
 import { BigNumberish, ethers, Signer, Transaction } from 'ethers';
+import { NFTStorage } from 'nft.storage';
 import { OpenFormat } from '../contract-types';
+import { invariant } from '../helpers/invariant';
 import isZeroAddress from '../helpers/zeroAddress';
-import { NFTMetadata } from '../types';
+import { IPFSData, NFTMetadata } from '../types';
 
 type ContractArgs = {
   contractAddress: string;
@@ -132,8 +134,8 @@ export async function setupRevenueSharing({
 
   const tx = await openFormat.setApprovedRevShareExtension(
     revShareExtensionAddress,
-    collaborators.map(collaborator => collaborator.address),
-    collaborators.map(collaborator => collaborator.share),
+    collaborators.map((collaborator) => collaborator.address),
+    collaborators.map((collaborator) => collaborator.share),
     holderPercentage
   );
 
@@ -160,8 +162,8 @@ export async function allocateRevenueShares({
   }
 
   const tx = await openFormat.allocateShares(
-    allocation.map(a => a.address),
-    allocation.map(a => a.share)
+    allocation.map((a) => a.address),
+    allocation.map((a) => a.share)
   );
 
   const receipt = await tx.wait();
@@ -419,16 +421,22 @@ export async function burn({
  * @param {Object} params - the signer and nft for the deploy
  * @param {Signer} params.signer - signer of the contract
  * @param {NFTMetadata} params.nft - metadata about the NFT to deploy
+ * @param {factory} params.factory - factory identifier
+ * @param {nftStorageToken} params.nftStorageToken - nft storage api token
  * @returns receipt
  */
 export async function deploy({
   signer,
   nft,
   transactionArgs,
+  factory,
+  nftStorageToken,
 }: {
   signer: Signer;
   nft: NFTMetadata;
   transactionArgs?: Transaction;
+  factory?: string;
+  nftStorageToken?: string;
 }) {
   const openFormatContract = new ethers.ContractFactory(
     base.abi,
@@ -436,10 +444,50 @@ export async function deploy({
     signer
   );
 
+  let url = nft.url;
+
+  if (typeof url === 'undefined') {
+    invariant(nft.description, 'A description must be set');
+    invariant(nft.image, 'An image must be set');
+    invariant(nft.releaseType, 'A release type must be set');
+    invariant(
+      nftStorageToken,
+      'An NFT storage token must be set - more information https://docs.openformat.simpleweb.co.uk/guides/deploying'
+    );
+
+    const customMetadata = nft.metadata ?? {};
+
+    const nftStorage = new NFTStorage({
+      token: nftStorageToken,
+    });
+
+    const data: IPFSData = {
+      name: nft.name,
+      description: nft.description,
+      image: nft.image,
+      release_type: nft.releaseType,
+      ...customMetadata,
+    };
+
+    if (factory) {
+      data.factory_id = factory;
+    }
+
+    if (nft.attributes) {
+      data.attributes = nft.attributes;
+    }
+
+    const metadata = await nftStorage.store(data);
+
+    url = metadata.url;
+  }
+
+  invariant(url, 'An IPFS URL must be set');
+
   const contract = await openFormatContract.deploy(
     nft.name,
     nft.symbol,
-    nft.url,
+    url,
     nft.maxSupply,
     ethers.utils.parseEther(nft.mintingPrice.toString()),
     { ...transactionArgs }

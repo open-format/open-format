@@ -1,44 +1,74 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 # Deploying
 
-Deploying is the process of creating a new instance of the Open Format contract on the blockchain.
-Open Format is currently available on the [Polygon](/glossary#polygon) Mainnet and [Polygon](/glossary#polygon) Mumbai [networks](/glossary#networks).
+Deploying creates a new instance of the Open Format contract on the blockchain. Once a contract has been deployed you can then mint NFTs using that contract's address.
 
-### Deploy
+> Open Format is currently available on the [Polygon](/glossary#polygon) Mainnet and [Polygon](/glossary#polygon) Mumbai [networks](/glossary#networks).
 
-The deploy function creates a new instance of the Open Format contract on chain.
+### Before you deploy
+
+To be able to query your data through the subgraph a set of metadata must be stored in IPFS. This can be handled automatically for you by obtaining an [nft.storage API key](https://nft.storage/docs/quickstart/#get-an-api-token).
+
+When you initialise the SDK you can pass in your API key and your unique factory ID (though this is optional) to group your data together. This will allow you to pass and later query custom `metadata`.
 
 :::tip info
-The metadata URL should return a JSON blob of data with the metadata for your NFT. For now, we only support metadata store on IPFS.
+Custom metadata is currently limited to an object of key value pairs of strings at one level deep
 :::
 
 <Tabs groupId="sdk">
 <TabItem value="js" label="JavaScript">
 
-```jsx
+```tsx
 import { OpenFormatSDK } from '@simpleweb/open-format';
 
 const sdk = new OpenFormatSDK({
   network: 'mumbai',
   signer: '0x...',
+  factory: 'YOUR-FACTORY-ID',
+  nftStorageToken: 'xxx',
 });
 
 await sdk.deploy({
+  name: "TICKET",
+  description: "NFT ticket",
+  image: new File(...),
+  symbol: "FESTIVAL",
   maxSupply: 100,
   mintingPrice: 0.01,
-  name: "TICKET",
-  symbol: "FESTIVAL",
-  url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
+  releaseType: "ticket",
+  metadata: {
+    location: "Glastonbury",
+  },
 });
 ```
 
 </TabItem>
 <TabItem value="react" label="React">
 
-```jsx
-import { useDeploy } from '@simpleweb/open-format-react';
+```tsx
+import { OpenFormatProvider } from "@simpleweb/open-format-react";
+
+function App() {
+  return (
+    <>
+      <OpenFormatProvider
+        config={{
+          network: "mumbai",
+          factory: "YOUR-FACTORY-ID",
+          nftStorageToken: "xxx",
+        }}
+      >
+        {/* the rest of your app... */}
+      </OpenFormatProvider>
+    </>
+  );
+}
+```
+
+```tsx
+import { useDeploy } from "@simpleweb/open-format-react";
 
 function MyComponent() {
   const { deploy } = useDeploy();
@@ -52,7 +82,72 @@ function MyComponent() {
             mintingPrice: 0.01,
             name: "TICKET",
             symbol: "FESTIVAL",
-            url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza"
+            releaseType: "ticket",
+            metadata: {
+              location: "Glastonbury",
+            },
+          })
+        }
+      >
+        Deploy NFT
+      </button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Deploy
+
+The deploy function creates a new instance of the Open Format contract on chain.
+
+In the example below we use a custom IPFS URL vs. the automatic handling of the metadata previously.
+
+:::tip info
+The metadata URL should return a JSON blob of data with the metadata for your NFT. For now, we only support metadata store on IPFS.
+:::
+
+<Tabs groupId="sdk">
+<TabItem value="js" label="JavaScript">
+
+```tsx
+import { OpenFormatSDK } from "@simpleweb/open-format";
+
+const sdk = new OpenFormatSDK({
+  network: "mumbai",
+  signer: "0x...",
+});
+
+await sdk.deploy({
+  maxSupply: 100,
+  mintingPrice: 0.01,
+  name: "TICKET",
+  symbol: "FESTIVAL",
+  url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza",
+});
+```
+
+</TabItem>
+<TabItem value="react" label="React">
+
+```tsx
+import { useDeploy } from "@simpleweb/open-format-react";
+
+function MyComponent() {
+  const { deploy } = useDeploy();
+
+  return (
+    <>
+      <button
+        onClick={() =>
+          deploy({
+            maxSupply: 100,
+            mintingPrice: 0.01,
+            name: "TICKET",
+            symbol: "FESTIVAL",
+            url: "ipfs://bafkreifxgd3n6uzlhtenlwycphesqlmwf7dmqqzwho4iz6r6wuwtqtneza",
           })
         }
       >

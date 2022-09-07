@@ -4,6 +4,7 @@ export interface SDKOptions {
   network: Chain;
   signer?: Signer | string;
   factory?: string;
+  nftStorageToken?: string;
 }
 
 export type Chain = 'mainnet' | 'mumbai' | 'localhost' | (string & {});
@@ -14,7 +15,9 @@ export type TokenProperty = {
   value: string;
 };
 
-export type ReleaseType = 'art' | 'ticket' | 'audio' | 'video';
+export type ReleaseType = 'image' | 'art' | 'ticket' | 'audio' | 'video';
+
+export type Attribute = { key: string; value: string };
 
 export type ChainConfig = {
   id: Chain;
@@ -26,10 +29,26 @@ export type ChainConfig = {
 
 export interface NFTMetadata {
   name: string;
+  description?: string;
+  image?: Blob | File;
+  releaseType?: ReleaseType;
   symbol: string;
-  url: string;
+  url?: string;
+  metadata?: {
+    [key: string]: string;
+  };
+  attributes?: Attribute[];
   maxSupply: number;
   mintingPrice: number;
+}
+
+export interface IPFSData {
+  name: string;
+  description: string;
+  image: Blob | File;
+  attributes?: Attribute[];
+  factory_id?: string;
+  release_type?: ReleaseType;
 }
 
 /**
