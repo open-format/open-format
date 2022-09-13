@@ -5,6 +5,10 @@
 
 @import url('https://rsms.me/inter/inter.css');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root,
 :root[data-theme=''],
 :root[data-theme='dark'] {
