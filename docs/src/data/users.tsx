@@ -48,7 +48,7 @@ const Users: User[] = [
     tags: ["marketplace", "rewards"]
   },
   {
-    title: "Music NFT Platform",
+    title: "Event Ticketing Platform",
     description:
       "Amplify used Open Format to create NFT Tickets for their first DeFi gig in a couple of days.",
     preview: require("./showcase/Amplify.jpg"),
