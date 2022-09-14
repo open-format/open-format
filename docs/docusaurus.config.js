@@ -3,7 +3,6 @@
 
 const EDIT_LINK = "https://github.com/simpleweb/open-format/edit/main/website";
 const GITHUB_LINK = "https://github.com/simpleweb/open-format";
-const TWITTER_LINK = "https://twitter.com/simpleweb";
 const DISCORD_LINK = "https://discord.gg/8WV52tVqbZ";
 
 /** @type {import('@docusaurus/types').Config} */
@@ -128,11 +127,6 @@ const config = {
           {
             href: DISCORD_LINK,
             className: "navbar-item-discord",
-            position: "right"
-          },
-          {
-            href: TWITTER_LINK,
-            className: "navbar-item-twitter",
             position: "right"
           }
         ]

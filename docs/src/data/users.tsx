@@ -85,7 +85,7 @@ const Users: User[] = [
   {
     title: "Simple NFT",
     description:
-      "Showcasing some of the more complex features that are configurable with open format. The primary goal was to prove that you could deposit as the creator and then subsequently withdraw as a holder. The idea behind this is that NFT's can reward you financially.",
+      "Showcasing some of the more complex features that are configurable with Open Format. The primary goal was to prove that you could deposit as the creator and then subsequently withdraw as a holder. The idea behind this is that NFT's can reward you financially.",
     preview: require("./showcase/SimpleNFT.jpg"),
     website: null,
     source: null,
