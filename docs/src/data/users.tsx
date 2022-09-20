@@ -85,7 +85,7 @@ const Users: User[] = [
   {
     title: "Investment platform",
     description:
-      "A decentralised platform that provides the functionality to fund your business ideas and facilitates the ability to reward your investors and collaborators financially.",
+      "A decentralised platform that provides the functionality to both fund ideas and reward investors and collaborators.",
     preview: require("./showcase/SimpleNFT.jpg"),
     website: null,
     source: null,
