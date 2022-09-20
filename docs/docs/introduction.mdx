@@ -23,63 +23,106 @@ const frameworks = [
 
 Open Format is a trustless, permissionless and collaborative NFT protocol. It enables developers and creators to create, release and monetize their NFT collections in unique marketplace experiences.
 
-<div class="container" style={{ padding: 0 }}>
-  <div class="row is-multiline">
-    {/* What is Open Format? */}
-    <div class="col col--4">
-      <Link class="card" to="/what-is-open-format" style={{ height: '100%' }}>
-        <div class="card__body">
-          <div style={{ padding: 10, display: "inline-flex", alignItems: "center", backgroundColor: "#4f46e5", borderRadius: 8, marginBottom: 16 }}>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-diamond" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M6 5h12l3 5l-8.5 9.5a0.7 .7 0 0 1 -1 0l-8.5 -9.5l3 -5"></path>
-              <path d="M10 12l-2 -2.2l.6 -1"></path>
-            </svg>
+<div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
+  <Link to="/what-is-open-format" className="group">
+    <div className="grid auto-rows-min grid-cols-1 items-center h-full rounded-xl overflow-hidden dark:bg-[#0d0d0d] border border-[rgb(255,255,255,0.05)] sm:grid-cols-2 lg:grid-cols-1">
+      <div className="relative aspect-[300/200] overflow-hidden">
+        <div className="relative h-full flex justify-center items-center">
+          <div className="absolute top-1/2 left-0 mt-[-1px] h-[2px] w-28 rounded-full bg-gradient-to-r from-black/10 dark:from-white/10" />
+          <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center rounded-full w-20 h-20 mx-6 drop-shadow-[0px_0px_50px_rgba(255,255,255,1)] bg-black/10 dark:bg-white/10">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-black dark:text-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M6 5h12l3 5l-8.5 9.5a0.7 .7 0 0 1 -1 0l-8.5 -9.5l3 -5"></path>
+                <path d="M10 12l-2 -2.2l.6 -1"></path>
+              </svg>
+            </div>
           </div>
-          <h4>What is Open Format?</h4>
-          <p>Discover more about the trustless, permissionless and collaborative NFT protocol.</p>
+          <div className="absolute top-1/2 right-0 mt-[-1px] h-[2px] w-28 rounded-full bg-gradient-to-l from-black/10 dark:from-white/10" />
         </div>
-      </Link>
+        <div
+          className="transform-cpu pointer-events-none absolute inset-0 blur-3xl opacity-50 z-0"
+          style={{ backgroundImage: "conic-gradient(from 180deg at 58.33% 50%, rgb(109, 84, 225) 0deg, rgb(25, 67, 157) 91.02deg, rgb(243, 99, 255) 180.24deg, rgb(26, 130, 252) 269.01deg, rgb(109, 84, 225) 360deg)" }}
+        />
+      </div>
+      <div className="px-8 py-6 pb-8">
+        <h4 className="text-2xl font-bold tracking-tighter dark:text-gray-100">
+          What is Open Format?
+        </h4>
+        <p className="mt-1.5 text-lg text-gray-700 dark:text-gray-300">
+          Discover more about the trustless, permissionless and collaborative NFT protocol.
+        </p>
+      </div>
     </div>
-    {/* Guides */}
-    <div class="col col--4">
-      <Link class="card" to="/guides/overview" style={{ height: '100%' }}>
-        <div class="card__body">
-          <div style={{ padding: 10, display: "inline-flex", alignItems: "center", backgroundColor: "#4f46e5", borderRadius: 8, marginBottom: 16 }}>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path>
-              <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path>
-              <line x1="3" y1="6" x2="3" y2="19"></line>
-              <line x1="12" y1="6" x2="12" y2="19"></line>
-              <line x1="21" y1="6" x2="21" y2="19"></line>
-            </svg>
+  </Link>
+  <Link to="/guides/overview">
+    <div className="grid auto-rows-min grid-cols-1 items-center h-full rounded-xl overflow-hidden dark:bg-[#0d0d0d] border border-[rgb(255,255,255,0.05)] sm:grid-cols-2 lg:grid-cols-1">
+      <div className="relative aspect-[300/200] overflow-hidden">
+        <div className="relative h-full flex justify-center items-center">
+          <div className="absolute top-1/2 left-0 mt-[-1px] h-[2px] w-28 rounded-full bg-gradient-to-r from-black/10 dark:from-white/10" />
+          <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center rounded-full w-20 h-20 mx-6 drop-shadow-[0px_0px_50px_rgba(255,255,255,1)] bg-black/10 dark:bg-white/10">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-black dark:text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path>
+                <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path>
+                <line x1="3" y1="6" x2="3" y2="19"></line>
+                <line x1="12" y1="6" x2="12" y2="19"></line>
+                <line x1="21" y1="6" x2="21" y2="19"></line>
+              </svg>
+            </div>
           </div>
-          <h4>Guides</h4>
-          <p>Comprehensive overview of Open Format's different APIs and concepts, and usage examples for different use cases.</p>
+          <div className="absolute top-1/2 right-0 mt-[-1px] h-[2px] w-28 rounded-full bg-gradient-to-l from-black/10 dark:from-white/10" />
         </div>
-      </Link>
+        <div
+          className="transform-cpu pointer-events-none absolute inset-0 blur-3xl opacity-50 z-0"
+          style={{ backgroundImage: "conic-gradient(from 180deg at 58.33% 50%, rgb(107, 202, 238) 0deg, rgb(107, 202, 238) 91.02deg, rgb(46, 182, 125) 180.24deg, rgb(74, 21, 75) 269.01deg, rgb(107, 202, 238) 360deg)" }}
+        />
+      </div>
+      <div className="px-8 py-6 pb-8">
+        <h4 className="text-2xl font-bold tracking-tighter dark:text-gray-100">
+          Guides
+        </h4>
+        <p className="mt-1.5 text-lg text-gray-700 dark:text-gray-300">
+          Comprehensive overview of Open Format's different APIs and concepts, and usage examples for different use cases.
+        </p>
+      </div>
     </div>
-    {/* Demo */}
-    <div class="col col--4">
-      <Link class="card" to="https://open-format-nft.vercel.app/" style={{ height: '100%' }}>
-        <div class="card__body">
-          <div style={{ padding: 10, display: "inline-flex", alignItems: "center", backgroundColor: "#4f46e5", borderRadius: 8, marginBottom: 16 }}>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-store" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <line x1="3" y1="21" x2="21" y2="21"></line>
-              <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4"></path>
-              <line x1="5" y1="21" x2="5" y2="10.85"></line>
-              <line x1="19" y1="21" x2="19" y2="10.85"></line>
-              <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
-            </svg>
+  </Link>
+  <Link to="https://open-format-nft.vercel.app/">
+    <div className="grid auto-rows-min grid-cols-1 items-center h-full rounded-xl overflow-hidden border border-[rgb(255,255,255,0.05)] sm:grid-cols-2 lg:grid-cols-1 dark:bg-[#0d0d0d]">
+      <div className="relative aspect-[300/200] overflow-hidden">
+        <div className="relative h-full flex justify-center items-center">
+          <div className="absolute top-1/2 left-0 mt-[-1px] h-[2px] w-28 rounded-full bg-gradient-to-r from-black/10 dark:from-white/10" />
+          <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center rounded-full w-20 h-20 mx-6 drop-shadow-[0px_0px_50px_rgba(255,255,255,1)] bg-black/10 dark:bg-white/10">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-black dark:text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <line x1="3" y1="21" x2="21" y2="21"></line>
+                <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4"></path>
+                <line x1="5" y1="21" x2="5" y2="10.85"></line>
+                <line x1="19" y1="21" x2="19" y2="10.85"></line>
+                <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
+              </svg>
+            </div>
           </div>
-          <h4>Open Format NFT</h4>
-          <p>A showcase tool to help you build your own platforms without having to worry about complexity.</p>
+          <div className="absolute top-1/2 right-0 mt-[-1px] h-[2px] w-28 rounded-full bg-gradient-to-l from-black/10 dark:from-white/10" />
         </div>
-      </Link>
+        <div
+          className="transform-cpu pointer-events-none absolute inset-0 blur-3xl opacity-50 z-0"
+          style={{ backgroundImage: "conic-gradient(from 180deg at 50% 50%, rgb(107, 202, 238) -48.75deg, rgb(242, 78, 30) 35.62deg, rgb(162, 89, 255) 153.75deg, rgb(26, 188, 254) 232.5deg, rgb(107, 202, 238) 311.25deg, rgb(242, 78, 30) 395.63deg)" }}
+        />
+      </div>
+      <div className="px-8 py-6 pb-8">
+        <h4 className="text-2xl font-bold tracking-tighter dark:text-gray-100">
+          Open Format NFT
+        </h4>
+        <p className="mt-1.5 text-lg text-gray-700 dark:text-gray-300">
+          A showcase tool to help you build your own platforms without having to worry about complexity.
+        </p>
+      </div>
     </div>
-  </div>
+  </Link>
 </div>
 
 ## Start with a framework

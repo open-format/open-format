@@ -3,7 +3,6 @@
 
 const EDIT_LINK = "https://github.com/simpleweb/open-format/edit/main/website";
 const GITHUB_LINK = "https://github.com/simpleweb/open-format";
-const TWITTER_LINK = "https://twitter.com/simpleweb";
 const DISCORD_LINK = "https://discord.gg/8WV52tVqbZ";
 
 /** @type {import('@docusaurus/types').Config} */
@@ -21,6 +20,31 @@ const config = {
   organizationName: "simpleweb", // Usually your GitHub org/user name.
   projectName: "open-format", // Usually your repo name.
 
+  plugins: [
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        }
+      };
+    },
+    [
+      "ideal-image",
+      /** @type {import('@docusaurus/plugin-ideal-image').PluginOptions} */
+      ({
+        quality: 70,
+        max: 1030,
+        min: 640,
+        steps: 2,
+        // Use false to debug, but it incurs huge perf costs
+        disableInDev: true
+      })
+    ]
+  ],
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -84,6 +108,7 @@ const config = {
             docId: "api",
             position: "left"
           },
+          { to: "showcase", label: "Showcase", position: "left" },
           ...(process.env.NODE_ENV === "development"
             ? [
                 {
@@ -102,11 +127,6 @@ const config = {
           {
             href: DISCORD_LINK,
             className: "navbar-item-discord",
-            position: "right"
-          },
-          {
-            href: TWITTER_LINK,
-            className: "navbar-item-twitter",
             position: "right"
           }
         ]
