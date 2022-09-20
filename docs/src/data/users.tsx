@@ -83,9 +83,9 @@ const Users: User[] = [
     tags: ["marketplace"]
   },
   {
-    title: "Simple NFT",
+    title: "Investment platform",
     description:
-      "Showcasing some of the more complex features that are configurable with Open Format. The primary goal was to prove that you could deposit as the creator and then subsequently withdraw as a holder. The idea behind this is that NFT's can reward you financially.",
+      "A decentralised platform that provides the functionality to fund your business ideas and facilitates the ability to reward your investors and collaborators financially.",
     preview: require("./showcase/SimpleNFT.jpg"),
     website: null,
     source: null,
