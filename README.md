@@ -20,7 +20,7 @@ Build your own NFT ecosystem. Trustless, permissionless and collaborative.
 
 ## Demos
 
-- [whitelabel - Music NFT marketplace](https://whitelabel-market.netlify.app/)
+- [Open Format NFT - NFT art marketplace](https://open-format-nft.vercel.app/)
 
 ## Examples
 
