@@ -69,7 +69,7 @@ function ShowcaseCard({user}: {user: User}) {
   return (
     <li
       key={user.title}
-      className="grid auto-rows-min grid-cols-1 items-center rounded-xl overflow-hidden border border-black dark:bg-[#0d0d0d]">
+      className="relative grid auto-rows-min grid-cols-1 items-center rounded-xl overflow-hidden border border-black dark:bg-[#0d0d0d]">
       <div className="relative aspect-[8/5] overflow-hidden">
         <div className="relative h-full flex justify-center items-center z-10">
           <Image img={user.preview} alt={user.title} />
@@ -77,18 +77,14 @@ function ShowcaseCard({user}: {user: User}) {
       </div>
       <div className="px-8 py-6 pb-8">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-xl font-bold tracking-tighter text-open-grey-100 mb-0">
-            {user.website ? (
-              <Link href={user.website} className="text-black dark:text-gray-100">
-                {user.title}
-              </Link>
-            ): user.title}
+          <h3 className="text-xl font-bold tracking-tighter text-black dark:text-gray-100 mb-0">
+            {user.title}
           </h3>
           {user.tags.includes('favorite') && (
             <FavoriteIcon size="small" />
           )}
           {user.source && (
-            <Link href={user.source} className="text-black dark:text-gray-100">
+            <Link href={user.source} className="relative z-20 text-black hover:text-black/80 dark:text-gray-100 dark:hover:text-gray-400">
               <div className="flex items-center">
                 <span className="sr-only">GitHub</span>
                 <svg
@@ -111,7 +107,13 @@ function ShowcaseCard({user}: {user: User}) {
         <p className="text-gray-700 dark:text-gray-300">
           {user.description}
         </p>
+        {user.website && (
+          <Link href={user.website} className="absolute inset-0 z-10">
+            <span className="sr-only">{user.title}</span>
+          </Link>
+        )}
       </div>
+
     </li>
   );
 }

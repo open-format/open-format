@@ -234,8 +234,6 @@ function SearchBar() {
 function ShowcaseCards() {
   const filteredUsers = useFilteredUsers();
 
-
-
   return (
     <section>
       <div className="flex items-center justify-end mb-12">
