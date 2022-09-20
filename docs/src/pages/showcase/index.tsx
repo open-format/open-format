@@ -289,10 +289,10 @@ export default function Showcase(): JSX.Element {
         <section className="relative py-12">
           <div className="transform-cpu pointer-events-none absolute inset-0 blur-3xl opacity-10 z-0" style={{ backgroundImage: "conic-gradient(from 180deg at 50% 50%, rgb(107, 202, 238) -48.75deg, rgb(242, 78, 30) 35.62deg, rgb(162, 89, 255) 153.75deg, rgb(26, 188, 254) 232.5deg, rgb(107, 202, 238) 311.25deg, rgb(242, 78, 30) 395.63deg)"}}/>
           <div className="relative z-10 flex flex-col items-center">
-            <h1 className="max-w-4xl mt-6 text-3xl font-bold tracking-tighter text-open-grey-100 md:text-5xl lg:text-6xl">
+            <h1 className="max-w-4xl mt-6 text-3xl font-bold tracking-tighter text-gray-800 md:text-5xl lg:text-6xl dark:text-white">
               {TITLE}
             </h1>
-            <p className="max-w-3xl text-lg font-medium md:text-xl lg:text-2xl text-open-grey-300">
+            <p className="max-w-3xl text-lg font-medium text-gray-600 md:text-xl lg:text-2xl dark:text-gray-200">
               {DESCRIPTION}
             </p>
           </div>
