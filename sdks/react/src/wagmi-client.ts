@@ -29,8 +29,7 @@ const coinbase = new CoinbaseWalletConnector({
 const injected = new InjectedConnector({ chains });
 
 export const wagmiClient = createClient({
-  // @TODO fix hydration issue
-  // autoConnect: true,
+  autoConnect: false,
   connectors: [injected, coinbase, metamask, walletconnet],
   provider,
   webSocketProvider,
