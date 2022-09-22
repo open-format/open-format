@@ -1,5 +1,11 @@
 # @simpleweb/open-format-react
 
+## 0.8.0
+
+### Minor Changes
+
+- 4eec7e4: Handle auto connecting to wallets in `OpenFormatProvider`
+
 ## 0.7.0
 
 ### Minor Changes
