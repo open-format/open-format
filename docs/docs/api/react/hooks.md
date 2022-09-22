@@ -7,13 +7,13 @@ title: Hooks
 ## useBurn(nft)
 <p>Hook to burn a token</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, burn } = useBurn(nft);
 ```
@@ -22,13 +22,13 @@ const { ...mutation, burn } = useBurn(nft);
 ## useBuy(nft)
 <p>Hook to buy</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, buy } = useBuy(nft);
 ```
@@ -37,8 +37,8 @@ const { ...mutation, buy } = useBuy(nft);
 ## useDeploy()
 <p>Hook to get the deploy function from the SDK</p>
 
-**Kind**: global function  
-**Example**  
+**Kind**: global function
+**Example**
 ```tsx
 const { ...mutation, deploy } = useDeploy();
 ```
@@ -47,7 +47,7 @@ const { ...mutation, deploy } = useDeploy();
 ## useGetCollaboratorBalance(nft, address) ⇒ <code>UseQueryResult</code>
 <p>Hook to get the balance of a collaborator</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -59,7 +59,7 @@ const { ...mutation, deploy } = useDeploy();
 ## useGetMaxSupply(nft) ⇒ <code>UseQueryResult</code>
 <p>Hook to get max supply</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -70,7 +70,7 @@ const { ...mutation, deploy } = useDeploy();
 ## useGetPrimaryCommissionPercent(nft) ⇒ <code>UseQueryResult</code>
 <p>Hook to get primary commission percentage</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -81,7 +81,7 @@ const { ...mutation, deploy } = useDeploy();
 ## useGetSecondaryCommissionPercent(nft) ⇒ <code>UseQueryResult</code>
 <p>Hook to get secondary commission percentage</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -92,7 +92,7 @@ const { ...mutation, deploy } = useDeploy();
 ## useGetTokenBalance(nft, tokenId) ⇒ <code>UseQueryResult</code>
 <p>Hook to get the balance of a token</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -104,7 +104,7 @@ const { ...mutation, deploy } = useDeploy();
 ## useGetTokenCreator(nft, tokenId) ⇒ <code>UseQueryResult</code>
 <p>Hook to get the creator of a token</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -116,7 +116,7 @@ const { ...mutation, deploy } = useDeploy();
 ## useGetTokenSalePrice(nft, tokenId) ⇒ <code>UseQueryResult</code>
 <p>Hook to get the sale price of a token</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -128,7 +128,7 @@ const { ...mutation, deploy } = useDeploy();
 ## useGetTotalSupply(nft) ⇒ <code>UseQueryResult</code>
 <p>Hook to get the total supply</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -139,13 +139,13 @@ const { ...mutation, deploy } = useDeploy();
 ## useMint(nft)
 <p>Hook to mint</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, mint } = useMint(nft);
 ```
@@ -154,13 +154,13 @@ const { ...mutation, mint } = useMint(nft);
 ## useMintWithCommission(nft)
 <p>Hook to mint with commission</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, mintWithCommission } = useMintWithCommission(nft);
 ```
@@ -169,8 +169,8 @@ const { ...mutation, mintWithCommission } = useMintWithCommission(nft);
 ## useNFT(address) ⇒
 <p>Hook to return a new instance of an OpenFormatNFT</p>
 
-**Kind**: global function  
-**Returns**: <p>OpenFormatNFT</p>  
+**Kind**: global function
+**Returns**: <p>OpenFormatNFT</p>
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -181,8 +181,8 @@ const { ...mutation, mintWithCommission } = useMintWithCommission(nft);
 ## useRawRequest(options) ⇒ <code>any</code>
 <p>Performs a custom query against the subgraph</p>
 
-**Kind**: global function  
-**Returns**: <code>any</code> - <p>Data from the subgraph</p>  
+**Kind**: global function
+**Returns**: <code>any</code> - <p>Data from the subgraph</p>
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -193,13 +193,13 @@ const { ...mutation, mintWithCommission } = useMintWithCommission(nft);
 ## useRevenueSharingAllocation(nft)
 <p>Hook to allocate revenue shares</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, allocate } = useRevenueSharingAllocation(nft);
 ```
@@ -208,7 +208,7 @@ const { ...mutation, allocate } = useRevenueSharingAllocation(nft);
 ## useRoyalties(nft, salePrice) ⇒ <code>UseQueryResult</code>
 <p>Hook to get the sale price of a token</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -220,7 +220,7 @@ const { ...mutation, allocate } = useRevenueSharingAllocation(nft);
 ## useSaleData(nft, options) ⇒ <code>UseQueryResult</code>
 <p>Hook to get sales data for a specific token</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -232,13 +232,13 @@ const { ...mutation, allocate } = useRevenueSharingAllocation(nft);
 ## useSetMaxSupply(nft)
 <p>Hook to set the max supply</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, setMaxSupply } = useSetMaxSupply(nft);
 ```
@@ -247,13 +247,13 @@ const { ...mutation, setMaxSupply } = useSetMaxSupply(nft);
 ## useSetMintingPrice(nft)
 <p>Hook to set the price of minting</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, setMintingPrice } = useSetMintingPrice(nft);
 ```
@@ -262,13 +262,13 @@ const { ...mutation, setMintingPrice } = useSetMintingPrice(nft);
 ## useSetPrimaryCommissionPercentage(nft)
 <p>Hook to set the percentage of the primary commission</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, setPrimaryCommissionPercent } = useSetPrimaryCommissionPercentage(nft);
 ```
@@ -277,13 +277,13 @@ const { ...mutation, setPrimaryCommissionPercent } = useSetPrimaryCommissionPerc
 ## useSetRoyalties(nft)
 <p>Hook to setup royalties to be paid to an address</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, setRoyalties } = useSetRoyalties(nft);
 ```
@@ -292,13 +292,13 @@ const { ...mutation, setRoyalties } = useSetRoyalties(nft);
 ## useSetSecondaryCommissionPercentage(nft)
 <p>Hook to set the percentage of the secondary commission</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, setSecondaryCommissionPercentage } = useSetSecondaryCommissionPercentage(nft);
 ```
@@ -307,13 +307,13 @@ const { ...mutation, setSecondaryCommissionPercentage } = useSetSecondaryCommiss
 ## useSetTokenSalePrice(nft)
 <p>Hook to set the sale proce of a token</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, setTokenSalePrice } = useSetTokenSalePrice(nft);
 ```
@@ -322,13 +322,13 @@ const { ...mutation, setTokenSalePrice } = useSetTokenSalePrice(nft);
 ## useSetupRevenueSharing(nft)
 <p>Hook to setup revenue sharing</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, setup } = useSetupRevenueSharing(nft);
 ```
@@ -337,13 +337,13 @@ const { ...mutation, setup } = useSetupRevenueSharing(nft);
 ## useTogglePauseState(nft)
 <p>Hook to toggle the paused state</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, togglePauseState } = useTogglePauseState(nft);
 ```
@@ -352,29 +352,29 @@ const { ...mutation, togglePauseState } = useTogglePauseState(nft);
 ## useTokens() ⇒ <code>UseQueryResult</code>
 <p>Hook to get token data</p>
 
-**Kind**: global function  
+**Kind**: global function
 <a name="useWallet"></a>
 
 ## useWallet()
 <p>Hook to get the wallet state</p>
 
-**Kind**: global function  
-**Example**  
+**Kind**: global function
+**Example**
 ```tsx
-const { isConnected, wallet } = useWallet();
+const { isConnected, address } = useWallet();
 ```
 <a name="useWithdrawCollaboratorFunds"></a>
 
 ## useWithdrawCollaboratorFunds(nft)
 <p>Hook to withdraw collaborator funds</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, withdraw } = useWithdrawCollaboratorFunds(nft);
 ```
@@ -383,13 +383,13 @@ const { ...mutation, withdraw } = useWithdrawCollaboratorFunds(nft);
 ## useWithdrawTokenFunds(nft)
 <p>Hook to withdraw token funds</p>
 
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type | Description |
 | --- | --- | --- |
 | nft | <code>OpenFormatNFT</code> | <p>A deployed NFT instance</p> |
 
-**Example**  
+**Example**
 ```tsx
 const { ...mutation, withdraw } = useWithdrawTokenFunds(nft);
 ```
