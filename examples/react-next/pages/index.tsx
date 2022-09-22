@@ -1,5 +1,4 @@
 import {
-  ConnectButton,
   useDeploy,
   useMint,
   useNFT,
@@ -50,10 +49,6 @@ const Home: NextPage = () => {
   return (
     <div>
       <h1>Open Format React</h1>
-
-      <div>
-        <ConnectButton />
-      </div>
 
       {isConnected && (
         <div>
