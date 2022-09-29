@@ -1,5 +1,11 @@
 # @simpleweb/open-format-react
 
+## 0.8.1
+
+### Patch Changes
+
+- ae60933: Fixes automatic connection issue
+
 ## 0.8.0
 
 ### Minor Changes
