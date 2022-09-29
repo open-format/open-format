@@ -2,13 +2,7 @@ import { OpenFormatSDK, SDKOptions } from '@simpleweb/open-format';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ConnectKitProvider } from 'connectkit';
 import React, { createContext, useContext, useEffect, useRef } from 'react';
-import {
-  useAccount,
-  useConnect,
-  useSigner,
-  Connector,
-  WagmiConfig,
-} from 'wagmi';
+import { Connector, useConnect, useSigner, WagmiConfig } from 'wagmi';
 import { wagmiClient } from './wagmi-client';
 
 const OpenFormatContext = createContext<{ sdk: OpenFormatSDK } | undefined>(
@@ -51,19 +45,22 @@ function InnerProvider({
   children: React.ReactNode;
   config?: SDKOptions;
 }) {
-  const { isDisconnected } = useAccount();
   const { connect, connectors } = useConnect();
   const sdk = useRef(new OpenFormatSDK(config));
 
   const { data: signer } = useSigner();
 
   useEffect(() => {
-    const wallet = JSON.parse(localStorage.getItem('wagmi.wallet') ?? '');
+    const wallet = JSON.parse(localStorage.getItem('wagmi.wallet') ?? '""');
+    const previouslyConnected = JSON.parse(
+      localStorage.getItem('wagmi.connected') ?? 'false'
+    );
+
     const connector = connectors.find(
       (connector: Connector) => wallet === connector.id
     );
 
-    if (wallet && isDisconnected) {
+    if (wallet && previouslyConnected) {
       connect({ connector });
     }
   }, []);
