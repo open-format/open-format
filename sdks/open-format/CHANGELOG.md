@@ -1,5 +1,11 @@
 # @simpleweb/open-format
 
+## 0.8.0
+
+### Minor Changes
+
+- e0f93de: Get more data when getting tokens
+
 ## 0.7.0
 
 ### Minor Changes
