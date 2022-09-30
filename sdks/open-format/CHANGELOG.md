@@ -1,5 +1,11 @@
 # @simpleweb/open-format
 
+## 0.9.0
+
+### Minor Changes
+
+- f328dff: Add missing types
+
 ## 0.8.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # @simpleweb/open-format-react
 
+## 0.8.3
+
+### Patch Changes
+
+- Updated dependencies [f328dff]
+  - @simpleweb/open-format@0.9.0
+
 ## 0.8.2
 
 ### Patch Changes
