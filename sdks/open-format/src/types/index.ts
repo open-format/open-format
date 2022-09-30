@@ -75,6 +75,10 @@ export interface SaleDataResponse {
 export interface TokensResponse {
   tokens: {
     id: string;
+    symbol: string;
+    creator: {
+      id: string;
+    };
     properties: TokenProperty[];
     release_type: ReleaseType;
     createdAt: string;
