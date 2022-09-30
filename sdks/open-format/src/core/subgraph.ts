@@ -62,6 +62,10 @@ export async function getTokens({ factoryId }: { factoryId: string }) {
     query getTokensByFactoryID($factory_id: String) {
       tokens(where: { factory_id: $factory_id }) {
         id
+        symbol
+        creator {
+          id
+        }
         properties {
           id
           key
