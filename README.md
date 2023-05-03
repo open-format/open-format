@@ -1,3 +1,5 @@
+**This repository has been archived as a new and improved version of the SDK is now available in a separate repository. The latest version of the SDK can be found [here](https://github.com/open-format/js)**.
+
 # Open Format
 
 Build your own NFT ecosystem. Trustless, permissionless and collaborative.
@@ -14,9 +16,9 @@ Build your own NFT ecosystem. Trustless, permissionless and collaborative.
 
 ## Documentation
 
-- [Introduction](https://docs.openformat.simpleweb.co.uk)
-- [JavaScript](https://docs.openformat.simpleweb.co.uk/quickstart/javascript)
-- [React](https://docs.openformat.simpleweb.co.uk/quickstart/react)
+- [Introduction](https://docs.openformat.tech)
+- [JavaScript](https://docs.openformat.tech/quickstart/javascript)
+- [React](https://docs.openformat.tech/quickstart/react)
 
 ## Demos
 
